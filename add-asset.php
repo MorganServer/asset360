@@ -38,7 +38,7 @@ if(isLoggedIn() == false) {
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
  <!-- main-container -->
-    <div class="container" style="padding: 0 75px 0 75px;">
+    <div class="container" style="">
         <br>
         <h2>Add an Asset</h2>
         <hr>
