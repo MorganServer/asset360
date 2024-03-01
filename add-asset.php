@@ -43,7 +43,7 @@ if(isLoggedIn() == false) {
         <br>
         <div class="top-form">
             <h2 class="">Add an Asset</h2>
-            <div class="float-end" style="margin-top: -50px;">
+            <div class="float-end" style="margin-top: -50px; margin-bottom: -50px;">
                 <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
             </div>
         </div>
