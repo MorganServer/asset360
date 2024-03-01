@@ -41,8 +41,11 @@ if(isLoggedIn() == false) {
     <div class="container" style="padding: 0 75px 0 75px;">
     <form method="POST" action="">
         <br>
+        <div class="top-form">
         <h2 class="float-start">Add an Asset</h2>
         <button type="submit" name="add-full" class="btn btn-primary float-end">Submit</button>
+        </div>
+        
         <hr>
 
     
