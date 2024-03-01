@@ -1,3 +1,8 @@
+<?php
+require_once "path.php";
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +11,8 @@
     <title>Testing</title>
 </head>
 <body>
-    Testing
+    <?php include(ROOT_PATH . "/app/includes/header.php") ?>
+
+
 </body>
 </html>
