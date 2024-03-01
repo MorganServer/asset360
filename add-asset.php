@@ -108,22 +108,23 @@ if(isLoggedIn() == false) {
                 <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Asset Owner</span></label>
                 <select class="form-control" name="asset_type">
                     <?php
-                    $sql = "SELECT fname,lname FROM users";
-                    $result = $conn->query($sql);
+                    $sql = "SELECT fname, lname FROM users";
+                    $result = mysqli_query($conn, $sql);
                 
-                    if ($result->num_rows > 0) {
+                    if (mysqli_num_rows($result) > 0) {
                         // Output data of each row
-                        while ($row = $result->fetch_assoc()) {
-                            echo "<option value='" . $row['fname'] . "' " . $row['lname'] . "</option>";
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<option value='" . $row['fname'] . "'>" . $row['fname'] . " " . $row['lname'] . "</option>";
                         }
                     } else {
                         echo "<option value=''>No users found</option>";
                     }
                 
-                    $conn->close();
+                    mysqli_close($conn);
                     ?>
                 </select>
             </div>
+
             <div class="col">
                 <label for="end_of_life_date" class="form-label">End of Life Date</label>
                 <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
