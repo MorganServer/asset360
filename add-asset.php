@@ -19,29 +19,20 @@ if(isLoggedIn() == false) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap Links -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
-    <title>Add Asset | Asset360</title>
-
-    <style>
-        
-    </style>
-    
+    <title>Home | Asset360</title>
 </head>
 <body>
-
-<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-<?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
  <!-- main-container -->
  <div class="container">
