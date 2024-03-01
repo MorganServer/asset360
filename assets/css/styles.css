@@ -65,7 +65,7 @@
 
 /* container */
 .container {
-    position: absolute;
+    /* position: absolute; */
     
     width: 100% !important;
     background-color: cadetblue;
