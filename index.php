@@ -19,26 +19,10 @@ session_start();
     <title>Home | Asset360</title>
 </head>
 <body>
-    
-    
+    <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
-    
     <!-- Main Content -->
-
-
-        <div class="header">
-            <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-        </div>
-
-        <div class="container">
-            <div class="sidebar">
-                <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
-            </div>
-  
-            <div class="main-content">
-                
-            </div>
-        </div>
 
         <div class="container" style="">
 

@@ -35,7 +35,7 @@
   z-index: 1000; 
 }
 .header_right:hover .dropdown-menu {
-  display: block; 
+  display: block; /* Show the dropdown menu when header_right is hovered */
   margin-top: 0;
   margin-left: -95px;
   border-radius: 0 !important;
@@ -66,13 +66,12 @@
 /* container */
 .container {
     /* position: absolute; */
-    
+    margin-left: 200px;
+    width: 100% !important;
     background-color: cadetblue;
+    margin-right: 0 !important;
+    padding-right: 0 !important;
   }
-.main-content {
-    position: absolute;
-    margin-left: 200px; 
-}
 .card-container {
   display: flex;
   justify-content: space-between;
