@@ -55,49 +55,82 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no">
             </div>
             <div class="col">
-                <label for="app_link" class="form-label">Application Link</label>
-                <input type="text" class="form-control" id="app_link" name="app_link">
+                <label for="asset_name" class="form-label">Asset Name</label>
+                <input type="text" class="form-control" id="asset_name" name="asset_name">
+            </div>
+            <div class="col">
+                <label class="form-label" for="status">Asset Type</label>
+                <select class="form-control" name="asset_type">
+                    <option value="Server">Server</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Network">Network</option>
+                    <option value="Mobile Device">Mobile Device</option>
+                    <option value="Storage">Storage</option>
+                    <option value="Peripheral">Peripheral</option>
+                    <option value="IOT Device">IOT Device</option>
+                    <option value="Accessories">Accessories</option>
+                </select>
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col">
-                <label for="company" class="form-label">Company</label>
-                <input type="text" class="form-control" id="company" name="company">
+                <label for="serial_number" class="form-label">Serial Number</label>
+                <input type="text" class="form-control" id="serial_number" name="serial_number">
+            </div>
+            <div class="col">
+                <label for="model" class="form-label">Model</label>
+                <input type="text" class="form-control" id="model" name="model">
+            </div>
+            <div class="col">
+                <label for="model_no" class="form-label">Model Number</label>
+                <input type="text" class="form-control" id="model_no" name="model_no">
+            </div>
+        </div>
+    
+        <div class="row mb-3">
+            <div class="col">
+                <label for="acquisition_date" class="form-label">Acquisition Date</label>
+                <input type="text" class="form-control" id="acquisition_date" name="acquisition_date">
+            </div>
+            <div class="col">
+                <label for="end_of_life_date" class="form-label">End of Life Date</label>
+                <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
             </div>
             <div class="col">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location">
             </div>
         </div>
-    
+
         <div class="row mb-3">
             <div class="col">
-                <label for="pay" class="form-label">Pay</label>
-                <input type="text" class="form-control" id="pay" name="pay">
-            </div>
-            <div class="col">
-                <label for="bonus_pay" class="form-label">Bonus Pay  <span class="text-muted" style="font-size: 10px;">Optional</span></label>
-                <input type="text" class="form-control" id="bonus_pay" name="bonus_pay">
-            </div>
-            <div class="col">
-                <label class="form-label" for="status">Status</label>
-                <select class="form-control" name="status">
-                    <option value="Applied">Applied</option>
-                    <option value="Interviewed">Interviewed</option>
-                    <option value="Offered">Offered</option>
-                    <option value="Rejected">Rejected</option>
+                <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Asset Owner</span></label>
+                <select class="form-control" name="asset_type">
+                    <?php
+                    $sql = "SELECT fname,lname FROM users";
+                    $result = $conn->query($sql);
+                
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<option value='" . $row['fname'] . "' " . $row['lname'] . "</option>";
+                        }
+                    } else {
+                        echo "<option value=''>No users found</option>";
+                    }
+                
+                    $conn->close();
+                    ?>
                 </select>
             </div>
             <div class="col">
-                <label class="form-label" for="job_type">Job Type</label>
-                <select class="form-control" name="job_type">
-                    <option value="Full Time">Full Time</option>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Contract">Contract</option>
-                    <option value="Internship">Internship</option>
-                    <option value="Temporary">Temporary</option>
-                </select>
+                <label for="end_of_life_date" class="form-label">End of Life Date</label>
+                <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
+            </div>
+            <div class="col">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location">
             </div>
         </div>
 
