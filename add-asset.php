@@ -94,9 +94,9 @@ if(isLoggedIn() == false) {
                     <option value="Network">Network</option>
                     <option value="Mobile Device">Mobile Device</option>
                     <option value="Storage">Storage</option>
-                    <option value="Peripheral">Peripheral</option>
+                    <option value="IP Address">IP Address</option>
                     <option value="IOT Device">IOT Device</option>
-                    <option value="Accessories">Accessories</option>
+                    <option value="Peripheral">Peripheral</option>
                 </select>
             </div>
             <div class="col">
