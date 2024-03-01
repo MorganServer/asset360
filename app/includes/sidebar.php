@@ -7,6 +7,7 @@
         <li class="list-group-item"><a href=""><i class="bi bi-keyboard"></i> Accessories</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-geo-fill"></i> IP Addresses</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-database-fill"></i> Databases</a></li>
+        <li class="list-group-item"><a href=""><i class="bi bi-search"></i> Asset Audit</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-building-fill-gear"></i> System Setting</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-gear-wide-connected"></i> Manage Utility</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-people-fill"></i> Manage Users</a></li>
