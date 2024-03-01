@@ -101,8 +101,8 @@
 
 
 /* login page */
-body {
-    background-color: #ebecf6;
+.login-body {
+    background-color: rgb(42, 40, 43);
     font-family: 'Poppins', sans-serif;
 }
 

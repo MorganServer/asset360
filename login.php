@@ -28,7 +28,7 @@ foreach ($files as $file) {
 
     <title>Login | Asset360</title>
 </head>
-<body>
+<body class="login-body">
 
 <div class="main" style="height: 450px;">
         <p class="sign">Sign in</p>
