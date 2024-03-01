@@ -28,9 +28,9 @@
 }
 
 .header_right {
-  padding-right: 20px;
+  /* padding-right: 20px; */
   font-size: 25px;
-  margin:0;
+  margin:0 !important;
 }
 
 .dropdown {
