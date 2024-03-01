@@ -1,16 +1,16 @@
 <?php
 
-$host = 'localhost';
-$user = 'dbuser';
-$pass = 'DBuser123!';
-$db = 'asset_management';
+$host = "localhost";
+$username = "dbuser";
+$password = "DBuser123!";
+$dbname = "asset_management";
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+$conn = mysqli_connect($host, $username, $password, $dbname);
 
 if(!$conn) {
     die("Connection Failed: " . mysqli_connect_error());
 } else {
-    // echo 'Successful connection!';
+    // echo("Connection Success!");
 }
 
 ?>
