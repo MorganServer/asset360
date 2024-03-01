@@ -2,7 +2,7 @@
     
     <ul class="list-group list-group-flush">
         <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/"><i class="bi bi-house-fill"></i> Dashboard</a></li>
-        <li class="list-group-item"><a href=""><i class="bi bi-pc-display"></i> Server & PC</a></li>
+        <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/pages/server.php"><i class="bi bi-pc-display"></i> Server & PC</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-printer-fill"></i> Devices</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-keyboard"></i> Accessories</a></li>
         <li class="list-group-item"><a href=""><i class="bi bi-geo-fill"></i> IP Addresses</a></li>

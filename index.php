@@ -46,7 +46,7 @@ if(isLoggedIn() == false) {
             <!-- Top Card Container -->
                 <div class="card-container">
                     <div class="card" style="border-bottom: 3px solid brown; border-radius: 5px !important;">
-                    <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/servers.php">
+                    <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/servers.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
