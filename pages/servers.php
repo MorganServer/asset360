@@ -76,16 +76,15 @@ if(isLoggedIn() == false) {
                                 $location               = $row['location'];
                                 $created_at             = $row['created_at'];
 
-                                $utc_date_time = new DateTime($created_at, new DateTimeZone('UTC'));
-                                $local_date_time = $utc_date_time->setTimezone(new DateTimeZone('America/Denver'));
-                                $formatted_date = $local_date_time->format('M d, Y');
+                                $f_maintenance_schedule = $maintenance_schedule->format('M d, Y');
+                                $f_audit_schedule = $audit_schedule->format('M d, Y');
                 ?>
                 <tr>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
-                    <td><?php echo $maintenance_schedule ? $maintenance_schedule : '-'; ?></td>
-                    <td><?php echo $audit_schedule ? $audit_schedule : '-'; ?></td>
                     <td><?php echo $location ? $location : '-'; ?></td>
+                    <td><?php echo $f_maintenance_schedule ? $maintenance_schedule : '-'; ?></td>
+                    <td><?php echo $f_audit_schedule ? $audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
