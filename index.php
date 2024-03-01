@@ -24,11 +24,11 @@ session_start();
 
     <!-- Main Content -->
 
-        <div class="container" style="background-color: blue;margin-left: 200px;">
+        <div class="container" style="background-color: blue; margin-left: 200px; width: 100%;">
 
             <div class="mt-4"></div>
 
-            <div class="card-container mx-auto">
+            <div class="card-container">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body text-center">
                         <p class="card-text">

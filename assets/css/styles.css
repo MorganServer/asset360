@@ -66,8 +66,7 @@
 /* container */
 .card-container {
     display: flex;
-    justify-content: space-between; /* Distribute space between items */
-    /* flex-wrap: wrap; Enable wrapping */
+    justify-content: space-between;
 }
 
 .card {
