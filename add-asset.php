@@ -116,7 +116,7 @@ if(isLoggedIn() == false) {
                             $first_name = $row['fname'];
                             $last_name  = $row['lname'];
 
-                            $full_name = $first_name + " " + $last_name;
+                            $full_name = $first_name . " " . $last_name;
                     ?>
                         <option value="<?php echo $full_name; ?>"><?php $full_name; ?></option>
                     <?php } } ?>
