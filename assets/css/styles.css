@@ -22,11 +22,15 @@
   margin-top: -5px !important;
 }
 
-.dropdown {
+.header_right {
   display: flex;
   align-items: stretch;
-  font-size: 25px;
+  
   margin-right: 30px !important;
+  
+}
+.dropdown {
+  font-size: 25px;
   padding: 10px 20px 10px 20px;
 }
 
