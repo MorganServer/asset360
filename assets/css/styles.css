@@ -48,7 +48,7 @@
 .sidebar {
     width: 200px;
     background-color: aqua;
-    height: 100%;
+    height: 400px;
 }
 .list-group {
     background-color: aqua !important;
