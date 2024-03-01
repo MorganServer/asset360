@@ -29,7 +29,7 @@ session_start();
             <div class="mt-4"></div>
 
             <div class="card-container">
-                <div class="card">
+                <div class="card" style="width: 18rem;">
                     <div class="card-body text-center">
                         <p class="card-text">
                             <div class="card_text_left float-start" style="font-size: 45px;">
