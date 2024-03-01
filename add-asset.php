@@ -61,6 +61,7 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="status">Asset Type</label>
                 <select class="form-control" name="asset_type">
+                    <option value="">Select an option...</option>
                     <option value="Server">Server</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Network">Network</option>
@@ -71,13 +72,13 @@ if(isLoggedIn() == false) {
                     <option value="Accessories">Accessories</option>
                 </select>
             </div>
-        </div>
-
-        <div class="row mb-3">
             <div class="col">
                 <label for="serial_number" class="form-label">Serial Number</label>
                 <input type="text" class="form-control" id="serial_number" name="serial_number">
             </div>
+        </div>
+
+        <div class="row mb-3">
             <div class="col">
                 <label for="model" class="form-label">Model</label>
                 <input type="text" class="form-control" id="model" name="model">
@@ -86,9 +87,6 @@ if(isLoggedIn() == false) {
                 <label for="model_no" class="form-label">Model Number</label>
                 <input type="text" class="form-control" id="model_no" name="model_no">
             </div>
-        </div>
-    
-        <div class="row mb-3">
             <div class="col">
                 <label for="acquisition_date" class="form-label">Acquisition Date</label>
                 <input type="text" class="form-control" id="acquisition_date" name="acquisition_date">
@@ -97,17 +95,17 @@ if(isLoggedIn() == false) {
                 <label for="end_of_life_date" class="form-label">End of Life Date</label>
                 <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
             </div>
+        </div>
+    
+        <div class="row mb-3">
             <div class="col">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location">
             </div>
-        </div>
-
-        <div class="row mb-3">
             <div class="col">
                 <label class="form-label" for="status">Asset Custodian  <span class="text-muted" style="font-size: 10px;">Responsible for asset</span></label>
                 <select class="form-control" name="asset_type">
-                    <option value=""></option>
+                    <option value="">Select an option...</option>
                     <?php
                     $sql = "SELECT fname, lname FROM users";
                     $result = mysqli_query($conn, $sql);
