@@ -23,7 +23,7 @@
 .dropdown i {
     padding: 20px; 
     height: 150% !important;
-    position: relative;
+    position: absolute;
 }
 /* dropdown */
 .dropdown:hover .dropdown-menu {
