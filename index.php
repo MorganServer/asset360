@@ -212,7 +212,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </h2h2
+                                    </h2>
                                     <p class="text-muted text-end">IOT Devices</p>
                                 </div>
                             </p>
