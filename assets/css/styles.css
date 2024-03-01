@@ -49,7 +49,7 @@
   width: 200px;
   background-color: rgb(36, 45, 49);
   flex-shrink: 0;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 75px);
 }
 
 .sidebar ul li {
