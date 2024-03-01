@@ -45,7 +45,7 @@ if(isLoggedIn() == false) {
 
             <!-- Top Card Container -->
                 <div class="card-container">
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid brown; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -69,7 +69,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid aqua; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -93,7 +93,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid purple; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -117,7 +117,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid orange; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -146,7 +146,7 @@ if(isLoggedIn() == false) {
 
             <!-- Bottom Card Container -->
                 <div class="card-container">
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid yellow; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -170,7 +170,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid green; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -218,7 +218,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="border-bottom: 3px solid blue; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
