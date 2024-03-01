@@ -7,7 +7,9 @@
 .header_logo {
     width: 175px;
     margin-top: -5px;
+    margin-left: 30px;
 }
 .header_right i {
-    font-size: 20px;
+    font-size: 25px;
+    margin-right: 30px;
 }
