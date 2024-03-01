@@ -20,21 +20,11 @@
     font-size: 25px;
     margin-right: 30px !important;
 }
-.dropdown i {
-    padding: 20px; 
-    /* margin-top: -50px; */
-    height: 150% !important;
-    /* position: absolute; */
-    
-}
 /* dropdown */
-.dropdown:hover .dropdown-menu {
+.header_right:hover .dropdown-menu {
     display: block;
     margin-top: 5px;
     margin-left: -115px;
     border-radius: 0 !important;
-  }
-  .header_right:hover {
-    margin: 0 !important;
     background-color: blue;
   }
