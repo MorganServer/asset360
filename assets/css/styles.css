@@ -13,3 +13,7 @@
     font-size: 25px;
     margin-right: 30px;
 }
+/* dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+  }
