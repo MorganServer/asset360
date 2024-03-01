@@ -44,11 +44,11 @@ if(isLoggedIn() == false) {
             <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
-                <th scope="col">Job Title</th>
-                <th scope="col">Company</th>
+                <th scope="col">Tag No</th>
+                <th scope="col">Asset Name</th>
+                <th scope="col">Maintenance Schedule</th>
+                <th scope="col">Last Audit</th>
                 <th scope="col">Location</th>
-                <th scope="col">Applied</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
                 </tr>
@@ -66,24 +66,26 @@ if(isLoggedIn() == false) {
                         $num_rows = mysqli_num_rows($result);
                         if($num_rows > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $id             = $row['app_id'];
-                                $idno           = $row['idno'];
-                                $status         = $row['status'];
-                                $job_title      = $row['job_title'];
-                                $company        = $row['company'];
-                                $location       = $row['location'];
-                                $created_at     = $row['created_at'];
-                                $created_at = $row['created_at'];
+                                $id                     = $row['asset_id'];
+                                $idno                   = $row['idno'];
+                                $status                 = $row['status'];
+                                $asset_name             = $row['asset_name'];
+                                $asset_tag_no           = $row['asset_tag_no'];
+                                $maintenance_schedule   = $row['maintenance_schedule'];
+                                $audit_schedule         = $row['audit_schedule'];
+                                $location               = $row['location'];
+                                $created_at             = $row['created_at'];
+
                                 $utc_date_time = new DateTime($created_at, new DateTimeZone('UTC'));
                                 $local_date_time = $utc_date_time->setTimezone(new DateTimeZone('America/Denver'));
                                 $formatted_date = $local_date_time->format('M d, Y');
                 ?>
                 <tr>
-                    <th scope="row"><?php echo $idno; ?></th>
-                    <td><?php echo $job_title ? $job_title : '-'; ?></td>
-                    <td><?php echo $company ? $company : '-'; ?></td>
+                    <th scope="row"><?php echo $asset_tag_no; ?></th>
+                    <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
+                    <td><?php echo $maintenance_schedule ? $maintenance_schedule : '-'; ?></td>
+                    <td><?php echo $audit_schedule ? $audit_schedule : '-'; ?></td>
                     <td><?php echo $location ? $location : '-'; ?></td>
-                    <td><?php echo $formatted_date ? $formatted_date : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
