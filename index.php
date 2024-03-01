@@ -194,7 +194,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="border-bottom: 3px solid red; border-radius: 5px !important;">
+                    <div class="card" style="border-bottom: 3px solid darkred; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -218,7 +218,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="border-bottom: 3px solid blue; border-radius: 5px !important;">
+                    <div class="card" style="border-bottom: 3px solid darkblue; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
