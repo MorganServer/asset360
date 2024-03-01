@@ -45,11 +45,11 @@ if(isLoggedIn() == false) {
             <div class="float-start">
                 <h2 class="">Add an Asset</h2>
             </div>
-            <div class="float-end">
+            <div class="float-end" style="margin-top: -15px;">
                 <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        <br><br>
+        <br>
         <hr>
 
     
