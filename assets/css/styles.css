@@ -15,7 +15,7 @@
 }
 .header_right i {
     padding: 20px; 
-    height: 100%; /* Make the icon fill the full height of the parent container */
+    height: 100% !important; /* Make the icon fill the full height of the parent container */
     margin: 0 !important;
 }
 /* dropdown */
