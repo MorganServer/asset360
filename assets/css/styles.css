@@ -72,17 +72,13 @@
   
   /* container */
   .container {
-    /* margin: 0;
+    margin: 0;
     padding: 0;
     margin-left: 200px;
     padding-top: 57.5px; 
     background-color: cadetblue;
-    width: calc(100vw - 200px);
-    box-sizing: border-box; */
-    margin-left: 200px;
-    flex-grow: 1;
-    padding-top: 57.5px; /* Height of the header */
-    background-color: cadetblue;
+    max-width: calc(100vw - 200px);
+    box-sizing: border-box;
 }
 .card-container {
   display: flex;
