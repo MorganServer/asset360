@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
-      <img src="<?php echo ROOT_PATH . "/assets/images/logo.png"; ?>" alt="Logo">
+        <img src="<?php echo ROOT_PATH . "/assets/images/logo.png"; ?>" alt="Logo">
     </a>
     <form class="d-flex" role="search">
       <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
