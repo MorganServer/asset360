@@ -66,12 +66,15 @@
 /* container */
 .container {
     position: absolute;
-    margin-left: 200px; 
+    
     width: 100% !important;
     background-color: cadetblue;
     margin-right: 0 !important;
     padding-right: 0 !important;
   }
+.main-content {
+    margin-left: 200px; 
+}
 .card-container {
   display: flex;
   justify-content: space-between;
