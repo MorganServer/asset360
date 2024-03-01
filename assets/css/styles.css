@@ -52,17 +52,7 @@
 .sidebar ul {
     background-color: aqua !important;
 }
-/* .sidebar ul {
-  list-style-type: none;
-  padding: 0;
-}
-.sidebar ul li {
-  padding: 10px 15px;
-}
 .sidebar ul li a {
-  color: #ffffff;
   text-decoration: none;
 }
-.sidebar ul li a:hover {
-  color: #cccccc;
-} */
+
