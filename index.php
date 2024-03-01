@@ -12,9 +12,9 @@ foreach ($files as $file) {
     require_once $file;
 }
 
-loginUser($conn);
-if(isLoggedIn() == true) {
-    header('location:' . BASE_URL . '/');
+logoutUser($conn);
+if(isLoggedIn() == false) {
+    header('location:' . BASE_URL . '/login.php');
 }
 ?>
 
