@@ -65,10 +65,10 @@
 
 /* container */
 .container {
-  background-color: blue;
-  margin-left: 200px;
-  width: calc(100vw - 200px);
-}
+    background-color: blue;
+    padding-left: 200px; /* Use padding instead of margin */
+    width: calc(100vw - 200px);
+  }
 .card-container {
   display: flex;
   justify-content: space-between;
