@@ -32,7 +32,7 @@ foreach ($files as $file) {
 
 <div class="main" style="height: 450px;">
         <p class="sign">Sign in</p>
-        <p class="sub_sign"><img src="<?php echo BASE_URL . "/assets/images/logo.png"; ?>" width="75" alt="Logo"></p>
+        <p class="sub_sign"><img src="<?php echo BASE_URL . "/assets/images/logo.png"; ?>" width="100" alt="Logo"></p>
         <?php
             if (isset($_SESSION['error'])) {
                 foreach ($_SESSION['error'] as $error) {
