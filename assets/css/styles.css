@@ -35,6 +35,6 @@
     border-radius: 0 !important;
   }
   .header_right:hover {
-    height: 300px !important;
+    margin: 0 !important;
     background-color: blue;
   }
