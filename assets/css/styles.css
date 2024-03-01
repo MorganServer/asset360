@@ -76,8 +76,7 @@
     padding-top: 57.5px; 
     background-color: cadetblue;
     max-width: calc(100vw - 200px);
-    max-height: calc(100vh - 57.5px);
-    box-sizing: border-box;
+    max-height: 100vh;
 }
 .card-container {
   display: flex;
