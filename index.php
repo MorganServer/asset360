@@ -36,7 +36,8 @@ session_start();
                                 <i class="bi bi-hdd-stack"></i>
                             </div>
                             <div class="card_text_right float-end">
-                                test
+                                <p>9</p>
+                                <p>Servers</p>
                             </div>
                         </p>
                     </div>
