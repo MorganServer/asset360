@@ -194,7 +194,7 @@ if(isLoggedIn() == false) {
                             </p>
                         </div>
                     </div>
-                    <div class="card" style="">
+                    <div class="card" style="bottom-border: 2px solid red;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
