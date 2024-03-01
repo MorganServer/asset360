@@ -45,17 +45,19 @@
 }
 
 /* sidebar */
+/* Sidebar */
 .sidebar {
-    width: 200px;
-    background-color: aqua;
-    height: 100vh;
+  width: 200px;
+  background-color: aqua;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
 }
+
 .sidebar ul li {
-    background-color: rgb(36, 45, 49);
-    border-color: rgb(46, 50, 57);
+  background-color: rgb(36, 45, 49);
+  border-color: rgb(46, 50, 57);
 }
+
 .sidebar ul li a {
   text-decoration: none;
   color: darkgray;
 }
-
