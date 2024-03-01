@@ -79,6 +79,7 @@
     background-color: cadetblue;
     width: calc(100vw - 200px);
     box-sizing: border-box; */
+    margin-left: 200px;
     flex-grow: 1;
     padding-top: 57.5px; /* Height of the header */
     background-color: cadetblue;
