@@ -40,9 +40,10 @@
 }
 .header_right:hover .dropdown-menu {
   display: block; /* Show the dropdown menu when header_right is hovered */
-  margin-top: -1px;
+  margin-top: 0;
   margin-left: -95px;
   border-radius: 0 !important;
+  border: none;
 }
 .header_right:hover {
   background-color: #d0d0d0;
