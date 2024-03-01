@@ -102,6 +102,7 @@
 /* login page */
 .login_logo {
   width: 250px;
+  margin-bottom: 25px;
 }
 .login-body {
   background-color: #013154;
