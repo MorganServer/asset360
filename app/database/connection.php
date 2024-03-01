@@ -3,7 +3,7 @@
 $host = 'localhost';
 $user = 'dbuser';
 $pass = 'DBuser123!';
-$db = 'assets';
+$db = 'asset_management';
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
