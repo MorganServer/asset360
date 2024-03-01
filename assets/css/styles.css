@@ -67,6 +67,8 @@
 .container {
     margin-left: 200px; /* Use padding instead of margin */
     width: 100%;
+    background-color: cadetblue;
+    margin-right: 0 !important;
   }
 .card-container {
   display: flex;
