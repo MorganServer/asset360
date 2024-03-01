@@ -28,14 +28,14 @@
 
 /* dropdown */
 .header_right .dropdown-menu {
-  display: none; /* Hide the dropdown menu by default */
-  position: absolute; /* Position the dropdown absolutely */
-  top: 100%; /* Position the dropdown below the header_right */
+  display: none; 
+  position: absolute; 
+  top: 100%; 
   left: 0;
-  z-index: 1000; /* Ensure the dropdown appears above other content */
+  z-index: 1000; 
 }
 .header_right:hover .dropdown-menu {
-  display: block; /* Show the dropdown menu when header_right is hovered */
+  display: block; 
   margin-top: 0;
   margin-left: -95px;
   border-radius: 0 !important;
@@ -67,10 +67,7 @@
 .container {
     /* position: absolute; */
     
-    width: 100% !important;
     background-color: cadetblue;
-    margin-right: 0 !important;
-    padding-right: 0 !important;
   }
 .main-content {
     margin-left: 200px; 
