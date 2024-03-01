@@ -35,5 +35,6 @@
     border-radius: 0 !important;
   }
   .header_right:hover {
+    height: 100%;
     background-color: blue;
   }
