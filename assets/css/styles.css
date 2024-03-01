@@ -23,7 +23,10 @@
 /* dropdown */
 .header_right:hover .dropdown-menu {
     display: block;
-    margin-top: 25px;
+    margin-top: 40px;
     margin-left: -115px;
     border-radius: 0 !important;
+  }
+  .header_right:hover {
+    background-color: aqua;
   }
