@@ -102,7 +102,7 @@
 
 /* login page */
 .login-body {
-    background-color: rgb(40, 40, 72);
+    background-color: #013154;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -118,7 +118,7 @@
 
 .sign {
     padding-top: 40px;
-    color: rgb(23, 105, 165);
+    color: #2C73B0;
     font-weight: bold;
     font-size: 24px;
     text-align: center;
