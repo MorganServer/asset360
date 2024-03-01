@@ -76,7 +76,6 @@
 .container {
   position: absolute;
   margin-left: 200px;
-  background-color: cadetblue;
   max-width: calc(100vw - 200px);
   margin-top: 57.5px;
   height: calc(100vh - 57.5px);
