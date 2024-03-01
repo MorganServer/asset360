@@ -72,6 +72,8 @@
   
   /* container */
   .container {
+    margin: 0;
+    padding: 0;
     margin-left: 200px; /* Width of the sidebar */
     padding-top: 57.5px; /* Height of the header */
     background-color: cadetblue;
