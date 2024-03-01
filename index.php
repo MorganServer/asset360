@@ -27,7 +27,7 @@ session_start();
         <div class="container">
 
             <div class="mt-4"></div>
-            
+
             <div class="card-container">
                 <div class="card">
                     <div class="card-body text-center">
@@ -39,6 +39,12 @@ session_start();
                     <div class="card-body text-center">
                         <h5 class="card-title">Location</h5>
                         <p class="card-text"><?php //echo $location; ?></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Job Type</h5>
+                        <p class="card-text"><?php //echo $job_type; ?></p>
                     </div>
                 </div>
                 <div class="card">
