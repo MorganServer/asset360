@@ -16,5 +16,5 @@
 /* dropdown */
 .dropdown:hover .dropdown-menu {
     display: block;
-    margin-left: -150px;
+    margin-left: -100px;
   }
