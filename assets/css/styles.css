@@ -14,7 +14,7 @@
     margin-right: 30px;
 }
 .header_right i {
-    padding: 20px; /* Adjust padding as needed */
+    /* padding: 20px; Adjust padding as needed */
     height: 100%; /* Make the icon fill the full height of the parent container */
     margin: 0 !important;
 }
