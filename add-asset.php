@@ -40,7 +40,7 @@ if(isLoggedIn() == false) {
 </head>
 <body>
 
-<?php include(ROOT_PATH . "/app/database/includes/header.php"); ?>
+<?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
  <!-- main-container -->
  <div class="container-fluid main" style="background-color: rgb(240, 240, 240); max-width: 80%; border-radius: 15px;">
