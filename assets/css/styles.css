@@ -25,13 +25,13 @@
 .header_right {
   display: flex;
   align-items: stretch;
-  
+  padding: 10px 20px 10px 20px;
   margin-right: 30px !important;
   
 }
 .dropdown {
   font-size: 25px;
-  padding: 10px 20px 10px 20px;
+  
 }
 
 /* dropdown */
