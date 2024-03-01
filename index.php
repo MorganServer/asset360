@@ -33,9 +33,9 @@ session_start();
                     <div class="card-body text-center">
                         <p class="card-text">
                             <div class="card_text_left float-start" style="font-size: 45px;">
-                                <i class="bi bi-hdd-stack ps-2"></i>
+                                <i class="bi bi-hdd-stack ps-5"></i>
                             </div>
-                            <div class="card_text_right float-end">
+                            <div class="card_text_right float-end pe-5">
                                 <p class="text-end">9</p>
                                 <p class="text-muted text-end">Servers</p>
                             </div>
