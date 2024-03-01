@@ -201,7 +201,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-tv ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='IOT Device'";
                                             $result=mysqli_query($conn,$sql);
@@ -212,7 +212,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">IOT Devices</p>
                                 </div>
                             </p>
