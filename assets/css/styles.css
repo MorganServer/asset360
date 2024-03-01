@@ -50,6 +50,7 @@
   width: 200px;
   background-color: aqua;
   flex-shrink: 0; /* Prevent sidebar from shrinking */
+  height: 100vh - 0.5rem;
 }
 
 .sidebar ul li {
