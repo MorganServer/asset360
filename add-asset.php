@@ -130,7 +130,7 @@ if(isLoggedIn() == false) {
         <div class="row mb-3">
             <div class="col">
                 <label class="form-label" for="notes">Notes</label>
-                <textarea class="form-control" name="notes" rows="5"></textarea>
+                <textarea class="form-control" name="notes" rows="3"></textarea>
             </div>
         </div>
 
