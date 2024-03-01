@@ -65,7 +65,7 @@
 
 /* container */
 .container {
-    position: relative;
+    position: absolute;
     margin-left: 200px; /* Use padding instead of margin */
     width: 100vw !important;
     background-color: cadetblue;
