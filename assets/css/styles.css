@@ -67,7 +67,7 @@
 .container {
     background-color: blue;
     margin-left: 200px; 
-    width: 100vw;
+    width: calc(100vw - 200px);
 }
 .card-container {
     display: flex;
