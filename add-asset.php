@@ -105,7 +105,7 @@ if(isLoggedIn() == false) {
 
         <div class="row mb-3">
             <div class="col">
-                <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Asset Owner</span></label>
+                <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Responsible for asset</span></label>
                 <select class="form-control" name="asset_type">
                     <option value=""></option>
                     <?php
