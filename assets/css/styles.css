@@ -1,35 +1,38 @@
 /* main styles */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* header */
 .navbar {
-    background-color: #C2C2C2 !important;
-    margin: none !important;
-    padding: none !important;
+  background-color: #c2c2c2 !important;
+  margin: none !important;
+  padding: none !important;
 }
 .header_logo {
-    width: 175px;
-    margin-top: -5px !important;
-    margin-left: 20px !important;
+  width: 175px;
+  margin-top: -5px !important;
+  margin-left: 20px !important;
 }
 .header_right {
-    font-size: 25px;
-    margin-right: 30px !important;
-    padding: 10px;
-    height: 100%;
+  display: flex;
+  align-items: stretch;
+  font-size: 25px;
+  margin-right: 30px !important;
+  padding: 10px;
+  height: 100%;
 }
 /* dropdown */
 .header_right:hover .dropdown-menu {
-    display: block;
-    margin-top: 40px;
-    margin-left: -115px;
-    border-radius: 0 !important;
-  }
-  .header_right:hover {
-    background-color: aqua;
-  }
+  display: block;
+  margin-top: 40px;
+  margin-left: -115px;
+  border-radius: 0 !important;
+  height: 100%;
+}
+.header_right:hover {
+  background-color: aqua;
+}
