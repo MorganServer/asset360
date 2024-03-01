@@ -15,7 +15,7 @@ session_start();
     <title>Testing</title>
 </head>
 <body>
-    <?php include(ROOT_PATH . "/app/includes/header.php") ?>
+    <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
 
 
 
