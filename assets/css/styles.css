@@ -64,14 +64,36 @@
 }
 
 /* container */
-.container {
+
+.header {
+    height: 100px; /* Set the height of the header */
+    background-color: #333; /* Example background color */
+  }
+  
+  .container {
+    display: flex;
+    height: calc(100vh - 100px); /* Calculate remaining height after subtracting header height */
+  }
+  
+  .sidebar {
+    width: 200px; /* Set width of the sidebar */
+    background-color: #ddd; /* Example background color */
+  }
+  
+  .main-content {
+    flex: 1; /* Take up remaining space */
+    background-color: #fff; /* Example background color */
+  }
+
+
+/* .container {
     position: absolute;
-    margin-left: 200px; /* Use padding instead of margin */
+    margin-left: 200px; 
     width: 100% !important;
     background-color: cadetblue;
     margin-right: 0 !important;
     padding-right: 0 !important;
-  }
+  } */
 .card-container {
   display: flex;
   justify-content: space-between;
