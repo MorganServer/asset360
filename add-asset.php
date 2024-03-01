@@ -45,7 +45,7 @@ if(isLoggedIn() == false) {
 
  <!-- main-container -->
  <div class="container">
- <div class=" main" style="background-color: rgb(240, 240, 240);">
+ <div class="container-fluid" style="background-color: rgb(240, 240, 240);">
 
 <br><br>
 
