@@ -44,7 +44,7 @@ if(isLoggedIn() == false) {
         <div class="top-form" style="margin-bottom: -38px;">
             <h2 class="">Add an Asset</h2>
             <div class="float-end" style="margin-top: -50px;">
-                <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
+                <button type="submit" name="add-asset" class="btn btn-primary">Submit</button>
             </div>
         </div>
         <br>
@@ -105,7 +105,7 @@ if(isLoggedIn() == false) {
             </div>
             <div class="col">
                 <label class="form-label" for="status">Asset Custodian</label>
-                <select class="form-control" name="asset_type">
+                <select class="form-control" name="custodian">
                     <option value="">Select an option...</option>
                     <?php
                     $sql = "SELECT fname, lname FROM users";
