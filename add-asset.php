@@ -96,14 +96,6 @@ if(isLoggedIn() == false) {
                 </select>
             </div>
             <div class="col">
-                <label for="acquisition_date" class="form-label">Acquisition Date</label>
-                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date">
-            </div>
-            <div class="col">
-                <label for="end_of_life_date" class="form-label">End of Life Date</label>
-                <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date">
-            </div>
-            <div class="col">
                 <label class="form-label" for="status">Asset Custodian</label>
                 <select class="form-control" name="custodian">
                     <option value="">Select an option...</option>
@@ -121,7 +113,14 @@ if(isLoggedIn() == false) {
                     <?php } } ?>
                 </select>
             </div>
-
+            <div class="col">
+                <label for="acquisition_date" class="form-label">Acquisition Date</label>
+                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date">
+            </div>
+            <div class="col">
+                <label for="end_of_life_date" class="form-label">End of Life Date</label>
+                <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date">
+            </div>
             <div class="col">
                 <label for="maintenance_schedule" class="form-label">Maintenance Schedule</label>
                 <input type="date" class="form-control" id="maintenance_schedule" name="maintenance_schedule">
