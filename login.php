@@ -11,29 +11,44 @@ $files = glob("app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
+
+loginUser($conn);
+if(isLoggedIn() == true) {
+    header('location:' . BASE_URL . '/');
+}
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 
-    <!-- Bootstrap Links -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/loginpage.css?v=<?php echo time(); ?>">
 
-    <title>Login | Asset360</title>
+  <!-- Page Title -->
+  <title>Sign In | WMS</title>
+
 </head>
-<body class="login-body">
 
-<div class="main" style="height: 450px;">
+<body>
+    <div class="main" style="height: 450px;">
         <p class="sign">Sign in</p>
-        <p class="sub_sign">Asset360 Login</p>
+        <p class="sub_sign">Work Management System</p>
         <?php
+            // if(isset($error)){
+            //     foreach($error as $err){
+            //         echo '<div class="alert alert-danger error-msg" role="alert">'.$err.'</div>';
+            //     }
+            // }
             if (isset($_SESSION['error'])) {
                 foreach ($_SESSION['error'] as $error) {
                     echo '<div class="alert alert-danger error-msg" role="alert">' . $error . '</div>';
@@ -49,12 +64,10 @@ foreach ($files as $file) {
             <p class="forgot"><a href="#">Forgot Password?</a></p>
             <p class="signup">Dont have an account? <a href="#">Sign up</a></p>          
     </div>
-
-
-    <!-- Bootstrap Scripts -->
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- end Bootstrap Scripts -->
-
     <script src="assets/js/loginpage.js"></script>
+     
 </body>
+
 </html>
