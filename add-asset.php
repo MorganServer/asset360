@@ -130,9 +130,7 @@ if(isLoggedIn() == false) {
                 <label for="audit_schedule" class="form-label">Next Audit</label>
                 <input type="date" class="form-control" id="audit_schedule" name="audit_schedule">
             </div>
-        </div>
-
-        <div class="col">
+            <div class="col">
                 <label class="form-label" for="status">Status</label>
                 <select class="form-control" name="status">
                     <option value="">Select an option...</option>
@@ -145,6 +143,9 @@ if(isLoggedIn() == false) {
                     <option value="Unknown">Unknown</option>
                 </select>
             </div>
+        </div>
+
+        
     
 
         <div class="row">
