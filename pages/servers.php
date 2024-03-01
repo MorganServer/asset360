@@ -36,7 +36,7 @@ if(isLoggedIn() == false) {
 
     <!-- main-container -->
         <div class="container" style="padding: 0 75px 0 75px;">
-            <h2>
+            <h2 class="mt-3">
                 Servers
             </h2>
             <hr>
