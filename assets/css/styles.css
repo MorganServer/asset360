@@ -22,6 +22,10 @@
   margin-top: -5px !important;
 }
 
+.header_right {
+  display: flex;
+}
+
 .dropdown {
   display: flex;
   align-items: stretch;
