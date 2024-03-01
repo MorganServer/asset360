@@ -72,6 +72,7 @@
   
   /* container */
   .container {
+    position: absolute;
     margin-left: 200px;
     padding-top: 57.5px; 
     background-color: cadetblue;
