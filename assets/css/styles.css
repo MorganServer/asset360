@@ -22,9 +22,10 @@
 }
 .dropdown i {
     /* padding: 20px;  */
-    margin-top: -50px;
+    /* margin-top: -50px; */
     height: 150% !important;
-    position: absolute;
+    /* position: absolute; */
+    
 }
 /* dropdown */
 .dropdown:hover .dropdown-menu {
@@ -33,6 +34,6 @@
     margin-left: -115px;
     border-radius: 0 !important;
   }
-  .dropdown:hover {
+  .header_right:hover {
     background-color: blue;
   }
