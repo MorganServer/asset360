@@ -20,6 +20,7 @@
 .dropdown:hover .dropdown-menu {
     display: block;
     margin-left: -115px;
+    border-radius: 0 !important;
   }
   .dropdown:hover {
     background-color: blue;
