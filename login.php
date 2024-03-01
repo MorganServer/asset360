@@ -40,7 +40,7 @@ if(isLoggedIn() == true) {
 </head>
 
 <body class="login-body">
-    <div class="main" style="height: 400px;">
+    <div class="main" style="">
         <p class="sign"><img src="<?php echo BASE_URL . "/assets/images/logo-white.png"; ?>" class="login_logo" alt="Logo"></p>
         <?php
             if (isset($_SESSION['error'])) {
