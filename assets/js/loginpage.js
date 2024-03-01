@@ -4,7 +4,7 @@ var errorMessages = document.querySelectorAll('.alert-danger');
 // Function to adjust the height of the main container based on error messages
 function adjustMainHeight() {
   var main = document.querySelector('.main');
-  var totalHeight = 450;
+  var totalHeight = 400;
   errorMessages.forEach(function(message) {
     // Calculate total height by adding the height of each error message
     totalHeight += message.clientHeight;
