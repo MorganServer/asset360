@@ -29,10 +29,10 @@ session_start();
             <div class="mt-4"></div>
 
             <div class="card-container">
-                <div class="card pt-3 pb-3" style="">
+                <div class="card" style="">
                     <div class="card-body text-center">
                         <p class="card-text">
-                            <div class="card_text_left float-start" style="font-size: 55px;">
+                            <div class="card_text_left float-start" style="font-size: 45px;">
                                 <i class="bi bi-hdd-stack ps-4"></i>
                             </div>
                             <div class="card_text_right float-end pe-3">
