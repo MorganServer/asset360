@@ -52,7 +52,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-hdd-stack ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Server'";
                                             $result=mysqli_query($conn,$sql);
@@ -63,7 +63,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Servers</p>
                                 </div>
                             </p>
@@ -76,7 +76,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-pc-display-horizontal ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Computer'";
                                             $result=mysqli_query($conn,$sql);
@@ -87,7 +87,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Computers</p>
                                 </div>
                             </p>
@@ -100,7 +100,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-diagram-2 ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Network'";
                                             $result=mysqli_query($conn,$sql);
@@ -111,7 +111,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Networking</p>
                                 </div>
                             </p>
@@ -124,7 +124,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-phone ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Mobile Device'";
                                             $result=mysqli_query($conn,$sql);
@@ -135,7 +135,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Mobile Devices</p>
                                 </div>
                             </p>
@@ -153,7 +153,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-sd-card-fill ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Storage'";
                                             $result=mysqli_query($conn,$sql);
@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Storage Devices</p>
                                 </div>
                             </p>
@@ -177,7 +177,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-geo-fill ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='IP Address'";
                                             $result=mysqli_query($conn,$sql);
@@ -188,7 +188,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">IP Addresses</p>
                                 </div>
                             </p>
@@ -212,7 +212,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </h2>
+                                    </h2h2
                                     <p class="text-muted text-end">IOT Devices</p>
                                 </div>
                             </p>
@@ -225,7 +225,7 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-printer ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">
+                                    <h2 class="text-end">
                                         <?php
                                             $sql="SELECT count('1') FROM assets WHERE asset_type='Peripheral'";
                                             $result=mysqli_query($conn,$sql);
@@ -236,7 +236,7 @@ if(isLoggedIn() == false) {
                                                 echo "$rowtotal[0]";
                                             }
                                         ?>
-                                    </p>
+                                    </h2>
                                     <p class="text-muted text-end">Peripheral</p>
                                 </div>
                             </p>
