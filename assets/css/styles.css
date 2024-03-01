@@ -75,6 +75,7 @@
     margin-left: 200px; /* Set left margin equal to sidebar width */
     padding-top: 57.5px; /* Adjust based on header height */
     background-color: cadetblue;
+    width: 100%;
   }
 .card-container {
   display: flex;
