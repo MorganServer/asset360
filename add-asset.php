@@ -90,7 +90,7 @@ if(isLoggedIn() == false) {
                 <select class="form-control" name="asset_type">
                     <option value="">Select an option...</option>
                     <option value="Server">Server</option>
-                    <option value="Laptop">Laptop</option>
+                    <option value="Computer">Computer</option>
                     <option value="Network">Network</option>
                     <option value="Mobile Device">Mobile Device</option>
                     <option value="Storage">Storage</option>
