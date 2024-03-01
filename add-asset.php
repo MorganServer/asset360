@@ -44,7 +44,8 @@ if(isLoggedIn() == false) {
 <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
  <!-- main-container -->
- <div class="container container-fluid main" style="background-color: rgb(240, 240, 240); max-width: 80%; border-radius: 15px;">
+ <div class="container">
+ <div class="container-fluid main" style="background-color: rgb(240, 240, 240); max-width: 80%; border-radius: 15px;">
 
 <br><br>
 
@@ -159,6 +160,8 @@ if(isLoggedIn() == false) {
 
 
 </div>
+ </div>
+ 
 <!-- END main-container -->
 
 <br><br><br>
