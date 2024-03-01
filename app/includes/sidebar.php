@@ -1,4 +1,10 @@
 <div class="sidebar">
-      <h2>Sidebar</h2>
-      <!-- Add your sidebar content here -->
-    </div>
+    
+<ul>
+    <li><a href="">Dashboard</a></li>
+    <li><a href="">Server & PC</a></li>
+    <li><a href="">Devices</a></li>
+    <li><a href="">Accessories</a></li>
+</ul>
+
+</div>
