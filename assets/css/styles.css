@@ -49,6 +49,9 @@
     width: 200px;
     background-color: blueviolet !important;
 }
+.sidebar ul {
+    background-color: aqua !important;
+}
 /* .sidebar ul {
   list-style-type: none;
   padding: 0;
