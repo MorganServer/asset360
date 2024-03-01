@@ -38,12 +38,13 @@ if(isLoggedIn() == false) {
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
  <!-- main-container -->
-    <div class="container" style="">
+    <div class="container" style="padding: 0 75px 0 75px;">
         <br>
         <h2>Add an Asset</h2>
         <hr>
 
     <form method="POST" action="">
+    <button type="submit" name="add-full" class="btn btn-primary float-end">Submit</button>
 
         <div class="row mb-3">
             <div class="col">
@@ -131,22 +132,6 @@ if(isLoggedIn() == false) {
                 <textarea class="form-control" name="notes" rows="5"></textarea>
             </div>
         </div>
-
-        <!-- <div class="row mb-3 ps-3">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="watchlist" name="watchlist" value="1">
-                <label class="form-check-label" for="watchlist">Add to Watchlist</label>
-            </div>
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="interview_set" name="interview_set" value="1">
-                <label class="form-check-label" for="interview_set">Interview Set</label>
-            </div>
-        </div> -->
-
-
-    
-        <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
-        <!-- <div class="pb-4"></div> -->
     </form>
 
 
