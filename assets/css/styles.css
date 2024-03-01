@@ -10,6 +10,7 @@
 .navbar {
     background-color: #C2C2C2 !important;
     margin: none !important;
+    padding: none !important;
 }
 .header_logo {
     width: 175px;
