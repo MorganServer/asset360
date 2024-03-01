@@ -41,6 +41,7 @@ if(isLoggedIn() == false) {
     <div class="container" style="padding: 0 75px 0 75px;">
         <br>
         <h2>Add an Asset</h2>
+        <hr>
 
     <form method="POST" action="">
 
