@@ -31,14 +31,14 @@
 }
 
 /* dropdown */
-.header_right .dropdown-menu {
+.dropdown .dropdown-menu {
   display: none;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 1000;
 }
-.header_right:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu {
   display: block; /* Show the dropdown menu when header_right is hovered */
   margin-top: 0;
   margin-left: -95px;
@@ -46,7 +46,7 @@
   border: none;
   box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
-.header_right:hover {
+.dropdown:hover {
   background-color: #d0d0d0;
   cursor: pointer;
 }
