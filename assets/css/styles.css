@@ -64,6 +64,11 @@
 }
 
 /* container */
+.container {
+    background-color: blue;
+    margin-left: 200px; 
+    width: 100vw;
+}
 .card-container {
     display: flex;
     justify-content: space-between;

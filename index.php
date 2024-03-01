@@ -24,7 +24,7 @@ session_start();
 
     <!-- Main Content -->
 
-        <div class="container" style="background-color: blue; margin-left: 200px; width: 100vw;">
+        <div class="container" style="">
 
             <div class="mt-4"></div>
 
