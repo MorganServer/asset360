@@ -7,7 +7,7 @@
 
 /* header */
 .navbar {
-  background-color: #c2c2c2 !important;
+  background-color: #c2c2c2;
   margin: 0 !important;
   padding: 0 !important;
   position: absolute; /* Add absolute positioning */
@@ -45,7 +45,7 @@
   border-radius: 0 !important;
 }
 .header_right:hover {
-  background-color: aqua;
+  background-color: #c2c2c2b2;
 }
 
 /* sidebar */
