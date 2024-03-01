@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
         </div>
     
 
-        <div class="row mb-3">
+        <div class="row">
             <div class="col">
                 <label class="form-label" for="notes">Notes</label>
                 <textarea class="form-control" name="notes" rows="5"></textarea>
@@ -146,7 +146,7 @@ if(isLoggedIn() == false) {
 
     
         <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
-        <div class="pb-4"></div>
+        <!-- <div class="pb-4"></div> -->
     </form>
 
 
