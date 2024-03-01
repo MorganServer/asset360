@@ -72,9 +72,6 @@ if(isLoggedIn() == false) {
                 <label for="serial_number" class="form-label">Serial Number</label>
                 <input type="text" class="form-control" id="serial_number" name="serial_number">
             </div>
-        </div>
-
-        <div class="row mb-3">
             <div class="col">
                 <label for="model" class="form-label">Model</label>
                 <input type="text" class="form-control" id="model" name="model">
@@ -83,17 +80,17 @@ if(isLoggedIn() == false) {
                 <label for="model_no" class="form-label">Model Number</label>
                 <input type="text" class="form-control" id="model_no" name="model_no">
             </div>
+        </div>
+
+        <div class="row mb-3">
             <div class="col">
                 <label for="acquisition_date" class="form-label">Acquisition Date</label>
-                <input type="text" class="form-control" id="acquisition_date" name="acquisition_date">
+                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date">
             </div>
             <div class="col">
                 <label for="end_of_life_date" class="form-label">End of Life Date</label>
-                <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
+                <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date">
             </div>
-        </div>
-    
-        <div class="row mb-3">
             <div class="col">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location">
@@ -126,11 +123,12 @@ if(isLoggedIn() == false) {
                 <input type="date" class="form-control" id="audit_schedule" name="audit_schedule">
             </div>
         </div>
+    
 
         <div class="row mb-3">
             <div class="col">
                 <label class="form-label" for="notes">Notes</label>
-                <textarea class="form-control" name="notes" rows="1"></textarea>
+                <textarea class="form-control" name="notes" rows="5"></textarea>
             </div>
         </div>
 
