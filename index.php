@@ -28,7 +28,7 @@ session_start();
 
             <div class="mt-4"></div>
 
-            <div class="card-container">
+            <div class="card-container mx-auto">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body text-center">
                         <p class="card-text">
