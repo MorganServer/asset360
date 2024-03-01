@@ -39,7 +39,7 @@
   .header_right:hover .dropdown-menu {
     display: block; /* Show the dropdown menu when header_right is hovered */
     margin-top: 0;
-    margin-left: 0;
+    margin-left: 115px;
     border-radius: 0 !important;
   }
   
