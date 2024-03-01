@@ -47,7 +47,7 @@
 /* sidebar */
 .sidebar {
     width: 200px;
-    background-color: blueviolet;
+    background-color: blueviolet !important;
 }
 /* .sidebar ul {
   list-style-type: none;
