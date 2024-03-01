@@ -65,9 +65,8 @@
 
 /* container */
 .container {
-    background-color: blue;
-    padding-left: 200px; /* Use padding instead of margin */
-    width: calc(100vw - 200px);
+    margin-left: 200px; /* Use padding instead of margin */
+    width: 100%;
   }
 .card-container {
   display: flex;
