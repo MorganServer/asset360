@@ -49,7 +49,7 @@ if(isLoggedIn() == false) {
                 <button type="submit" name="add-full" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        
+        <br>
         <hr>
 
     
