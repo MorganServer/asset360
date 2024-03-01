@@ -107,21 +107,19 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Asset Owner</span></label>
                 <select class="form-control" name="asset_type">
+                    <option value=""></option>
                     <?php
                     $sql = "SELECT fname, lname FROM users";
                     $result = mysqli_query($conn, $sql);
-                
                     if (mysqli_num_rows($result) > 0) {
-                        // Output data of each row
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<option value='" . $row['fname'] . "'>" . $row['fname'] . " " . $row['lname'] . "</option>";
-                        }
-                    } else {
-                        echo "<option value=''>No users found</option>";
-                    }
-                
-                    mysqli_close($conn);
+                        while ($row = mysqli_fetch_assoc($result)) { 
+                            $first_name = $row['fname'];
+                            $last_name  = $row['lname'];
+
+                            $full_name = $first_name + " " + $last_name;
                     ?>
+                        <option value="<?php echo $full_name; ?>"><?php $full_name; ?></option>
+                    <?php } } ?>
                 </select>
             </div>
 
