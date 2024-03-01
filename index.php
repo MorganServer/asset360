@@ -22,12 +22,41 @@ session_start();
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
+    <!-- Main Content -->
+
+        <div class="container">
+
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Company</h5>
+                        <p class="card-text"><?php //echo $company; ?></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Location</h5>
+                        <p class="card-text"><?php //echo $location; ?></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Job Type</h5>
+                        <p class="card-text"><?php //echo $job_type; ?></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    <!-- end Main Content -->
+
 
     <!-- Bootstrap Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- end Bootstrap Scripts -->
 </body>
 </html>
