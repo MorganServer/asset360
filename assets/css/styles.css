@@ -14,7 +14,8 @@
     margin-right: 30px;
 }
 .header_right i {
-    padding: 40px;
+    padding: 20px; /* Adjust padding as needed */
+    height: 100%; /* Make the icon fill the full height of the parent container */
 }
 /* dropdown */
 .dropdown:hover .dropdown-menu {
