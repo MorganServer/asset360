@@ -41,8 +41,7 @@ if(isLoggedIn() == true) {
 
 <body class="login-body">
     <div class="main" style="height: 450px;">
-        <p class="sign">Sign in</p>
-        <p class="sub_sign">Work Management System</p>
+        <p class="sign"><img src="<?php echo BASE_URL . "/assets/images/logo.png"; ?>" class="header_logo" alt="Logo"></p>
         <?php
             // if(isset($error)){
             //     foreach($error as $err){
