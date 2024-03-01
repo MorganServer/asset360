@@ -63,7 +63,7 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="asset_name" name="asset_name">
             </div>
             <div class="col">
-                <label class="form-label" for="status">Asset Type</label>
+                <label class="form-label" for="asset_type">Asset Type</label>
                 <select class="form-control" name="asset_type">
                     <option value="">Select an option...</option>
                     <option value="Server">Server</option>
@@ -131,6 +131,20 @@ if(isLoggedIn() == false) {
                 <input type="date" class="form-control" id="audit_schedule" name="audit_schedule">
             </div>
         </div>
+
+        <div class="col">
+                <label class="form-label" for="status">Status</label>
+                <select class="form-control" name="status">
+                    <option value="">Select an option...</option>
+                    <option value="In Use">In Use</option>
+                    <option value="In Repair">In Repair</option>
+                    <option value="In Storage">In Storage</option>
+                    <option value="Disposed">Disposed</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Sub Let">Sub Let</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
     
 
         <div class="row">
