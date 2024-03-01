@@ -96,7 +96,7 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="location" name="location">
             </div>
             <div class="col">
-                <label class="form-label" for="status">Asset Custodian  <span class="text-muted" style="font-size: 10px;">Responsible for asset</span></label>
+                <label class="form-label" for="status">Asset Custodian</label>
                 <select class="form-control" name="asset_type">
                     <option value="">Select an option...</option>
                     <?php
