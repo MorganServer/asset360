@@ -70,6 +70,7 @@
     background-color: cadetblue;
   }
 .main-content {
+    position: absolute;
     margin-left: 200px; 
 }
 .card-container {
