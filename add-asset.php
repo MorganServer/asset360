@@ -75,6 +75,10 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="model_no" name="model_no">
             </div>
             <div class="col">
+                <label for="manufacturer_name" class="form-label">Manufacturer Name</label>
+                <input type="text" class="form-control" id="manufacturer_name" name="manufacturer_name">
+            </div>
+            <div class="col">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location">
             </div>

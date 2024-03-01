@@ -9,6 +9,7 @@ if (isset($_POST['add-asset'])) {
     $serial_number = isset($_POST['serial_number']) ? mysqli_real_escape_string($conn, $_POST['serial_number']) : "";
     $model = isset($_POST['model']) ? mysqli_real_escape_string($conn, $_POST['model']) : "";
     $model_no = isset($_POST['model_no']) ? mysqli_real_escape_string($conn, $_POST['model_no']) : "";
+    $manufacturer_name = isset($_POST['manufacturer_name']) ? mysqli_real_escape_string($conn, $_POST['manufacturer_name']) : "";
     $acquisition_date = isset($_POST['acquisition_date']) ? mysqli_real_escape_string($conn, $_POST['acquisition_date']) : "";
     $end_of_life_date = isset($_POST['end_of_life_date']) ? mysqli_real_escape_string($conn, $_POST['end_of_life_date']) : "";
     $location = isset($_POST['location']) ? mysqli_real_escape_string($conn, $_POST['location']) : "";
@@ -25,8 +26,8 @@ if (isset($_POST['add-asset'])) {
         $error[] = 'Asset already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO assets (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no, acquisition_date, end_of_life_date, location, custodian, maintenance_schedule, audit_schedule, notes, status) 
-            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+        $insert = "INSERT INTO assets (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no,manufacturer_name, acquisition_date, end_of_life_date, location, custodian, maintenance_schedule, audit_schedule, notes, status) 
+            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$manufacturer_name', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
             header('location:' . BASE_URL . '/');
