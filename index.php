@@ -146,7 +146,7 @@ if(isLoggedIn() == false) {
 
             <!-- Bottom Card Container -->
                 <div class="card-container">
-                    <div class="card" style="border-bottom: 3px solid darkgoldenred; border-radius: 5px !important;">
+                    <div class="card" style="border-bottom: 3px solid darkgoldenrod; border-radius: 5px !important;">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
