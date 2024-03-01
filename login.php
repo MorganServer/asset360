@@ -35,19 +35,14 @@ if(isLoggedIn() == true) {
   <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
 
   <!-- Page Title -->
-  <title>Sign In | WMS</title>
+  <title>Login | Asset360</title>
 
 </head>
 
 <body class="login-body">
     <div class="main" style="height: 450px;">
-        <p class="sign"><img src="<?php echo BASE_URL . "/assets/images/logo.png"; ?>" class="header_logo" alt="Logo"></p>
+        <p class="sign"><img src="<?php echo BASE_URL . "/assets/images/logo-white.png"; ?>" class="login_logo" alt="Logo"></p>
         <?php
-            // if(isset($error)){
-            //     foreach($error as $err){
-            //         echo '<div class="alert alert-danger error-msg" role="alert">'.$err.'</div>';
-            //     }
-            // }
             if (isset($_SESSION['error'])) {
                 foreach ($_SESSION['error'] as $error) {
                     echo '<div class="alert alert-danger error-msg" role="alert">' . $error . '</div>';
