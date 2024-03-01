@@ -78,6 +78,7 @@
     padding-top: 57.5px; /* Height of the header */
     background-color: cadetblue;
     width: calc(100vw - 200px); /* Width of the viewport minus the sidebar */
+    box-sizing: border-box;
 }
 .card-container {
   display: flex;
