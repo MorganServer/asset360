@@ -67,7 +67,7 @@
 .container {
     position: absolute;
     margin-left: 200px; /* Use padding instead of margin */
-    width: 100vw !important;
+    width: 100% !important;
     background-color: cadetblue;
     margin-right: 0 !important;
     padding-right: 0 !important;
