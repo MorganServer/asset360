@@ -105,7 +105,7 @@ if(isLoggedIn() == false) {
 
         <div class="row mb-3">
             <div class="col">
-                <label class="form-label" for="status">Custodian  <span class="text-muted" style="font-size: 10px;">Responsible for asset</span></label>
+                <label class="form-label" for="status">Asset Custodian  <span class="text-muted" style="font-size: 10px;">Responsible for asset</span></label>
                 <select class="form-control" name="asset_type">
                     <option value=""></option>
                     <?php
@@ -124,12 +124,12 @@ if(isLoggedIn() == false) {
             </div>
 
             <div class="col">
-                <label for="end_of_life_date" class="form-label">End of Life Date</label>
-                <input type="text" class="form-control" id="end_of_life_date" name="end_of_life_date">
+                <label for="maintenance_schedule" class="form-label">Maintenance Schedule</label>
+                <input type="date" class="form-control" id="maintenance_schedule" name="maintenance_schedule">
             </div>
             <div class="col">
-                <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location">
+                <label for="audit_schedule" class="form-label">Next Audit</label>
+                <input type="date" class="form-control" id="audit_schedule" name="audit_schedule">
             </div>
         </div>
 
@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
             </div>
         </div>
 
-        <div class="row mb-3 ps-3">
+        <!-- <div class="row mb-3 ps-3">
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="watchlist" name="watchlist" value="1">
                 <label class="form-check-label" for="watchlist">Add to Watchlist</label>
@@ -149,7 +149,7 @@ if(isLoggedIn() == false) {
                 <input type="checkbox" class="form-check-input" id="interview_set" name="interview_set" value="1">
                 <label class="form-check-label" for="interview_set">Interview Set</label>
             </div>
-        </div>
+        </div> -->
 
 
     
