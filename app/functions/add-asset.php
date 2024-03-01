@@ -22,9 +22,9 @@ if (isset($_POST['add-asset'])) {
 	$result = mysqli_query($conn, $select);
 
 	if (mysqli_num_rows($result) > 0) {
-		$error[] = 'Application already exists!';
+		$error[] = 'Asset already exists!';
 	} else {
-		$insert = "INSERT INTO applications (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no, acquisition_date, end_of_life_date, location, custodian, maintenance_schedule, audit_schedule, notes, status) VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+		$insert = "INSERT INTO assets (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no, acquisition_date, end_of_life_date, location, custodian, maintenance_schedule, audit_schedule, notes, status) VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 		mysqli_query($conn, $insert);
 		header('location:' . BASE_URL . '/');
 	}
