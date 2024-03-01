@@ -32,7 +32,7 @@ foreach ($files as $file) {
 
 <div class="main" style="height: 450px;">
         <p class="sign">Sign in</p>
-        <p class="sub_sign">Asset360</p>
+        <p class="sub_sign">ASSET360 Login</p>
         <?php
             if (isset($_SESSION['error'])) {
                 foreach ($_SESSION['error'] as $error) {
