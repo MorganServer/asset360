@@ -32,7 +32,7 @@ session_start();
                 <div class="card">
                     <div class="card-body text-center">
                         <p class="card-text">
-                            <div class="card_text_left float-start" style="">
+                            <div class="card_text_left float-start" style="font-size: 20px;">
                                 <i class="bi bi-hdd-stack"></i>
                             </div>
                             <div class="card_text_right float-end">
