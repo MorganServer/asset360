@@ -35,8 +35,7 @@ if(isLoggedIn() == false) {
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
  <!-- main-container -->
- <div class="container">
- <!-- <div class="container-fluid" style="background-color: rgb(240, 240, 240);"> -->
+ <div class="container" style="padding: 0 15px 0 15px;">
 
 <br><br>
 
