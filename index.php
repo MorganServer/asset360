@@ -73,11 +73,11 @@ session_start();
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
-                                    <i class="bi bi-tablet ps-4"></i>
+                                    <i class="bi bi-printer ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
                                     <p class="text-end">9</p>
-                                    <p class="text-muted text-end">Tablets</p>
+                                    <p class="text-muted text-end">Devices</p>
                                 </div>
                             </p>
                         </div>
@@ -91,23 +91,10 @@ session_start();
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
-                                    <i class="bi bi-printer ps-4"></i>
-                                </div>
-                                <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">2</p>
-                                    <p class="text-muted text-end">Devices</p>
-                                </div>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card" style="">
-                        <div class="card-body text-center">
-                            <p class="card-text">
-                                <div class="card_text_left float-start" style="font-size: 45px;">
                                     <i class="bi bi-keyboard ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">4</p>
+                                    <p class="text-end">2</p>
                                     <p class="text-muted text-end">Accessories</p>
                                 </div>
                             </p>
@@ -120,7 +107,7 @@ session_start();
                                     <i class="bi bi-geo-fill ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">6</p>
+                                    <p class="text-end">4</p>
                                     <p class="text-muted text-end">IP Addresses</p>
                                 </div>
                             </p>
@@ -133,8 +120,21 @@ session_start();
                                     <i class="bi bi-database-fill ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
-                                    <p class="text-end">3</p>
+                                    <p class="text-end">6</p>
                                     <p class="text-muted text-end">Databases</p>
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card" style="">
+                        <div class="card-body text-center">
+                            <p class="card-text">
+                                <div class="card_text_left float-start" style="font-size: 45px;">
+                                    <i class="bi bi-search ps-4"></i>
+                                </div>
+                                <div class="card_text_right float-end pe-3">
+                                    <p class="text-end">2</p>
+                                    <p class="text-muted text-end">Audits Due</p>
                                 </div>
                             </p>
                         </div>
