@@ -60,7 +60,7 @@ if(isLoggedIn() == false) {
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
                     
-                    $sql = "SELECT * FROM assets WHERE asset_type = 'IP Address' ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
+                    $sql = "SELECT * FROM ip_address ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
                     $result = mysqli_query($conn, $sql);
                     if($result) {
                         $num_rows = mysqli_num_rows($result);
@@ -69,8 +69,8 @@ if(isLoggedIn() == false) {
                                 $id                     = $row['asset_id'];
                                 $idno                   = $row['idno'];
                                 $status                 = $row['status'];
-                                $asset_name             = $row['asset_name'];
-                                $asset_tag_no           = $row['asset_tag_no'];
+                                $ip_address             = $row['ip_address'];
+                                $atn                    = $row['assigned_asset_tag_no'];
                                 $maintenance_schedule   = $row['maintenance_schedule'];
                                 $audit_schedule         = $row['audit_schedule'];
                                 $location               = $row['location'];
@@ -81,10 +81,25 @@ if(isLoggedIn() == false) {
                                 $as_date = date_create($audit_schedule);
                                 $f_audit_schedule = date_format($as_date, 'M d, Y');
                 ?>
+
+                <?php
+
+                $get_ip = "SELECT asset_name FROM assets WHERE asset_tag_no = '$atn'";
+                $get_ip_result = mysqli_query($conn, $get_ip);
+                if($get_ip_result) {
+                    $new_rows = mysqli_num_rows($get_ip_result);
+                    if($new_rows > 0) {
+                        while ($g = mysqli_fetch_assoc($get_ip_result)) {
+                            $asset_name_ip = $g['asset_name'];
+                        }}}
+
+                ?>
+
+
                 <tr>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
-                    <td><?php echo $location ? $location : '-'; ?></td>
+                    <td><?php echo $asset_name_ip ? $asset_name_ip : '-'; ?></td>
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
