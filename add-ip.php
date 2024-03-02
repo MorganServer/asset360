@@ -226,26 +226,32 @@ if(isLoggedIn() == false) {
 
             if (assets.length > 0) {
     assets.forEach(asset => {
-        // Create container for asset info
+        var link = document.createElement('a');
+        link.href = '#';
+        link.className = 'list-group-item list-group-item-action asset-link';
+        link.setAttribute('data-asset-id', asset.asset_tag_no);
+
+        // Create a container div for better layout
         var container = document.createElement('div');
-        container.className = 'list-group-item list-group-item-action asset-link d-flex justify-content-between align-items-center';
-        container.setAttribute('data-asset-id', asset.asset_tag_no);
+        container.classList.add('asset-item');
 
-        // Create div for asset name
-        var nameDiv = document.createElement('div');
-        nameDiv.className = 'fw-bold';
-        nameDiv.textContent = asset.asset_name;
+        // Create elements for asset name and tag number
+        var nameElement = document.createElement('h6');
+        nameElement.classList.add('asset-name');
+        nameElement.textContent = asset.asset_name;
 
-        // Create div for asset tag number
-        var tagDiv = document.createElement('div');
-        tagDiv.textContent = asset.asset_tag_no;
+        var tagElement = document.createElement('p');
+        tagElement.classList.add('asset-tag');
+        tagElement.textContent = asset.asset_tag_no;
 
-        // Append name and tag divs to container
-        container.appendChild(nameDiv);
-        container.appendChild(tagDiv);
+        // Append name and tag elements to the container
+        container.appendChild(nameElement);
+        container.appendChild(tagElement);
 
-        // Append container to assetList
-        assetList.appendChild(container);
+        // Append container to the link
+        link.appendChild(container);
+
+        assetList.appendChild(link);
     });
 }
 
