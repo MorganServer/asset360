@@ -204,7 +204,7 @@ if(isLoggedIn() == false) {
 
         function fetchAssets(searchValue) {
             // Fetch assets from the server based on the search value
-            fetch('fetch_assets.php?search=' + searchValue)
+            fetch('api/search_assets.php?search=' + searchValue)
                 .then(response => response.json())
                 .then(data => {
                     renderAssets(data);
