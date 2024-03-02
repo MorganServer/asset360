@@ -193,119 +193,111 @@ if(isLoggedIn() == false) {
 </script> -->
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var assetSearchInput = document.getElementById('assetSearchInput');
-        var assetList = document.getElementById('assetList');
+document.addEventListener('DOMContentLoaded', function () {
+    var assetSearchInput = document.getElementById('assetSearchInput');
+    var assetList = document.getElementById('assetList');
 
-        document.getElementById('assetSearchBtn').addEventListener('click', function () {
-            var searchValue = assetSearchInput.value.trim();
-            fetchAssets(searchValue);
+    document.getElementById('assetSearchBtn').addEventListener('click', function () {
+        var searchValue = assetSearchInput.value.trim();
+        fetchAssets(searchValue);
+    });
+
+    function fetchAssets(searchValue) {
+        // Fetch assets from the server based on the search value
+        fetch('api/search_assets.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ keyword: searchValue }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            renderAssets(data);
+        })
+        .catch(error => {
+            console.error('Error fetching assets:', error);
         });
+    }
 
-        function fetchAssets(searchValue) {
-    // Fetch assets from the server based on the search value
-    fetch('api/search_assets.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ keyword: searchValue }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        renderAssets(data);
-    })
-    .catch(error => {
-        console.error('Error fetching assets:', error);
-    });
-}
+    function renderAssets(assets) {
+        // Clear existing assets
+        assetList.innerHTML = '';
 
-        function renderAssets(assets) {
-            // Clear existing assets
-            assetList.innerHTML = '';
+        if (assets.length > 0) {
+            // Create table element
+            var table = document.createElement('table');
+            table.classList.add('table', 'table-striped');
 
-            if (assets.length > 0) {
-                // Clear existing assets
-assetList.innerHTML = '';
+            // Create table header row
+            var thead = document.createElement('thead');
+            var headerRow = document.createElement('tr');
 
-if (assets.length > 0) {
-    // Create table element
-    var table = document.createElement('table');
-    table.classList.add('table', 'table-striped');
+            // Create table headers
+            var selectHeader = document.createElement('th');
+            selectHeader.textContent = 'Select';
+            headerRow.appendChild(selectHeader);
 
-    // Create table header row
-    var thead = document.createElement('thead');
-    var headerRow = document.createElement('tr');
+            var nameHeader = document.createElement('th');
+            nameHeader.textContent = 'Asset Name';
+            headerRow.appendChild(nameHeader);
 
-    // Create table headers
-    var selectHeader = document.createElement('th');
-    selectHeader.textContent = 'Select';
-    headerRow.appendChild(selectHeader);
+            var tagHeader = document.createElement('th');
+            tagHeader.textContent = 'Asset Tag';
+            headerRow.appendChild(tagHeader);
 
-    var nameHeader = document.createElement('th');
-    nameHeader.textContent = 'Asset Name';
-    headerRow.appendChild(nameHeader);
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
 
-    var tagHeader = document.createElement('th');
-    tagHeader.textContent = 'Asset Tag';
-    headerRow.appendChild(tagHeader);
+            // Create table body
+            var tbody = document.createElement('tbody');
 
-    thead.appendChild(headerRow);
-    table.appendChild(thead);
+            assets.forEach(asset => {
+                // Create table row
+                var row = document.createElement('tr');
 
-    // Create table body
-    var tbody = document.createElement('tbody');
+                // Create select button cell
+                var selectCell = document.createElement('td');
+                var selectButton = document.createElement('button');
+                selectButton.textContent = 'Select';
+                selectButton.classList.add('btn', 'btn-primary', 'select-button');
+                selectButton.setAttribute('data-asset-id', asset.asset_tag_no);
+                selectCell.appendChild(selectButton);
+                row.appendChild(selectCell);
 
-    assets.forEach(asset => {
-        // Create table row
-        var row = document.createElement('tr');
+                // Create asset name cell
+                var nameCell = document.createElement('td');
+                nameCell.textContent = asset.asset_name;
+                row.appendChild(nameCell);
 
-        // Create select button cell
-        var selectCell = document.createElement('td');
-        var selectButton = document.createElement('button');
-        selectButton.textContent = 'Select';
-        selectButton.classList.add('btn', 'btn-primary', 'select-button');
-        selectButton.setAttribute('data-asset-id', asset.asset_tag_no);
-        selectCell.appendChild(selectButton);
-        row.appendChild(selectCell);
+                // Create asset tag cell
+                var tagCell = document.createElement('td');
+                tagCell.textContent = asset.asset_tag_no;
+                row.appendChild(tagCell);
 
-        // Create asset name cell
-        var nameCell = document.createElement('td');
-        nameCell.textContent = asset.asset_name;
-        row.appendChild(nameCell);
+                // Append row to table body
+                tbody.appendChild(row);
 
-        // Create asset tag cell
-        var tagCell = document.createElement('td');
-        tagCell.textContent = asset.asset_tag_no;
-        row.appendChild(tagCell);
-
-        // Append row to table body
-        tbody.appendChild(row);
-    });
-
-    table.appendChild(tbody);
-    assetList.appendChild(table);
-}
-
-
-                // Attach event listeners to the newly created asset links
-                var assetLinks = document.querySelectorAll('.asset-link');
-                assetLinks.forEach(function (link) {
-                    link.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        var selectedAssetTagNo = link.getAttribute('data-asset-id');
-                        document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                        $('#assetModal').modal('hide');
-                    });
+                // Attach event listener to the select button
+                selectButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var selectedAssetTagNo = selectButton.getAttribute('data-asset-id');
+                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                    $('#assetModal').modal('hide');
                 });
-            } else {
-                var message = document.createElement('p');
-                message.className = 'text-muted';
-                message.textContent = 'No assets found.';
-                assetList.appendChild(message);
-            }
+            });
+
+            table.appendChild(tbody);
+            assetList.appendChild(table);
+        } else {
+            var message = document.createElement('p');
+            message.className = 'text-muted';
+            message.textContent = 'No assets found.';
+            assetList.appendChild(message);
         }
-    });
+    }
+});
+
 </script>
 
 
