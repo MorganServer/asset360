@@ -44,9 +44,9 @@ if(isLoggedIn() == false) {
             <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Tag No</th>
+                <th scope="col">IP Address</th>
                 <th scope="col">Asset Name</th>
-                <th scope="col">Location</th>
+                <!-- <th scope="col">Location</th> -->
                 <th scope="col">Last Maintenance</th>
                 <th scope="col">Last Audit</th>
                 <th scope="col">Status</th>
@@ -83,7 +83,6 @@ if(isLoggedIn() == false) {
                 ?>
 
                 <?php
-
                 $get_ip = "SELECT asset_name FROM assets WHERE asset_tag_no = '$atn'";
                 $get_ip_result = mysqli_query($conn, $get_ip);
                 if($get_ip_result) {
@@ -91,14 +90,13 @@ if(isLoggedIn() == false) {
                     if($new_rows > 0) {
                         while ($g = mysqli_fetch_assoc($get_ip_result)) {
                             $asset_name_ip = $g['asset_name'];
-                        
-
+                        }}}
                 ?>
 
 
                 <tr>
-                    <th scope="row"><?php echo $asset_tag_no; ?></th>
-                    <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
+                    <!-- <th scope="row"><?php echo $asset_tag_no; ?></th> -->
+                    <th scope="row"><?php echo $ip_address ? $ip_address : '-'; ?></td>
                     <td><?php echo $asset_name_ip ? $asset_name_ip : '-'; ?></td>
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
@@ -106,7 +104,6 @@ if(isLoggedIn() == false) {
                     <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
                 <?php
-                }}}
                         }
                     }
                 }
