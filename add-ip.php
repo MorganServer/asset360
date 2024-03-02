@@ -139,15 +139,15 @@ if(isLoggedIn() == false) {
 $query = "SELECT * FROM assets";
 $result = mysqli_query($conn, $query);
 
-if (mysqli_num_rows($result) > 0) {
-    echo '<ul class="list-group">';
-    while ($row = mysqli_fetch_assoc($result)) {
-        echo '<li class="list-group-item"><a href="#" class="asset-link" data-asset-id="' . $row['id'] . '">' . $row['name'] . '</a></li>';
-    }
-    echo '</ul>';
-} else {
-    echo "<p>No assets found.</p>";
-}
+            if (mysqli_num_rows($result) > 0) {
+                echo '<ul class="list-group">';
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<li class="list-group-item"><a href="#" class="asset-link" data-asset-id="' . $row['asset_id'] . '">' . $row['asset_name'] . '</a></li>';
+                }
+                echo '</ul>';
+                } else {
+                echo "<p>No assets found.</p>";
+            }
             ?>
             </div>
             <div class="modal-footer">
