@@ -13,7 +13,7 @@ if (isset($_POST['keyword'])) {
     if (mysqli_num_rows($result) > 0) {
         echo '<ul>';
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li onclick="selectAsset(\'' . $row['asset_tag_no'] . '\')">' . $row['asset_name'] . '</li>';
+            echo '<li onclick="selectAsset(\'' . $row['asset_name'] . '\')">' . $row['asset_name'] . '</li>';
         }
         echo '</ul>';
     } else {

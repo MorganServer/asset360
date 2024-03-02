@@ -183,29 +183,7 @@ if(isLoggedIn() == false) {
 
                 <!-- Asset list -->
                 <div class="list-group list-group-flush" id="assetList">
-                    <?php
-                    // Assuming you have a database connection established
-                    // Fetch assets from the database
-                    $query = "SELECT * FROM assets";
-                    $result = mysqli_query($conn, $query);
-
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                            <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
-                                    <small><?php echo $row['asset_name']; ?></small>
-                                </div>
-                            </a>
-                            <?php
-                        }
-                    } else {
-                        ?>
-                        <p class="text-muted">No assets found.</p>
-                        <?php
-                    }
-                    ?>
+                    <!-- Asset list items will be populated dynamically -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -215,6 +193,7 @@ if(isLoggedIn() == false) {
         </div>
     </div>
 </div>
+
 
 
 
@@ -254,18 +233,19 @@ if(isLoggedIn() == false) {
                     assetList.innerHTML = this.responseText; // Update the asset list with the fetched data
                 }
             };
-            xhttp.open("POST", "fetch_assets.php", true);
+            xhttp.open("POST", "api/search_assets.php", true);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhttp.send("keyword=" + keyword);
         }
 
         // Function to handle selecting an asset
-function selectAsset(assetName) {
-    document.getElementById('assigned_asset_tag_no').value = assetName;
-    $('#assetModal').modal('hide'); // Close the modal
-}
+        function selectAsset(assetName) {
+            document.getElementById('assigned_asset_tag_no').value = assetName;
+            $('#assetModal').modal('hide'); // Close the modal
+        }
     });
 </script>
+
 
 
 
