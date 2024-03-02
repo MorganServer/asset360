@@ -76,16 +76,17 @@ if(isLoggedIn() == false) {
                                 $location               = $row['location'];
                                 $created_at             = $row['created_at'];
 
-                                $f_maintenance_schedule = date_format($maintenance_schedule,'M d, Y');
-                                // date_format($date,"Y/m/d H:i:s");
-                                // $f_audit_schedule = $audit_schedule->format('M d, Y');
+                                $ms_date = date_create($maintenance_schedule);
+                                $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
+                                $as_date = date_create($audit_schedule);
+                                $f_audit_schedule = date_format($as_date, 'M d, Y');
                 ?>
                 <tr>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $location ? $location : '-'; ?></td>
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
-                    <td><?php //echo $f_audit_schedule ? $audit_schedule : '-'; ?></td>
+                    <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
