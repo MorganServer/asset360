@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var selectCell = document.createElement('td');
                 var selectButton = document.createElement('button');
                 selectButton.textContent = 'Select';
-                selectButton.classList.add('btn', 'btn-primary', 'select-button');
+                selectButton.classList.add('badge', 'text-bg-success', 'select-button');
                 selectButton.setAttribute('data-asset-id', asset.asset_tag_no);
                 selectCell.appendChild(selectButton);
                 row.appendChild(selectCell);
