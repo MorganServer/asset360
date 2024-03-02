@@ -225,36 +225,19 @@ if(isLoggedIn() == false) {
             assetList.innerHTML = '';
 
             if (assets.length > 0) {
-    assets.forEach(asset => {
-        var link = document.createElement('a');
-        link.href = '#';
-        link.className = 'list-group-item list-group-item-action asset-link';
-        link.setAttribute('data-asset-id', asset.asset_tag_no);
-
-        // Create a container div for better layout
-        var container = document.createElement('div');
-        container.classList.add('asset-item');
-
-        // Create elements for asset name and tag number
-        var nameElement = document.createElement('h6');
-        nameElement.classList.add('asset-name');
-        nameElement.textContent = asset.asset_name;
-
-        var tagElement = document.createElement('p');
-        tagElement.classList.add('asset-tag');
-        tagElement.textContent = asset.asset_tag_no;
-
-        // Append name and tag elements to the container
-        container.appendChild(nameElement);
-        container.appendChild(tagElement);
-
-        // Append container to the link
-        link.appendChild(container);
-
-        assetList.appendChild(link);
-    });
-}
-
+                assets.forEach(asset => {
+                    var link = document.createElement('a');
+                    link.href = '#';
+                    link.className = 'list-group-item list-group-item-action asset-link';
+                    link.setAttribute('data-asset-id', asset.asset_tag_no);
+                    link.innerHTML = `
+                        <div class="d-flex w-100">
+                            <h6 class="mb-1">${asset.asset_name}</h6>
+                            <p>${asset.asset_tag_no}</p>
+                        </div>
+                    `;
+                    assetList.appendChild(link);
+                });
 
                 // Attach event listeners to the newly created asset links
                 var assetLinks = document.querySelectorAll('.asset-link');
