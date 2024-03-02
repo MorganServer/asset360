@@ -231,55 +231,60 @@ assetList.innerHTML = '';
 if (assets.length > 0) {
     // Create table element
     var table = document.createElement('table');
-    table.classList.add('table');
+    table.classList.add('table', 'table-striped');
 
     // Create table header row
+    var thead = document.createElement('thead');
     var headerRow = document.createElement('tr');
 
-    // Define table headers
-    var headers = ['Asset Name', 'Asset Tag'];
+    // Create table headers
+    var selectHeader = document.createElement('th');
+    selectHeader.textContent = 'Select';
+    headerRow.appendChild(selectHeader);
 
-    headers.forEach(headerText => {
-        var headerCell = document.createElement('th');
-        headerCell.textContent = headerText;
-        headerRow.appendChild(headerCell);
-    });
+    var nameHeader = document.createElement('th');
+    nameHeader.textContent = 'Asset Name';
+    headerRow.appendChild(nameHeader);
 
-    // Append header row to table
-    table.appendChild(headerRow);
+    var tagHeader = document.createElement('th');
+    tagHeader.textContent = 'Asset Tag';
+    headerRow.appendChild(tagHeader);
+
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
 
     // Create table body
     var tbody = document.createElement('tbody');
 
     assets.forEach(asset => {
+        // Create table row
         var row = document.createElement('tr');
 
-        // Create cells for asset name and tag number
+        // Create select button cell
+        var selectCell = document.createElement('td');
+        var selectButton = document.createElement('button');
+        selectButton.textContent = 'Select';
+        selectButton.classList.add('btn', 'btn-primary', 'select-button');
+        selectButton.setAttribute('data-asset-id', asset.asset_tag_no);
+        selectCell.appendChild(selectButton);
+        row.appendChild(selectCell);
+
+        // Create asset name cell
         var nameCell = document.createElement('td');
         nameCell.textContent = asset.asset_name;
+        row.appendChild(nameCell);
 
+        // Create asset tag cell
         var tagCell = document.createElement('td');
         tagCell.textContent = asset.asset_tag_no;
-
-        // Append cells to row
-        row.appendChild(nameCell);
         row.appendChild(tagCell);
 
         // Append row to table body
         tbody.appendChild(row);
     });
 
-    // Append table body to table
     table.appendChild(tbody);
-
-    // Append table to assetList
     assetList.appendChild(table);
-} else {
-    // Display message if no assets found
-    var message = document.createElement('p');
-    message.classList.add('text-muted');
-    message.textContent = 'No assets found.';
-    assetList.appendChild(message);
 }
 
 
