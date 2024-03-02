@@ -225,35 +225,62 @@ if(isLoggedIn() == false) {
             assetList.innerHTML = '';
 
             if (assets.length > 0) {
-    assets.forEach(asset => {
-        var link = document.createElement('a');
-        link.href = '#';
-        link.className = 'list-group-item list-group-item-action asset-link';
-        link.setAttribute('data-asset-id', asset.asset_tag_no);
+                // Clear existing assets
+assetList.innerHTML = '';
 
-        // Create a container div for better layout
-        var container = document.createElement('div');
-        container.classList.add('asset-item');
+if (assets.length > 0) {
+    // Create table element
+    var table = document.createElement('table');
+    table.classList.add('table', 'table-bordered');
 
-        // Create elements for asset name and tag number
-        var nameElement = document.createElement('h6');
-        nameElement.classList.add('asset-name');
-        nameElement.textContent = asset.asset_name;
+    // Create table header row
+    var headerRow = document.createElement('tr');
 
-        var tagElement = document.createElement('p');
-        tagElement.classList.add('asset-tag');
-        tagElement.textContent = asset.asset_tag_no;
+    // Define table headers
+    var headers = ['Asset Name', 'Asset Tag'];
 
-        // Append name and tag elements to the container
-        container.appendChild(nameElement);
-        container.appendChild(tagElement);
-
-        // Append container to the link
-        link.appendChild(container);
-
-        assetList.appendChild(link);
+    headers.forEach(headerText => {
+        var headerCell = document.createElement('th');
+        headerCell.textContent = headerText;
+        headerRow.appendChild(headerCell);
     });
 
+    // Append header row to table
+    table.appendChild(headerRow);
+
+    // Create table body
+    var tbody = document.createElement('tbody');
+
+    assets.forEach(asset => {
+        var row = document.createElement('tr');
+
+        // Create cells for asset name and tag number
+        var nameCell = document.createElement('td');
+        nameCell.textContent = asset.asset_name;
+
+        var tagCell = document.createElement('td');
+        tagCell.textContent = asset.asset_tag_no;
+
+        // Append cells to row
+        row.appendChild(nameCell);
+        row.appendChild(tagCell);
+
+        // Append row to table body
+        tbody.appendChild(row);
+    });
+
+    // Append table body to table
+    table.appendChild(tbody);
+
+    // Append table to assetList
+    assetList.appendChild(table);
+} else {
+    // Display message if no assets found
+    var message = document.createElement('p');
+    message.classList.add('text-muted');
+    message.textContent = 'No assets found.';
+    assetList.appendChild(message);
+}
 
 
                 // Attach event listeners to the newly created asset links
