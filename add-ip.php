@@ -183,23 +183,22 @@ if(isLoggedIn() == false) {
 <script>
     // JavaScript to handle selecting an asset and populating the input field
     document.addEventListener('DOMContentLoaded', function () {
-        try {
-            var assetLinks = document.querySelectorAll('.asset-link');
-            assetLinks.forEach(function (link) {
-                link.addEventListener('click', function (event) {
+        var assetLinks = document.querySelectorAll('.asset-link');
+        assetLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                try {
                     event.preventDefault();
                     var selectedAssetName = link.textContent.trim();
                     document.getElementById('assigned_asset_tag_no').value = selectedAssetName;
                     $('#assetModal').modal('hide'); // Close the modal
-                });
+                } catch (error) {
+                    console.error('An error occurred while closing the modal:', error);
+                    // Handle the error gracefully or log it for debugging
+                }
             });
-        } catch (error) {
-            console.error('An error occurred while closing the modal:', error);
-            // Handle the error gracefully or log it for debugging
-        }
+        });
     });
 </script>
-
 
 
 
