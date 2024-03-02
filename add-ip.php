@@ -180,7 +180,7 @@ if(isLoggedIn() == false) {
     </script>
 
 
-<script>
+<!-- <script>
     // JavaScript to handle selecting an asset and populating the input field
     document.addEventListener('DOMContentLoaded', function () {
         var assetLinks = document.querySelectorAll('.asset-link');
@@ -193,7 +193,17 @@ if(isLoggedIn() == false) {
             });
         });
     });
+</script> -->
+<script>
+    // JavaScript to handle selecting an asset and populating the input field
+    document.getElementById('selectAssetBtn').addEventListener('click', function () {
+        var selectedAssetId = document.querySelector('input[name="selected_asset"]:checked').value;
+        var selectedAssetName = document.querySelector('input[name="selected_asset"]:checked + .form-check-label').textContent;
+        document.getElementById('assigned_asset_tag_no').value = selectedAssetName; // Or you can assign the ID instead
+        $('#assetModal').modal('hide'); // Close the modal
+    });
 </script>
+
 
 
 
