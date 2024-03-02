@@ -184,8 +184,6 @@ if(isLoggedIn() == false) {
                 <!-- Asset list -->
                 <div class="list-group list-group-flush" id="assetList">
                     <?php
-                    // Include your database connection file
-                    require_once "../app/database/connection.php";
 
                     if (isset($_POST['keyword'])) {
                         $keyword = $_POST['keyword'];
