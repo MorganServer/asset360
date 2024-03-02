@@ -203,16 +203,22 @@ if(isLoggedIn() == false) {
         });
 
         function fetchAssets(searchValue) {
-            // Fetch assets from the server based on the search value
-            fetch('api/search_assets.php?search=' + searchValue)
-                .then(response => response.json())
-                .then(data => {
-                    renderAssets(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching assets:', error);
-                });
-        }
+    // Fetch assets from the server based on the search value
+    fetch('api/search_assets.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ keyword: searchValue }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        renderAssets(data);
+    })
+    .catch(error => {
+        console.error('Error fetching assets:', error);
+    });
+}
 
         function renderAssets(assets) {
             // Clear existing assets

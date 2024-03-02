@@ -9,13 +9,21 @@ if (isset($_POST['keyword'])) {
     $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
     $result = mysqli_query($conn, $query);
 
-    // Display dropdown menu with matching assets
+    // Prepare an array to hold the results
+    $assets = [];
+
+    // Fetch matching assets
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<a href="#" class="list-group-item list-group-item-action asset-link" onclick="selectAsset(' . $row['asset_id'] . ', \'' . $row['asset_name'] . '\', \'' . $row['asset_tag_no'] . '\')">' . $row['asset_name'] . '</a>';
+            // Add each asset to the array
+            $assets[] = $row;
         }
-    } else {
-        echo 'No assets found';
     }
+
+    // Output the array as JSON
+    echo json_encode($assets);
+} else {
+    // If the keyword is not set, return an error message
+    echo json_encode(['error' => 'Keyword not provided']);
 }
 ?>
