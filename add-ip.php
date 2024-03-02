@@ -146,8 +146,8 @@ if(isLoggedIn() == false) {
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                            <li class="list-group-item list-group-item-action">
-                            <a href="#" class="asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
+                            <li class="list-group-item list-group-item-action asset-link">
+                            <a href="#" class="" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
                                     <p><?php echo $row['asset_name']; ?></p>
