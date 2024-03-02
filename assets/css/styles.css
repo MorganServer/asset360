@@ -247,30 +247,6 @@ a {
 
 
 
-.asset-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.asset-name {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.asset-tag {
-  margin-bottom: 0;
-  font-size: 0.9rem;
-  color: #6c757d; /* You can adjust the color to your preference */
-}
-
-.asset-link {
-  border: none;
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-}
-
-.asset-link:hover {
-  background-color: #f8f9fa; /* Hover background color */
+.badge {
+  border: none !important;
 }
