@@ -142,7 +142,7 @@ if(isLoggedIn() == false) {
             if (mysqli_num_rows($result) > 0) { ?>
                 <ul class="list-group-flush">
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-                <li class="list-group-item"><a href="#" class="asset-link form-check-label" data-asset-id="<?php echo $row['asset_id']; ?>" value="<?php echo $row['asset_tag_no']; ?>"><?php echo $row['asset_tag_no']; ?> - <?php echo $row['asset_name']; ?></a></li>
+                <li class="list-group-item"><a href="#" class="asset-link form-check-label" data-asset-id="<?php echo $row['asset_id']; ?>" id="assigned_asset_tag_no" value="<?php echo $row['asset_tag_no']; ?>"><?php echo $row['asset_tag_no']; ?> - <?php echo $row['asset_name']; ?></a></li>
             <?php } ?>
                 </ul>
             <?php } else {?>
