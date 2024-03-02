@@ -166,7 +166,6 @@ if(isLoggedIn() == false) {
     </div>
 </div> -->
 
-<!-- Modal -->
 <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -183,26 +182,7 @@ if(isLoggedIn() == false) {
 
                 <!-- Asset list -->
                 <div class="list-group list-group-flush" id="assetList">
-                    <?php
-
-                    if (isset($_POST['keyword'])) {
-                        $keyword = $_POST['keyword'];
-
-                        // Perform a database query to fetch assets matching the keyword
-                        $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
-                        $result = mysqli_query($conn, $query);
-
-                        // Display dropdown menu with matching assets
-                        if (mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                // Output each asset as a link with onclick event to selectAsset function
-                                echo '<a href="#" class="list-group-item list-group-item-action asset-link" onclick="selectAsset(' . $row['asset_id'] . ', \'' . $row['asset_name'] . '\')">' . $row['asset_name'] . '</a>';
-                            }
-                        } else {
-                            echo 'No assets found';
-                        }
-                    }
-                    ?>
+                    <!-- Assets will be loaded here dynamically -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -212,9 +192,6 @@ if(isLoggedIn() == false) {
         </div>
     </div>
 </div>
-
-<!-- Hidden field to store the selected asset ID -->
-<input type="hidden" id="selected_asset_id" name="selected_asset_id">
 
 
 
@@ -295,7 +272,7 @@ if(isLoggedIn() == false) {
         function selectAsset(assetId, assetName) {
             // Set the selected asset name to the input field
             document.getElementById('assigned_asset_tag_no').value = assetName;
-
+            
             // Optionally, you can also store the asset ID in a hidden field for further processing
             document.getElementById('selected_asset_id').value = assetId;
 
