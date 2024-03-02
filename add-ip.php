@@ -134,8 +134,8 @@ if(isLoggedIn() == false) {
             </div>
             <div class="modal-body">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search asset..." id="assetSearchInput">
-                    <button class="btn btn-primary" type="button" id="searchAssetBtn">Search</button>
+                    <input type="text" class="form-control" placeholder="Search for asset by name" id="searchAssetInput">
+                    <button class="btn btn-outline-secondary" type="button" id="searchAssetBtn">Search</button>
                 </div>
                 <div class="list-group list-group-flush" id="searchResults">
                     <!-- Search results will be displayed here -->
@@ -194,58 +194,47 @@ if(isLoggedIn() == false) {
 </script> -->
 
 <script>
-    // JavaScript to handle searching assets and selecting an asset
+    // JavaScript to handle searching for assets and populating search results
     document.addEventListener('DOMContentLoaded', function () {
-        var assetSearchInput = document.getElementById('assetSearchInput');
-        var searchAssetBtn = document.getElementById('searchAssetBtn');
-        var searchResults = document.getElementById('searchResults');
+        var searchBtn = document.getElementById('searchAssetBtn');
+        var searchInput = document.getElementById('searchAssetInput');
+        var searchResultsContainer = document.getElementById('searchResults');
 
-        searchAssetBtn.addEventListener('click', function () {
-            var searchTerm = assetSearchInput.value.trim().toLowerCase();
-            searchResults.innerHTML = ''; // Clear previous search results
-            <?php
-            $query = "SELECT * FROM assets WHERE LOWER(asset_name) LIKE '%$searchTerm%'";
-            $result = mysqli_query($conn, $query);
+        searchBtn.addEventListener('click', function () {
+            var searchTerm = searchInput.value.trim();
 
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    ?>
-                    var assetLink = document.createElement('a');
-                    assetLink.href = '#';
-                    assetLink.classList.add('list-group-item', 'list-group-item-action', 'asset-link');
-                    assetLink.setAttribute('data-asset-id', '<?php echo $row['asset_tag_no']; ?>');
-                    assetLink.innerHTML = `
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
-                            <small><?php echo $row['asset_name']; ?></small>
-                        </div>`;
-                    searchResults.appendChild(assetLink);
-                    <?php
-                }
-            } else {
-                ?>
-                var noResultsMessage = document.createElement('p');
-                noResultsMessage.classList.add('text-muted');
-                noResultsMessage.textContent = 'No assets found.';
-                searchResults.appendChild(noResultsMessage);
-                <?php
-            }
-            ?>
+            // Perform AJAX request to fetch assets matching the search term
+            // Assuming you have a PHP file to handle the search query
+            // Modify the URL below accordingly
+            var url = 'search_assets.php?search=' + encodeURIComponent(searchTerm);
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    searchResultsContainer.innerHTML = data;
+                    bindAssetSelection();
+                })
+                .catch(error => console.error('Error fetching search results:', error));
         });
 
-        document.addEventListener('click', function (event) {
-            if (event.target.classList.contains('asset-link')) {
-                try {
-                    event.preventDefault();
-                    var selectedAssetTagNo = event.target.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
-                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                    $('#assetModal').modal('hide'); // Close the modal
-                } catch (error) {
-                    console.error('An error occurred while closing the modal:', error);
-                    // Handle the error gracefully or log it for debugging
-                }
-            }
-        });
+        function bindAssetSelection() {
+            var assetLinks = document.querySelectorAll('.asset-link');
+            assetLinks.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    try {
+                        event.preventDefault();
+                        var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
+                        document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                        $('#assetModal').modal('hide'); // Close the modal
+                    } catch (error) {
+                        console.error('An error occurred while closing the modal:', error);
+                        // Handle the error gracefully or log it for debugging
+                    }
+                });
+            });
+        }
+
+        // Initially bind asset selection even if search hasn't been performed
+        bindAssetSelection();
     });
 </script>
 
