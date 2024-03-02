@@ -231,7 +231,7 @@ assetList.innerHTML = '';
 if (assets.length > 0) {
     // Create table element
     var table = document.createElement('table');
-    table.classList.add('table', 'table-bordered');
+    table.classList.add('table');
 
     // Create table header row
     var headerRow = document.createElement('tr');
