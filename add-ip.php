@@ -207,13 +207,6 @@ if(isLoggedIn() == false) {
 
 
 
-
-
-
-
-
-
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var searchButton = document.getElementById('searchButton');

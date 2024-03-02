@@ -11,13 +11,12 @@ if (isset($_POST['keyword'])) {
 
     // Display dropdown menu with matching assets
     if (mysqli_num_rows($result) > 0) {
-        echo '<ul>';
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li onclick="selectAsset(\'' . $row['asset_name'] . '\')">' . $row['asset_name'] . '</li>';
+            echo '<a href="#" class="list-group-item list-group-item-action asset-link" onclick="selectAsset(\'' . $row['asset_name'] . '\')">' . $row['asset_name'] . '</a>';
         }
-        echo '</ul>';
     } else {
         echo 'No assets found';
     }
 }
 ?>
+
