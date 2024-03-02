@@ -268,19 +268,27 @@ if(isLoggedIn() == false) {
         var assetList = document.getElementById('assetList');
 
         searchButton.addEventListener('click', function () {
-            var searchQuery = searchInput.value.trim();
-            fetchAssets(searchQuery);
+            var keyword = searchInput.value.trim();
+            fetchAssets(keyword);
         });
 
-        function fetchAssets(searchQuery) {
-            // Fetch assets from the database based on the search query
-            var url = 'api/search_assets.php?search=' + encodeURIComponent(searchQuery);
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    assetList.innerHTML = data; // Update the asset list with the fetched data
-                })
-                .catch(error => console.error('Error fetching assets:', error));
+        function fetchAssets(keyword) {
+            // Perform an AJAX request to fetch assets based on the keyword
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    assetList.innerHTML = this.responseText; // Update the asset list with the fetched data
+                }
+            };
+            xhttp.open("POST", "fetch_assets.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("keyword=" + keyword);
+        }
+
+        // Function to handle selecting an asset
+        function selectAsset(tagNumber) {
+            document.getElementById('assigned_asset_tag_no').value = tagNumber;
+            $('#assetModal').modal('hide'); // Close the modal
         }
     });
 </script>
