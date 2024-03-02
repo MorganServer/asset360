@@ -188,8 +188,9 @@ if(isLoggedIn() == false) {
             link.addEventListener('click', function (event) {
                 try {
                     event.preventDefault();
-                    var selectedAssetName = link.textContent.trim();
-                    document.getElementById('assigned_asset_tag_no').value = selectedAssetName;
+                    var selectedAssetText = link.textContent.trim(); // Get the text content of the clicked link
+                    var selectedAssetTagNo = selectedAssetText.split(' - ')[0]; // Extract the asset_tag_no
+                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
                     $('#assetModal').modal('hide'); // Close the modal
                 } catch (error) {
                     console.error('An error occurred while closing the modal:', error);
@@ -199,6 +200,7 @@ if(isLoggedIn() == false) {
         });
     });
 </script>
+
 
 
 
