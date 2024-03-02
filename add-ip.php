@@ -166,6 +166,7 @@ if(isLoggedIn() == false) {
     </div>
 </div> -->
 
+<!-- Modal -->
 <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -174,12 +175,37 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <!-- Search bar -->
                 <div class="input-group mb-3">
-                    <input type="text" id="assetSearchInput" class="form-control" placeholder="Search assets...">
-                    <button class="btn btn-outline-secondary" type="button" id="assetSearchButton">Search</button>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search for assets">
+                    <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
                 </div>
+
+                <!-- Asset list -->
                 <div class="list-group list-group-flush" id="assetList">
-                    <!-- Asset list will be dynamically updated here -->
+                    <?php
+                    // Assuming you have a database connection established
+                    // Fetch assets from the database
+                    $query = "SELECT * FROM assets";
+                    $result = mysqli_query($conn, $query);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                            <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
+                                    <small><?php echo $row['asset_name']; ?></small>
+                                </div>
+                            </a>
+                            <?php
+                        }
+                    } else {
+                        ?>
+                        <p class="text-muted">No assets found.</p>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="modal-footer">
@@ -234,75 +260,32 @@ if(isLoggedIn() == false) {
     // });
 </script>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        const assetSearchInput = document.getElementById('assetSearchInput');
-        const assetSearchButton = document.getElementById('assetSearchButton');
-        const assetList = document.getElementById('assetList');
+        var searchButton = document.getElementById('searchButton');
+        var searchInput = document.getElementById('searchInput');
+        var assetList = document.getElementById('assetList');
 
-        // Function to fetch and display assets based on search query
-        function searchAssets() {
-            const searchQuery = assetSearchInput.value.trim();
-            // Fetch assets based on search query from the database using AJAX or fetch API
-            // Update the asset list with the fetched results
-            // For demonstration, I'll assume you have a function fetchAssetsFromDatabase(searchQuery) that returns a Promise with asset data
-            fetchAssetsFromDatabase(searchQuery)
+        searchButton.addEventListener('click', function () {
+            var searchQuery = searchInput.value.trim();
+            fetchAssets(searchQuery);
+        });
+
+        function fetchAssets(searchQuery) {
+            // Fetch assets from the database based on the search query
+            var url = 'fetch_assets.php?search=' + encodeURIComponent(searchQuery);
+            fetch(url)
+                .then(response => response.text())
                 .then(data => {
-                    // Clear previous search results
-                    assetList.innerHTML = '';
-                    if (data.length > 0) {
-                        data.forEach(asset => {
-                            const listItem = document.createElement('a');
-                            listItem.classList.add('list-group-item', 'list-group-item-action', 'asset-link');
-                            listItem.setAttribute('data-asset-id', asset.asset_tag_no);
-                            listItem.innerHTML = `
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">${asset.asset_tag_no}</h5>
-                                    <small>${asset.asset_name}</small>
-                                </div>`;
-                            assetList.appendChild(listItem);
-                        });
-                    } else {
-                        assetList.innerHTML = '<p class="text-muted">No assets found.</p>';
-                    }
+                    assetList.innerHTML = data; // Update the asset list with the fetched data
                 })
-                .catch(error => {
-                    console.error('Error fetching assets:', error);
-                });
+                .catch(error => console.error('Error fetching assets:', error));
         }
-
-        // Event listener for search button click
-        assetSearchButton.addEventListener('click', searchAssets);
-
-        // Event listener for pressing Enter key in search input
-        assetSearchInput.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                searchAssets();
-            }
-        });
-
-        // Initially load assets without any search query
-        searchAssets();
     });
-
-    // Function to fetch assets from the database
-    function fetchAssetsFromDatabase(searchQuery) {
-        // Implement this function to fetch assets based on the search query from your database
-        // This function should return a Promise that resolves with an array of asset objects
-        // For demonstration purposes, I'll return a sample array of asset objects
-        return new Promise((resolve, reject) => {
-            // Assuming this is where you make the AJAX call or use fetch API to fetch assets
-            // Replace this with your actual implementation
-            const assets = [
-                { asset_tag_no: '123', asset_name: 'Asset 1' },
-                { asset_tag_no: '456', asset_name: 'Asset 2' },
-                { asset_tag_no: '789', asset_name: 'Asset 3' }
-                // Add more asset objects as needed
-            ];
-            resolve(assets); // Resolve the Promise with the fetched assets
-        });
-    }
 </script>
+
+
 
 
 
