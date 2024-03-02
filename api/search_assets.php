@@ -6,14 +6,14 @@ if (isset($_POST['keyword'])) {
     $keyword = $_POST['keyword'];
 
     // Perform a database query to fetch assets matching the keyword
-    $query = "SELECT * FROM asset_table WHERE tag_number LIKE '%$keyword%'";
+    $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
     $result = mysqli_query($conn, $query);
 
     // Display dropdown menu with matching assets
     if (mysqli_num_rows($result) > 0) {
         echo '<ul>';
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<li onclick="selectAsset(\'' . $row['tag_number'] . '\')">' . $row['tag_number'] . '</li>';
+            echo '<li onclick="selectAsset(\'' . $row['asset_tag_no'] . '\')">' . $row['asset_name'] . '</li>';
         }
         echo '</ul>';
     } else {

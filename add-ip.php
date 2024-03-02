@@ -227,38 +227,12 @@ if(isLoggedIn() == false) {
 <br><br><br>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 
-<script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-    </script>
 
 
-<script>
-    // // JavaScript to handle selecting an asset and populating the input field
-    // document.addEventListener('DOMContentLoaded', function () {
-    //     var assetLinks = document.querySelectorAll('.asset-link');
-    //     assetLinks.forEach(function (link) {
-    //         link.addEventListener('click', function (event) {
-    //             try {
-    //                 event.preventDefault();
-    //                 var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
-    //                 document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-    //                 $('#assetModal').modal('hide'); // Close the modal
-    //             } catch (error) {
-    //                 console.error('An error occurred while closing the modal:', error);
-    //                 // Handle the error gracefully or log it for debugging
-    //             }
-    //         });
-    //     });
-    // });
-</script>
+
+
 
 
 <script>
@@ -286,17 +260,47 @@ if(isLoggedIn() == false) {
         }
 
         // Function to handle selecting an asset
-        function selectAsset(tagNumber) {
-            document.getElementById('assigned_asset_tag_no').value = tagNumber;
-            $('#assetModal').modal('hide'); // Close the modal
-        }
+function selectAsset(assetName) {
+    document.getElementById('assigned_asset_tag_no').value = assetName;
+    $('#assetModal').modal('hide'); // Close the modal
+}
     });
 </script>
 
 
 
 
+<script>
+    // // JavaScript to handle selecting an asset and populating the input field
+    // document.addEventListener('DOMContentLoaded', function () {
+    //     var assetLinks = document.querySelectorAll('.asset-link');
+    //     assetLinks.forEach(function (link) {
+    //         link.addEventListener('click', function (event) {
+    //             try {
+    //                 event.preventDefault();
+    //                 var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
+    //                 document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+    //                 $('#assetModal').modal('hide'); // Close the modal
+    //             } catch (error) {
+    //                 console.error('An error occurred while closing the modal:', error);
+    //                 // Handle the error gracefully or log it for debugging
+    //             }
+    //         });
+    //     });
+    // });
+</script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 
 
 
