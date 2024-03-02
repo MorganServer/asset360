@@ -132,28 +132,22 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul class="list-group list-group-flush">
+                <div class="list-group list-group-flush">
                     <?php
-                    
-                    // Pagination variables
-                    $limit = 10; // Number of entries per page
-                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                    $offset = ($page - 1) * $limit;
-
-                    $query = "SELECT * FROM assets LIMIT $limit OFFSET $offset";
+                    // Assuming you have a database connection established
+                    // Fetch assets from the database
+                    $query = "SELECT * FROM assets";
                     $result = mysqli_query($conn, $query);
 
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
-                            <!-- <li class=""> -->
                             <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
-                                    <p><?php echo $row['asset_name']; ?></p>
+                                    <small><?php echo $row['asset_name']; ?></small>
                                 </div>
                             </a>
-                            <!-- </li> -->
                             <?php
                         }
                     } else {
@@ -162,21 +156,7 @@ if(isLoggedIn() == false) {
                         <?php
                     }
                     ?>
-                </ul>
-                <?php
-            // Pagination links
-            $sql = "SELECT COUNT(*) as total FROM assets";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_assoc($result);
-            $total_pages = ceil($row["total"] / $limit);
-
-                echo '<ul class="pagination justify-content-center">';
-                for ($i = 1; $i <= $total_pages; $i++) {
-                    $active = ($page == $i) ? "active" : "";
-                    echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                }
-                echo '</ul>';
-        ?>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -227,23 +207,8 @@ if(isLoggedIn() == false) {
                 }
             });
         });
-
-        // Prevent modal from closing when pagination links are clicked
-        var paginationLinks = document.querySelectorAll('.pagination a');
-        paginationLinks.forEach(function (pageLink) {
-            pageLink.addEventListener('click', function (event) {
-                // Allow pagination links to work while still preventing modal closure
-                event.preventDefault(); // Prevent the default behavior of pagination links
-                event.stopPropagation(); // Prevent the event from bubbling up to parent elements
-            });
-        });
     });
 </script>
-
-
-
-
-
 
 
 
