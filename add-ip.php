@@ -277,7 +277,7 @@ function selectAsset(assetId, assetName, assetTagNo) {
         // Print the asset_tag_no to the console
         console.log('Selected asset_tag_no:', assetTagNo);
         
-        // Optionally, you can also store the asset ID in a hidden field for further processing
+        // Optionally, store the asset ID in a hidden field for further processing
         document.getElementById('selected_asset_id').value = assetId;
 
         // Close the modal
