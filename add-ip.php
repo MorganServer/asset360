@@ -232,8 +232,8 @@ if(isLoggedIn() == false) {
                     link.setAttribute('data-asset-id', asset.asset_tag_no);
                     link.innerHTML = `
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">${asset.asset_tag_no}</h5>
-                            <small>${asset.asset_name}</small>
+                            <h6 class="mb-1">${asset.asset_tag_no}</h6>
+                            <p>${asset.asset_name}</p>
                         </div>
                     `;
                     assetList.appendChild(link);
