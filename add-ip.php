@@ -60,8 +60,8 @@ if(isLoggedIn() == false) {
             </div>
             <div class="col">
                 <label for="assigned_asset_tag_no" class="form-label">Asset Tag Number</label>
-                <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" value="<?php echo $asset_tag_no; ?>">
-                <div id="asset_results"></div> <!-- This will display the search results -->
+                <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" onkeyup="searchAssets(this.value)">
+                <div id="asset_dropdown"></div>
             </div>
         </div>
 
@@ -138,23 +138,18 @@ if(isLoggedIn() == false) {
         });
     </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function(){
-    $('#assigned_asset_tag_no').keyup(function(){
-        var query = $(this).val();
-        if(query != ''){
-            $.ajax({
-                url: 'search_assets.php',
-                method: 'POST',
-                data: {query:query},
-                success: function(data){
-                    $('#asset_results').html(data);
-                }
-            });
-        }
-    });
-});
+    function searchAssets(keyword) {
+        $.ajax({
+            url: 'api/search_assets.php',
+            type: 'POST',
+            data: { keyword: keyword },
+            success: function(response) {
+                $('#asset_dropdown').html(response);
+            }
+        });
+    }
 </script>
 
 

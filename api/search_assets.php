@@ -2,22 +2,22 @@
 // Include your database connection file
 require_once "../app/database/connection.php";
 
-// Fetch assets based on the query
-if(isset($_POST['query'])){
-    $query = $_POST['query'];
-    
-    // Prepare and execute SQL query
-    $stmt = $conn->prepare("SELECT * FROM assets WHERE asset_tag_no LIKE ?");
-    $stmt->execute(["%$query%"]);
-    $assets = $stmt->fetchAll();
+if (isset($_POST['keyword'])) {
+    $keyword = $_POST['keyword'];
 
-    // Display search results
-    if($stmt->rowCount() > 0){
-        foreach($assets as $asset){
-            echo '<p>' . $asset['asset_tag_no'] . '</p>'; // Modify this to display relevant asset information
+    // Perform a database query to fetch assets matching the keyword
+    $query = "SELECT * FROM asset_table WHERE tag_number LIKE '%$keyword%'";
+    $result = mysqli_query($conn, $query);
+
+    // Display dropdown menu with matching assets
+    if (mysqli_num_rows($result) > 0) {
+        echo '<ul>';
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '<li onclick="selectAsset(\'' . $row['tag_number'] . '\')">' . $row['tag_number'] . '</li>';
         }
+        echo '</ul>';
     } else {
-        echo '<p>No matching assets found</p>';
+        echo 'No assets found';
     }
 }
 ?>
