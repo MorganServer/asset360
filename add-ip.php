@@ -269,16 +269,19 @@ if(isLoggedIn() == false) {
         }
 
         // Function to handle selecting an asset
-        function selectAsset(assetId, assetName) {
-            // Set the selected asset name to the input field
-            document.getElementById('assigned_asset_tag_no').value = assetName;
-            
-            // Optionally, you can also store the asset ID in a hidden field for further processing
-            document.getElementById('selected_asset_id').value = assetId;
+function selectAsset(assetId, assetName, assetTagNo) {
+    // Set the selected asset name to the input field
+    document.getElementById('assigned_asset_tag_no').value = assetName;
 
-            // Close the modal
-            $('#assetModal').modal('hide');
-        }
+    // Print the asset_tag_no to the console
+    console.log('Selected asset_tag_no:', assetTagNo);
+    
+    // Optionally, you can also store the asset ID in a hidden field for further processing
+    document.getElementById('selected_asset_id').value = assetId;
+
+    // Close the modal
+    $('#assetModal').modal('hide');
+}
     });
 </script>
 
