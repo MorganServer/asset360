@@ -232,12 +232,13 @@ if(isLoggedIn() == false) {
         var paginationLinks = document.querySelectorAll('.pagination a');
         paginationLinks.forEach(function (pageLink) {
             pageLink.addEventListener('click', function (event) {
-                event.preventDefault();
+                // Allow pagination links to work while still preventing modal closure
                 event.stopPropagation(); // Prevent the event from bubbling up to parent elements
             });
         });
     });
 </script>
+
 
 
 
