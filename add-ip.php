@@ -183,7 +183,28 @@ if(isLoggedIn() == false) {
 
                 <!-- Asset list -->
                 <div class="list-group list-group-flush" id="assetList">
-                    <!-- Asset list items will be populated dynamically -->
+                    <?php
+                    // Include your database connection file
+                    require_once "../app/database/connection.php";
+
+                    if (isset($_POST['keyword'])) {
+                        $keyword = $_POST['keyword'];
+
+                        // Perform a database query to fetch assets matching the keyword
+                        $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
+                        $result = mysqli_query($conn, $query);
+
+                        // Display dropdown menu with matching assets
+                        if (mysqli_num_rows($result) > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                // Output each asset as a link with onclick event to selectAsset function
+                                echo '<a href="#" class="list-group-item list-group-item-action asset-link" onclick="selectAsset(' . $row['asset_id'] . ', \'' . $row['asset_name'] . '\')">' . $row['asset_name'] . '</a>';
+                            }
+                        } else {
+                            echo 'No assets found';
+                        }
+                    }
+                    ?>
                 </div>
             </div>
             <div class="modal-footer">
@@ -193,6 +214,9 @@ if(isLoggedIn() == false) {
         </div>
     </div>
 </div>
+
+<!-- Hidden field to store the selected asset ID -->
+<input type="hidden" id="selected_asset_id" name="selected_asset_id">
 
 
 
@@ -206,6 +230,44 @@ if(isLoggedIn() == false) {
 <br><br><br>
 
 
+
+<!-- <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var searchButton = document.getElementById('searchButton');
+        var searchInput = document.getElementById('searchInput');
+        var assetList = document.getElementById('assetList');
+
+        searchButton.addEventListener('click', function () {
+            var keyword = searchInput.value.trim();
+            fetchAssets(keyword);
+        });
+
+        function fetchAssets(keyword) {
+            // Perform an AJAX request to fetch assets based on the keyword
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    assetList.innerHTML = this.responseText; // Update the asset list with the fetched data
+                }
+            };
+            xhttp.open("POST", "api/search_assets.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("keyword=" + keyword);
+        }
+
+        // Function to handle selecting an asset
+        function selectAsset(assetId, assetName) {
+            // Set the selected asset name to the input field
+            document.getElementById('assigned_asset_tag_no').value = assetName;
+            
+            // Optionally, you can also store the asset ID in a hidden field for further processing
+            document.getElementById('selected_asset_id').value = assetId;
+
+            // Close the modal
+            $('#assetModal').modal('hide');
+        }
+    });
+</script> -->
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -235,7 +297,7 @@ if(isLoggedIn() == false) {
         function selectAsset(assetId, assetName) {
             // Set the selected asset name to the input field
             document.getElementById('assigned_asset_tag_no').value = assetName;
-            
+
             // Optionally, you can also store the asset ID in a hidden field for further processing
             document.getElementById('selected_asset_id').value = assetId;
 
