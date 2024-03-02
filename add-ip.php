@@ -133,12 +133,11 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search for asset by name" id="searchAssetInput">
-                    <button class="btn btn-outline-secondary" type="button" id="searchAssetBtn">Search</button>
-                </div>
-                <div class="list-group list-group-flush" id="searchResults">
-                    <!-- Search results will be displayed here -->
+                <!-- Search input field -->
+                <input type="text" class="form-control mb-3" id="assetSearchInput" placeholder="Search by asset name">
+
+                <div class="list-group list-group-flush" id="assetList">
+                    <!-- Assets will be dynamically added here based on search -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -194,47 +193,36 @@ if(isLoggedIn() == false) {
 </script> -->
 
 <script>
-    // JavaScript to handle searching for assets and populating search results
     document.addEventListener('DOMContentLoaded', function () {
-        var searchBtn = document.getElementById('searchAssetBtn');
-        var searchInput = document.getElementById('searchAssetInput');
-        var searchResultsContainer = document.getElementById('searchResults');
-
-        searchBtn.addEventListener('click', function () {
-            var searchTerm = searchInput.value.trim();
-
-            // Perform AJAX request to fetch assets matching the search term
-            // Assuming you have a PHP file to handle the search query
-            // Modify the URL below accordingly
-            var url = 'api/search_assets.php?search=' + encodeURIComponent(searchTerm);
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    searchResultsContainer.innerHTML = data;
-                    bindAssetSelection();
-                })
-                .catch(error => console.error('Error fetching search results:', error));
+        var assetLinks = document.querySelectorAll('.asset-link');
+        assetLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                try {
+                    event.preventDefault();
+                    var selectedAssetTagNo = link.getAttribute('data-asset-id');
+                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                    $('#assetModal').modal('hide');
+                } catch (error) {
+                    console.error('An error occurred while closing the modal:', error);
+                }
+            });
         });
 
-        function bindAssetSelection() {
-            var assetLinks = document.querySelectorAll('.asset-link');
-            assetLinks.forEach(function (link) {
-                link.addEventListener('click', function (event) {
-                    try {
-                        event.preventDefault();
-                        var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
-                        document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                        $('#assetModal').modal('hide'); // Close the modal
-                    } catch (error) {
-                        console.error('An error occurred while closing the modal:', error);
-                        // Handle the error gracefully or log it for debugging
-                    }
-                });
+        // Search functionality
+        var assetSearchInput = document.getElementById('assetSearchInput');
+        assetSearchInput.addEventListener('input', function () {
+            var searchTerm = assetSearchInput.value.toLowerCase();
+            var assetList = document.getElementById('assetList');
+            var assets = assetList.querySelectorAll('.asset-link');
+            assets.forEach(function (asset) {
+                var assetName = asset.querySelector('small').textContent.toLowerCase();
+                if (assetName.includes(searchTerm)) {
+                    asset.style.display = 'block';
+                } else {
+                    asset.style.display = 'none';
+                }
             });
-        }
-
-        // Initially bind asset selection even if search hasn't been performed
-        bindAssetSelection();
+        });
     });
 </script>
 
