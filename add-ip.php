@@ -230,17 +230,15 @@ if(isLoggedIn() == false) {
             });
         });
 
-        // Prevent modal from closing when pagination is clicked
-        var paginationLinks = document.querySelectorAll('.pagination .page-link');
-        paginationLinks.forEach(function (paginationLink) {
-            paginationLink.addEventListener('click', function (event) {
-                if (!assetSelected) {
-                    event.preventDefault();
-                }
-            });
+        // Event delegation for pagination links
+        document.addEventListener('click', function (event) {
+            if (!assetSelected && event.target.classList.contains('page-link')) {
+                event.preventDefault(); // Prevent default action if no asset is selected
+            }
         });
     });
 </script>
+
 
 
 
