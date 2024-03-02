@@ -206,7 +206,7 @@ if(isLoggedIn() == false) {
             // Perform AJAX request to fetch assets matching the search term
             // Assuming you have a PHP file to handle the search query
             // Modify the URL below accordingly
-            var url = 'search_assets.php?search=' + encodeURIComponent(searchTerm);
+            var url = 'api/search_assets.php?search=' + encodeURIComponent(searchTerm);
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
