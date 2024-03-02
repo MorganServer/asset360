@@ -136,13 +136,13 @@ if(isLoggedIn() == false) {
             // Assuming you have a database connection established
                                     
             // Fetch assets from the database
-$query = "SELECT * FROM assets";
-$result = mysqli_query($conn, $query);
+                $query = "SELECT * FROM assets";
+                $result = mysqli_query($conn, $query);
 
             if (mysqli_num_rows($result) > 0) {
                 echo '<ul class="list-group">';
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<li class="list-group-item"><a href="#" class="asset-link" data-asset-id="' . $row['asset_id'] . '">' . $row['asset_name'] . '</a></li>';
+                    echo '<li class="list-group-item"><a href="#" class="asset-link form-check-label" data-asset-id="' . $row['asset_id'] . '">' . $row['asset_name'] . '</a></li>';
                 }
                 echo '</ul>';
                 } else {
