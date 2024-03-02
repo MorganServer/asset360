@@ -12,12 +12,19 @@ if (isset($_POST['keyword'])) {
     // Prepare an array to hold the results
     $assets = [];
 
-    // Fetch matching assets
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            // Add each asset to the array
-            $assets[] = $row;
+    if ($result) {
+        // Fetch matching assets
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                // Add each asset to the array
+                $assets[] = $row;
+            }
         }
+    } else {
+        // If there's an error in the database query
+        $error = mysqli_error($conn);
+        echo json_encode(['error' => $error]);
+        exit; // Stop further execution
     }
 
     // Output the array as JSON
