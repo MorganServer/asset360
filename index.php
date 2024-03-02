@@ -46,7 +46,7 @@ if(isLoggedIn() == false) {
             <!-- Top Card Container -->
                 <div class="card-container">
                     <div class="card" style="border-bottom: 3px solid brown; border-radius: 5px !important;">
-                    <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/servers.php">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/servers.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -72,6 +72,7 @@ if(isLoggedIn() == false) {
                         </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid gray; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/computers.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -94,8 +95,10 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid purple; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/network.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -118,8 +121,10 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid orange; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/mobile.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -142,6 +147,7 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                 </div>
             <!-- end Top Card Container -->
@@ -149,6 +155,7 @@ if(isLoggedIn() == false) {
             <!-- Bottom Card Container -->
                 <div class="card-container">
                     <div class="card" style="border-bottom: 3px solid darkgoldenrod; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/storage.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -171,8 +178,10 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid green; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/ip-address.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -195,8 +204,10 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid darkred; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/iot.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -219,8 +230,10 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                     <div class="card" style="border-bottom: 3px solid darkblue; border-radius: 5px !important;">
+                        <a class="text-decoration-none text-black stretched-link" href="<?php echo BASE_URL; ?>/pages/peripherals.php">
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
@@ -243,6 +256,7 @@ if(isLoggedIn() == false) {
                                 </div>
                             </p>
                         </div>
+                        </a>
                     </div>
                 </div>
             <!-- end Bottom Card Container -->
