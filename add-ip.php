@@ -182,11 +182,16 @@ if(isLoggedIn() == false) {
 
 <script>
     // JavaScript to handle selecting an asset and populating the input field
-    document.getElementById('selectAssetBtn').addEventListener('click', function () {
-        var selectedAssetId = document.querySelector('input[name="selected_asset"]:checked').value;
-        var selectedAssetName = document.querySelector('input[name="selected_asset"]:checked + .form-check-label').textContent;
-        document.getElementById('assigned_asset_tag_no').value = selectedAssetName; // Or you can assign the ID instead
-        $('#assetModal').modal('hide'); // Close the modal
+    document.addEventListener('DOMContentLoaded', function () {
+        var assetLinks = document.querySelectorAll('.asset-link');
+        assetLinks.forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                var selectedAssetName = link.textContent.trim();
+                document.getElementById('assigned_asset_tag_no').value = selectedAssetName;
+                $('#assetModal').modal('hide'); // Close the modal
+            });
+        });
     });
 </script>
 
