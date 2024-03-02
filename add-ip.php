@@ -71,7 +71,7 @@ if(isLoggedIn() == false) {
 
         <div class="row mb-3">
             <div class="col">
-                <label class="form-label" for="status">Asset Custodian</label>
+                <label class="form-label" for="status">IP Address Custodian</label>
                 <select class="form-control" name="custodian">
                     <option value="">Select an option...</option>
                     <?php
@@ -132,7 +132,7 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="list-group">
+                <div class="list-group-flush">
                     <?php
                     // Assuming you have a database connection established
                     // Fetch assets from the database
@@ -145,7 +145,7 @@ if(isLoggedIn() == false) {
                             <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
-                                    <small><?php echo $row['asset_name']; ?></small>
+                                    <p><?php echo $row['asset_name']; ?></p>
                                 </div>
                             </a>
                             <?php
