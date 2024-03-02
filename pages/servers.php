@@ -76,7 +76,8 @@ if(isLoggedIn() == false) {
                                 $location               = $row['location'];
                                 $created_at             = $row['created_at'];
 
-                                $f_maintenance_schedule = $date('M d, Y', $maintenance_schedule);
+                                $f_maintenance_schedule = date_format($maintenance_schedule,'M d, Y');
+                                // date_format($date,"Y/m/d H:i:s");
                                 // $f_audit_schedule = $audit_schedule->format('M d, Y');
                 ?>
                 <tr>
