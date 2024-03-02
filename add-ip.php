@@ -227,8 +227,19 @@ if(isLoggedIn() == false) {
                 }
             });
         });
+
+        // Prevent modal from closing when pagination links are clicked
+        var paginationLinks = document.querySelectorAll('.pagination a');
+        paginationLinks.forEach(function (pageLink) {
+            pageLink.addEventListener('click', function (event) {
+                // Allow pagination links to work while still preventing modal closure
+                event.preventDefault(); // Prevent the default behavior of pagination links
+                event.stopPropagation(); // Prevent the event from bubbling up to parent elements
+            });
+        });
     });
 </script>
+
 
 
 
