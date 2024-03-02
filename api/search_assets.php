@@ -2,8 +2,11 @@
 // Include your database connection file
 require_once "../app/database/connection.php";
 
-if (isset($_POST['keyword'])) {
-    $keyword = $_POST['keyword'];
+// Check if the keyword is provided in the POST request body
+$data = json_decode(file_get_contents('php://input'), true);
+
+if (isset($data['keyword'])) {
+    $keyword = $data['keyword'];
 
     // Perform a database query to fetch assets matching the keyword
     $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
@@ -30,7 +33,7 @@ if (isset($_POST['keyword'])) {
     // Output the array as JSON
     echo json_encode($assets);
 } else {
-    // If the keyword is not set, return an error message
+    // If the keyword is not provided, return an error message
     echo json_encode(['error' => 'Keyword not provided']);
 }
 ?>
