@@ -134,9 +134,13 @@ if(isLoggedIn() == false) {
             <div class="modal-body">
                 <ul class="list-group list-group-flush">
                     <?php
-                    // Assuming you have a database connection established
-                    // Fetch assets from the database
-                    $query = "SELECT * FROM assets";
+                    
+                    // Pagination variables
+                    $limit = 10; // Number of entries per page
+                    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                    $offset = ($page - 1) * $limit;
+
+                    $query = "SELECT * FROM assets LIMIT $limit OFFSET $offset";
                     $result = mysqli_query($conn, $query);
 
                     if (mysqli_num_rows($result) > 0) {
@@ -157,6 +161,20 @@ if(isLoggedIn() == false) {
                     }
                     ?>
                 </ul>
+                <?php
+            // Pagination links
+            $sql = "SELECT COUNT(*) as total FROM assets";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $total_pages = ceil($row["total"] / $limit);
+
+                echo '<ul class="pagination justify-content-center">';
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $active = ($page == $i) ? "active" : "";
+                    echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
+                }
+                echo '</ul>';
+        ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
