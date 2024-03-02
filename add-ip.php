@@ -132,7 +132,7 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul class="list-group-flush">
+                <ul class="list-group list-group-flush">
                     <?php
                     // Assuming you have a database connection established
                     // Fetch assets from the database
