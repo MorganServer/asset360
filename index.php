@@ -107,7 +107,7 @@ if(isLoggedIn() == false) {
                                 <div class="card_text_right float-end pe-3">
                                     <h2 class="text-end">
                                         <?php
-                                            $sql="SELECT count('1') FROM assets WHERE asset_type='Network'";
+                                            $sql="SELECT count('1') FROM assets WHERE asset_type='Network Device'";
                                             $result=mysqli_query($conn,$sql);
                                             $rowtotal=mysqli_fetch_array($result); 
                                             if($rowtotal[0] < 10) {
@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                 <div class="card_text_right float-end pe-3">
                                     <h2 class="text-end">
                                         <?php
-                                            $sql="SELECT count('1') FROM assets WHERE asset_type='Storage'";
+                                            $sql="SELECT count('1') FROM assets WHERE asset_type='Storage Device'";
                                             $result=mysqli_query($conn,$sql);
                                             $rowtotal=mysqli_fetch_array($result); 
                                             if($rowtotal[0] < 10) {
