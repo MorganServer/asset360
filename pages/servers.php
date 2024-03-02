@@ -76,8 +76,8 @@ if(isLoggedIn() == false) {
                                 $location               = $row['location'];
                                 $created_at             = $row['created_at'];
 
-                                $f_maintenance_schedule = $maintenance_schedule->format('M d, Y');
-                                $f_audit_schedule = $audit_schedule->format('M d, Y');
+                                $f_maintenance_schedule = $date('M d, Y', $maintenance_schedule);
+                                // $f_audit_schedule = $audit_schedule->format('M d, Y');
                 ?>
                 <tr>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
