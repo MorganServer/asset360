@@ -194,13 +194,19 @@ if(isLoggedIn() == false) {
         });
     });
 </script> -->
+
 <script>
     // JavaScript to handle selecting an asset and populating the input field
     document.getElementById('selectAssetBtn').addEventListener('click', function () {
-        var selectedAssetId = document.querySelector('input[name="selected_asset"]:checked').value;
-        var selectedAssetName = document.querySelector('input[name="selected_asset"]:checked + .form-check-label').textContent;
-        document.getElementById('assigned_asset_tag_no').value = selectedAssetName; // Or you can assign the ID instead
-        $('#assetModal').modal('hide'); // Close the modal
+        try {
+            var selectedAssetId = document.querySelector('input[name="selected_asset"]:checked').value;
+            var selectedAssetName = document.querySelector('input[name="selected_asset"]:checked + .form-check-label').textContent;
+            document.getElementById('assigned_asset_tag_no').value = selectedAssetName; // Or you can assign the ID instead
+            $('#assetModal').modal('hide'); // Close the modal
+        } catch (error) {
+            console.error('An error occurred while closing the modal:', error);
+            // Handle the error gracefully or log it for debugging
+        }
     });
 </script>
 
