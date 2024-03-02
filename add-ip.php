@@ -231,9 +231,9 @@ if(isLoggedIn() == false) {
                     link.className = 'list-group-item list-group-item-action asset-link';
                     link.setAttribute('data-asset-id', asset.asset_tag_no);
                     link.innerHTML = `
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-1">${asset.asset_tag_no}</h6>
-                            <p>${asset.asset_name}</p>
+                        <div class="d-flex w-100">
+                            <h6 class="mb-1">${asset.asset_name}</h6>
+                            <p>${asset.asset_tag_no}</p>
                         </div>
                     `;
                     assetList.appendChild(link);
