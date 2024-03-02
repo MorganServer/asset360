@@ -1,6 +1,6 @@
 <?php
 // Include your database connection file
-include '../database/connection.php';
+require_once "../database/connection.php";
 
 // Fetch assets based on the query
 if(isset($_POST['query'])){
