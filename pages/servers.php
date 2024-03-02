@@ -46,9 +46,9 @@ if(isLoggedIn() == false) {
                 <tr>
                 <th scope="col">Tag No</th>
                 <th scope="col">Asset Name</th>
+                <th scope="col">Location</th>
                 <th scope="col">Maintenance Schedule</th>
                 <th scope="col">Last Audit</th>
-                <th scope="col">Location</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
                 </tr>
