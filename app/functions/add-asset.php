@@ -3,7 +3,7 @@ if (isset($_POST['add-asset'])) {
     $idno = rand(1000000, 9999999);
 
     // Sanitize input data
-    $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : "";
+    $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : ""; // TRY TO MAKE THIS AUTOMATIC!!!
     $asset_name = isset($_POST['asset_name']) ? mysqli_real_escape_string($conn, $_POST['asset_name']) : "";
     $asset_type = isset($_POST['asset_type']) ? mysqli_real_escape_string($conn, $_POST['asset_type']) : "";
     $serial_number = isset($_POST['serial_number']) ? mysqli_real_escape_string($conn, $_POST['serial_number']) : "";
