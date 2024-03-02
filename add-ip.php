@@ -137,7 +137,7 @@ if(isLoggedIn() == false) {
                                     
             // Fetch assets from the database
             $query = "SELECT * FROM assets";
-            $result = mysqli_query($connection, $query);
+            $result = mysqli_query($conn, $query);
                                     
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -149,9 +149,6 @@ if(isLoggedIn() == false) {
             } else {
                 echo "<p>No assets found.</p>";
             }
-            
-            // Close database connection
-            mysqli_close($connection);
             ?>
             </div>
             <div class="modal-footer">
