@@ -124,6 +124,7 @@ if(isLoggedIn() == false) {
 
 
 <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -132,30 +133,12 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="list-group list-group-flush">
-                    <?php
-                    // Assuming you have a database connection established
-                    // Fetch assets from the database
-                    $query = "SELECT * FROM assets";
-                    $result = mysqli_query($conn, $query);
-
-                    if (mysqli_num_rows($result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
-                            <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
-                                    <small><?php echo $row['asset_name']; ?></small>
-                                </div>
-                            </a>
-                            <?php
-                        }
-                    } else {
-                        ?>
-                        <p class="text-muted">No assets found.</p>
-                        <?php
-                    }
-                    ?>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search asset..." id="assetSearchInput">
+                    <button class="btn btn-primary" type="button" id="searchAssetBtn">Search</button>
+                </div>
+                <div class="list-group list-group-flush" id="searchResults">
+                    <!-- Search results will be displayed here -->
                 </div>
             </div>
             <div class="modal-footer">
@@ -190,7 +173,7 @@ if(isLoggedIn() == false) {
     </script>
 
 
-<script>
+<!-- <script>
     // JavaScript to handle selecting an asset and populating the input field
     document.addEventListener('DOMContentLoaded', function () {
         var assetLinks = document.querySelectorAll('.asset-link');
@@ -206,6 +189,62 @@ if(isLoggedIn() == false) {
                     // Handle the error gracefully or log it for debugging
                 }
             });
+        });
+    });
+</script> -->
+
+<script>
+    // JavaScript to handle searching assets and selecting an asset
+    document.addEventListener('DOMContentLoaded', function () {
+        var assetSearchInput = document.getElementById('assetSearchInput');
+        var searchAssetBtn = document.getElementById('searchAssetBtn');
+        var searchResults = document.getElementById('searchResults');
+
+        searchAssetBtn.addEventListener('click', function () {
+            var searchTerm = assetSearchInput.value.trim().toLowerCase();
+            searchResults.innerHTML = ''; // Clear previous search results
+            <?php
+            $query = "SELECT * FROM assets WHERE LOWER(asset_name) LIKE '%$searchTerm%'";
+            $result = mysqli_query($conn, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                    var assetLink = document.createElement('a');
+                    assetLink.href = '#';
+                    assetLink.classList.add('list-group-item', 'list-group-item-action', 'asset-link');
+                    assetLink.setAttribute('data-asset-id', '<?php echo $row['asset_tag_no']; ?>');
+                    assetLink.innerHTML = `
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
+                            <small><?php echo $row['asset_name']; ?></small>
+                        </div>`;
+                    searchResults.appendChild(assetLink);
+                    <?php
+                }
+            } else {
+                ?>
+                var noResultsMessage = document.createElement('p');
+                noResultsMessage.classList.add('text-muted');
+                noResultsMessage.textContent = 'No assets found.';
+                searchResults.appendChild(noResultsMessage);
+                <?php
+            }
+            ?>
+        });
+
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('asset-link')) {
+                try {
+                    event.preventDefault();
+                    var selectedAssetTagNo = event.target.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
+                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                    $('#assetModal').modal('hide'); // Close the modal
+                } catch (error) {
+                    console.error('An error occurred while closing the modal:', error);
+                    // Handle the error gracefully or log it for debugging
+                }
+            }
         });
     });
 </script>
