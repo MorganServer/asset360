@@ -132,34 +132,25 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-    <?php
-    // Assuming you have a database connection established
-                            
-    // Fetch assets from the database
-    $query = "SELECT * FROM assets";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-    ?>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <div class="col">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['asset_name']; ?></h5>
-                        <p class="card-text"><?php echo $row['description']; ?></p>
-                        <button type="button" class="btn btn-primary select-asset-btn" data-asset-id="<?php echo $row['asset_id']; ?>" data-asset-tag-no="<?php echo $row['asset_tag_no']; ?>" data-bs-dismiss="modal">Select</button>
+                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $row['asset_tag_no']; ?></h6>
+                        <!-- Optionally, you can add more details here -->
+                        <p class="card-text">Description: <?php echo $row['description']; ?></p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary asset-link" data-asset-id="<?php echo $row['asset_id']; ?>">Select</a>
                     </div>
                 </div>
             </div>
-    <?php
-        }
-    } else {
-        echo "<p>No assets found.</p>";
-    }
-    ?>
+        <?php } ?>
     </div>
 </div>
+
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
