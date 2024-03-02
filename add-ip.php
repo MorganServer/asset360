@@ -60,8 +60,12 @@ if(isLoggedIn() == false) {
             </div>
             <div class="col">
                 <label for="assigned_asset_tag_no" class="form-label">Asset Tag Number</label>
-                <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" onkeyup="searchAssets(this.value)">
-                <div id="asset_dropdown"></div>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" value="<?php echo $asset_tag_no; ?>">
+                    <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#assetModal">
+                        <i class="bi bi-search"></i> <!-- Bootstrap magnify glass icon -->
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -119,6 +123,35 @@ if(isLoggedIn() == false) {
     </form>
 
 
+    <!-- Modal -->
+<div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assetModalLabel">Select Asset</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Here goes the list of assets fetched from PHP -->
+                <?php
+                // Assume $assets is an array containing your assets
+                foreach ($assets as $asset) {
+                    echo '<div class="form-check">';
+                    echo '<input class="form-check-input" type="radio" name="selected_asset" id="asset_' . $asset['id'] . '" value="' . $asset['id'] . '">';
+                    echo '<label class="form-check-label" for="asset_' . $asset['id'] . '">' . $asset['name'] . '</label>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="selectAssetBtn">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- </div> -->
  </div>
@@ -138,24 +171,17 @@ if(isLoggedIn() == false) {
         });
     </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
-$(document).ready(function(){
-    $('#assigned_asset_tag_no').keyup(function(){
-        var query = $(this).val();
-        if(query != ''){
-            $.ajax({
-                url: 'api/search_assets.php',
-                method: 'POST',
-                data: {query:query},
-                success: function(data){
-                    $('#asset_results').html(data);
-                }
-            });
-        }
+    // JavaScript to handle selecting an asset and populating the input field
+    document.getElementById('selectAssetBtn').addEventListener('click', function () {
+        var selectedAssetId = document.querySelector('input[name="selected_asset"]:checked').value;
+        var selectedAssetName = document.querySelector('input[name="selected_asset"]:checked + .form-check-label').textContent;
+        document.getElementById('assigned_asset_tag_no').value = selectedAssetName; // Or you can assign the ID instead
+        $('#assetModal').modal('hide'); // Close the modal
     });
-});
 </script>
+
 
 
 
