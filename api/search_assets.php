@@ -9,7 +9,7 @@ if (isset($data['keyword'])) {
     $keyword = $data['keyword'];
 
     // Perform a database query to fetch assets matching the keyword
-    $query = "SELECT * FROM assets WHERE asset_name LIKE '%$keyword%'";
+    $query = "SELECT * FROM assets WHERE asset_tag_no LIKE '%$keyword%'";
     $result = mysqli_query($conn, $query);
 
     // Prepare an array to hold the results
