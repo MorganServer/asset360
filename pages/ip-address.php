@@ -66,7 +66,7 @@ if(isLoggedIn() == false) {
                         $num_rows = mysqli_num_rows($result);
                         if($num_rows > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                $id                     = $row['asset_id'];
+                                $id                     = $row['ip_id'];
                                 $idno                   = $row['idno'];
                                 $status                 = $row['status'];
                                 $ip_address             = $row['ip_address'];
@@ -101,7 +101,7 @@ if(isLoggedIn() == false) {
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
-                    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="ip-address.php?deleteip=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
                 <?php
                         }
