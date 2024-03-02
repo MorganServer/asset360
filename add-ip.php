@@ -136,19 +136,18 @@ if(isLoggedIn() == false) {
             // Assuming you have a database connection established
                                     
             // Fetch assets from the database
-            $query = "SELECT * FROM assets";
-            $result = mysqli_query($conn, $query);
-                                    
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="radio" name="selected_asset" id="asset_' . $row['id'] . '" value="' . $row['id'] . '">';
-                    echo '<label class="form-check-label" for="asset_' . $row['id'] . '">' . $row['name'] . '</label>';
-                    echo '</div>';
-                }
-            } else {
-                echo "<p>No assets found.</p>";
-            }
+$query = "SELECT * FROM assets";
+$result = mysqli_query($conn, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    echo '<ul class="list-group">';
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo '<li class="list-group-item"><a href="#" class="asset-link" data-asset-id="' . $row['id'] . '">' . $row['name'] . '</a></li>';
+    }
+    echo '</ul>';
+} else {
+    echo "<p>No assets found.</p>";
+}
             ?>
             </div>
             <div class="modal-footer">
