@@ -209,6 +209,9 @@ if(isLoggedIn() == false) {
 
 
 <script>
+    // Flag to track if an asset is selected
+    var assetSelected = false;
+
     // JavaScript to handle selecting an asset and populating the input field
     document.addEventListener('DOMContentLoaded', function () {
         var assetLinks = document.querySelectorAll('.asset-link');
@@ -218,10 +221,21 @@ if(isLoggedIn() == false) {
                     event.preventDefault();
                     var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
                     document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                    assetSelected = true; // Set the flag to true since an asset is selected
                     $('#assetModal').modal('hide'); // Close the modal
                 } catch (error) {
                     console.error('An error occurred while closing the modal:', error);
                     // Handle the error gracefully or log it for debugging
+                }
+            });
+        });
+
+        // Prevent modal from closing when pagination is clicked
+        var paginationLinks = document.querySelectorAll('.pagination .page-link');
+        paginationLinks.forEach(function (paginationLink) {
+            paginationLink.addEventListener('click', function (event) {
+                if (!assetSelected) {
+                    event.preventDefault();
                 }
             });
         });
