@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
 
 <!-- Modal -->
 <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="assetModalLabel">Select Asset</h5>
@@ -159,8 +159,8 @@ if(isLoggedIn() == false) {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="selectAssetBtn">Select</button>
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="selectAssetBtn">Select</button> -->
             </div>
         </div>
     </div>
