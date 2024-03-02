@@ -132,16 +132,27 @@ if(isLoggedIn() == false) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Here goes the list of assets fetched from PHP -->
-                <?php
-                // Assume $assets is an array containing your assets
-                foreach ($assets as $asset) {
+            <?php
+            // Assuming you have a database connection established
+                                    
+            // Fetch assets from the database
+            $query = "SELECT * FROM assets";
+            $result = mysqli_query($connection, $query);
+                                    
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="form-check">';
-                    echo '<input class="form-check-input" type="radio" name="selected_asset" id="asset_' . $asset['id'] . '" value="' . $asset['id'] . '">';
-                    echo '<label class="form-check-label" for="asset_' . $asset['id'] . '">' . $asset['name'] . '</label>';
+                    echo '<input class="form-check-input" type="radio" name="selected_asset" id="asset_' . $row['id'] . '" value="' . $row['id'] . '">';
+                    echo '<label class="form-check-label" for="asset_' . $row['id'] . '">' . $row['name'] . '</label>';
                     echo '</div>';
                 }
-                ?>
+            } else {
+                echo "<p>No assets found.</p>";
+            }
+            
+            // Close database connection
+            mysqli_close($connection);
+            ?>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
