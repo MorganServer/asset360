@@ -59,8 +59,8 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="ip_address" name="ip_address">
             </div>
             <div class="col">
-                <label for="assigned_asset_id" class="form-label">Asset Tag Number</label>
-                <input type="text" class="form-control" id="assigned_asset_id" name="assigned_asset_id">
+                <label for="assigned_asset_tag_no" class="form-label">Asset Tag Number</label>
+                <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no">
             </div>
         </div>
 
