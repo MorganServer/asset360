@@ -138,18 +138,23 @@ if(isLoggedIn() == false) {
         });
     </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    function searchAssets(keyword) {
-        $.ajax({
-            url: 'api/search_assets.php',
-            type: 'POST',
-            data: { keyword: keyword },
-            success: function(response) {
-                $('#asset_dropdown').html(response);
-            }
-        });
-    }
+$(document).ready(function(){
+    $('#assigned_asset_tag_no').keyup(function(){
+        var query = $(this).val();
+        if(query != ''){
+            $.ajax({
+                url: 'api/search_assets.php',
+                method: 'POST',
+                data: {query:query},
+                success: function(data){
+                    $('#asset_results').html(data);
+                }
+            });
+        }
+    });
+});
 </script>
 
 
