@@ -56,7 +56,10 @@ if(isLoggedIn() == false) {
         <div class="row mb-3">
             <div class="col">
                 <label for="asset_tag_no" class="form-label">Asset Tag Number</label>
-                <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no">
+                <div class="input-group">
+                    <div class="input-group-text">@</div>
+                    <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no">
+                </div>
             </div>
             <div class="col">
                 <label for="asset_name" class="form-label">Asset Name</label>
