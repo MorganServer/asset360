@@ -146,12 +146,14 @@ if(isLoggedIn() == false) {
                     if (mysqli_num_rows($result) > 0) {
                         while ($row = mysqli_fetch_assoc($result)) {
                             ?>
+                            <li>
                             <a href="#" class="list-group-item list-group-item-action asset-link" data-asset-id="<?php echo $row['asset_tag_no']; ?>">
                                 <div class="d-flex w-100 justify-content-between">
                                     <h5 class="mb-1"><?php echo $row['asset_tag_no']; ?></h5>
                                     <p><?php echo $row['asset_name']; ?></p>
                                 </div>
                             </a>
+                            </li>
                             <?php
                         }
                     } else {
@@ -209,9 +211,6 @@ if(isLoggedIn() == false) {
 
 
 <script>
-    // Flag to track if an asset is selected
-    var assetSelected = false;
-
     // JavaScript to handle selecting an asset and populating the input field
     document.addEventListener('DOMContentLoaded', function () {
         var assetLinks = document.querySelectorAll('.asset-link');
@@ -221,7 +220,6 @@ if(isLoggedIn() == false) {
                     event.preventDefault();
                     var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
                     document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                    assetSelected = true; // Set the flag to true since an asset is selected
                     $('#assetModal').modal('hide'); // Close the modal
                 } catch (error) {
                     console.error('An error occurred while closing the modal:', error);
@@ -230,14 +228,17 @@ if(isLoggedIn() == false) {
             });
         });
 
-        // Event delegation for pagination links
-        document.addEventListener('click', function (event) {
-            if (!assetSelected && event.target.classList.contains('page-link')) {
-                event.preventDefault(); // Prevent default action if no asset is selected
-            }
+        // Prevent modal from closing when pagination links are clicked
+        var paginationLinks = document.querySelectorAll('.pagination a');
+        paginationLinks.forEach(function (pageLink) {
+            pageLink.addEventListener('click', function (event) {
+                event.preventDefault();
+                event.stopPropagation(); // Prevent the event from bubbling up to parent elements
+            });
         });
     });
 </script>
+
 
 
 
