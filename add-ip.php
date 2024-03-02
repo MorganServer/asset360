@@ -253,7 +253,7 @@ if(isLoggedIn() == false) {
 
         assetList.appendChild(link);
     });
-}
+
 
 
                 // Attach event listeners to the newly created asset links
