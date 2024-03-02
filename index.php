@@ -114,7 +114,7 @@ if(isLoggedIn() == false) {
                                             }
                                         ?>
                                     </h2>
-                                    <p class="text-muted text-end">Networking</p>
+                                    <p class="text-muted text-end">Network Devices</p>
                                 </div>
                             </p>
                         </div>
@@ -152,7 +152,7 @@ if(isLoggedIn() == false) {
                         <div class="card-body text-center">
                             <p class="card-text">
                                 <div class="card_text_left float-start" style="font-size: 45px;">
-                                    <i class="bi bi-sd-card-fill ps-4"></i>
+                                    <i class="bi bi-device-ssd ps-4"></i>
                                 </div>
                                 <div class="card_text_right float-end pe-3">
                                     <h2 class="text-end">
