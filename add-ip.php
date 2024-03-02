@@ -274,7 +274,7 @@ if(isLoggedIn() == false) {
 
         function fetchAssets(searchQuery) {
             // Fetch assets from the database based on the search query
-            var url = 'fetch_assets.php?search=' + encodeURIComponent(searchQuery);
+            var url = 'api/search_assets.php?search=' + encodeURIComponent(searchQuery);
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
