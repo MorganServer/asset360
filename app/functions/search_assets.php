@@ -1,6 +1,6 @@
 <?php
 // Include your database connection file
-require_once "../database/connection.php";
+require_once('/var/www/asset360/public_html/asset360/database/connection.php');
 
 // Fetch assets based on the query
 if(isset($_POST['query'])){
