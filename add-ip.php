@@ -124,21 +124,25 @@ if(isLoggedIn() == false) {
 
 
 <!-- Modal -->
-<!-- Modal -->
 <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="assetModalLabel">Select Asset</h5>
-                <input type="text" id="assetSearchInput" class="form-control" placeholder="Search asset...">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search Asset" id="assetSearchInput">
+                    <button class="btn btn-primary" type="button" id="assetSearchBtn">Search</button>
+                </div>
                 <div class="list-group list-group-flush" id="assetList">
-                    <!-- Asset items will be dynamically added here -->
+                    <!-- Assets will be dynamically loaded here -->
                 </div>
             </div>
             <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                <!-- <button type="button" class="btn btn-primary" id="selectAssetBtn">Select</button> -->
             </div>
         </div>
     </div>
@@ -193,46 +197,59 @@ if(isLoggedIn() == false) {
         var assetSearchInput = document.getElementById('assetSearchInput');
         var assetList = document.getElementById('assetList');
 
-        assetSearchInput.addEventListener('input', function () {
-            var searchQuery = assetSearchInput.value.trim().toLowerCase();
+        document.getElementById('assetSearchBtn').addEventListener('click', function () {
+            var searchValue = assetSearchInput.value.trim();
+            fetchAssets(searchValue);
+        });
 
-            fetch('search_assets.php?query=' + encodeURIComponent(searchQuery))
+        function fetchAssets(searchValue) {
+            // Fetch assets from the server based on the search value
+            fetch('fetch_assets.php?search=' + searchValue)
                 .then(response => response.json())
                 .then(data => {
-                    assetList.innerHTML = '';
-                    if (data.length > 0) {
-                        data.forEach(asset => {
-                            var listItem = document.createElement('a');
-                            listItem.href = '#';
-                            listItem.classList.add('list-group-item', 'list-group-item-action', 'asset-link');
-                            listItem.setAttribute('data-asset-id', asset.asset_tag_no);
-                            listItem.innerHTML = `
-                                <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">${asset.asset_tag_no}</h5>
-                                    <small>${asset.asset_name}</small>
-                                </div>`;
-                            assetList.appendChild(listItem);
-                        });
-                    } else {
-                        var noResultItem = document.createElement('p');
-                        noResultItem.classList.add('text-muted');
-                        noResultItem.textContent = 'No assets found.';
-                        assetList.appendChild(noResultItem);
-                    }
+                    renderAssets(data);
                 })
                 .catch(error => {
                     console.error('Error fetching assets:', error);
                 });
-        });
+        }
 
-        assetList.addEventListener('click', function (event) {
-            if (event.target.classList.contains('asset-link')) {
-                event.preventDefault();
-                var selectedAssetTagNo = event.target.getAttribute('data-asset-id');
-                document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                $('#assetModal').modal('hide');
+        function renderAssets(assets) {
+            // Clear existing assets
+            assetList.innerHTML = '';
+
+            if (assets.length > 0) {
+                assets.forEach(asset => {
+                    var link = document.createElement('a');
+                    link.href = '#';
+                    link.className = 'list-group-item list-group-item-action asset-link';
+                    link.setAttribute('data-asset-id', asset.asset_tag_no);
+                    link.innerHTML = `
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">${asset.asset_tag_no}</h5>
+                            <small>${asset.asset_name}</small>
+                        </div>
+                    `;
+                    assetList.appendChild(link);
+                });
+
+                // Attach event listeners to the newly created asset links
+                var assetLinks = document.querySelectorAll('.asset-link');
+                assetLinks.forEach(function (link) {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        var selectedAssetTagNo = link.getAttribute('data-asset-id');
+                        document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
+                        $('#assetModal').modal('hide');
+                    });
+                });
+            } else {
+                var message = document.createElement('p');
+                message.className = 'text-muted';
+                message.textContent = 'No assets found.';
+                assetList.appendChild(message);
             }
-        });
+        }
     });
 </script>
 
