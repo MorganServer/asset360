@@ -123,6 +123,6 @@ if(isLoggedIn() == false) {
         </div>
     <!-- END main-container -->
 
-    <script src="<?php echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script>
+    <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
 </html>
