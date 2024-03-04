@@ -53,54 +53,53 @@ if(isLoggedIn() == false) {
         </tr>
     </thead>
     <tbody>
-        <?php
-        // Pagination variables
-        $limit = 10; // Number of entries per page
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $offset = ($page - 1) * $limit;
+    <?php
+    // Pagination variables
+    $limit = 10; // Number of entries per page
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $offset = ($page - 1) * $limit;
+    
+    $sql = "SELECT assets.*, ip_address.assigned_asset_tag_no AS ip_assigned_asset_tag_no
+            FROM assets
+            LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+            ORDER BY assets.created_at DESC
+            LIMIT $limit OFFSET $offset";
+    $result = mysqli_query($conn, $sql);
+    if($result) {
+        $num_rows = mysqli_num_rows($result);
+        if($num_rows > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id                     = $row['asset_id']; 
+                $asset_name             = $row['asset_name']; 
+                $asset_tag_no           = $row['asset_tag_no']; 
+                $status                 = $row['status']; 
+                $maintenance_schedule   = $row['maintenance_schedule'];
+                $audit_schedule         = $row['audit_schedule']; 
+                $location               = $row['location']; 
+                $created_at             = $row['created_at']; 
+                $ip_assigned_asset_tag_no = $row['ip_assigned_asset_tag_no']; 
 
-        $sql = "SELECT assets.*, ip_address.*
-                FROM ip_address
-                LEFT JOIN assets ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-                ORDER BY assets.created_at DESC
-                LIMIT $limit OFFSET $offset";
-        $result = mysqli_query($conn, $sql);
-        if ($result) {
-            $num_rows = mysqli_num_rows($result);
-            if ($num_rows > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $asset_tag_no = $row['assets.asset_tag_no'];
-                    $asset_name = $row['assets.asset_name'];
-                    $ip_address = $row['ip_address.ip_address']; // Accessing the IP address column from the 'ip_address' table
-
-                    // Handling case where IP address is not available
-                    $ip_address_display = $ip_address ? $ip_address : '-';
-
-                    $status = $row['assets.status'];
-                    $maintenance_schedule = $row['assets.maintenance_schedule'];
-                    $audit_schedule = $row['assets.audit_schedule'];
-                    $location = $row['assets.location'];
-                    $created_at = $row['assets.created_at'];
-
-                    $ms_date = date_create($maintenance_schedule);
-                    $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
-                    $as_date = date_create($audit_schedule);
-                    $f_audit_schedule = date_format($as_date, 'M d, Y');
-        ?>
-                    <tr>
-                        <th scope="row"><?php echo $asset_tag_no; ?></th>
-                        <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
-                        <td><?php echo $ip_address_display; ?></td> <!-- Displaying IP address or '-' if not available -->
-                        <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
-                        <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
-                        <td><?php echo $status ? $status : '-'; ?></td>
-                        <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
-                    </tr>
-        <?php
-                }
+                $ms_date = date_create($maintenance_schedule);
+                $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
+                $as_date = date_create($audit_schedule);
+                $f_audit_schedule = date_format($as_date, 'M d, Y');
+?>
+<tr>
+    <th scope="row"><?php echo $asset_tag_no; ?></th>
+    <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
+    <td><?php echo $ip_assigned_asset_tag_no ? $ip_assigned_asset_tag_no : '-'; ?></td>
+    <td><?php echo $location ? $location : '-'; ?></td>
+    <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
+    <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
+    <td><?php echo $status ? $status : '-'; ?></td>
+    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+</tr>
+<?php
             }
         }
-        ?>
+    }
+?>
+
     </tbody>
 </table>
 
