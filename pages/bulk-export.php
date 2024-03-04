@@ -59,7 +59,7 @@ if(isLoggedIn() == false) {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($page - 1) * $limit;
     
-    $sql = "SELECT assets.*, ip_address.assigned_asset_tag_no AS ip_assigned_asset_tag_no
+    $sql = "SELECT assets.*, ip_address.*
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
             ORDER BY assets.created_at DESC
@@ -77,7 +77,7 @@ if(isLoggedIn() == false) {
                 $audit_schedule         = $row['audit_schedule']; 
                 $location               = $row['location']; 
                 $created_at             = $row['created_at']; 
-                $ip_assigned_asset_tag_no = $row['ip_assigned_asset_tag_no']; 
+                $ip_assigned_asset_tag_no = $row['ip_address']; 
 
                 $ms_date = date_create($maintenance_schedule);
                 $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
