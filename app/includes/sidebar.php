@@ -13,7 +13,7 @@
         <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/pages/asset-audit.php"><i class="bi bi-search"></i> Asset Audit</a></li>
         <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/pages/system-settings.php"><i class="bi bi-building-fill-gear"></i> System Setting</a></li>
         <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/pages/users.php"><i class="bi bi-people-fill"></i> Manage Users</a></li>
-        <!-- <li class="list-group-item"><a href="<?php //echo BASE_URL; ?>/pages/bulk-import.php"><i class="bi bi-file-earmark-arrow-down-fill"></i> Bulk Import</a></li> -->
+        <li class="list-group-item"><a href="<?php echo BASE_URL; ?>/pages/bulk-export.php"><i class="bi bi-file-earmark-arrow-up-fill"></i> Bulk Export</a></li>
     </ul>
 
 </div>
