@@ -59,7 +59,7 @@ if(isLoggedIn() == false) {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($page - 1) * $limit;
     
-    $sql = "SELECT assets.*, ip_address.*
+    $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
             ORDER BY assets.created_at DESC
