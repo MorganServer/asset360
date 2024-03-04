@@ -1,3 +1,4 @@
+<?php
 // Function to output CSV data
 function outputCSV($data) {
     $output = fopen("php://output", "w");
@@ -41,3 +42,4 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No data found to export.";
 }
+?>
