@@ -60,8 +60,8 @@ if(isLoggedIn() == false) {
         $offset = ($page - 1) * $limit;
 
         $sql = "SELECT assets.*, ip_address.*
-                FROM assets
-                LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+                FROM ip_address
+                LEFT JOIN assets ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
                 ORDER BY assets.created_at DESC
                 LIMIT $limit OFFSET $offset";
         $result = mysqli_query($conn, $sql);
