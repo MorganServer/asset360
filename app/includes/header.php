@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="container-fluid">
     <a class="navbar-brand" href="<?php echo BASE_URL; ?>/">
-        <img src="<?php echo BASE_URL . "/assets/images/logo.png"; ?>" class="header_logo" alt="Logo">
+        <img src="<?php echo BASE_URL . "/assets/images/logo-white.png"; ?>" class="header_logo" alt="Logo">
     </a>
     <div class="header_right">
       <div class="dropdown d-flex dropdown">
