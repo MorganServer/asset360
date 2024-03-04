@@ -93,6 +93,7 @@ body {
 
 /* container */
 .container {
+  background-color: white !important;
   position: absolute;
   margin-left: 200px;
   max-width: calc(100vw - 200px);
