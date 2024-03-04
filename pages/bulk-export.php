@@ -79,10 +79,11 @@ if(isLoggedIn() == false) {
                 $created_at             = $row['created_at']; 
                 $ip_address             = $row['ip_address']; 
 
-                $ms_date = date_create($maintenance_schedule);
-                $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
-                $as_date = date_create($audit_schedule);
-                $f_audit_schedule = date_format($as_date, 'M d, Y');
+                // Format maintenance schedule if not null
+                $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
+
+                // Format audit schedule if not null
+                $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
 ?>
 <tr>
     <th scope="row"><?php echo $asset_tag_no; ?></th>
