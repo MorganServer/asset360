@@ -62,7 +62,7 @@ if(isLoggedIn() == false) {
     $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-            ORDER BY assets.created_at DESC
+            ORDER BY assets.created_at ASC
             LIMIT $limit OFFSET $offset";
     $result = mysqli_query($conn, $sql);
     if($result) {
@@ -104,7 +104,7 @@ if(isLoggedIn() == false) {
         <br>
         <?php
             // Pagination links
-            $sql = "SELECT COUNT(*) as total FROM assets WHERE asset_type = 'Computer'";
+            $sql = "SELECT COUNT(*) as total FROM assets";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
             $total_pages = ceil($row["total"] / $limit);
