@@ -128,10 +128,10 @@ if(isLoggedIn() == false) {
                 <label for="end_of_life_date" class="form-label">End of Life Date</label>
                 <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date">
             </div>
-            <div class="col">
+            <!-- <div class="col">
                 <label for="maintenance_schedule" class="form-label">Maintenance Schedule</label>
                 <input type="date" class="form-control" id="maintenance_schedule" name="maintenance_schedule">
-            </div>
+            </div> -->
             <?php
                 $audit_schedule = date('M d, Y', strtotime('+3 months'));
             ?>

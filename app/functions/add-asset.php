@@ -3,7 +3,23 @@ if (isset($_POST['add-asset'])) {
     $idno = rand(1000000, 9999999);
 
     // Sanitize input data
-    $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : ""; // TRY TO MAKE THIS AUTOMATIC!!!
+
+    // // Get the maximum asset_tag_no from the database
+    // $sql = "SELECT MAX(asset_tag_no) AS max_tag_no FROM assets";
+    // $result = mysqli_query($conn, $sql);
+    // $row = mysqli_fetch_assoc($result);
+    // $max_tag_no = $row['max_tag_no'];
+
+    // // Increment the maximum asset_tag_no by 1
+    // $next_tag_no = ($max_tag_no ? $max_tag_no + 1 : 4); // Start at '0004' if there's no existing data
+
+    // // Format the asset_tag_no to have leading zeros
+    // $asset_tag_no = sprintf('%04d', $next_tag_no);
+
+    // Sanitize input data
+    $tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : ""; 
+    $asset_tag_no = "M-" . $tag_no;
+    // $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : ""; // TRY TO MAKE THIS AUTOMATIC!!!
     $asset_name = isset($_POST['asset_name']) ? mysqli_real_escape_string($conn, $_POST['asset_name']) : "";
     $asset_type = isset($_POST['asset_type']) ? mysqli_real_escape_string($conn, $_POST['asset_type']) : "";
     $serial_number = isset($_POST['serial_number']) ? mysqli_real_escape_string($conn, $_POST['serial_number']) : "";
@@ -15,9 +31,8 @@ if (isset($_POST['add-asset'])) {
     $location = isset($_POST['location']) ? mysqli_real_escape_string($conn, $_POST['location']) : "";
     $custodian = isset($_POST['custodian']) ? mysqli_real_escape_string($conn, $_POST['custodian']) : "";
     // $maintenance_schedule = isset($_POST['maintenance_schedule']) ? mysqli_real_escape_string($conn, $_POST['maintenance_schedule']) : "";
-    //$audit_schedule = isset($_POST['audit_schedule']) ? mysqli_real_escape_string($conn, $_POST['audit_schedule']) : ""; 
+    // $audit_schedule = isset($_POST['audit_schedule']) ? mysqli_real_escape_string($conn, $_POST['audit_schedule']) : ""; 
     $audit_schedule = date('Y-m-d', strtotime('+3 months'));
-    //I want to add an audit button to the view asset page. Once clicked, it will pop open a modal that will ask for details of what was audited and a once submitted, it will mark the audit as complete and change the audit schedule field to do be due another 3 months.
     $notes = isset($_POST['notes']) ? mysqli_real_escape_string($conn, $_POST['notes']) : "";
     $status = isset($_POST['status']) ? mysqli_real_escape_string($conn, $_POST['status']) : "";
 
