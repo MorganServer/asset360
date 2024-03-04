@@ -1,5 +1,5 @@
 <?php
-require_once "tcpdf/tcpdf.php"; // Include TCPDF library
+require_once "../../libraries/tcpdf.php"; // Include TCPDF library
 
 // Create new PDF instance
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
