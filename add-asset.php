@@ -133,7 +133,7 @@ if(isLoggedIn() == false) {
                 <input type="date" class="form-control" id="maintenance_schedule" name="maintenance_schedule">
             </div>
             <?php
-                $audit_schedule = date('Y-m-d', strtotime('+3 months'));
+                $audit_schedule = date('M d, Y', strtotime('+3 months'));
             ?>
             <div class="col">
                 <label for="audit_schedule" class="form-label">First Audit</label>
