@@ -39,6 +39,7 @@ if(isLoggedIn() == false) {
             <h2 class="mt-4">
                 Bulk Export Asset Inventory
             </h2>
+            <button onclick="exportToPDF()" class="btn btn-primary text-end">Export to PDF</button>
             <hr>
 
             <table class="table">
@@ -122,5 +123,6 @@ if(isLoggedIn() == false) {
         </div>
     <!-- END main-container -->
 
+    <script src="<?php echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script>
 </body>
 </html>
