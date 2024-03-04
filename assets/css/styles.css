@@ -66,7 +66,8 @@
 .sidebar {
   position: absolute;
   width: 200px;
-  background-color: rgb(36, 45, 49);
+  /* background-color: rgb(36, 45, 49); */
+  background-color: #013154;
   flex-shrink: 0;
   height: calc(100% - 57.5px);
   top: 57.5px; /* Adjust based on header height */
