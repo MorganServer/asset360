@@ -1,13 +1,13 @@
 <?php
 date_default_timezone_set('America/Denver');
-require_once "app/database/connection.php";
-require_once "path.php";
+require_once "../app/database/connection.php";
+require_once "../path.php";
 session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$files = glob("app/functions/*.php");
+$files = glob("../app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
@@ -29,7 +29,7 @@ if(isLoggedIn() == false) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
 
     <title>Home | Asset360</title>
 </head>
