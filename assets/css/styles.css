@@ -88,6 +88,7 @@
 
 /* container */
 .container {
+  background-color: white;
   position: absolute;
   margin-left: 200px;
   max-width: calc(100vw - 200px);
@@ -124,7 +125,7 @@
 }
 
 .main {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   width: 400px;
   height: 400px;
   margin: 7em auto;
