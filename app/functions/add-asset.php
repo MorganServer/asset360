@@ -43,8 +43,8 @@ if (isset($_POST['add-asset'])) {
         $error[] = 'Asset already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO assets (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no,manufacturer_name, acquisition_date, end_of_life_date, location, custodian, maintenance_schedule, audit_schedule, notes, status) 
-            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$manufacturer_name', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+        $insert = "INSERT INTO assets (idno, asset_tag_no, asset_name, asset_type, serial_number, model, model_no,manufacturer_name, acquisition_date, end_of_life_date, location, custodian, audit_schedule, notes, status) 
+            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$asset_name', ''), NULLIF('$asset_type', ''), NULLIF('$serial_number', ''), NULLIF('$model', ''), NULLIF('$model_no', ''), NULLIF('$manufacturer_name', ''), NULLIF('$acquisition_date', ''), NULLIF('$end_of_life_date', ''), NULLIF('$location', ''), NULLIF('$custodian', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
             header('location:' . BASE_URL . '/');
