@@ -1,23 +1,20 @@
 <?php
 date_default_timezone_set('America/Denver');
 require_once "../app/database/connection.php";
+// require_once "app/functions/add_app.php";
 require_once "../path.php";
 session_start();
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 $files = glob("../app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
-
 logoutUser($conn);
 if(isLoggedIn() == false) {
     header('location:' . BASE_URL . '/login.php');
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,29 +28,101 @@ if(isLoggedIn() == false) {
     <!-- Custom Styles -->
     <link rel="stylesheet" href="../assets/css/styles.css?v=<?php echo time(); ?>">
 
-    <title>Home | Asset360</title>
+    <title>Bulk Export | Asset360</title>
 </head>
 <body>
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
-    <!-- Main Content -->
+    <!-- main-container -->
+        <div class="container" style="padding: 0 75px 0 75px;">
+            <h2 class="mt-4">
+                Bulk Export Asset Inventory
+            </h2>
+            <hr>
 
-        <div class="container" style="">
+            <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Tag No</th>
+            <th scope="col">Asset Name</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        // Pagination variables
+        $limit = 10; // Number of entries per page
+        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page - 1) * $limit;
 
-            <div class="mt-4"></div>
+        $sql = "SELECT assets.*, ip_address.*
+                FROM assets
+                LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+                ORDER BY assets.created_at DESC
+                LIMIT $limit OFFSET $offset";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            $num_rows = mysqli_num_rows($result);
+            if ($num_rows > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $asset_tag_no = $row['assets.asset_tag_no'];
+                    $asset_name = $row['assets.asset_name'];
+                    $ip_address = $row['ip_address.ip_address']; // Accessing the IP address column from the 'ip_address' table
+
+                    // Handling case where IP address is not available
+                    $ip_address_display = $ip_address ? $ip_address : '-';
+
+                    $status = $row['assets.status'];
+                    $maintenance_schedule = $row['assets.maintenance_schedule'];
+                    $audit_schedule = $row['assets.audit_schedule'];
+                    $location = $row['assets.location'];
+                    $created_at = $row['assets.created_at'];
+
+                    $ms_date = date_create($maintenance_schedule);
+                    $f_maintenance_schedule = date_format($ms_date, 'M d, Y');
+                    $as_date = date_create($audit_schedule);
+                    $f_audit_schedule = date_format($as_date, 'M d, Y');
+        ?>
+                    <tr>
+                        <th scope="row"><?php echo $asset_tag_no; ?></th>
+                        <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
+                        <td><?php echo $ip_address_display; ?></td> <!-- Displaying IP address or '-' if not available -->
+                        <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
+                        <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
+                        <td><?php echo $status ? $status : '-'; ?></td>
+                        <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                    </tr>
+        <?php
+                }
+            }
+        }
+        ?>
+    </tbody>
+</table>
+
+        <br>
+        <?php
+            // Pagination links
+            $sql = "SELECT COUNT(*) as total FROM assets WHERE asset_type = 'Computer'";
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            $total_pages = ceil($row["total"] / $limit);
+
+                echo '<ul class="pagination justify-content-center">';
+                for ($i = 1; $i <= $total_pages; $i++) {
+                    $active = ($page == $i) ? "active" : "";
+                    echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
+                }
+                echo '</ul>';
+        ?>
 
 
         </div>
+    <!-- END main-container -->
 
-    <!-- end Main Content -->
-
-
-    <!-- Bootstrap Scripts -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- end Bootstrap Scripts -->
 </body>
 </html>
