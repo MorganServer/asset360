@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #ffffff !important;
+}
+
+
 /* header */
 .navbar {
   background-color: #ffffff;
@@ -88,7 +93,6 @@
 
 /* container */
 .container {
-  background-color: #ffffff !important;
   position: absolute;
   margin-left: 200px;
   max-width: calc(100vw - 200px);
