@@ -15,7 +15,7 @@ if (isset($_POST['add-asset'])) {
     $location = isset($_POST['location']) ? mysqli_real_escape_string($conn, $_POST['location']) : "";
     $custodian = isset($_POST['custodian']) ? mysqli_real_escape_string($conn, $_POST['custodian']) : "";
     $maintenance_schedule = isset($_POST['maintenance_schedule']) ? mysqli_real_escape_string($conn, $_POST['maintenance_schedule']) : "";
-    $audit_schedule = isset($_POST['audit_schedule']) ? mysqli_real_escape_string($conn, $_POST['audit_schedule']) : "";
+    $audit_schedule = isset($_POST['audit_schedule']) ? mysqli_real_escape_string($conn, $_POST['audit_schedule']) : ""; //I want to add an audit button to the view asset page. Once clicked, it will pop open a modal that will ask for details of what was audited and a once submitted, it will mark the audit as complete and change the audit schedule field to do be due another 3 months.
     $notes = isset($_POST['notes']) ? mysqli_real_escape_string($conn, $_POST['notes']) : "";
     $status = isset($_POST['status']) ? mysqli_real_escape_string($conn, $_POST['status']) : "";
 

@@ -47,8 +47,8 @@ if(isLoggedIn() == false) {
                 <th scope="col">IP Address</th>
                 <th scope="col">Asset Name</th>
                 <!-- <th scope="col">Location</th> -->
-                <th scope="col">Last Maintenance</th>
-                <th scope="col">Last Audit</th>
+                <th scope="col">Next Maintenance</th>
+                <th scope="col">Next Audit</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
                 </tr>
