@@ -14,6 +14,14 @@ if(isLoggedIn() == false) {
     header('location:' . BASE_URL . '/login.php');
 }
 
+
+
+// 
+
+
+
+
+// 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +47,8 @@ if(isLoggedIn() == false) {
             <h2 class="mt-4">
                 Bulk Export Asset Inventory
             </h2>
-            <button onclick="exportToPDF()" class="btn btn-primary">Export to PDF</button>
+            <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button>
+
             <hr>
 
             <table class="table">
@@ -122,6 +131,28 @@ if(isLoggedIn() == false) {
 
         </div>
     <!-- END main-container -->
+
+    <script>
+function exportToCSV() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'export.php', true);
+    xhr.responseType = 'blob';
+
+    xhr.onload = function() {
+        if (this.status === 200) {
+            var blob = new Blob([this.response], { type: 'text/csv' });
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = 'asset_inventory.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+
+    xhr.send();
+}
+</script>
 
     <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
