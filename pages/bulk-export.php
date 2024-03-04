@@ -87,7 +87,7 @@ if(isLoggedIn() == false) {
 <tr>
     <th scope="row"><?php echo $asset_tag_no; ?></th>
     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
-    <td><?php echo $ip_assigned_asset_tag_no ? $ip_assigned_asset_tag_no : '-'; ?></td>
+    <td><?php echo $ip_address ? $ip_address : '-'; ?></td>
     <td><?php echo $asset_type ? $asset_type : '-'; ?></td>
     <td><?php echo $status ? $status : '-'; ?></td>
     <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
