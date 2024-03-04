@@ -39,7 +39,7 @@ if(isLoggedIn() == false) {
             <h2 class="mt-4">
                 Bulk Export Asset Inventory
             </h2>
-            <button onclick="exportToPDF()" class="btn btn-primary text-end">Export to PDF</button>
+            <button onclick="exportToPDF()" class="btn btn-primary">Export to PDF</button>
             <hr>
 
             <table class="table">
