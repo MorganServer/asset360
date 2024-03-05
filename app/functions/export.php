@@ -39,7 +39,7 @@ if (isset($_GET['download'])) {
     file_put_contents($tempHtmlFile, $html);
 
     // Execute Python script to convert HTML to PDF using pdfkit
-    exec("python convert_to_pdf.py $tempHtmlFile", $output, $returnCode);
+    exec("python3 convert_to_pdf.py $tempHtmlFile", $output, $returnCode);
 
     // Delete temporary HTML file
     unlink($tempHtmlFile);
