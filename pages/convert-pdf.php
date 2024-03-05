@@ -24,14 +24,23 @@ if (isset($_GET['generatePdf'])) {
     $pdf->SetTitle('Data Export');
 
     // Add a page
-    $pdf->AddPage();
+    // $pdf->AddPage();
 
     // Add logo and details
     $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
     $pdf->SetFont('helvetica', '', 10);
+    $pdf->Ln(10); // Add some space after details
 
     // Create HTML content
-    $html = '';
+    $html = <<<EOF
+<!-- EXAMPLE OF CSS STYLE -->
+<style>
+tr.border_bottom td {
+    border-bottom: 1px solid black;
+}
+</style>
+EOF;
+
 
     $html .= '<h2>Asset Details</h2>';
     if ($result->num_rows > 0) {
