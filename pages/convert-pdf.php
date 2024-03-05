@@ -71,7 +71,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
     exit;
 } else {
     // If the request was not made via AJAX, redirect or handle it accordingly
-    header('Location: index.php');
+    header('Location:' . BASE_URL . '/');
     exit;
 }
 
