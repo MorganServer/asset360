@@ -4,7 +4,7 @@
 function fetchDataFromDatabase() {
     
     // Query to fetch data from your desired table
-    $sql = "SELECT * FROM your_table";
+    $sql = "SELECT * FROM assets";
     $result = mysqli_query($conn, $sql);
 
     // Check if there are rows returned
