@@ -139,7 +139,7 @@ if(isLoggedIn() == false) {
     <script>
 document.getElementById('generatePdfButton').addEventListener('click', function() {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'generate_pdf.php', true);
+    xhr.open('GET', 'convert-pdf.php', true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             // Display the PDF in the container
