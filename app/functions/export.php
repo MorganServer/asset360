@@ -1,6 +1,4 @@
 <?php
-// Include the necessary files to connect to the database
-require_once '../database/connection.php'; // File containing database connection details
 
 // Function to fetch data from the database
 function fetchDataFromDatabase() {
