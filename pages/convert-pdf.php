@@ -35,27 +35,26 @@ if (isset($_GET['generatePdf'])) {
     $pdf->Cell(0, 10, 'Email: Your Company Email Address', 0, 1, 'C');
     $pdf->Ln(10); // Add some space after details
 
-    // Set table header
-    $pdf->Cell(30, 10, 'Asset Tag No', 1, 0, 'C');
-    $pdf->Cell(60, 10, 'Asset Name', 1, 0, 'C');
-    $pdf->Cell(30, 10, 'IP Address', 1, 0, 'C');
-    $pdf->Cell(30, 10, 'Location', 1, 0, 'C');
-    $pdf->Cell(20, 10, 'Status', 1, 1, 'C');
-
-    // Set table data
-    $pdf->SetFont('helvetica', '', 10);
+    // Create HTML content
+    $html = '<h2>Asset Details</h2><ol>';
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $pdf->Cell(30, 10, $row['asset_tag_no'], 1, 0, 'C');
-            $html = '<span>' . $row['asset_name'] . '</span><br><span style="color: #999; font-size: 8px;">' . $row['model'] . '</span>';
-            $pdf->writeHTMLCell(40, 20, '', '', $html, 1, 0, false, true, 'C');
-            $pdf->Cell(40, 10, $row['ip_address'], 1, 0, 'C');
-            $pdf->Cell(30, 10, $row['location'], 1, 0, 'C');
-            $pdf->Cell(20, 10, $row['status'], 1, 1, 'C');
+            $html .= '<li>';
+            $html .= '<strong>Asset Tag No:</strong> ' . $row['asset_tag_no'] . '<br>';
+            $html .= '<strong>Asset Name:</strong> ' . $row['asset_name'] . '<br>';
+            $html .= '<strong>Model:</strong> ' . $row['model'] . '<br>';
+            $html .= '<strong>IP Address:</strong> ' . $row['ip_address'] . '<br>';
+            $html .= '<strong>Location:</strong> ' . $row['location'] . '<br>';
+            $html .= '<strong>Status:</strong> ' . $row['status'] . '<br>';
+            $html .= '</li>';
         }
     } else {
-        $pdf->Cell(190, 10, 'No data found', 1, 1, 'C');
+        $html .= '<li>No assets found.</li>';
     }
+    $html .= '</ol>';
+
+    // Output the HTML content to the PDF
+    $pdf->writeHTML($html, true, false, true, false, '');
 
     // Output the PDF as a file to download
     $pdf->Output('data_export.pdf', 'D');
