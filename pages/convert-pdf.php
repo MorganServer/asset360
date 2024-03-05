@@ -34,6 +34,7 @@ if (isset($_GET['generatePdf'])) {
         while ($row = $result->fetch_assoc()) {
             $pdf->Cell(30, 10, $row['asset_tag_no'], 1, 0, 'C');
             $html = '<span>' . $row['asset_name'] . '</span><br><span style="color: #999">' . $row['model'] . '</span>';
+            $pdf->writeHTMLCell(40, 20, '', '', $html, 1, 0, false, true, 'C');
             // $pdf->Cell(40, 10, $row['asset_name'], 1, 0, 'C');
             // $pdf->Cell(30, 10, $row['model'], 1, 0, 'C');
             $pdf->Cell(40, 10, $row['ip_address'], 1, 0, 'C');
