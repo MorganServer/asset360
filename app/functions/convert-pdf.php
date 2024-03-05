@@ -25,7 +25,7 @@ $pdf->AddPage();
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
         // Format the data as needed and add to the PDF
-        $pdf->Cell(0, 10, $row['asset_name'] . ' - ' . $row['column2'], 0, 1);
+        $pdf->Cell(0, 10, $row['asset_tag_no'] . ' - ' . $row['asset_name'], 0, 1);
     }
 } else {
     $pdf->Cell(0, 10, 'No data found', 0, 1);
