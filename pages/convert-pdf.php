@@ -31,7 +31,6 @@ $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
 // Set header logo
-$pdf->SetHeaderLogo('../assets/images/logo-white.png');
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
@@ -58,6 +57,8 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
     // Add logo and details
     // $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
+    // Set header logo
+$pdf->SetHeaderLogo('../../assets/images/logo-white.png');
     $pdf->SetFont('helvetica', '', 10);
     $pdf->Ln(5); // Add some space after details
 
