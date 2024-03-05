@@ -32,6 +32,16 @@ if (isset($_GET['generatePdf'])) {
     $pdf->Ln(25); // Add some space after details
 
     // Create HTML content
+    $html = <<<EOF
+<!-- EXAMPLE OF CSS STYLE -->
+<style>
+    .row {
+        border-bottom: 1px solid black;
+    }
+</style>
+EOF;
+
+
     $html = '<h2>Asset Details</h2>';
     if ($result->num_rows > 0) {
         $html .= '<table cellpadding="5" cellspacing="0">';
@@ -43,7 +53,7 @@ if (isset($_GET['generatePdf'])) {
         $html .= '<td>Status</td>';
         $html .= '</tr>';
         while ($row = $result->fetch_assoc()) {
-            $html .= '<tr nobr="true">';
+            $html .= '<tr class="row">';
             $html .= '<td>' . $row['asset_tag_no'] . '</td>';
             $html .= '<td>' . $row['asset_name'] . '<br><span style="font-size: 6px; color: #999;">' . $row['model'] . '</span></td>';
             $html .= '<td>' . $row['ip_address'] . '</td>';
