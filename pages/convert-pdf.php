@@ -36,8 +36,10 @@ if (isset($_GET['generatePdf'])) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $html .= '<li>';
-            $html .= '<strong>Asset Tag No:</strong> ' . $row['asset_tag_no'] . '<br>';
-            $html .= '<strong>Asset Name & Model:</strong> ' . $row['asset_name'] . ' - ' . $row['model'] . '<br>';
+            $html .= '<strong>Asset Tag:</strong> ' . $row['asset_tag_no'] . '<br>';
+            $html .= '<strong>Asset Details:</strong><br>';
+            $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Name:</strong> ' . $row['asset_name'] . '<br>';
+            $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Model:</strong> ' . $row['model'] . '<br>';
             $html .= '<strong>IP Address:</strong> ' . $row['ip_address'] . '<br>';
             $html .= '<strong>Location:</strong> ' . $row['location'] . '<br>';
             $html .= '<strong>Status:</strong> ' . $row['status'] . '<br>';
