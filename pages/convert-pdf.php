@@ -23,7 +23,7 @@ if (isset($_GET['generatePdf'])) {
     $pdf->SetFont('helvetica', 'B', 12);
     $pdf->Cell(30, 10, 'Asset Tag No', 1, 0, 'C');
     $pdf->Cell(40, 10, 'Asset Name', 1, 0, 'C');
-    $pdf->Cell(30, 10, 'Model', 1, 0, 'C');
+    // $pdf->Cell(30, 10, 'Model', 1, 0, 'C');
     $pdf->Cell(40, 10, 'IP Address', 1, 0, 'C');
     $pdf->Cell(30, 10, 'Location', 1, 0, 'C');
     $pdf->Cell(20, 10, 'Status', 1, 1, 'C');
@@ -33,10 +33,10 @@ if (isset($_GET['generatePdf'])) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $pdf->Cell(30, 10, $row['asset_tag_no'], 1, 0, 'C');
-            // Use MultiCell for Asset Name and IP Address columns to enable text wrapping
-            $pdf->MultiCell(40, 10, $row['asset_name'], 1, 'C');
-            $pdf->Cell(30, 10, $row['model'], 1, 0, 'C');
-            $pdf->MultiCell(40, 10, $row['ip_address'], 1, 'C');
+            $html = '<span>' . $row['asset_name'] . '</span><br><span style="color: #999">' . $row['model'] . '</span>';
+            // $pdf->Cell(40, 10, $row['asset_name'], 1, 0, 'C');
+            // $pdf->Cell(30, 10, $row['model'], 1, 0, 'C');
+            $pdf->Cell(40, 10, $row['ip_address'], 1, 0, 'C');
             $pdf->Cell(30, 10, $row['location'], 1, 0, 'C');
             $pdf->Cell(20, 10, $row['status'], 1, 1, 'C');
         }
