@@ -7,7 +7,9 @@ include_once(ROOT_PATH . '/TCPDF/tcpdf.php');
 
 if (isset($_GET['generatePdf'])) {
     // Assuming $conn is your MySQL connection object
-    $sql = "SELECT asset_tag_no, asset_name, model, IFNULL(ip_address, '-') AS ip_address, location, status FROM assets";
+    $sql = "SELECT a.asset_tag_no, a.asset_name, a.model, IFNULL(ip.ip_address, '-') AS ip_address, a.location, a.status 
+            FROM assets AS a 
+            LEFT JOIN ip_address AS ip ON a.asset_tag_no = ip.assigned_asset_tag_no";
     $result = $conn->query($sql);
 
     $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
