@@ -45,7 +45,7 @@ EOF;
     $html .= '<h2>Asset Details</h2>';
     if ($result->num_rows > 0) {
         $html .= '<table cellpadding="5" cellspacing="0">';
-        $html .= '<tr style="font-weight:bold;text-align:left;">';
+        $html .= '<tr class="border_bottom" style="border-bottom: 1px solid black; font-weight:bold;text-align:left;">';
         $html .= '<td>Asset Tag</td>';
         $html .= '<td>Asset Details</td>';
         $html .= '<td>IP Address</td>';
