@@ -50,7 +50,6 @@ if(isLoggedIn() == false) {
             </h2>
             <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
             <button id="generatePdfButton">Generate PDF</button>
-<div id="pdfContainer"></div>
 
 
             <hr>
@@ -136,19 +135,23 @@ if(isLoggedIn() == false) {
         </div>
     <!-- END main-container -->
 
-    <script>
-document.getElementById('generatePdfButton').addEventListener('click', function() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'convert-pdf.php', true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            // Display the PDF in the container
-            document.getElementById('pdfContainer').innerHTML = '<embed src="data_export.pdf" type="application/pdf" width="100%" height="600px" />';
-        } else {
-            alert('Failed to generate PDF');
-        }
-    };
-    xhr.send();
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#generatePdfButton').click(function() {
+        $.ajax({
+            url: 'convert-pdf.php', // Assuming the PHP script is named generate_pdf.php
+            type: 'GET',
+            success: function(response) {
+                // Handle success (PDF generated)
+                alert('PDF generated successfully!');
+            },
+            error: function(xhr, status, error) {
+                // Handle error
+                alert('Error generating PDF: ' + error);
+            }
+        });
+    });
 });
 </script>
 
