@@ -132,7 +132,7 @@ if(isLoggedIn() == false) {
         </div>
     <!-- END main-container -->
 
-    <script>
+    <!-- <script>
 function exportToCSV() {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'export.php', true);
@@ -152,7 +152,7 @@ function exportToCSV() {
 
     xhr.send();
 }
-</script>
+</script> -->
 
     <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
