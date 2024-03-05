@@ -3,6 +3,7 @@ date_default_timezone_set('America/Denver');
 require_once "../app/database/connection.php";
 // require_once "app/functions/add_app.php";
 require_once "../path.php";
+require_once "../library/tcpdf.php";
 session_start();
 
 $files = glob("../app/functions/*.php");
