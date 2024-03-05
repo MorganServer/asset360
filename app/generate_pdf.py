@@ -1,10 +1,7 @@
-from flask import Flask, render_template, request
 import mysql.connector
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
-
-app = Flask(__name__)
 
 # MySQL database credentials
 db_config = {
@@ -47,18 +44,9 @@ def generate_pdf(data):
 
     print(f"PDF generated successfully: {pdf_filename}")
 
-@app.route('/')
-def index():
-    return render_template('index.html')
-
-@app.route('/generate-pdf', methods=['POST'])
-def generate_pdf_on_submit():
+if __name__ == "__main__":
     data = fetch_data()
     if data:
         generate_pdf(data)
-        return 'PDF generated successfully'
     else:
-        return 'No data found'
-
-if __name__ == "__main__":
-    app.run(debug=True)
+        print("No data found.")

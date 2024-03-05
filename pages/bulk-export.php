@@ -48,9 +48,8 @@ if(isLoggedIn() == false) {
                 Bulk Export Asset Inventory
             </h2>
             <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
-            <form action="/generate-pdf" method="post">
-                <button type="submit">Generate PDF</button>
-            </form>
+            <button id="generatePdfButton">Generate PDF</button>
+
 
             <hr>
 
@@ -135,27 +134,13 @@ if(isLoggedIn() == false) {
         </div>
     <!-- END main-container -->
 
-    <!-- <script>
-function exportToCSV() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'export.php', true);
-    xhr.responseType = 'blob';
-
-    xhr.onload = function() {
-        if (this.status === 200) {
-            var blob = new Blob([this.response], { type: 'text/csv' });
-            var link = document.createElement('a');
-            link.href = window.URL.createObjectURL(blob);
-            link.download = 'asset_inventory.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    };
-
-    xhr.send();
-}
-</script> -->
+    <script>
+        document.getElementById("generatePdfButton").addEventListener("click", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "../app/generate_pdf.py", true);
+            xhr.send();
+        });
+    </script>
 
     <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
