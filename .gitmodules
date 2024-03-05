@@ -1,0 +1,6 @@
+[submodule "app/functions/app/functions/TCPDF"]
+	path = app/functions/app/functions/TCPDF
+	url = https://github.com/tecnickcom/TCPDF.git
+[submodule "app/TCPDF"]
+	path = app/TCPDF
+	url = https://github.com/tecnickcom/TCPDF.git
