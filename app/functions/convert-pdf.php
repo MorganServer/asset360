@@ -1,6 +1,6 @@
 <?php
 
-include_once('../../tcpdf/tcpdf.php');
+include_once('tcpdf/tcpdf.php');
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
