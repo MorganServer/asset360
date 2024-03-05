@@ -23,7 +23,7 @@ def fetch_data():
 
 # Function to generate PDF
 def generate_pdf(data):
-    pdf_filename = 'asset_data.pdf'
+    pdf_filename = '/var/www/asset360/public_html/asset360/asset_data.pdf'
     doc = SimpleDocTemplate(pdf_filename, pagesize=letter)
     table_data = [list(data[0].keys())] + [[str(value) for value in row.values()] for row in data]
     table = Table(table_data)
