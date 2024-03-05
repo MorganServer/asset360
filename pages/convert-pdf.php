@@ -27,7 +27,7 @@ if (isset($_GET['generatePdf'])) {
     $pdf->AddPage();
 
     // Add logo and details
-    $pdf->Image('path/to/your/logo.png', 10, 10, 30, '', 'PNG');
+    $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
     $pdf->SetFont('helvetica', '', 10);
     $pdf->Cell(0, 10, 'Your Company Name', 0, 1, 'C');
     $pdf->Cell(0, 10, 'Address: Your Company Address', 0, 1, 'C');
