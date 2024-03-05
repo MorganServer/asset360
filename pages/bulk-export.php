@@ -48,8 +48,8 @@ if(isLoggedIn() == false) {
                 Bulk Export Asset Inventory
             </h2>
             <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
-            <form method="post">
-                <button type="submit" name="download">Download Data as CSV</button>
+            <form method="GET" action="">
+                <button type="submit" name="download">Download Data</button>
             </form>
 
             <hr>

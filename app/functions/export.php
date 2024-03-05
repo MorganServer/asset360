@@ -1,63 +1,34 @@
 <?php
-
 // Function to fetch data from the database
-function fetchDataFromDatabase() {
-    
-    // Query to fetch data from your desired table
-    $sql = "SELECT * FROM assets";
-    $result = mysqli_query($conn, $sql);
+function fetchDataFromDatabase($conn) {
+    $query = "SELECT * FROM assets";
+    $result = mysqli_query($conn, $query);
 
-    // Check if there are rows returned
     if (mysqli_num_rows($result) > 0) {
-        // Fetch data and store in an array
-        $data = array();
+        $rows = array();
         while ($row = mysqli_fetch_assoc($result)) {
-            $data[] = $row;
+            $rows[] = $row;
         }
-        
-        // Close connection
-        mysqli_close($conn);
-        
-        return $data;
+        return $rows;
     } else {
-        // No data found
-        return false;
+        return "No data found";
     }
 }
 
-// Function to download data as CSV
-function downloadDataAsCSV($data) {
-    // Set headers for CSV download
-    header('Content-Type: text/csv');
-    header('Content-Disposition: attachment; filename="data.csv"');
-    
-    // Open output stream
-    $output = fopen('php://output', 'w');
-    
-    // Write CSV headers
-    fputcsv($output, array_keys($data[0]));
-    
-    // Write CSV data
-    foreach ($data as $row) {
-        fputcsv($output, $row);
-    }
-    
-    // Close output stream
-    fclose($output);
+// Function to download data as JSON
+function downloadData($data) {
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="data.json"');
+    echo json_encode($data);
+    exit;
 }
 
-// Trigger download when the button is clicked
-if (isset($_POST['download'])) {
-    // Fetch data from database
-    $data = fetchDataFromDatabase();
-    
-    // Check if data is available
-    if ($data) {
-        // Download data as CSV
-        downloadDataAsCSV($data);
-        exit(); // Stop script execution after download
-    } else {
-        echo "No data found to download.";
-    }
+// Check if the download button is clicked
+if (isset($_GET['download'])) {
+    // Fetch data from the database
+    $data = fetchDataFromDatabase($conn);
+
+    // Download data as JSON
+    downloadData($data);
 }
 ?>
