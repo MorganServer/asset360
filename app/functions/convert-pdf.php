@@ -12,13 +12,11 @@
 
 // Check connection
 
-
-// Retrieve data from the MySQL database
 $sql = "SELECT * FROM assets";
 $result = $conn->query($sql);
 
 // Initialize PDF
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 // Set document information
 $pdf->SetCreator(PDF_CREATOR);
