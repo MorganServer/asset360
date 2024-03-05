@@ -20,11 +20,10 @@ if (isset($_GET['generatePdf'])) {
     $pdf->AddPage();
 
     // Set table header
-    $pdf->SetFont('helvetica', 'B', 12);
     $pdf->Cell(30, 10, 'Asset Tag No', 1, 0, 'C');
-    $pdf->Cell(40, 10, 'Asset Name', 1, 0, 'C');
-    // $pdf->Cell(30, 10, 'Model', 1, 0, 'C');
-    $pdf->Cell(40, 10, 'IP Address', 1, 0, 'C');
+    $pdf->Cell(60, 10, 'Asset Name', 1, 0, 'C'); // Adjusted width for the Asset Name column
+    // $pdf->Cell(30, 10, 'Model', 1, 0, 'C'); // Adjusted width for the Model column
+    $pdf->Cell(30, 10, 'IP Address', 1, 0, 'C');
     $pdf->Cell(30, 10, 'Location', 1, 0, 'C');
     $pdf->Cell(20, 10, 'Status', 1, 1, 'C');
 
