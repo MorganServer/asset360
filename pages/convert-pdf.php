@@ -45,7 +45,7 @@ if (isset($_GET['generatePdf'])) {
         while ($row = $result->fetch_assoc()) {
             $html .= '<tr style="border-bottom: 1px solid gray;">';
             $html .= '<td>' . $row['asset_tag_no'] . '</td>';
-            $html .= '<td>' . $row['asset_name'] . '<br><span class="text-muted" style="font-size: 8px;">' . $row['model'] . '</span></td>';
+            $html .= '<td>' . $row['asset_name'] . '<br><span style="font-size: 6px; color: #999;">' . $row['model'] . '</span></td>';
             $html .= '<td>' . $row['ip_address'] . '</td>';
             $html .= '<td>' . $row['location'] . '</td>';
             $html .= '<td>' . $row['status'] . '</td>';
