@@ -50,6 +50,7 @@ if(isLoggedIn() == false) {
             </h2>
             <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
             <button id="generatePdfButton">Generate PDF</button>
+<div id="pdfContainer"></div>
 
 
             <hr>
@@ -136,12 +137,20 @@ if(isLoggedIn() == false) {
     <!-- END main-container -->
 
     <script>
-        document.getElementById("generatePdfButton").addEventListener("click", function() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "../app/generate_pdf.py", true);
-            xhr.send();
-        });
-    </script>
+document.getElementById('generatePdfButton').addEventListener('click', function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'generate_pdf.php', true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            // Display the PDF in the container
+            document.getElementById('pdfContainer').innerHTML = '<embed src="data_export.pdf" type="application/pdf" width="100%" height="600px" />';
+        } else {
+            alert('Failed to generate PDF');
+        }
+    };
+    xhr.send();
+});
+</script>
 
     <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
