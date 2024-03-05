@@ -17,35 +17,37 @@ if (isset($_GET['generatePdf'])) {
     $result = $conn->query($sql);
 
     // Create new TCPDF instance
-    $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    // $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-    // Set creator and title
-   // set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Garrett Morgan');
+// Create new TCPDF instance
+$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+// Set creator, title, author, subject, and keywords
+$pdf->SetCreator('Your Application Name');
 $pdf->SetTitle('Asset Inventory Report');
+$pdf->SetAuthor('Garrett Morgan');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-// set default header data
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.'', PDF_HEADER_STRING);
+// Set default header data (if needed)
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE, PDF_HEADER_STRING);
 
-// set header and footer fonts
+// Set header and footer fonts (if needed)
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-// set default monospaced font
+// Set default monospaced font (if needed)
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-// set margins
+// Set margins (if needed)
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-// set auto page breaks
+// Set auto page breaks (if needed)
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-// set image scale factor
+// Set image scale factor (if needed)
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
     // Add a page
