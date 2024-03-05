@@ -12,5 +12,5 @@ try:
     pdfkit.from_file(input_html_file, output_pdf_file)
     sys.exit(0)
 except Exception as e:
-    print("Error converting HTML to PDF:", e)
+    print("Error converting - HTML to PDF:", e)
     sys.exit(1)
