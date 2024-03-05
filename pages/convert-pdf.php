@@ -20,28 +20,28 @@ if (isset($_GET['generatePdf'])) {
     $pdf->AddPage();
 
     // Set table header
-    $pdf->Cell(30, 10, 'Asset Tag No', 1, 0, 'C');
-    $pdf->Cell(60, 10, 'Asset Name', 1, 0, 'C'); // Adjusted width for the Asset Name column
-    // $pdf->Cell(30, 10, 'Model', 1, 0, 'C'); // Adjusted width for the Model column
-    $pdf->Cell(30, 10, 'IP Address', 1, 0, 'C');
-    $pdf->Cell(30, 10, 'Location', 1, 0, 'C');
-    $pdf->Cell(20, 10, 'Status', 1, 1, 'C');
+    $pdf->Cell(30, 10, 'Asset Tag No', 0, 0, 'C');
+    $pdf->Cell(60, 10, 'Asset Name', 0, 0, 'C'); 
+    $pdf->Cell(30, 10, 'IP Address', 0, 0, 'C');
+    $pdf->Cell(30, 10, 'Location', 0, 0, 'C');
+    $pdf->Cell(20, 10, 'Status', 0, 1, 'C');
 
     // Set table data
     $pdf->SetFont('helvetica', '', 10);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $pdf->Cell(30, 10, $row['asset_tag_no'], 1, 0, 'C');
+            $pdf->Cell(30, 10, $row['asset_tag_no'], 0, 0, 'C');
             $html = '<span>' . $row['asset_name'] . '</span><br><span style="color: #999; font-size: 8px;">' . $row['model'] . '</span>';
-            $pdf->writeHTMLCell(40, 20, '', '', $html, 1, 0, false, true, 'C');
-            // $pdf->Cell(40, 10, $row['asset_name'], 1, 0, 'C');
-            // $pdf->Cell(30, 10, $row['model'], 1, 0, 'C');
-            $pdf->Cell(40, 10, $row['ip_address'], 1, 0, 'C');
-            $pdf->Cell(30, 10, $row['location'], 1, 0, 'C');
-            $pdf->Cell(20, 10, $row['status'], 1, 1, 'C');
+            $pdf->writeHTMLCell(40, 20, '', '', $html, 0, 0, false, true, 'C');
+            $pdf->Cell(40, 10, $row['ip_address'], 0, 0, 'C');
+            $pdf->Cell(30, 10, $row['location'], 0, 0, 'C');
+            $pdf->Cell(20, 10, $row['status'], 0, 1, 'C');
+
+            // Add a horizontal line
+            $pdf->Cell(190, 0, '', 'T');
         }
     } else {
-        $pdf->Cell(190, 10, 'No data found', 1, 1, 'C');
+        $pdf->Cell(190, 10, 'No data found', 0, 1, 'C');
     }
 
     $pdf->Output('data_export.pdf', 'D');
