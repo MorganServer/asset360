@@ -56,9 +56,6 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
     $pdf->AddPage();
 
     // Add logo and details
-    // $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
-    // Set header logo
-$pdf->SetHeaderLogo('../../assets/images/logo-white.png');
     $pdf->SetFont('helvetica', '', 10);
     $pdf->Ln(5); // Add some space after details
 
