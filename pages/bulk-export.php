@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
 $(document).ready(function() {
     $('#generatePdfButton').click(function() {
         // Redirect to the same page with a query parameter indicating PDF generation
-        window.location.href = 'bulk_export.php?generatePdf=1';
+        window.location.href = 'bulk-export.php?generatePdf=1';
     });
 });
 </script>
