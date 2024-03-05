@@ -22,8 +22,8 @@ if (isset($_GET['generatePdf'])) {
     // Set creator and title
    // set document information
 $pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('TCPDF Example 061');
+$pdf->SetAuthor('Garrett Morgan');
+$pdf->SetTitle('Asset Inventory Report');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
