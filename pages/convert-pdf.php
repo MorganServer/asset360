@@ -29,10 +29,6 @@ if (isset($_GET['generatePdf'])) {
     // Add logo and details
     $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
     $pdf->SetFont('helvetica', '', 10);
-    $pdf->Cell(0, 10, 'Your Company Name', 0, 1, 'C');
-    $pdf->Cell(0, 10, 'Address: Your Company Address', 0, 1, 'C');
-    $pdf->Cell(0, 10, 'Phone: Your Company Phone Number', 0, 1, 'C');
-    $pdf->Cell(0, 10, 'Email: Your Company Email Address', 0, 1, 'C');
     $pdf->Ln(10); // Add some space after details
 
     // Create HTML content
