@@ -139,18 +139,8 @@ if(isLoggedIn() == false) {
 <script>
 $(document).ready(function() {
     $('#generatePdfButton').click(function() {
-        $.ajax({
-            url: 'convert-pdf.php', // Assuming the PHP script is named generate_pdf.php
-            type: 'GET',
-            success: function(response) {
-                // Handle success (PDF generated)
-                alert('PDF generated successfully!');
-            },
-            error: function(xhr, status, error) {
-                // Handle error
-                alert('Error generating PDF: ' + error);
-            }
-        });
+        // Redirect to the same page with a query parameter indicating PDF generation
+        window.location.href = 'bulk_export.php?generatePdf=1';
     });
 });
 </script>
