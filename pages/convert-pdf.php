@@ -35,12 +35,8 @@ if (isset($_GET['generatePdf'])) {
     $html = <<<EOF
 <!-- EXAMPLE OF CSS STYLE -->
 <style>
-table {
-    border-collapse: collapse;
-  }
-  
-  tr {
-    border-bottom: 1pt solid black;
+tr.border_bottom td {
+    border-bottom: 1px solid black;
   }
 </style>
 EOF;
@@ -57,7 +53,7 @@ EOF;
         $html .= '<td>Status</td>';
         $html .= '</tr>';
         while ($row = $result->fetch_assoc()) {
-            $html .= '<tr>';
+            $html .= '<tr class="border_bottom">';
             $html .= '<td>' . $row['asset_tag_no'] . '</td>';
             $html .= '<td>' . $row['asset_name'] . '<br><span style="font-size: 6px; color: #999;">' . $row['model'] . '</span></td>';
             $html .= '<td>' . $row['ip_address'] . '</td>';
