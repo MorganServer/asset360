@@ -29,26 +29,32 @@ if (isset($_GET['generatePdf'])) {
     // Add logo and details
     $pdf->Image('../assets/images/logo-white.png', 10, 10, 30, '', 'PNG');
     $pdf->SetFont('helvetica', '', 10);
-    $pdf->Ln(10); // Add some space after details
+    $pdf->Ln(25); // Add some space after details
 
     // Create HTML content
-    $html = '<h2>Asset Details</h2><ol>';
+    $html = '<h2>Asset Details</h2>';
     if ($result->num_rows > 0) {
+        $html .= '<table cellpadding="5" cellspacing="0">';
+        $html .= '<tr style="font-weight:bold;text-align:left;">';
+        $html .= '<td>Asset Tag</td>';
+        $html .= '<td>Asset Details</td>';
+        $html .= '<td>IP Address</td>';
+        $html .= '<td>Location</td>';
+        $html .= '<td>Status</td>';
+        $html .= '</tr>';
         while ($row = $result->fetch_assoc()) {
-            $html .= '<li>';
-            $html .= '<strong>Asset Tag:</strong> ' . $row['asset_tag_no'] . '<br>';
-            $html .= '<strong>Asset Details:</strong><br>';
-            $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Name:</strong> ' . $row['asset_name'] . '<br>';
-            $html .= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Model:</strong> ' . $row['model'] . '<br>';
-            $html .= '<strong>IP Address:</strong> ' . $row['ip_address'] . '<br>';
-            $html .= '<strong>Location:</strong> ' . $row['location'] . '<br>';
-            $html .= '<strong>Status:</strong> ' . $row['status'] . '<br>';
-            $html .= '</li>';
+            $html .= '<tr>';
+            $html .= '<td>' . $row['asset_tag_no'] . '</td>';
+            $html .= '<td>' . $row['asset_name'] . '<br>' . $row['model'] . '</td>';
+            $html .= '<td>' . $row['ip_address'] . '</td>';
+            $html .= '<td>' . $row['location'] . '</td>';
+            $html .= '<td>' . $row['status'] . '</td>';
+            $html .= '</tr>';
         }
+        $html .= '</table>';
     } else {
-        $html .= '<li>No assets found.</li>';
+        $html .= '<p>No assets found.</p>';
     }
-    $html .= '</ol>';
 
     // Output the HTML content to the PDF
     $pdf->writeHTML($html, true, false, true, false, '');
