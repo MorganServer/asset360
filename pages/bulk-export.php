@@ -138,7 +138,7 @@ if($num_rows > 0) {
         $created_at             = $row['created_at']; 
         $ip_address             = $row['ip_address']; 
 
-
+        echo $id;
     }}}
     ?>
   </div>
