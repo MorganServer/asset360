@@ -117,28 +117,28 @@ if(isLoggedIn() == false) {
   </div>
   <div class="offcanvas-body">
     <?php
-    $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
+    $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
     FROM assets
     LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
     WHERE asset_id = $id
     ORDER BY assets.created_at ASC
     LIMIT $limit OFFSET $offset";
-$result = mysqli_query($conn, $sql);
-if($result) {
-$num_rows = mysqli_num_rows($result);
+$off_result = mysqli_query($conn, $off_sql);
+if($off_result) {
+$num_rows = mysqli_num_rows($off_result);
 if($num_rows > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id                     = $row['asset_id']; 
-        $asset_name             = $row['asset_name']; 
-        $asset_tag_no           = $row['asset_tag_no']; 
-        $status                 = $row['status']; 
-        $maintenance_schedule   = $row['maintenance_schedule'];
-        $audit_schedule         = $row['audit_schedule']; 
-        $asset_type             = $row['asset_type']; 
-        $created_at             = $row['created_at']; 
-        $ip_address             = $row['ip_address']; 
+    while ($off_row = mysqli_fetch_assoc($off_result)) {
+        $oof_id                     = $off_row['asset_id']; 
+        $asset_name             = $off_row['asset_name']; 
+        $asset_tag_no           = $off_row['asset_tag_no']; 
+        $status                 = $off_row['status']; 
+        $maintenance_schedule   = $off_row['maintenance_schedule'];
+        $audit_schedule         = $off_row['audit_schedule']; 
+        $asset_type             = $off_row['asset_type']; 
+        $created_at             = $off_row['created_at']; 
+        $ip_address             = $off_row['ip_address']; 
 
-        echo $id;
+        echo $off_id;
     }}}
     ?>
   </div>
