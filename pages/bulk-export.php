@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
         ?>
     <!-- end PHP for OFF CANVAS -->
 
-    <div class="list-group list-group-flush">
+    <ul class="list-group list-group-flush">
         <li class="list-grou-item">
             <span class="float-start">
                 Asset Tag No
@@ -157,7 +157,7 @@ if(isLoggedIn() == false) {
                 <?php echo $off_asset_name; ?>
             </span>
         </li>
-    </div>
+    </ul>
 
   </div>
 </div>
