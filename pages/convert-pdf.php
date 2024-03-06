@@ -22,16 +22,18 @@ if (isset($_GET['generatePdf'])) {
 // Create new TCPDF instance
 $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+$currentDate = date('m-d-Y');
+
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Garrett Morgan');
-$pdf->SetTitle('TCPDF Example 001');
+$pdf->SetTitle('Asset Inventory Report - ' . $currentDate);
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
 // Set header logo
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, 'C');
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' ' . $currentDate, PDF_HEADER_STRING, 'C');
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 // set header and footer fonts
