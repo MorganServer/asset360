@@ -108,39 +108,57 @@ if(isLoggedIn() == false) {
 </tr>
 
 
-
-
 <div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 60%;">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-    <?php
-    $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
-    FROM assets
-    LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-    WHERE asset_id = $id
-    ORDER BY assets.created_at ASC
-    LIMIT $limit OFFSET $offset";
-$off_result = mysqli_query($conn, $off_sql);
-if($off_result) {
-$num_rows = mysqli_num_rows($off_result);
-if($num_rows > 0) {
-    while ($off_row = mysqli_fetch_assoc($off_result)) {
-        $off_id                     = $off_row['asset_id']; 
-        $asset_name             = $off_row['asset_name']; 
-        $asset_tag_no           = $off_row['asset_tag_no']; 
-        $status                 = $off_row['status']; 
-        $maintenance_schedule   = $off_row['maintenance_schedule'];
-        $audit_schedule         = $off_row['audit_schedule']; 
-        $asset_type             = $off_row['asset_type']; 
-        $created_at             = $off_row['created_at']; 
-        $ip_address             = $off_row['ip_address']; 
+    <!-- PHP for OFF CANVAS -->
+        <?php
+            $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
+            FROM assets
+            LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+            WHERE asset_id = $id
+            ORDER BY assets.created_at ASC
+            LIMIT $limit OFFSET $offset";
+            $off_result = mysqli_query($conn, $off_sql);
+            if($off_result) {
+            $num_rows = mysqli_num_rows($off_result);
+            if($num_rows > 0) {
+                while ($off_row = mysqli_fetch_assoc($off_result)) {
+                    $off_id                     = $off_row['asset_id']; 
+                    $off_asset_name             = $off_row['asset_name']; 
+                    $off_asset_tag_no           = $off_row['asset_tag_no']; 
+                    $off_status                 = $off_row['status']; 
+                    $off_maintenance_schedule   = $off_row['maintenance_schedule'];
+                    $off_audit_schedule         = $off_row['audit_schedule']; 
+                    $off_asset_type             = $off_row['asset_type']; 
+                    $off_created_at             = $off_row['created_at']; 
+                    $off_ip_address             = $off_row['ip_address']; 
+                }}}
+        ?>
+    <!-- end PHP for OFF CANVAS -->
 
-        echo $off_id;
-    }}}
-    ?>
+    <div class="list-group list-group-flush">
+        <li class="list-grou-item">
+            <span class="float-start">
+                Asset Tag No
+            </span>
+            <span class="float-end">
+                <?php echo $off_asset_tag_no; ?>
+            </span>
+        </li>
+        <li class="list-grou-item">
+            <span class="float-start">
+                Asset Name
+            </span>
+            <span class="float-end">
+                <?php echo $off_asset_name; ?>
+            </span>
+        </li>
+    </div>
+
   </div>
 </div>
 
