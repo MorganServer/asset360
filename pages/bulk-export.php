@@ -49,7 +49,7 @@ if(isLoggedIn() == false) {
                 Bulk Export Asset Inventory
             </h2>
             <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
-            <button class="float-end export-button btn btn-success" style="margin-top: -40px;" id="generatePdfButton"><i class="bi bi-search"></i> Export</button>
+            <button class="float-end export-button btn btn-success" style="margin-top: -40px;" id="generatePdfButton">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></button>
 
 
             <hr>
