@@ -31,15 +31,8 @@ $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
 // set default header data
 // Set header logo
-$title = '<div style="text-align: center;">' . PDF_HEADER_TITLE . ' 001</div>';
-$additionalString = '<div style="text-align: center;">' . PDF_HEADER_STRING . '</div>';
-// Set header data with the centered elements
-$pdf->SetHeaderData(
-    PDF_HEADER_LOGO,             // Logo path
-    PDF_HEADER_LOGO_WIDTH,       // Logo width
-    $title,                      // Title with center alignment
-    $additionalString           // Additional string with center alignment
-);
+$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, 'C');
+$pdf->setFooterData(array(0,64,0), array(0,64,128));
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
