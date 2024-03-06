@@ -128,7 +128,7 @@ if($off_result) {
 $num_rows = mysqli_num_rows($off_result);
 if($num_rows > 0) {
     while ($off_row = mysqli_fetch_assoc($off_result)) {
-        $oof_id                     = $off_row['asset_id']; 
+        $off_id                     = $off_row['asset_id']; 
         $asset_name             = $off_row['asset_name']; 
         $asset_tag_no           = $off_row['asset_tag_no']; 
         $status                 = $off_row['status']; 
