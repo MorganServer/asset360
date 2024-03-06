@@ -108,7 +108,7 @@ if(isLoggedIn() == false) {
 </tr>
 
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 60%;">
+<div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
         ?>
     <!-- end PHP for OFF CANVAS -->
 
-    <ul class="list-group list-group-flush w-50">
+    <ul class="list-group list-group-flush w-75">
         <li class="list-group-item">
             <span class="float-start">
                 Asset Tag No
