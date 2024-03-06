@@ -33,6 +33,8 @@ $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 // Set header logo
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING);
 $pdf->setFooterData(array(0,64,0), array(0,64,128));
+$pdf->setHeaderTitleAlign('C');
+$pdf->setHeaderStringAlign('C');
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
