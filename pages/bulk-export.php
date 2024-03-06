@@ -104,8 +104,49 @@ if(isLoggedIn() == false) {
     <td><?php echo $ip_address ? $ip_address : '-'; ?></td>
     <td><?php echo $asset_type ? $asset_type : '-'; ?></td>
     <td><?php echo $status ? $status : '-'; ?></td>
-    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="bulk-export.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" data-bs-toggle="offcanvas" data-bs-target="#view_asset<?php echo $id; ?>" aria-controls="offcanvasRight"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="bulk-export.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
 </tr>
+
+
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <?php
+    $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
+    FROM assets
+    LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+    WHERE asset_id = $id
+    ORDER BY assets.created_at ASC
+    LIMIT $limit OFFSET $offset";
+$result = mysqli_query($conn, $sql);
+if($result) {
+$num_rows = mysqli_num_rows($result);
+if($num_rows > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id                     = $row['asset_id']; 
+        $asset_name             = $row['asset_name']; 
+        $asset_tag_no           = $row['asset_tag_no']; 
+        $status                 = $row['status']; 
+        $maintenance_schedule   = $row['maintenance_schedule'];
+        $audit_schedule         = $row['audit_schedule']; 
+        $asset_type             = $row['asset_type']; 
+        $created_at             = $row['created_at']; 
+        $ip_address             = $row['ip_address']; 
+
+
+    }}}
+    ?>
+  </div>
+</div>
+
+
+
+
 <?php
             }
         }
