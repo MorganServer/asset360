@@ -169,7 +169,7 @@ if(isLoggedIn() == false) {
             ?>
         </span>
     </p>
-    <div class="hr" style="border-bottom: 1px solid black; width: 95%;"></div>
+    <div class="hr" style="border-bottom: 1px solid #999;"></div>
   </div>
   <div class="offcanvas-body">
     
