@@ -301,13 +301,29 @@ if(isLoggedIn() == false) {
 </div>
 <div class="col-sm-4">
     <span>
-
+        <?php if($off_asset_type == 'Server') { ?>
+            <i class="bi bi-hdd-stack"></i>
+        <?php } else if($off_asset_type == 'Computer') { ?>
+            <i class="bi bi-pc-display-horizontal"></i>
+        <?php } else if($off_asset_type == 'Network Device') { ?>
+            <i class="bi bi-diagram-2"></i>
+        <?php } else if($off_asset_type == 'Mobile Device') { ?>     
+            <i class="bi bi-phone"></i>
+        <?php } else if($off_asset_type == 'Storage Device') { ?>
+            <i class="bi bi-device-ssd"></i>
+        <?php } else if($off_asset_type == 'IOT Device') { ?>
+            <i class="bi bi-tv"></i> 
+        <?php } else if($off_asset_type == 'Peripheral') { ?>
+            <i class="bi bi-printer"></i>
+        <?php } else { ?>
+            <i class="bi bi-exclamation-octagon"></i>
+        <?php } ?>
     </span>
     <span>
-        <p class="fw-bold fs-large">
+        <p class="fw-bold">
             Managed by
         </p>
-        <p>
+        <p style="font-size: 12px;">
             <?php echo $off_custodian ? $off_custodian : '-'; ?>
         </p>
     </span>
