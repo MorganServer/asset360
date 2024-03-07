@@ -173,8 +173,9 @@ if(isLoggedIn() == false) {
   </div>
   <div class="offcanvas-body">
     
-<div class="col-sm-2">
-<ul class="list-group list-group-flush" style="width: 60%;">
+  <div class="row">
+    <div class="col-sm-8">
+    <ul class="list-group list-group-flush" style="width: 60%;">
         <li class="list-group-item">
             <span class="float-start fw-bold">
                 Asset Tag No
@@ -298,8 +299,9 @@ if(isLoggedIn() == false) {
         </li>
     </ul>
 </div>
-<div class="col-sm-2">
+<div class="col-sm-4">
     testing
+</div>
 </div>
     
 
