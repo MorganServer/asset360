@@ -152,9 +152,6 @@ if(isLoggedIn() == false) {
     
     <p class="text-muted" style="font-size: 12px;">
         <span class="pe-3">
-            <?php echo $off_custodian ? $off_custodian : '-'; ?>
-        </span>
-        <span class="pe-3">
             Last updated: 
             <?php 
             $formatted_off_updated_at = date("M d, Y", strtotime($off_updated_at));
@@ -289,6 +286,35 @@ if(isLoggedIn() == false) {
                 ?>
             </span>
         </li>
+        <li class="list-group-item">
+            <span class="float-start fw-bold">
+                Last Completed Maintenance
+            </span>
+            <span class="float-end">
+            <?php
+            $e_sql = "SELECT event_log.*
+            FROM event_log
+            WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
+            LIMIT 1";
+            $e_result = mysqli_query($conn, $e_sql);
+            if($e_result) {
+            $num_rows = mysqli_num_rows($e_result);
+            if($num_rows > 0) {
+                while ($e_row = mysqli_fetch_assoc($e_result)) {
+                    $e_id                     = $e_row['event_id']; 
+                    $e_asset_tag_no           = $e_row['asset_tag_no'];
+                    $e_event_type             = $e_row['event_type'];
+                    $e_date_completed         = $e_row['completed_date'];
+                    $e_status                 = $e_row['status'];
+                    $e_completed_by           = $e_row['completed_by'];
+                    $e_notes                  = $e_row['notes'];
+                    $e_created_at             = $e_row['created_at'];
+                    $e_updated_at             = $e_row['updated_at'];
+                }}}
+            ?>
+            <?php echo $e_date_completed ? $e_date_completed : '-'; ?>
+            </span>
+        </li>
         <li class="list-group-item" style="width: 100% !important;">
             <span class="float-start fw-bold">
                 Notes
@@ -300,7 +326,7 @@ if(isLoggedIn() == false) {
     </ul>
 </div>
 <div class="col-sm-3 ms-3" style="">
-    <span class="d-flex justify-content-center align-items-center mx-auto" style="font-size: 75px; border: 2px solid rgb(217,222,226); width: 150px; height: 150px; border-radius: 10px;">
+    <span class="d-flex justify-content-center align-items-center mx-auto mt-2" style="font-size: 75px; border: 2px solid rgb(217,222,226); width: 150px; height: 150px; border-radius: 10px;">
         <?php if($off_asset_type == 'Server') { ?>
             <i class="bi bi-hdd-stack"></i>
         <?php } else if($off_asset_type == 'Computer') { ?>
@@ -323,7 +349,7 @@ if(isLoggedIn() == false) {
         <p class="fw-bold">
             Managed by
         </p>
-        <p style="font-size: 12px;">
+        <p style="font-size: 12px; margin-top: -10px;">
             <?php echo $off_custodian ? $off_custodian : '-'; ?>
         </p>
     </span>
