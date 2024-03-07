@@ -334,7 +334,6 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <button class="badge text-bg-primary" data-bs-toggle="modal" data-bs-target="#maintenanceModal">Maintenance</button>
             <span class="fw-bold">
                 Notes
             </span>
@@ -345,6 +344,8 @@ if(isLoggedIn() == false) {
     </ul>
 </div>
 <div class="col-sm-3 ms-3" style="">
+    <button class="badge text-bg-primary" data-bs-toggle="modal" data-bs-target="#maintenanceModal">Maintenance</button>
+    
     <span class="d-flex justify-content-center align-items-center mx-auto mt-2" style="font-size: 75px; border: 2px solid rgb(217,222,226); width: 150px; height: 150px; border-radius: 10px;">
         <?php if($off_asset_type == 'Server') { ?>
             <i class="bi bi-hdd-stack"></i>
