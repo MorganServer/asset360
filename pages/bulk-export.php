@@ -145,8 +145,11 @@ if(isLoggedIn() == false) {
                 }}}
         ?>
     <!-- end PHP for OFF CANVAS -->
-    <h5 class="offcanvas-title" id="offcanvasRightLabel">View Asset <?php echo $off_asset_tag_no; ?></h5>
-    <br>
+    <div class="top-header d-flex">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">View Asset <?php echo $off_asset_tag_no; ?></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    
     <p class="text-muted" style="font-size: 12px;">
         <span class="text-muted">
             <?php echo $off_created_at ? $off_created_at : '-'; ?>
@@ -167,7 +170,6 @@ if(isLoggedIn() == false) {
         </span>
     </p>
     <div class="hr" style="border-bottom: 1px solid black; width: 95%;"></div>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
     
