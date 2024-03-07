@@ -247,7 +247,10 @@ if(isLoggedIn() == false) {
                 End of Life Date
             </span>
             <span class="float-end">
-                <?php echo $off_end_of_life_date ? $off_end_of_life_date : '-'; ?>
+                <?php 
+                $formatted_off_end_of_life_date = date("M d, Y", strtotime($off_end_of_life_date));
+                echo $formatted_off_end_of_life_date ? $formatted_off_end_of_life_date : '-'; 
+                ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -255,15 +258,10 @@ if(isLoggedIn() == false) {
                 Next Scheduled Audit
             </span>
             <span class="float-end">
-                <?php echo $off_audit_schedule ? $off_audit_schedule : '-'; ?>
-            </span>
-        </li>
-        <li class="list-group-item">
-            <span class="float-start">
-                Next Scheduled Audit
-            </span>
-            <span class="float-end">
-                <?php echo $off_audit_schedule ? $off_audit_schedule : '-'; ?>
+                <?php 
+                $formatted_off_audit_schedule = date("M d, Y", strtotime($off_audit_schedule));
+                echo $formatted_off_audit_schedule ? $formatted_off_audit_schedule : '-'; 
+                ?>
             </span>
         </li>
         <li class="list-group-item">
