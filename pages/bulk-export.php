@@ -300,7 +300,17 @@ if(isLoggedIn() == false) {
     </ul>
 </div>
 <div class="col-sm-4">
-    testing
+    <span>
+
+    </span>
+    <span>
+        <p class="fw-bold fs-large">
+            Managed by
+        </p>
+        <p>
+            <?php echo $off_custodian ? $off_custodian : '-'; ?>
+        </p>
+    </span>
 </div>
 </div>
     
