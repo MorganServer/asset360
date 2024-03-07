@@ -127,7 +127,7 @@ if(isLoggedIn() == false) {
                     <span class="float-end d-flex">
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
-                        <div class="vertical-line" style="border-left: 2px solid #000; height: 100px;"></div>
+                        <div class="vertical-line" style="border-left: 1px solid #000; height: 3px;"></div>
                         <a class="badge text-bg-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
                     </span>
