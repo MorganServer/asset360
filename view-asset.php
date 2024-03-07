@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end">
-                        <a class="badge badge-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
+                        <a class="btn btn-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
                         <a class="badge text-bg-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
                     </span>
