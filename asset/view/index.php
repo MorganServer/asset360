@@ -74,11 +74,11 @@ if(isLoggedIn() == false) {
     <div class="application-details">
         <!-- php code for getting asset details -->
             <?php
-            $tagno = $_GET['tagno'];
+            $id = $_GET['id'];
             $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-            WHERE asset_tag_no = $tagno
+            WHERE asset_id = $id
             ORDER BY assets.created_at ASC";
             $off_result = mysqli_query($conn, $off_sql);
             if($off_result) {
