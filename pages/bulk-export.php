@@ -292,45 +292,27 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
             <?php
-$e_sql = "SELECT *
+            $e_sql = "SELECT *
             FROM event_log
             WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
             LIMIT 1";
-$e_result = mysqli_query($conn, $e_sql);
-
-if ($e_result) {
-    $num_rows = mysqli_num_rows($e_result);
-    if ($num_rows > 0) {
-        while ($e_row = mysqli_fetch_assoc($e_result)) {
-            $e_id               = $e_row['event_id'];
-            $e_asset_tag_no     = $e_row['asset_tag_no'];
-            $e_event_type       = $e_row['event_type'];
-            $e_date_completed   = $e_row['completed_date'];
-            $e_status           = $e_row['status'];
-            $e_completed_by     = $e_row['completed_by'];
-            $e_notes            = $e_row['notes'];
-            $e_created_at       = $e_row['created_at'];
-            $e_updated_at       = $e_row['updated_at'];
-        }
-    } else {
-        // No records found, set default values or handle accordingly
-        $e_id               = null;
-        $e_asset_tag_no     = null;
-        $e_event_type       = null;
-        $e_date_completed   = null;
-        $e_status           = null;
-        $e_completed_by     = null;
-        $e_notes            = null;
-        $e_created_at       = null;
-        $e_updated_at       = null;
-    }
-} else {
-    // Error executing the query
-    // Handle the error
-}
-?>
-<?php echo isset($e_date_completed) ? $e_date_completed : '-'; ?>
-
+            $e_result = mysqli_query($conn, $e_sql);
+            if($e_result) {
+            $num_rows = mysqli_num_rows($e_result);
+            if($num_rows > 0) {
+                while ($e_row = mysqli_fetch_assoc($e_result)) {
+                    $e_id                     = $e_row['event_id']; 
+                    $e_asset_tag_no           = $e_row['asset_tag_no'];
+                    $e_event_type             = $e_row['event_type'];
+                    $e_date_completed         = $e_row['completed_date'];
+                    $e_status                 = $e_row['status'];
+                    $e_completed_by           = $e_row['completed_by'];
+                    $e_notes                  = $e_row['notes'];
+                    $e_created_at             = $e_row['created_at'];
+                    $e_updated_at             = $e_row['updated_at'];
+                }}}
+            ?>
+            <?php echo $e_date_completed ? $e_date_completed : '-'; ?>
             </span>
         </li>
         <li class="list-group-item" style="width: 100% !important;">
