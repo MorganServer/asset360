@@ -333,10 +333,10 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start fw-bold">
+            <span class="fw-bold">
                 Notes
             </span>
-            <span class="float-end">
+            <span class="">
                 <?php echo $off_notes ? $off_notes : '-'; ?>
             </span>
         </li>
