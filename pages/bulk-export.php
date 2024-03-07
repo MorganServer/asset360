@@ -288,9 +288,7 @@ if(isLoggedIn() == false) {
                 ?>
             </span>
         </li>
-    </ul>
-    <ul class="list-group list-group-flush d-block">
-        <li class="list-group-item">
+        <li class="list-group-item" style="width: 100% !important;">
             <span class="float-start fw-bold">
                 Notes
             </span>
