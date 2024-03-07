@@ -332,7 +332,7 @@ if(isLoggedIn() == false) {
 
             </span>
         </li>
-        <li class="list-group-item" style="width: 100% !important;">
+        <li class="list-group-item">
             <span class="float-start fw-bold">
                 Notes
             </span>
