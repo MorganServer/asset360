@@ -155,12 +155,12 @@ if(isLoggedIn() == false) {
             <span class="float-start">
                 Asset Tag No
             </span>
-            <span class="float-end">
+            <span class="float-end fw-bold">
                 <?php echo $off_asset_tag_no; ?>
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Asset Name
             </span>
             <span class="float-end">
@@ -168,7 +168,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Type
             </span>
             <span class="float-end">
@@ -184,7 +184,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Manufacturer Name
             </span>
             <span class="float-end">
@@ -192,7 +192,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Model
             </span>
             <span class="float-end">
@@ -200,7 +200,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Model Number
             </span>
             <span class="float-end">
@@ -208,7 +208,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 IP Address
             </span>
             <span class="float-end">
@@ -216,7 +216,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Location
             </span>
             <span class="float-end">
@@ -224,7 +224,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Custodian
             </span>
             <span class="float-end">
@@ -232,7 +232,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Acquisition Date
             </span>
             <span class="float-end">
@@ -243,7 +243,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 End of Life Date
             </span>
             <span class="float-end">
@@ -254,7 +254,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Next Scheduled Audit
             </span>
             <span class="float-end">
@@ -265,7 +265,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Notes
             </span>
             <span class="float-end">
