@@ -125,16 +125,17 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end">
+                        <a class="badge badge-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
                         <a class="badge text-bg-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
                     </span>
                 </h2>
 
                 <?php 
-                    $updated_time = strtotime($updated_at);
-                    $updated_at_formatted = date('M j, Y', $updated_time);
-                    $created_time = strtotime($created_at);
-                    $created_at_formatted = date('M j, Y', $created_time);
+                    $off_updated_at = strtotime($off_updated_at);
+                    $updated_at_formatted = date('M j, Y', $off_updated_at);
+                    $off_created_at = strtotime($off_created_at);
+                    $created_at_formatted = date('M j, Y', $off_created_at);
                 ?>
                 <p class="text-muted" style="font-size: 12px;">
                     <span class="pe-3">
