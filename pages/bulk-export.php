@@ -236,7 +236,10 @@ if(isLoggedIn() == false) {
                 Acquisition Date
             </span>
             <span class="float-end">
-                <?php echo $off_acquisition_date ? $off_acquisition_date : '-'; ?>
+                <?php 
+                $formatted_off_acquisition_date = date("M d, Y", strtotime($off_acquisition_date));
+                echo $formatted_off_acquisition_date ? $formatted_off_acquisition_date : '-'; 
+                ?>
             </span>
         </li>
         <li class="list-group-item">
