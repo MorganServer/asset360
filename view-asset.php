@@ -124,11 +124,11 @@ if(isLoggedIn() == false) {
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $status; ?></span>
                         <?php } ?>
                     </span>
-                    <span class="float-end">
-                        <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-shield-fill-check"></i></a>
+                    <span class="float-end d-flex">
+                        <a class="badge text-bg-primary text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #000; height:25px;"></div>
-                        <a class="badge text-bg-success text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
+                        <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
                     </span>
                 </h2>
