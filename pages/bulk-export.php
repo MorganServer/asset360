@@ -402,7 +402,7 @@ if(isLoggedIn() == false) {
                         </div>
                         <div class="col">
                             <label for="completed_by" class="form-label">Completed By</label>
-                            <input type="text" class="form-control" id="completed_by" name="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname'];?>">
+                            <input type="text" class="form-control" id="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
                         </div>
                         <div class="col">
                             <?php $cdate = date("Y-m-d"); ?>
