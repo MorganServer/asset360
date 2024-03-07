@@ -299,7 +299,7 @@ if(isLoggedIn() == false) {
         </li>
     </ul>
 </div>
-<div class="col-sm-4 text-right">
+<div class="col-sm-4" style="text-align: right !important;">
     <span class="d-flex justify-content-center align-items-center" style="font-size: 75px; border: 2px solid rgb(217,222,226); width: 150px; height: 150px; border-radius: 5px;">
         <?php if($off_asset_type == 'Server') { ?>
             <i class="bi bi-hdd-stack"></i>
