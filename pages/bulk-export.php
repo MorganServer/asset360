@@ -300,7 +300,7 @@ if(isLoggedIn() == false) {
     </ul>
 </div>
 <div class="col-sm-4">
-    <span class="d-flex justify-content-center">
+    <span class="d-flex justify-content-center" style="font-size: 50px;">
         <?php if($off_asset_type == 'Server') { ?>
             <i class="bi bi-hdd-stack"></i>
         <?php } else if($off_asset_type == 'Computer') { ?>
