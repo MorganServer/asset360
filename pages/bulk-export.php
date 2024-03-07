@@ -176,7 +176,7 @@ if(isLoggedIn() == false) {
             </span>
         </li>
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Serial Number
             </span>
             <span class="float-end">
