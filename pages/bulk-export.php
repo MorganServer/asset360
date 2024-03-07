@@ -109,7 +109,7 @@ if(isLoggedIn() == false) {
 
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
-  <div class="offcanvas-header" style="border-bottom: 1px solid black;">
+  <div class="offcanvas-header">
     <!-- PHP for OFF CANVAS -->
         <?php
             $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
@@ -166,6 +166,7 @@ if(isLoggedIn() == false) {
             ?>
         </span>
     </p>
+    <div class="hr" style="border-bottom: 1px solid black; width: 95%;"></div>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
