@@ -288,16 +288,8 @@ if(isLoggedIn() == false) {
                 ?>
             </span>
         </li>
-        <li class="list-group-item">
-            <span class="float-start fw-bold">
-                Notes
-            </span>
-            <span class="float-end">
-                <?php echo $off_notes ? $off_notes : '-'; ?>
-            </span>
-        </li>
     </ul>
-    <ul class="list-group list-group-flush">
+    <ul class="list-group list-group-flush d-block">
         <li class="list-group-item">
             <span class="float-start fw-bold">
                 Notes
