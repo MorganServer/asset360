@@ -151,8 +151,8 @@ if(isLoggedIn() == false) {
     </div>
     
     <p class="text-muted" style="font-size: 12px;">
-        <span class="text-muted">
-            <?php echo $off_created_at ? $off_created_at : '-'; ?>
+        <span class="pe-3">
+            <?php echo $off_custodian ? $off_custodian : '-'; ?>
         </span>
         <span class="pe-3">
             Last updated: 
