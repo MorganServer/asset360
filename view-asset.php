@@ -124,7 +124,7 @@ if(isLoggedIn() == false) {
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $status; ?></span>
                         <?php } ?>
                     </span>
-                    <span class="float-end">
+                    <span class="float-end d-flex">
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-tools"></i></a>
                         <div class="vertical-line" style="border-left: 2px solid #000; height: 100px;"></div>
