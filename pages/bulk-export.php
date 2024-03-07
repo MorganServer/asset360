@@ -139,12 +139,33 @@ if(isLoggedIn() == false) {
                     $off_maintenance_schedule   = $off_row['maintenance_schedule'];
                     $off_audit_schedule         = $off_row['audit_schedule']; 
                     $off_asset_type             = $off_row['asset_type']; 
-                    $off_created_at             = $off_row['created_at']; 
+                    $off_created_at             = $off_row['created_at'];
+                    $off_updated_at             = $off_row['updated_at'];
                     $off_ip_address             = $off_row['ip_address']; 
                 }}}
         ?>
     <!-- end PHP for OFF CANVAS -->
     <h5 class="offcanvas-title" id="offcanvasRightLabel">View Asset <?php echo $off_asset_tag_no; ?></h5>
+    <p>
+        <span class="text-muted">
+            <?php echo $off_created_at ? $off_created_at : '-'; ?>
+        </span>
+        <span class="pe-3">
+            Last updated: 
+            <?php 
+            $formatted_off_updated_at = date("M d, Y", strtotime($off_updated_at));
+            echo $formatted_off_updated_at ? $formatted_off_updated_at : '-'; 
+            ?>
+        </span>
+        <span>
+            Created: 
+            <?php 
+            $formatted_off_created_at = date("M d, Y", strtotime($off_created_at));
+            echo $formatted_off_created_at ? $formatted_off_created_at : '-'; 
+            ?>
+        </span>
+    </p>
+    <hr>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
@@ -152,11 +173,11 @@ if(isLoggedIn() == false) {
 
     <ul class="list-group list-group-flush w-75">
         <li class="list-group-item">
-            <span class="float-start">
+            <span class="float-start fw-bold">
                 Asset Tag No
             </span>
-            <span class="float-end fw-bold">
-                <?php echo $off_asset_tag_no; ?>
+            <span class="float-end">
+                <?php echo $off_asset_tag_no ? $off_asset_tag_no : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -164,7 +185,7 @@ if(isLoggedIn() == false) {
                 Asset Name
             </span>
             <span class="float-end">
-                <?php echo $off_asset_name; ?>
+                <?php echo $off_asset_name ? $off_asset_name : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -172,7 +193,7 @@ if(isLoggedIn() == false) {
                 Type
             </span>
             <span class="float-end">
-                <?php echo $off_asset_type; ?>
+                <?php echo $off_asset_type ? $off_asset_type : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
