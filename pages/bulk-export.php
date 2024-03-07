@@ -292,7 +292,7 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
             <?php
-            $e_sql = "SELECT event_log.*
+            $e_sql = "SELECT *
             FROM event_log
             WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
             LIMIT 1";
