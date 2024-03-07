@@ -288,6 +288,9 @@ if(isLoggedIn() == false) {
                 ?>
             </span>
         </li>
+        
+    </ul>
+    <ul class="list-group list-group-flush">
         <li class="list-group-item">
             <span class="float-start fw-bold">
                 Notes
