@@ -291,48 +291,50 @@ if(isLoggedIn() == false) {
                 Last Completed Maintenance
             </span>
             <span class="float-end">
-            <?php
-            $e_sql = "SELECT *
-            FROM event_log
-            WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
-            LIMIT 1";
-            $e_result = mysqli_query($conn, $e_sql);
-            if ($e_result) {
-                $num_rows = mysqli_num_rows($e_result);
-                if ($num_rows > 0) {
-                    while ($e_row = mysqli_fetch_assoc($e_result)) {
-                        $e_id               = $e_row['event_id'];
-                        $e_asset_tag_no     = $e_row['asset_tag_no'];
-                        $e_event_type       = $e_row['event_type'];
-                        $e_date_completed   = $e_row['completed_date'];
-                        $e_status           = $e_row['status'];
-                        $e_completed_by     = $e_row['completed_by'];
-                        $e_notes            = $e_row['notes'];
-                        $e_created_at       = $e_row['created_at'];
-                        $e_updated_at       = $e_row['updated_at'];
+            <!-- PHP CODE EVENT -->
+                <?php
+                $e_sql = "SELECT *
+                FROM event_log
+                WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
+                LIMIT 1";
+                $e_result = mysqli_query($conn, $e_sql);
+                if ($e_result) {
+                    $num_rows = mysqli_num_rows($e_result);
+                    if ($num_rows > 0) {
+                        while ($e_row = mysqli_fetch_assoc($e_result)) {
+                            $e_id               = $e_row['event_id'];
+                            $e_asset_tag_no     = $e_row['asset_tag_no'];
+                            $e_event_type       = $e_row['event_type'];
+                            $e_date_completed   = $e_row['completed_date'];
+                            $e_status           = $e_row['status'];
+                            $e_completed_by     = $e_row['completed_by'];
+                            $e_notes            = $e_row['notes'];
+                            $e_created_at       = $e_row['created_at'];
+                            $e_updated_at       = $e_row['updated_at'];
+                        }
+                    } else {
+                        // No records found, set default values or handle accordingly
+                        $e_id               = null;
+                        $e_asset_tag_no     = null;
+                        $e_event_type       = null;
+                        $e_date_completed   = null;
+                        $e_status           = null;
+                        $e_completed_by     = null;
+                        $e_notes            = null;
+                        $e_created_at       = null;
+                        $e_updated_at       = null;
                     }
                 } else {
-                    // No records found, set default values or handle accordingly
-                    $e_id               = null;
-                    $e_asset_tag_no     = null;
-                    $e_event_type       = null;
-                    $e_date_completed   = null;
-                    $e_status           = null;
-                    $e_completed_by     = null;
-                    $e_notes            = null;
-                    $e_created_at       = null;
-                    $e_updated_at       = null;
+                    // Error executing the query
+                    // Handle the error
                 }
-            } else {
-                // Error executing the query
-                // Handle the error
-            }
-            ?>
+                ?>
+            <!-- end PHP CODE EVENT -->
             <?php echo isset($e_date_completed) ? $e_date_completed : '-'; ?>
-
             </span>
         </li>
         <li class="list-group-item">
+            <button class="badge text-bg-primary" data-bs-toggle="modal" data-bs-target="#maintenanceModal">Maintenance</button>
             <span class="fw-bold">
                 Notes
             </span>
@@ -419,6 +421,34 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+
+<!-- Maintenance Modal -->
+    <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h5 class="modal-title" id="maintenanceModalLabel">Maintenance Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <!-- Modal Body - Your form goes here -->
+                <div class="modal-body">
+                    <form>
+                        <!-- Form fields go here -->
+                        <div class="mb-3">
+                            <label for="maintenanceDetails" class="form-label">Maintenance Details</label>
+                            <textarea class="form-control" id="maintenanceDetails" rows="3"></textarea>
+                        </div>
+                        <!-- Add more form fields as needed -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- end Maintenance Modal -->
 
     <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
