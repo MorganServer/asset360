@@ -174,8 +174,8 @@ if(isLoggedIn() == false) {
   <div class="offcanvas-body">
     
   <div class="row">
-    <div class="col-sm-8">
-    <ul class="list-group list-group-flush" style="width: 60%;">
+    <div class="col-sm-10">
+    <ul class="list-group list-group-flush">
         <li class="list-group-item">
             <span class="float-start fw-bold">
                 Asset Tag No
