@@ -21,7 +21,7 @@ if (isset($_POST['add-maintenance'])) {
             VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$completed_by', ''), NULLIF('$event_type', ''), NULLIF('$date_completed', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
-            // header('location:' . BASE_URL . '/');
+            header("Location: " . $_SERVER['HTTP_REFERER']);
             exit; // Ensure script stops execution after redirecting
         } else {
             $error[] = 'Error: ' . mysqli_error($conn);
