@@ -125,7 +125,16 @@ if(isLoggedIn() == false) {
                 while ($off_row = mysqli_fetch_assoc($off_result)) {
                     $off_id                     = $off_row['asset_id']; 
                     $off_asset_name             = $off_row['asset_name']; 
-                    $off_asset_tag_no           = $off_row['asset_tag_no']; 
+                    $off_asset_tag_no           = $off_row['asset_tag_no'];
+                    $off_manufacturer_name      = $off_row['manufacturer_name'];
+                    $off_model                  = $off_row['model'];
+                    $off_model_no               = $off_row['model_no'];
+                    $off_acquisition_date       = $off_row['acquisition_date'];
+                    $off_end_of_life_date       = $off_row['end_of_life_date'];
+                    $off_location               = $off_row['location'];
+                    $off_custodian              = $off_row['custodian'];
+                    $off_serial_number          = $off_row['serial_number'];
+                    $off_notes                  = $off_row['notes']; 
                     $off_status                 = $off_row['status']; 
                     $off_maintenance_schedule   = $off_row['maintenance_schedule'];
                     $off_audit_schedule         = $off_row['audit_schedule']; 
@@ -156,6 +165,110 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
                 <?php echo $off_asset_name; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Type
+            </span>
+            <span class="float-end">
+                <?php echo $off_asset_type; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Serial Number
+            </span>
+            <span class="float-end">
+                <?php echo $off_serial_number ? $off_serial_number : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Manufacturer Name
+            </span>
+            <span class="float-end">
+                <?php echo $off_manufacturer_name ? $off_manufacturer_name : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Model
+            </span>
+            <span class="float-end">
+                <?php echo $off_model ? $off_model : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Model Number
+            </span>
+            <span class="float-end">
+                <?php echo $off_model_no ? $off_model_no : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                IP Address
+            </span>
+            <span class="float-end">
+                <?php echo $off_ip_address ? $off_ip_address : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Location
+            </span>
+            <span class="float-end">
+                <?php echo $off_location ? $off_location : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Custodian
+            </span>
+            <span class="float-end">
+                <?php echo $off_custodian ? $off_custodian : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Acquisition Date
+            </span>
+            <span class="float-end">
+                <?php echo $off_acquisition_date ? $off_acquisition_date : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                End of Life Date
+            </span>
+            <span class="float-end">
+                <?php echo $off_end_of_life_date ? $off_end_of_life_date : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Next Scheduled Audit
+            </span>
+            <span class="float-end">
+                <?php echo $off_audit_schedule ? $off_audit_schedule : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Next Scheduled Audit
+            </span>
+            <span class="float-end">
+                <?php echo $off_audit_schedule ? $off_audit_schedule : '-'; ?>
+            </span>
+        </li>
+        <li class="list-group-item">
+            <span class="float-start">
+                Notes
+            </span>
+            <span class="float-end">
+                <?php echo $off_notes ? $off_notes : '-'; ?>
             </span>
         </li>
     </ul>
