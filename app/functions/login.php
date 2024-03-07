@@ -17,7 +17,7 @@ function loginUser($conn)
                 $_SESSION['user_id']      = isset($row['user_id']) ? $row['user_id'] : '';
                 $_SESSION['loggedin']     = isset($row['loggedin']) ? $row['loggedin'] : '';
                 $_SESSION['user_idno']    = $row['idno'];
-                $_SESSION['lastname']     = $row['lname'];
+                $_SESSION['lname']     = $row['lname'];
                 $_SESSION['username']     = $row['uname'];
                 $_SESSION['email']        = $row['email'];
                 $_SESSION['pass']         = $row['password'];
