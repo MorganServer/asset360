@@ -193,7 +193,7 @@ if(isLoggedIn() == false) {
                 </ul>
 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-around align-items-start">
+                    <li class="list-group-item d-flex align-items-start">
                         <div class="ms-2">
                         <div class="fw-bold">Subheading</div>
                             Content for list item
