@@ -24,6 +24,9 @@ if(isLoggedIn() == false) {
     <link rel="stylesheet" href="../../assets/css/main.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
+    <!-- TinyMCE -->
+    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
@@ -323,6 +326,7 @@ if(isLoggedIn() == false) {
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
                                         <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
+                                        <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
 
                                         <div class="row">
                                             <div class="col">
@@ -340,9 +344,11 @@ if(isLoggedIn() == false) {
                                             <label for="date_completed" class="form-label">Date Completed</label>
                                             <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
                                         </div>
-                                        <div class="col pt-2">
-                                            <label for="status" class="form-label">Status</label>
-                                            <input type="text" class="form-control" id="status" name="status" value="1">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="form-label" for="notes">Notes</label>
+                                                <textarea class="form-control" name="notes" rows="5"></textarea>
+                                            </div>
                                         </div>
                                         <!-- Add more form fields as needed -->
                                         <button type="submit" name="add-maintenance" class="btn btn-primary mt-2">Submit</button>
@@ -393,6 +399,14 @@ if(isLoggedIn() == false) {
 });
 
 </script>
+
+<script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
