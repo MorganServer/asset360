@@ -75,7 +75,7 @@ if(isLoggedIn() == false) {
 <body>
 
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-    <?php //include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
+    <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
 <div class="container-fluid" style="margin-top: 60px;">
     <div class="application-details">
