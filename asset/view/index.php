@@ -194,7 +194,7 @@ if(isLoggedIn() == false) {
 
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex align-items-start">
-                        <div class="ms-2 me-4">
+                        <div class="ms-2">
                             <div class="fw-bold">Subheading</div>
                         </div>
                         <span class="badge text-bg-primary rounded-pill ms-5">14</span>
