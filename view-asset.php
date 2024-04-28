@@ -79,7 +79,7 @@ if(isLoggedIn() == false) {
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
             WHERE asset_id = $id
-            ORDER BY assets.created_at ASC";
+            ORDER BY assets.asset_created ASC";
             $off_result = mysqli_query($conn, $off_sql);
             if($off_result) {
             $num_rows = mysqli_num_rows($off_result);
