@@ -112,18 +112,26 @@ if(isLoggedIn() == false) {
             ?>
         <!-- end php code for getting asset details -->
 
+        <option value="In Use">In Use</option>
+                    <option value="In Repair">In Repair</option>
+                    <option value="In Storage">In Storage</option>
+                    <option value="Disposed">Disposed</option>
+                    <option value="Sold">Sold</option>
+                    <option value="Sub Let">Sub Let</option>
+                    <option value="Unknown">Unknown</option>
+
                 <h2>
                     <?php echo $off_asset_name; ?>
                     <span class="ps-3" style="font-size: 14px;">
-                        <?php if($status == 'Applied'){ ?>
+                        <?php if($status == 'Sub Let'){ ?>
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-primary"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'Interviewed'){ ?>
+                        <?php } else if($status == 'In Storage'){ ?>
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-info"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'Offered'){ ?>
+                        <?php } else if($status == 'In Use'){ ?>
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-success"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'Rejected'){ ?>
+                        <?php } else if($status == 'In Repair'){ ?>
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-danger"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'Interested'){ ?>
+                        <?php } else if($status == 'Unknown' || $status == 'Sold' || $status == 'Disposed'){ ?>
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $status; ?></span>
                         <?php } ?>
                     </span>
