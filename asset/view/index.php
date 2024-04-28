@@ -344,14 +344,14 @@ if(isLoggedIn() == false) {
                                             <label for="date_completed" class="form-label">Date Completed</label>
                                             <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
                                         </div>
-                                        <div class="row">
+                                        <div class="row pt-3">
                                             <div class="col">
                                                 <label class="form-label" for="notes">Notes</label>
                                                 <textarea class="form-control" name="notes" rows="5"></textarea>
                                             </div>
                                         </div>
                                         <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-maintenance" class="btn btn-primary mt-2">Submit</button>
+                                        <button type="submit" name="add-maintenance" class="btn btn-primary mt-3">Submit</button>
                                     </form>
                                 </div>
                             </div>
