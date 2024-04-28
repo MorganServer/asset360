@@ -170,23 +170,116 @@ if(isLoggedIn() == false) {
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                    <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="true">Details</button>
                   </li>
                   <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+                    <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
                   </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-                  </li>
+                  <!-- <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
+                  </li> -->
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">Hmome</div>
-                  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">profile</div>
-                  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-                  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+                    <!-- Details -->
+                        <div class="tab-pane fade show active" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
+
+                            <?php if($off_asset_type == 'Server') { ?>
+                                <h4><i class="bi bi-hdd-stack"></i> Server Details</h4>
+                            <?php } else if($off_asset_type == 'Computer') { ?>
+                                <h4><i class="bi bi-pc-display-horizontal"></i> Computer Details</h4>
+                            <?php } else if($off_asset_type == 'Network Device') { ?>
+                                <h4><i class="bi bi-diagram-2"></i> Network Device Details</h4>
+                            <?php } else if($off_asset_type == 'Mobile Device') { ?>
+                                <h4><i class="bi bi-phone"></i> Mobile Device Details</h4>
+                            <?php } else if($off_asset_type == 'Storage Device') { ?>
+                                <h4><i class="bi bi-device-ssd"></i> Storage Device Details</h4>
+                            <?php } else if($off_asset_type == 'IOT Device') { ?>
+                                <h4><i class="bi bi-tv"></i> IOT Device Details</h4>
+                            <?php } else if($off_asset_type == 'Peripheral') { ?>
+                                <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
+                            <?php } ?>
+
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Asset Tag Number</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Asset Tag Number</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Asset Tag Number</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                </li>
+                            </ul>
+                    
+
+
+                        </div>
+                    <!-- Notes -->
+                        <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
+                    
+                            <div id="accordion">
+                                <?php
+                                // Check if $notes is not empty
+                                if (!empty($notes)) {
+                                    // Match all <h5> tags and their content
+                                    preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $notes, $matches, PREG_SET_ORDER);
+                                
+                                    // Loop through each matched note
+                                    foreach ($matches as $index => $match) {
+                                        // Extract title and content
+                                        $title = $match[1];
+                                        $content = $match[2];
+                                    
+                                        // Display accordion item
+                                        ?>
+                                        <div class="accordion-item">
+                                    
+                                            <h5 class="accordion-header" id="heading<?= $index ?>">
+                                                <button class="accordion-button collapsed" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
+                                                    <?= $title ?> <!-- Use text within <h5> tags as button/title -->
+                                                    <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
+                                                </button>
+                                            </h5>
+                                            <div id="collapse<?= $index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $index ?>" data-bs-parent="#accordion">
+                                                <div class="accordion-body">
+                                                    <?= $content ?> <!-- Output the content under the <h5> tag as accordion body -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                    }
+                                } else {
+                                    // Display message if $notes is empty
+                                    ?>
+                                    <div class="accordion-item">
+                                        <h5 class="accordion-header">
+                                            <span class="text-warning">No notes found.</span>
+                                        </h5>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+
+
+                        </div>
+                    <!-- Events -->
+                        <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
+                    
+
+
+                        </div>
+                    <!-- Jira -->
+                        <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div>
                 </div>
 
 
@@ -203,21 +296,7 @@ if(isLoggedIn() == false) {
                 
 
 
-                <?php if($off_asset_type == 'Server') { ?>
-                    <h4><i class="bi bi-hdd-stack"></i> Server Details</h4>
-                <?php } else if($off_asset_type == 'Computer') { ?>
-                    <h4><i class="bi bi-pc-display-horizontal"></i> Computer Details</h4>
-                <?php } else if($off_asset_type == 'Network Device') { ?>
-                    <h4><i class="bi bi-diagram-2"></i> Network Device Details</h4>
-                <?php } else if($off_asset_type == 'Mobile Device') { ?>
-                    <h4><i class="bi bi-phone"></i> Mobile Device Details</h4>
-                <?php } else if($off_asset_type == 'Storage Device') { ?>
-                    <h4><i class="bi bi-device-ssd"></i> Storage Device Details</h4>
-                <?php } else if($off_asset_type == 'IOT Device') { ?>
-                    <h4><i class="bi bi-tv"></i> IOT Device Details</h4>
-                <?php } else if($off_asset_type == 'Peripheral') { ?>
-                    <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
-                <?php } ?>
+                
 
 
 
@@ -227,132 +306,17 @@ if(isLoggedIn() == false) {
 
 
 
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex align-items-start">
-                        <div class="ms-2 me-5">
-                            <div class="fw-bold">Asset Tag Number</div>
-                        </div>
-                        <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
-                    </li>
-                    <li class="list-group-item d-flex align-items-start">
-                        <div class="ms-2 me-5">
-                            <div class="fw-bold">Asset Tag Number</div>
-                        </div>
-                        <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
-                    </li>
-                    <li class="list-group-item d-flex align-items-start">
-                        <div class="ms-2 me-5">
-                            <div class="fw-bold">Asset Tag Number</div>
-                        </div>
-                        <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
-                    </li>
-                </ul>
+                
 
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Company</h5>
-                            <p class="card-text"><?php echo $company; ?></p>
-                        </div>
-                    </div>
+                
 
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Location</h5>
-                            <p class="card-text"><?php echo $location; ?></p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Job Type</h5>
-                            <p class="card-text"><?php echo $job_type; ?></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-container">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Base Pay</h5>
-                            <p class="card-text">
-                                <?php if(!empty($pay)) { ?>
-                                    $<?php echo $pay; ?>
-                                <?php } else { ?>
-                                <span class="text-warning">No base pay found.</span>
-                                <?php } ?>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Bonus Pay</h5>
-                            <p class="card-text">
-                                <?php if(!empty($bonus_pay)) { ?>
-                                    $<?php echo $bonus_pay; ?>
-                                <?php } else { ?>
-                                <span class="text-warning">No bonus pay found.</span>
-                                <?php } ?>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">Job Listing</h5>
-                            <p class="card-text"><a href="<?php echo $app_link; ?>" target="_blank" class="badge text-bg-secondary text-decoration-none" style="margin-top: -10px !important; padding: none !important;">Visit</a></p>
-                        </div>
-                    </div>
-                </div>
+                    
 
                 <h4><i class="bi bi-file-earmark-text-fill"></i> Notes</h4>
                 
                 <!-- __________ -->
                 
-                <div id="accordion">
-                    <?php
-                    // Check if $notes is not empty
-                    if (!empty($notes)) {
-                        // Match all <h5> tags and their content
-                        preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $notes, $matches, PREG_SET_ORDER);
-                    
-                        // Loop through each matched note
-                        foreach ($matches as $index => $match) {
-                            // Extract title and content
-                            $title = $match[1];
-                            $content = $match[2];
-                        
-                            // Display accordion item
-                            ?>
-                            <div class="accordion-item">
-                                
-                                <h5 class="accordion-header" id="heading<?= $index ?>">
-                                    <button class="accordion-button collapsed" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
-                                        <?= $title ?> <!-- Use text within <h5> tags as button/title -->
-                                        <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
-                                    </button>
-                                </h5>
-                                <div id="collapse<?= $index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $index ?>" data-bs-parent="#accordion">
-                                    <div class="accordion-body">
-                                        <?= $content ?> <!-- Output the content under the <h5> tag as accordion body -->
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                    } else {
-                        // Display message if $notes is empty
-                        ?>
-                        <div class="accordion-item">
-                            <h5 class="accordion-header">
-                                <span class="text-warning">No notes found.</span>
-                            </h5>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
+                
 
                 <!-- Maintenance Modal -->
                     <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
