@@ -173,6 +173,9 @@ if(isLoggedIn() == false) {
                     <button class="nav-link active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details-tab-pane" type="button" role="tab" aria-controls="details-tab-pane" aria-selected="true">Details</button>
                   </li>
                   <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button" role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
                     <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
                   </li>
                   <!-- <li class="nav-item" role="presentation">
@@ -226,6 +229,7 @@ if(isLoggedIn() == false) {
                     <!-- Notes -->
                         <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
                     
+                            <h4><i class="bi bi-file-earmark-text-fill"></i> Notes</h4>
                             <div id="accordion">
                                 <?php
                                 // Check if $notes is not empty
@@ -242,7 +246,7 @@ if(isLoggedIn() == false) {
                                         // Display accordion item
                                         ?>
                                         <div class="accordion-item">
-                                    
+
                                             <h5 class="accordion-header" id="heading<?= $index ?>">
                                                 <button class="accordion-button collapsed" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
                                                     <?= $title ?> <!-- Use text within <h5> tags as button/title -->
@@ -312,7 +316,7 @@ if(isLoggedIn() == false) {
 
                     
 
-                <h4><i class="bi bi-file-earmark-text-fill"></i> Notes</h4>
+                
                 
                 <!-- __________ -->
                 
