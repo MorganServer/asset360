@@ -321,7 +321,7 @@ if(isLoggedIn() == false) {
                                 <div class="modal-body">
                                     <form method="POST">
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
-                                        <input type="hiddent" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
 
                                         <div class="row">
@@ -340,12 +340,12 @@ if(isLoggedIn() == false) {
                                             <label for="date_completed" class="form-label">Date Completed</label>
                                             <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
                                         </div>
-                                        <div class="col">
+                                        <div class="col pt-2">
                                             <label for="status" class="form-label">Status</label>
                                             <input type="text" class="form-control" id="status" name="status" value="1">
                                         </div>
                                         <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-maintenance" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="add-maintenance" class="btn btn-primary mt-2">Submit</button>
                                     </form>
                                 </div>
                             </div>
