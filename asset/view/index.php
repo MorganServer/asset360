@@ -282,29 +282,35 @@ if(isLoggedIn() == false) {
                                 <!-- Modal Body - Your form goes here -->
                                 <div class="modal-body">
                                     <form method="POST">
-                                        <div class="col">
-                                            <label for="asset_tag_no" class="form-label">Asset Tag Number</label>
-                                            <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>" readonly>
+                                        <input type="hidden" class="form-control" id="event_type" name="event_type" value="Maintenance">
+                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                        <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
+                                        <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
+                                        
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
+                                                <?php echo $off_asset_tag_no; ?>
+                                            </div>
+                                            <div class="col">
+                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
+                                                <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <label for="event_type" class="form-label">Event Type</label>
-                                            <input type="text" class="form-control" id="event_type" name="event_type" value="Maintenance">
-                                        </div>
-                                        <div class="col">
-                                            <label for="completed_by" class="form-label">Completed By</label>
-                                            <input type="text" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                        </div>
+                                        <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
                                             <label for="date_completed" class="form-label">Date Completed</label>
                                             <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
                                         </div>
-                                        <div class="col">
-                                            <label for="status" class="form-label">Status</label>
-                                            <input type="text" class="form-control" id="status" name="status" value="1">
+                                        <div class="row pt-3">
+                                            <div class="col">
+                                                <label class="form-label" for="notes">Notes</label>
+                                                <textarea class="form-control" name="notes" rows="5"></textarea>
+                                            </div>
                                         </div>
                                         <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-maintenance" class="btn btn-primary">Submit</button>
+                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
                                     </form>
                                 </div>
                             </div>
@@ -351,7 +357,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                         </div>
                                         <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-maintenance" class="btn btn-primary mt-3">Submit</button>
+                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
                                     </form>
                                 </div>
                             </div>

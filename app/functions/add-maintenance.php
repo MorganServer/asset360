@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['add-maintenance'])) {
+if (isset($_POST['add-event'])) {
     $idno = rand(1000000, 9999999);
 
     // Sanitize input data
