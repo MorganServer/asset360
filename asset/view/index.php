@@ -112,14 +112,6 @@ if(isLoggedIn() == false) {
             ?>
         <!-- end php code for getting asset details -->
 
-        <option value="In Use">In Use</option>
-                    <option value="In Repair">In Repair</option>
-                    <option value="In Storage">In Storage</option>
-                    <option value="Disposed">Disposed</option>
-                    <option value="Sold">Sold</option>
-                    <option value="Sub Let">Sub Let</option>
-                    <option value="Unknown">Unknown</option>
-
                 <h2>
                     <?php echo $off_asset_name; ?>
                     <span class="ps-3" style="font-size: 14px;">
