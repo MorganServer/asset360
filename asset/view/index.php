@@ -38,9 +38,9 @@ if(isLoggedIn() == false) {
     <!-- Styles -->
         <style>
             .application-details {
-                max-width: 80%;
-                padding: 20px;
-                margin: 20px auto;
+                max-width: 80% !important;
+                padding: 20px !important;
+                margin: 20px auto !important;
             }
 
             .detail-label {
@@ -48,11 +48,11 @@ if(isLoggedIn() == false) {
             }
 
             .detail-value {
-                margin-bottom: 10px;
+                margin-bottom: 10px !important;
             }
             .card-container {
-                display: flex;
-                justify-content: space-between; 
+                display: flex !importnat;
+                justify-content: space-between !important; 
             }
 
             .card {
