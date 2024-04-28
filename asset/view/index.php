@@ -161,8 +161,25 @@ if(isLoggedIn() == false) {
                     </span>
                 </p>
                 
-                <h4><i class="bi bi-briefcase-fill"></i> Job details</h4>
 
+
+                <?php if($off_asset_type == 'Server') { ?>
+                    <h4><i class="bi bi-hdd-stack"></i> Server Details</h4>
+                <?php } else if($off_asset_type == 'Computer') { ?>
+                    <h4><i class="bi bi-pc-display-horizontal"></i> Computer Details</h4>
+                <?php } else if($off_asset_type == 'Network Device') { ?>
+                    <h4><i class="bi bi-diagram-2"></i> Network Device Details</h4>
+                <?php } else if($off_asset_type == 'Mobile Device') { ?>
+                    <h4><i class="bi bi-phone"></i> Mobile Device Details</h4>
+                <?php } else if($off_asset_type == 'Storage Device') { ?>
+                    <h4><i class="bi bi-device-ssd"></i> Storage Device Details</h4>
+                <?php } else if($off_asset_type == 'IOT Device') { ?>
+                    <h4><i class="bi bi-tv"></i> IOT Device Details</h4>
+                <?php } else if($off_asset_type == 'Peripheral') { ?>
+                    <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
+                <?php } ?>
+
+        
 
                 <div class="card-container">
                     <div class="card">
