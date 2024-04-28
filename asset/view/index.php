@@ -313,7 +313,7 @@ if(isLoggedIn() == false) {
                 <!-- end Maintenance Modal -->
                 <!-- Audit Modal -->
                     <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
