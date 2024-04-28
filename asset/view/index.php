@@ -186,6 +186,7 @@ if(isLoggedIn() == false) {
                     <!-- Details -->
                         <div class="tab-pane fade show active" id="details-tab-pane" role="tabpanel" aria-labelledby="details-tab" tabindex="0">
 
+                            <div class="mt-4"></div>
                             <?php if($off_asset_type == 'Server') { ?>
                                 <h4><i class="bi bi-hdd-stack"></i> Server Details</h4>
                             <?php } else if($off_asset_type == 'Computer') { ?>
@@ -229,6 +230,7 @@ if(isLoggedIn() == false) {
                     <!-- Notes -->
                         <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
                     
+                            <div class="mt-4"></div>
                             <h4><i class="bi bi-file-earmark-text-fill"></i> Notes</h4>
                             <div id="accordion">
                                 <?php
