@@ -60,7 +60,7 @@ if(isLoggedIn() == false) {
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
                     
-                    $sql = "SELECT * FROM assets WHERE asset_type = 'Mobile Device' ORDER BY created_at DESC LIMIT $limit OFFSET $offset";
+                    $sql = "SELECT * FROM assets WHERE asset_type = 'Mobile Device' ORDER BY asset_created DESC LIMIT $limit OFFSET $offset";
                     $result = mysqli_query($conn, $sql);
                     if($result) {
                         $num_rows = mysqli_num_rows($result);
