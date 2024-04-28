@@ -164,6 +164,42 @@ if(isLoggedIn() == false) {
                         ?>
                     </span>
                 </p>
+
+
+
+
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
+                  </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">...</div>
+                  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+                  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+                  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
                 
 
 
@@ -183,6 +219,14 @@ if(isLoggedIn() == false) {
                     <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
                 <?php } ?>
 
+
+
+
+
+
+
+
+
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex align-items-start">
                         <div class="ms-2 me-5">
@@ -190,19 +234,17 @@ if(isLoggedIn() == false) {
                         </div>
                         <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                        <div class="fw-bold">Subheading</div>
-                        Content for list item
+                    <li class="list-group-item d-flex align-items-start">
+                        <div class="ms-2 me-5">
+                            <div class="fw-bold">Asset Tag Number</div>
                         </div>
-                        <span class="badge text-bg-primary rounded-pill">14</span>
+                        <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
                     </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-start">
-                        <div class="ms-2 me-auto">
-                        <div class="fw-bold">Subheading</div>
-                            Content for list item
+                    <li class="list-group-item d-flex align-items-start">
+                        <div class="ms-2 me-5">
+                            <div class="fw-bold">Asset Tag Number</div>
                         </div>
-                        <span class="badge text-bg-primary rounded-pill">14</span>
+                        <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
                     </li>
                 </ul>
 
