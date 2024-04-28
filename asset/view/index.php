@@ -320,24 +320,21 @@ if(isLoggedIn() == false) {
                                 <!-- Modal Body - Your form goes here -->
                                 <div class="modal-body">
                                     <form method="POST">
+                                        <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
+                                        <input type="hiddent" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                        <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
+
                                         <div class="row">
                                             <div class="col">
-                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><hr><br>
+                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
                                                 <?php echo $off_asset_tag_no; ?>
                                             </div>
                                             <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><hr><br>
+                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
                                                 <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
                                             </div>
-                                            <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         </div>
-                                        <div class="col">
-                                            <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
-                                        </div>
-                                        <div class="col">
-                                            
-                                            <input type="hiddent" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                        </div>
+                                        <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
                                             <label for="date_completed" class="form-label">Date Completed</label>
