@@ -104,8 +104,8 @@ if(isLoggedIn() == false) {
                     $off_maintenance_schedule   = $off_row['maintenance_schedule'];
                     $off_audit_schedule         = $off_row['audit_schedule']; 
                     $off_asset_type             = $off_row['asset_type']; 
-                    $off_created_at             = $off_row['created_at'];
-                    $off_updated_at             = $off_row['updated_at'];
+                    $off_created_at             = $off_row['asset_created'];
+                    $off_updated_at             = $off_row['asset_updated'];
                     $off_ip_address             = $off_row['ip_address']; 
                 }
             // }}
