@@ -285,7 +285,7 @@ if(isLoggedIn() == false) {
                                         </div>
                                         <div class="col">
                                             <label for="event_type" class="form-label">Event Type</label>
-                                            <input type="text" class="form-control" id="event_type" name="event_type" value="2">
+                                            <input type="text" class="form-control" id="event_type" name="event_type" value="Maintenance">
                                         </div>
                                         <div class="col">
                                             <label for="completed_by" class="form-label">Completed By</label>
@@ -323,14 +323,14 @@ if(isLoggedIn() == false) {
                                         <div class="col">
                                             <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
                                             <?php echo $off_asset_tag_no; ?>
-                                            <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>" readonly>
+                                            <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         </div>
                                         <div class="col">
-                                            <label for="event_type" class="form-label">Event Type</label>
-                                            <input type="text" class="form-control" id="event_type" name="event_type" value="2" readonly>
+                                            <input type="text" class="form-control" id="event_type" name="event_type" value="Audit">
                                         </div>
                                         <div class="col">
-                                            <label for="completed_by" class="form-label">Completed By</label>
+                                            <label for="completed_by" class="form-label">Completed By</label><br>
+                                            <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
                                             <input type="text" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
                                         </div>
                                         <div class="col">
