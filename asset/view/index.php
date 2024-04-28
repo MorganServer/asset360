@@ -115,16 +115,16 @@ if(isLoggedIn() == false) {
                 <h2>
                     <?php echo $off_asset_name; ?>
                     <span class="ps-3" style="font-size: 14px;">
-                        <?php if($status == 'Sub Let'){ ?>
-                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-primary"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'In Storage'){ ?>
-                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-info"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'In Use'){ ?>
-                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-success"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'In Repair'){ ?>
-                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-danger"></i> &nbsp; <?php echo $status; ?></span>
-                        <?php } else if($status == 'Unknown' || $status == 'Sold' || $status == 'Disposed'){ ?>
-                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $status; ?></span>
+                        <?php if($off_status == 'Sub Let'){ ?>
+                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-primary"></i> &nbsp; <?php echo $off_status; ?></span>
+                        <?php } else if($off_status == 'In Storage'){ ?>
+                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-info"></i> &nbsp; <?php echo $off_status; ?></span>
+                        <?php } else if($off_status == 'In Use'){ ?>
+                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-success"></i> &nbsp; <?php echo $off_status; ?></span>
+                        <?php } else if($off_status == 'In Repair'){ ?>
+                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-danger"></i> &nbsp; <?php echo $off_status; ?></span>
+                        <?php } else if($off_status == 'Unknown' || $off_status == 'Sold' || $off_status == 'Disposed'){ ?>
+                            <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $off_status; ?></span>
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
