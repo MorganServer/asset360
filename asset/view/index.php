@@ -77,8 +77,7 @@ if(isLoggedIn() == false) {
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
     <?php //include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
-    <div class="mt-5"></div>
-<div class="container-fluid mt-5">
+<div class="container-fluid" style="margin-top: 50px;">
     <div class="application-details">
         <!-- php code for getting asset details -->
             <?php
