@@ -183,21 +183,12 @@ if(isLoggedIn() == false) {
                     <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
                 <?php } ?>
 
-        
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"></li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                </ul>
-
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex align-items-start">
-                        <div class="ms-2">
-                            <div class="fw-bold">Subheading</div>
+                        <div class="ms-2 me-5">
+                            <div class="fw-bold">Asset Tag Number</div>
                         </div>
-                        <span class="badge text-bg-primary rounded-pill ms-5">14</span>
+                        <span class="badge text-bg-primary rounded-pill ms-5"><?php echo $off_asset_tag_no; ?></span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
