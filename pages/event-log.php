@@ -328,48 +328,7 @@ if(isLoggedIn() == false) {
                                                         <?php echo $tnotes; ?>
                                                     </div>
                                                 
-                                                <!-- <div id="accordion">
-                                                    <?php
-                                                    
-                                                    // if (!empty($tnotes)) {
-                                                        
-                                                    //     preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $tnotes, $matches, PREG_SET_ORDER);
-                                                    
-                                                        
-                                                    //     foreach ($matches as $index => $match) {
-                                                            
-                                                    //         $title = $match[1];
-                                                    //         $content = $match[2];
-                                                        
-                                                           
-                                                            ?>
-                                                            <div class="accordion-item">
-                                                        
-                                                                <h5 class="accordion-header" id="heading<?= //$index ?>">
-                                                                    <button class="accordion-button collapsed fw-bold" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= //$index ?>" aria-expanded="false" aria-controls="collapse<?= //$index ?>">
-                                                                        <?= //$title ?> 
-                                                                        <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
-                                                                    </button>
-                                                                </h5>
-                                                                <div id="collapse<?= //$index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= //$index ?>" data-bs-parent="#accordion">
-                                                                    <div class="accordion-body">
-                                                                        <?= //$content ?> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <?php
-                                                        //}
-                                                    //} else {
-                                                        ?>
-                                                        <div class="accordion-item">
-                                                            <h5 class="accordion-header">
-                                                                <span class="text-warning">No notes found.</span>
-                                                            </h5>
-                                                        </div>
-                                                        <?php
-                                                    //}
-                                                    ?>
-                                                </div> -->
+                                                
 
                                                 <hr>
                                                 <form method="POST">
