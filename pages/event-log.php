@@ -255,7 +255,6 @@ if(isLoggedIn() == false) {
                                               <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                             </ul>
                                           </ul>
-                                        
                                         </td>
 
                                     </tr>
