@@ -205,10 +205,10 @@ if(isLoggedIn() == false) {
 
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5" style="width: 20%;">
+                                    <div class="ms-2 me-5 w-25">
                                         <div class="fw-bold">Asset Tag Number</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                    <span class=""><?php echo $off_asset_tag_no; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
                                     <div class="ms-2 me-5">
