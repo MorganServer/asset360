@@ -19,7 +19,7 @@ if (isset($_POST['add-event'])) {
         $error[] = 'Event already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO event_log (idno, asset_tag_no, requested_by, event_type, date_requested, notes, status) 
+        $insert = "INSERT INTO event_log (idno, asset_tag_no, event_type, requested_by, date_requested, notes, status) 
             VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$event_type', ''), NULLIF('$requested_by', ''), NULLIF('$date_requested', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
