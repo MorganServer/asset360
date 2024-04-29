@@ -151,8 +151,8 @@ if(isLoggedIn() == false) {
                                                     <i class="bi bi-three-dots text-secondary"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
+                                                    <li><a class="dropdown-item" href="event_log.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -343,7 +343,6 @@ if(isLoggedIn() == false) {
                                                             <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
                                                         </div>
                                                     </div>
-                                                    <hr>
                                                     <div class="row pt-3">
                                                         <div class="col">
                                                             <label class="form-label" for="notes">Notes</label>
