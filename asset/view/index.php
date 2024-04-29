@@ -265,7 +265,7 @@ if(isLoggedIn() == false) {
                                         FROM event_log
                                         JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no
                                         WHERE event_log.event_type = 'Maintenance'
-                                        AND assets.asset_id = $off_id
+                                        AND assets.asset_id = '$off_id'
                                         ORDER BY event_log.date_completed DESC
                                         LIMIT 1";
                                         $newresult = mysqli_query($conn, $newsql);
