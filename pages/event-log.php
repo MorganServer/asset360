@@ -242,19 +242,18 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <!-- <td style="font-size: 20px;"><i class="bi bi-three-dots"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+                                        <!-- <td style="font-size: 20px;"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
 
                                         <td style="font-size: 20px;">
-                                        <div class="btn-group dropend">
-                                          <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Dropend
-                                          </button>
-                                          <ul class="dropdown-menu">
-                                            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
-                                              <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
-                                              <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
-                                            <!-- </ul> -->
-                                          </ul>
+                                            <div class="btn-group dropend">
+                                                <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots">
+                                                </a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
+                                                    <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
                                         </td>
 
                                     </tr>
