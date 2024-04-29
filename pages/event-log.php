@@ -180,11 +180,12 @@ if(isLoggedIn() == false) {
                                     <tr>
                                     <th scope="col">Tag No</th>
                                     <th scope="col">Event Type</th>
-                                    <!-- <th scope="col">Location</th> -->
-                                    <th scope="col">Completed</th>
-                                    <th scope="col">Completed By</th>
+                                    <th scope="col">Performed</th>
+                                    <th scope="col">Performed By</th>
+                                    <th scope="col">Reviewed</th>
+                                    <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
-                                    <!-- <th scope="col">Actions</th> -->
+                                    <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,36 +195,50 @@ if(isLoggedIn() == false) {
                                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                         $offset = ($page - 1) * $limit;
 
-                                        $asql = "SELECT * FROM event_log WHERE event_type = 'Audit' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        $aresult = mysqli_query($conn, $asql);
-                                        if($eresult) {
-                                            $anum_rows = mysqli_num_rows($aresult);
-                                            if($anum_rows > 0) {
-                                                while ($arow = mysqli_fetch_assoc($aresult)) {
-                                                    $id                     = $arow['event_id'];
-                                                    $idno                   = $arow['idno'];
-                                                    $status                 = $arow['status'];
-                                                    $date_completed         = $arow['date_completed'];
-                                                    $asset_tag_no           = $arow['asset_tag_no'];
-                                                    $completed_by           = $arow['completed_by'];
-                                                    $event_type             = $arow['event_type'];
-                                                    $notes                  = $arow['notes'];
-                                                    $event_created          = $arow['event_created'];    
-                                                    $event_updated          = $arow['event_updated'];                 
+                                        $msql = "SELECT * FROM event_log WHERE event_type = 'Audit' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                        $mresult = mysqli_query($conn, $msql);
+                                        if($mresult) {
+                                            $mnum_rows = mysqli_num_rows($mresult);
+                                            if($mnum_rows > 0) {
+                                                while ($mrow = mysqli_fetch_assoc($mresult)) {
+                                                    $id                     = $mrow['event_id'];
+                                                    $idno                   = $mrow['idno'];
+                                                    $status                 = $mrow['status'];
+                                                    $date_performed         = $mrow['date_performed'];
+                                                    $date_reviewed          = $mrow['date_reviewed'];
+                                                    $asset_tag_no           = $mrow['asset_tag_no'];
+                                                    $performed_by           = $mrow['performed_by'];
+                                                    $reviewed_by            = $mrow['reviewed_by'];
+                                                    $event_type             = $mrow['event_type'];
+                                                    $notes                  = $mrow['notes'];
+                                                    $event_created          = $mrow['event_created'];    
+                                                    $event_updated          = $mrow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';                  
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';                  
 
                                                     // Format audit schedule if not null
-                                                    // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
                                         <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
-                                        <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
-                                        <td><?php echo $status ? $status : '--'; ?></td>
-                                        <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
+                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
+                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
+                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
+                                        <?php if($status == "Awaiting Approval") { ?>
+                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Completed") { ?>
+                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Rejected") { ?>
+                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Rescheduled") { ?>
+                                            <td><span class="badge text-bg-warning"><?php echo $status; ?></span></td>
+                                        <?php } else { ?>
+                                            <td>--</td>
+                                        <?php } ?>
+                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                                     </tr>
                                     <?php
                                             }
