@@ -389,7 +389,8 @@ if(isLoggedIn() == false) {
                                     <tr>
                                     <th scope="col">Tag No</th>
                                     <th scope="col">Event Type</th>
-                                    <!-- <th scope="col">Location</th> -->
+                                    <th scope="col">Requested</th>
+                                    <th scope="col">Requested By</th>
                                     <th scope="col">Completed</th>
                                     <th scope="col">Completed By</th>
                                     <th scope="col">Status</th>
@@ -413,7 +414,9 @@ if(isLoggedIn() == false) {
                                                     $idno                   = $erow['idno'];
                                                     $status                 = $erow['status'];
                                                     $date_completed         = $erow['date_completed'];
+                                                    $date_requested         = $erow['date_requested'];
                                                     $asset_tag_no           = $erow['asset_tag_no'];
+                                                    $requested_by           = $erow['requested_by'];
                                                     $completed_by           = $erow['completed_by'];
                                                     $event_type             = $erow['event_type'];
                                                     $notes                  = $erow['notes'];
@@ -421,7 +424,8 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $erow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';                  
+                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';           
+                                                    $f_date_requested = !empty($date_requested) ? date_format(date_create($date_requested), 'M d, Y') : '-';       
 
                                                     // Format audit schedule if not null
                                                     // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
@@ -429,9 +433,21 @@ if(isLoggedIn() == false) {
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
                                         <td><?php echo $event_type ? $event_type : '--'; ?></td>
+                                        <td><?php echo $f_date_requested ? $f_date_requested : '--'; ?></td>
+                                        <td><?php echo $requested_by ? $requested_by : '--'; ?></td>
                                         <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
                                         <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
-                                        <td><?php echo $status ? $status : '--'; ?></td>
+                                        <?php if($status == "Awaiting Approval") { ?>
+                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Completed") { ?>
+                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Rejected") { ?>
+                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
+                                        <?php } else if($status == "Rescheduled") { ?>
+                                            <td><span class="badge text-bg-warning"><?php echo $status; ?></span></td>
+                                        <?php } else { ?>
+                                            <td>--</td>
+                                        <?php } ?>
                                         <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
                                     </tr>
                                     <?php
@@ -518,20 +534,21 @@ if(isLoggedIn() == false) {
                         </div>
                     </div>
                 <!-- end Maintenance Modal -->
+
                 <!-- Audit Modal -->
                     <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="auditModalLabel">Audit Request</h5>
+                                    <h5 class="modal-title" id="auditModalLabel">Perform an Audit</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <!-- Modal Body - Your form goes here -->
                                 <div class="modal-body">
                                     <form method="POST">
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
-                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                        <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
 
@@ -541,15 +558,15 @@ if(isLoggedIn() == false) {
                                                 <?php echo $off_asset_tag_no; ?>
                                             </div>
                                             <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
-                                                <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
+                                                <label for="requested_by" class="form-label fw-bold">Requested By</label><br>
+                                                <?php echo 'System Administrator'; ?>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_completed" class="form-label">Date Completed</label>
-                                            <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
+                                            <label for="date_requested" class="form-label">Date Requested</label>
+                                            <input type="date" class="form-control" id="date_requested" name="date_requested" value="<?php echo $cdate; ?>">
                                         </div>
                                         <div class="row pt-3">
                                             <div class="col">
