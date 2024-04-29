@@ -389,7 +389,7 @@ if(isLoggedIn() == false) {
                                     <th scope="col">Completed</th>
                                     <th scope="col">Completed By</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
+                                    <!-- <th scope="col">Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -428,7 +428,7 @@ if(isLoggedIn() == false) {
                                         <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
                                         <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
                                         <td><?php echo $status ? $status : '--'; ?></td>
-                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                        <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
                                     </tr>
                                     <?php
                                             }
