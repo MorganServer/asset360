@@ -258,8 +258,25 @@ if(isLoggedIn() == false) {
                                         $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
                                         $off_audit_schedule = strtotime($off_audit_schedule);
                                         $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
+
+                                        $newsql = "SELECT * FROM event_log JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no WHERE event_log.event_type = 'Maintenance'";
+                                        $newresult = mysqli_query($conn, $newsql);
+                                        if (mysqli_num_rows($newresult) > 0) {
+                                            while ($newrow = mysqli_fetch_assoc($newresult)) { 
+                                                $completed = $newrow['date_completed'];
+                                                $last_name  = $newrow['lname'];
+
+                                            }}
+
+                                        
+                                        
+                                        
+                                        
+
+
                                     ?>
 
+                                            <?php  echo $completed; ?>
 
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-start">
@@ -291,6 +308,12 @@ if(isLoggedIn() == false) {
                                                 <div class="fw-bold">Next Audit</div>
                                             </div>
                                             <span class=""><?php echo $audit_schedule_formatted; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 30%;">
+                                                <div class="fw-bold">Last Maintenance</div>
+                                            </div>
+                                            <span class=""><?php echo $last_maintenance; ?></span>
                                         </li>
                                     </ul>
                                 </div>
