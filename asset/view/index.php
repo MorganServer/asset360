@@ -423,7 +423,7 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $erow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    // $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';                  
+                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';                  
 
                                                     // Format audit schedule if not null
                                                     // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
@@ -431,7 +431,7 @@ if(isLoggedIn() == false) {
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
                                         <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $date_completed ? $date_completed : '--'; ?></td>
+                                        <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
                                         <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
                                         <td><?php echo $status ? $status : '--'; ?></td>
                                         <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
