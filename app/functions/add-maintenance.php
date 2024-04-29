@@ -4,11 +4,11 @@ if (isset($_POST['add-event'])) {
 
     // Sanitize input data
     $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : "";
-    $requested_by = isset($_POST['requested_by']) ? mysqli_real_escape_string($conn, $_POST['requested_by']) : "";
-    $completed_by = isset($_POST['completed_by']) ? mysqli_real_escape_string($conn, $_POST['completed_by']) : "";
+    // $requested_by = isset($_POST['requested_by']) ? mysqli_real_escape_string($conn, $_POST['requested_by']) : "";
+    // $completed_by = isset($_POST['completed_by']) ? mysqli_real_escape_string($conn, $_POST['completed_by']) : "";
     $event_type = isset($_POST['event_type']) ? mysqli_real_escape_string($conn, $_POST['event_type']) : "";
     $date_requested = isset($_POST['date_requested']) ? mysqli_real_escape_string($conn, $_POST['date_requested']) : "";
-    $date_completed = isset($_POST['date_completed']) ? mysqli_real_escape_string($conn, $_POST['date_completed']) : "";
+    // $date_completed = isset($_POST['date_completed']) ? mysqli_real_escape_string($conn, $_POST['date_completed']) : "";
     $notes = isset($_POST['notes']) ? mysqli_real_escape_string($conn, $_POST['notes']) : "";
     $status = isset($_POST['status']) ? mysqli_real_escape_string($conn, $_POST['status']) : "";
 
@@ -19,8 +19,8 @@ if (isset($_POST['add-event'])) {
         $error[] = 'Event already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO event_log (idno, asset_tag_no, requested_by, event_type, date_requested, notes, status) 
-            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$requested_by', ''), NULLIF('$event_type', ''), NULLIF('$date_requested', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+        $insert = "INSERT INTO event_log (idno, asset_tag_no, event_type, date_requested, notes, status) 
+            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$event_type', ''), NULLIF('$date_requested', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
             header("Location: " . $_SERVER['HTTP_REFERER']);
