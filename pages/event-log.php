@@ -298,17 +298,99 @@ if(isLoggedIn() == false) {
                                         ?>
                                           <div class="modal-dialog">
                                             <div class="modal-content">
-                                              <div class="modal-header">
-                                                <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Maintenance Information <?php echo $tidno; ?></h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                              </div>
-                                              <div class="modal-body">
-                                                <!-- Add your maintenance information here -->
-                                                <!-- You can use PHP to fetch additional information based on the $id -->
-                                              </div>
-                                              <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                              </div>
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
+                                                            <?php echo $tasset_tag_no; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="status" class="form-label fw-bold">Status</label><br>
+                                                            <?php echo $tstatus; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
+                                                            <?php echo $tperformed_by; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
+                                                            <?php echo $tdate_performed; ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="accordion">
+                                                    <?php
+                                                    // Check if $notes is not empty
+                                                    if (!empty($tnotes)) {
+                                                        // Match all <h5> tags and their content
+                                                        preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $tnotes, $matches, PREG_SET_ORDER);
+                                                    
+                                                        // Loop through each matched note
+                                                        foreach ($matches as $index => $match) {
+                                                            // Extract title and content
+                                                            $title = $match[1];
+                                                            $content = $match[2];
+                                                        
+                                                            // Display accordion item
+                                                            ?>
+                                                            <div class="accordion-item">
+                                                        
+                                                                <h5 class="accordion-header" id="heading<?= $index ?>">
+                                                                    <button class="accordion-button collapsed fw-bold" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
+                                                                        <?= $title ?> <!-- Use text within <h5> tags as button/title -->
+                                                                        <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
+                                                                    </button>
+                                                                </h5>
+                                                                <div id="collapse<?= $index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $index ?>" data-bs-parent="#accordion">
+                                                                    <div class="accordion-body">
+                                                                        <?= $content ?> <!-- Output the content under the <h5> tag as accordion body -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        // Display message if $notes is empty
+                                                        ?>
+                                                        <div class="accordion-item">
+                                                            <h5 class="accordion-header">
+                                                                <span class="text-warning">No notes found.</span>
+                                                            </h5>
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <hr>
+                                                <form method="POST">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
+                                                            <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                                        </div>
+                                                        <div class="col">
+                                                            <?php $cdate = date("Y-m-d"); ?>
+                                                            <label for="date_reviewed" class="form-label">Date Reviewed</label>
+                                                            <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row pt-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="notes">Notes</label>
+                                                            <textarea class="form-control" name="notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
+                                                    </div>
+                                                </form>  
                                             </div>
                                           </div>
                                         </div>
