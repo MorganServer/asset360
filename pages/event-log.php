@@ -247,11 +247,11 @@ if(isLoggedIn() == false) {
 
                                         <td style="font-size: 20px;">
                                             <div class="btn-group">
-                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
                                                     <i class="bi bi-three-dots text-secondary"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
+                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
                                                     <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
                                             </div>
