@@ -246,9 +246,9 @@ if(isLoggedIn() == false) {
 
                                         <td style="font-size: 20px;">
                                             <div class="btn-group dropend">
-                                                <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots">
-                                                </a>
+                                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots"></i>
+                                                </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
                                                     <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
@@ -437,24 +437,6 @@ if(isLoggedIn() == false) {
         });
     </script>
 
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
-<!-- <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var dropdownToggle = document.querySelector('.dropdown-toggle');
-    var dropdownMenu = document.querySelector('.dropdown-menu');
-
-    dropdownToggle.addEventListener('click', function () {
-      dropdownMenu.classList.toggle('show');
-    });
-
-    // Close the dropdown when clicking outside of it
-    document.addEventListener('click', function (e) {
-      if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
-        dropdownMenu.classList.remove('show');
-      }
-    });
-  });
-</script> -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
