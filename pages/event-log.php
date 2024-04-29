@@ -246,7 +246,7 @@ if(isLoggedIn() == false) {
 
                                         <td style="font-size: 20px;">
                                             <div class="btn-group dropend">
-                                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-three-dots"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
