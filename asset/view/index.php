@@ -254,45 +254,33 @@ if(isLoggedIn() == false) {
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Asset Tag Number</div>
+                                                <div class="fw-bold">Acquisition Date</div>
                                             </div>
-                                            <span class=""><?php echo $off_asset_tag_no; ?></span>
+                                            <span class=""><?php echo $off_acquisition_date; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Asset Type</div>
+                                                <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo $off_asset_type; ?></span>
+                                            <span class=""><?php echo $off_end_of_life_date; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Serial Number</div>
+                                                <div class="fw-bold">Location</div>
                                             </div>
-                                            <span class=""><?php echo $off_serial_number; ?></span>
+                                            <span class=""><?php echo $off_location; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Model</div>
+                                                <div class="fw-bold">Asset Custodian</div>
                                             </div>
-                                            <span class=""><?php echo $off_model; ?></span>
+                                            <span class=""><?php echo $off_custodian; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Model Number</div>
+                                                <div class="fw-bold">Next Audit</div>
                                             </div>
-                                            <span class=""><?php echo $off_model_no; ?></span>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-start">
-                                            <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Model Number</div>
-                                            </div>
-                                            <span class=""><?php echo $off_model_no; ?></span>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-start">
-                                            <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Manufacturer Name</div>
-                                            </div>
-                                            <span class=""><?php echo $off_manufacturer_name; ?></span>
+                                            <span class=""><?php echo $off_audit_schedule; ?></span>
                                         </li>
                                     </ul>
                                 </div>
