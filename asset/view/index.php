@@ -315,7 +315,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class=""><?php echo $completed; ?></span>
+                                            <span class=""><?php echo $completed_formatted; ?></span>
                                         </li>
                                     </ul>
                                 </div>
