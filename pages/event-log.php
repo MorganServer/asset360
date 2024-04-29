@@ -202,7 +202,7 @@ if(isLoggedIn() == false) {
                                                                 <?php echo $tstatus; ?>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row pt-3">
                                                             <div class="col">
                                                                 <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
                                                                 <?php echo $tperformed_by; ?>
@@ -212,7 +212,7 @@ if(isLoggedIn() == false) {
                                                                 <?php echo $tdate_performed; ?>
                                                             </div>
                                                         </div>
-                                                        <div class="col">
+                                                        <div class="col pt-3">
                                                             <label for="notes" class="form-label fw-bold">Notes</label><br>
                                                             <?php echo $tnotes; ?>
                                                         </div>
@@ -228,13 +228,13 @@ if(isLoggedIn() == false) {
                                                             </div>
                                                             <div class="col">
                                                                 <?php $cdate = date("Y-m-d"); ?>
-                                                                <label for="date_reviewed" class="form-label">Date Reviewed</label>
+                                                                <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
                                                                 <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row pt-3">
                                                             <div class="col">
-                                                                <label class="form-label" for="notes">Notes</label>
+                                                                <label class="form-label" for="notes fw-bold">Notes</label>
                                                                 <textarea class="form-control" name="notes" rows="5"></textarea>
                                                             </div>
                                                         </div>
@@ -246,7 +246,7 @@ if(isLoggedIn() == false) {
                                                 </div>
                                               </div>
                                             </div>
-                                        <!-- end Modal -->
+                                    <!-- end Modal -->
 
                                     <?php
                                             }
@@ -404,7 +404,7 @@ if(isLoggedIn() == false) {
                                                             <?php echo $tstatus; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row pt-3">
                                                         <div class="col">
                                                             <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
                                                             <?php echo $tperformed_by; ?>
@@ -414,7 +414,7 @@ if(isLoggedIn() == false) {
                                                             <?php echo $tdate_performed; ?>
                                                         </div>
                                                     </div>
-                                                    <div class="col">
+                                                    <div class="col pt-3">
                                                         <label for="notes" class="form-label fw-bold">Notes</label><br>
                                                         <?php echo $tnotes; ?>
                                                     </div>
@@ -430,13 +430,13 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                         <div class="col">
                                                             <?php $cdate = date("Y-m-d"); ?>
-                                                            <label for="date_reviewed" class="form-label">Date Reviewed</label>
+                                                            <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
                                                             <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
                                                         </div>
                                                     </div>
                                                     <div class="row pt-3">
                                                         <div class="col">
-                                                            <label class="form-label" for="notes">Notes</label>
+                                                            <label class="form-label" for="notes fw-bold">Notes</label>
                                                             <textarea class="form-control" name="notes" rows="5"></textarea>
                                                         </div>
                                                     </div>
