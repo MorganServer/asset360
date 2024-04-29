@@ -203,6 +203,8 @@ if(isLoggedIn() == false) {
                                 <h4><i class="bi bi-printer"></i> Peripheral Details</h4>
                             <?php } ?>
 
+                            <hr>
+
                             <div class="con d-flex">
                                 <div class=" w-50">
                                     <ul class="list-group list-group-flush">
@@ -326,6 +328,8 @@ if(isLoggedIn() == false) {
                     
                             <div class="mt-4"></div>
                             <h4><i class="bi bi-file-earmark-text-fill"></i> Notes</h4>
+                            <hr>
+
                             <div id="accordion">
                                 <?php
                                 // Check if $notes is not empty
