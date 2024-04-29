@@ -384,6 +384,81 @@ if(isLoggedIn() == false) {
                         <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
                             <div class="mt-4"></div>
                             <h4><i class="bi bi-tools"></i> Latest Events</h4>
+                            <hr>
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Tag No</th>
+                                    <th scope="col">Event Type</th>
+                                    <!-- <th scope="col">Location</th> -->
+                                    <th scope="col">Completed</th>
+                                    <th scope="col">Completed By</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        // Pagination variables
+                                        $limit = 10; // Number of entries per page
+                                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                        $offset = ($page - 1) * $limit;
+
+                                        $esql = "SELECT * FROM event_log WHERE asset_id = '$off_id' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                        $eresult = mysqli_query($conn, $esql);
+                                        if($result) {
+                                            $num_rows = mysqli_num_rows($eresult);
+                                            if($num_rows > 0) {
+                                                while ($erow = mysqli_fetch_assoc($eresult)) {
+                                                    $id                     = $erow['event_id'];
+                                                    $idno                   = $erow['idno'];
+                                                    $status                 = $erow['status'];
+                                                    $date_completed         = $erow['date_completed'];
+                                                    $asset_tag_no           = $erow['asset_tag_no'];
+                                                    $completed_by           = $erow['completed_by'];
+                                                    $event_type             = $erow['event_type'];
+                                                    $notes                  = $erow['notes'];
+                                                    $event_created          = $erow['event_created'];    
+                                                    $event_updated          = $erow['event_updated'];                 
+
+                                                    // Format maintenance schedule if not null
+                                                    $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';                  
+
+                                                    // Format audit schedule if not null
+                                                    $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                    ?>
+                                    <tr>
+                                        <th scope="row"><?php echo $asset_tag_no; ?></th>
+                                        <td><?php echo $event_type ? $event_type : '--'; ?></td>
+                                        <td><?php echo $date_completed ? $date_completed : '--'; ?></td>
+                                        <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
+                                        <td><?php echo $status ? $status : '--'; ?></td>
+                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                    </tr>
+                                    <?php
+                                            }
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <br>
+                            <?php
+                                // Pagination links
+                                $sql = "SELECT COUNT(*) as total FROM assets WHERE asset_type = 'Server'";
+                                $result = mysqli_query($conn, $sql);
+                                $row = mysqli_fetch_assoc($result);
+                                $total_pages = ceil($row["total"] / $limit);                    
+
+                                    echo '<ul class="pagination justify-content-center">';
+                                    for ($i = 1; $i <= $total_pages; $i++) {
+                                        $active = ($page == $i) ? "active" : "";
+                                        echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
+                                    }
+                                    echo '</ul>';
+                            ?>
+
 
                         </div>
                     <!-- end Notes -->
