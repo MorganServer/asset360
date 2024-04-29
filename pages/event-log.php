@@ -433,6 +433,7 @@ if(isLoggedIn() == false) {
 
                                                 <hr>
                                                 <form method="POST">
+                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
                                                     <div class="row">
                                                         <div class="col">
                                                             <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
