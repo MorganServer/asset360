@@ -259,13 +259,13 @@ if(isLoggedIn() == false) {
                                         $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
                                         $off_audit_schedule = strtotime($off_audit_schedule);
                                         $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
-                                        
+
                                         $id = $_GET['id'];
                                         $newsql = "SELECT event_log.event_type
                                         FROM event_log
                                         JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no
                                         WHERE event_log.event_type = 'Maintenance'
-                                        AND assets.asset_id = $id
+                                        AND assets.asset_id = $off_id
                                         ORDER BY event_log.date_completed DESC
                                         LIMIT 1";
                                         $newresult = mysqli_query($conn, $newsql);
