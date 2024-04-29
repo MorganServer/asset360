@@ -424,8 +424,8 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $erow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';           
-                                                    $f_date_requested = !empty($date_requested) ? date_format(date_create($date_requested), 'M d, Y') : '-';       
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';           
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';       
 
                                                     // Format audit schedule if not null
                                                     // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
@@ -433,10 +433,10 @@ if(isLoggedIn() == false) {
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
                                         <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_requested ? $f_date_requested : '--'; ?></td>
-                                        <td><?php echo $requested_by ? $requested_by : '--'; ?></td>
-                                        <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
-                                        <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
+                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
+                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
+                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
+                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
                                         <?php if($status == "Awaiting Approval") { ?>
                                             <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
                                         <?php } else if($status == "Completed") { ?>
