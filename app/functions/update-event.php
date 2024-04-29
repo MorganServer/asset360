@@ -11,7 +11,7 @@ if (isset($_POST['review-event'])) {
     $status = isset($_POST['status']) ? mysqli_real_escape_string($conn, $_POST['status']) : "";
 
     // Get the existing notes from the database
-$sqlSelect = "SELECT notes FROM event_log WHERE id = '$event_id'";
+$sqlSelect = "SELECT notes FROM event_log WHERE event_id = '$event_id'";
 $result = mysqli_query($conn, $sqlSelect);
 if ($result && mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
