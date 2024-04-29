@@ -45,8 +45,9 @@ if(isLoggedIn() == false) {
             .btn-group .dropdown-toggle::after {
                 display: none;
             }
-            .btn-group .btn:focus {
+            .btn:focus {
                 outline: none;
+                box-shadow: none;
             }
         </style>
     <!-- end Styles -->
