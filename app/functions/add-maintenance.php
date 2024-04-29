@@ -19,8 +19,8 @@ if (isset($_POST['add-event'])) {
         $error[] = 'Event already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO event_log (idno, asset_tag_no, requested_by, completed_by, event_type, date_requested, date_completed, notes, status) 
-            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$requested_by', ''), NULLIF('$completed_by', ''), NULLIF('$event_type', ''), NULLIF('$date_requested', ''), NULLIF('$date_completed', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+        $insert = "INSERT INTO event_log (idno, asset_tag_no, requested_by, event_type, date_requested, notes, status) 
+            VALUES ('$idno', NULLIF('$asset_tag_no', ''), NULLIF('$requested_by', ''), NULLIF('$event_type', ''), NULLIF('$date_requested', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
             header("Location: " . $_SERVER['HTTP_REFERER']);
