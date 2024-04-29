@@ -503,6 +503,7 @@ if(isLoggedIn() == false) {
                                         <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
+                                        <input type="hidden" class="form-control" id="requested_by" name="requested_by" value="System Administrator">
                                         
                                         <div class="row">
                                             <div class="col">
@@ -551,6 +552,7 @@ if(isLoggedIn() == false) {
                                         <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
+                                        <input type="hidden" class="form-control" id="requested_by" name="requested_by" value="Compliance Analyst">
 
                                         <div class="row">
                                             <div class="col">
@@ -559,7 +561,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="col">
                                                 <label for="requested_by" class="form-label fw-bold">Requested By</label><br>
-                                                <?php echo 'System Administrator'; ?>
+                                                <?php echo 'Compliance Analyst'; ?>
                                             </div>
                                         </div>
                                         <hr>
