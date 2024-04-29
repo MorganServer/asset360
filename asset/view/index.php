@@ -252,14 +252,15 @@ if(isLoggedIn() == false) {
                                 </div>
                                 <div class="ms-3 w-50">
                                     <?php
-                                        $id = $_GET['id'];
+                                        
                                         $off_acquisition_date = strtotime($off_acquisition_date);
                                         $acq_date_formatted = date('M j, Y', $off_acquisition_date);
                                         $off_end_of_life_date = strtotime($off_end_of_life_date);
                                         $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
                                         $off_audit_schedule = strtotime($off_audit_schedule);
                                         $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
-
+                                        
+                                        $id = $_GET['id'];
                                         $newsql = "SELECT event_log.event_type
                                         FROM event_log
                                         JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no
