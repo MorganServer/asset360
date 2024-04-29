@@ -31,43 +31,19 @@ if(isLoggedIn() == false) {
     <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>View Asset | Asset360</title>
 
     <!-- Styles -->
         <style>
-            /* .application-details {
+            .application-details {
                 max-width: 80%;
                 padding: 20px;
                 margin: 20px auto;
             }
 
-            .detail-label {
-                font-weight: bold;
-            }
-
-            .detail-value {
-                margin-bottom: 10px;
-            }
-            .card-container {
-                display: flex;
-                justify-content: space-between; 
-            }
-
-            .card {
-                width: calc(33.33% - 20px); 
-                margin-bottom: 20px; 
-            }
-
-            @media (max-width: 992px) {
-                .card-container {
-                    flex-wrap: wrap;
-                }
-                .card {
-                    width: 100%; 
-                }
-            } */
+            
         </style>
     <!-- end Styles -->
 
