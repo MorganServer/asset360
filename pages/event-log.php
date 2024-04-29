@@ -571,6 +571,35 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var accordionButton = document.getElementById('accordion-button');
+    if (accordionButton) {
+        var chev_i = document.getElementById('chev');
+        
+        if (chev_i) {
+            accordionButton.addEventListener('click', function() {
+                
+                var isCollapsed = accordionButton.classList.contains('collapsed');
+                
+                if (isCollapsed) {
+                    chev_i.classList.remove('bi-chevron-up');
+                    chev_i.classList.add('bi-chevron-down');
+                } else {
+                    chev_i.classList.remove('bi-chevron-down');
+                    chev_i.classList.add('bi-chevron-up');
+                }
+            });
+        } else {
+            console.log('Chevron icon not found');
+        }
+    } else {
+        console.log('Accordion button not found');
+    }
+});
+
+</script>
+
 
 
 <script>
