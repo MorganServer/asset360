@@ -251,18 +251,28 @@ if(isLoggedIn() == false) {
                                     </ul>
                                 </div>
                                 <div class="ms-3 w-50">
+                                    <?php
+                                        $off_acquisition_date = strtotime($off_acquisition_date);
+                                        $acq_date_formatted = date('M j, Y', $off_acquisition_date);
+                                        $off_end_of_life_date = strtotime($off_end_of_life_date);
+                                        $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
+                                        $off_audit_schedule = strtotime($off_audit_schedule);
+                                        $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
+                                    ?>
+
+
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Acquisition Date</div>
                                             </div>
-                                            <span class=""><?php echo $off_acquisition_date; ?></span>
+                                            <span class=""><?php echo $acq_date_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo $off_end_of_life_date; ?></span>
+                                            <span class=""><?php echo $end_of_life_date_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
@@ -280,7 +290,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Next Audit</div>
                                             </div>
-                                            <span class=""><?php echo $off_audit_schedule; ?></span>
+                                            <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
                                     </ul>
                                 </div>
