@@ -42,8 +42,12 @@ if(isLoggedIn() == false) {
                 padding: 20px;
                 margin: 20px auto;
             }
-
-            
+            .dropdown-menu {
+                display: none;
+            }
+            .show {
+                display: block;
+            }
         </style>
     <!-- end Styles -->
 
@@ -251,6 +255,7 @@ if(isLoggedIn() == false) {
                                             </ul>
                                           </div>
                                         </td>
+
                                     </tr>
                                     <?php
                                             }
@@ -433,7 +438,6 @@ if(isLoggedIn() == false) {
     </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     var dropdownToggle = document.querySelector('.dropdown-toggle');
