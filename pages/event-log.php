@@ -234,7 +234,7 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                         <div class="row pt-3">
                                                             <div class="col">
-                                                                <label class="form-label" for="notes fw-bold">Notes</label>
+                                                                <label class="form-label" for="notes"><emp>Notes</emp></label>
                                                                 <textarea class="form-control" name="notes" rows="5"></textarea>
                                                             </div>
                                                         </div>
@@ -436,7 +436,7 @@ if(isLoggedIn() == false) {
                                                     </div>
                                                     <div class="row pt-3">
                                                         <div class="col">
-                                                            <label class="form-label" for="notes fw-bold">Notes</label>
+                                                            <label class="form-label" for="notes"><emp>Notes</emp></label>
                                                             <textarea class="form-control" name="notes" rows="5"></textarea>
                                                         </div>
                                                     </div>
