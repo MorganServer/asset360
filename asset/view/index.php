@@ -205,7 +205,7 @@ if(isLoggedIn() == false) {
 
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class=" w-25">
+                                    <div class="ms-2 w-25">
                                         <div class="fw-bold">Asset Tag Number</div>
                                     </div>
                                     <span class=""><?php echo $off_asset_tag_no; ?></span>
