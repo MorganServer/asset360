@@ -333,7 +333,7 @@ if(isLoggedIn() == false) {
                             <div id="accordion">
                                 <?php
                                 // Check if $notes is not empty
-                                if (!empty($notes)) {
+                                if (!empty($off_notes)) {
                                     // Match all <h5> tags and their content
                                     preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $off_notes, $matches, PREG_SET_ORDER);
                                 
