@@ -423,8 +423,8 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $erow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';           
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';       
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
 
                                                     // Format audit schedule if not null
                                                     // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
