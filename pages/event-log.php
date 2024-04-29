@@ -105,25 +105,29 @@ if(isLoggedIn() == false) {
                                                     $id                     = $mrow['event_id'];
                                                     $idno                   = $mrow['idno'];
                                                     $status                 = $mrow['status'];
-                                                    $date_completed         = $mrow['date_completed'];
+                                                    $date_performed         = $mrow['date_performed'];
+                                                    $date_reviewed          = $mrow['date_reviewed'];
                                                     $asset_tag_no           = $mrow['asset_tag_no'];
-                                                    $completed_by           = $mrow['completed_by'];
+                                                    $performed_by           = $mrow['performed_by'];
+                                                    $reviewed_by            = $mrow['reviewed_by'];
                                                     $event_type             = $mrow['event_type'];
                                                     $notes                  = $mrow['notes'];
                                                     $event_created          = $mrow['event_created'];    
                                                     $event_updated          = $mrow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_completed = !empty($date_completed) ? date_format(date_create($date_completed), 'M d, Y') : '-';                  
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';                  
 
                                                     // Format audit schedule if not null
-                                                    // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
                                         <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
-                                        <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
+                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
+                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
+                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
+                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
                                         <?php if($status == "Awaiting Approval") { ?>
                                             <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
                                         <?php } else if($status == "Completed") { ?>
