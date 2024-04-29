@@ -80,8 +80,9 @@ if(isLoggedIn() == false) {
 <div class="container-fluid" style="margin-top: 60px;">
     <div class="application-details">
 
-                
-
+        <h2>
+            Event Log
+        </h2>
 
 
 
