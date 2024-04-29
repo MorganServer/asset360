@@ -204,7 +204,53 @@ if(isLoggedIn() == false) {
                             <?php } ?>
 
                             <div class="con">
-                                <div class="float-left">
+                                <div class="float-left w-50">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Asset Tag Number</div>
+                                            </div>
+                                            <span class=""><?php echo $off_asset_tag_no; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Asset Type</div>
+                                            </div>
+                                            <span class=""><?php echo $off_asset_type; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Serial Number</div>
+                                            </div>
+                                            <span class=""><?php echo $off_serial_number; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Model</div>
+                                            </div>
+                                            <span class=""><?php echo $off_model; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Model Number</div>
+                                            </div>
+                                            <span class=""><?php echo $off_model_no; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Model Number</div>
+                                            </div>
+                                            <span class=""><?php echo $off_model_no; ?></span>
+                                        </li>
+                                        <li class="list-group-item d-flex align-items-start">
+                                            <div class="ms-2" style="width: 15%;">
+                                                <div class="fw-bold">Manufacturer Name</div>
+                                            </div>
+                                            <span class=""><?php echo $off_manufacturer_name; ?></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="float-right w-50">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 15%;">
