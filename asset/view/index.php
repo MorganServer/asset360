@@ -151,7 +151,7 @@ if(isLoggedIn() == false) {
                         Last updated: <?php echo $updated_at_formatted; ?>
                     </span>
                     <span>
-                        Applied: <?php echo $created_at_formatted; ?>
+                        Created: <?php echo $created_at_formatted; ?>
                     </span>
                     <span>
                         <?php if($interview_set == 1 && $watchlist == 0){ ?>
@@ -212,15 +212,39 @@ if(isLoggedIn() == false) {
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
                                     <div class="ms-2 me-5">
-                                        <div class="fw-bold">Asset Tag Number</div>
+                                        <div class="fw-bold">Asset Type</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                    <span class="ms-5"><?php echo $off_asset_type; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
                                     <div class="ms-2 me-5">
-                                        <div class="fw-bold">Asset Tag Number</div>
+                                        <div class="fw-bold">Serial Number</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_asset_tag_no; ?></span>
+                                    <span class="ms-5"><?php echo $off_serial_number; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Model</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_model; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Model Number</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_model_no; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Model Number</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_model_no; ?></span>
+                                </li>
+                                <li class="list-group-item d-flex align-items-start">
+                                    <div class="ms-2 me-5">
+                                        <div class="fw-bold">Manufacturer Name</div>
+                                    </div>
+                                    <span class="ms-5"><?php echo $off_manufacturer_name; ?></span>
                                 </li>
                             </ul>
                     
