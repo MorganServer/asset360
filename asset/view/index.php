@@ -210,19 +210,19 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Asset Tag Number</div>
                                             </div>
-                                            <span class=""><?php echo $off_asset_tag_no; ?></span>
+                                            <span class=""><?php echo $off_asset_tag_no ? $off_asset_tag_no : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Asset Type</div>
                                             </div>
-                                            <span class=""><?php echo $off_asset_type; ?></span>
+                                            <span class=""><?php echo $off_asset_type ? $off_asset_type : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Serial Number</div>
                                             </div>
-                                            <span class=""><?php echo $off_serial_number; ?></span>
+                                            <span class=""><?php echo $off_serial_number ? $off_serial_number : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
@@ -238,15 +238,15 @@ if(isLoggedIn() == false) {
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Model Number</div>
+                                                <div class="fw-bold">Manufacturer Name</div>
                                             </div>
-                                            <span class=""><?php echo $off_model_no; ?></span>
+                                            <span class=""><?php echo $off_manufacturer_name ? $off_manufacturer_name : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Manufacturer Name</div>
+                                                <div class="fw-bold">Location</div>
                                             </div>
-                                            <span class=""><?php echo $off_manufacturer_name; ?></span>
+                                            <span class=""><?php echo $off_location ? $off_location : '--'; ?></span>
                                         </li>
                                     </ul>
                                 </div>
@@ -285,37 +285,31 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Acquisition Date</div>
                                             </div>
-                                            <span class=""><?php echo $acq_date_formatted; ?></span>
+                                            <span class=""><?php echo $acq_date_formatted ? $acq_date_formatted : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo $end_of_life_date_formatted; ?></span>
-                                        </li>
-                                        <li class="list-group-item d-flex align-items-start">
-                                            <div class="ms-2" style="width: 30%;">
-                                                <div class="fw-bold">Location</div>
-                                            </div>
-                                            <span class=""><?php echo $off_location; ?></span>
+                                            <span class=""><?php echo $end_of_life_date_formatted ? $end_of_life_date_formatted : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Asset Custodian</div>
                                             </div>
-                                            <span class=""><?php echo $off_custodian; ?></span>
+                                            <span class=""><?php echo $off_custodian ? $off_custodian : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Next Audit</div>
                                             </div>
-                                            <span class=""><?php echo $audit_schedule_formatted; ?></span>
+                                            <span class=""><?php echo $audit_schedule_formatted ? $audit_schedule_formatted : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class=""><?php echo $completed_formatted; ?></span>
+                                            <span class=""><?php echo $completed_formatted ? $completed_formatted : '--'; ?></span>
                                         </li>
                                     </ul>
                                 </div>
