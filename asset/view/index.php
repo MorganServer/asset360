@@ -228,7 +228,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Model</div>
                                             </div>
-                                            <span class=""><?php echo $off_model; ?></span>
+                                            <span class=""><?php echo $off_model ? $off_model : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
