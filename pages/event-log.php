@@ -323,40 +323,43 @@ if(isLoggedIn() == false) {
                                                             <?php echo $tdate_performed; ?>
                                                         </div>
                                                     </div>
+                                                    <div class="col">
+                                                        <label for="notes" class="form-label fw-bold">Notes</label><br>
+                                                        <?php echo $tnotes; ?>
+                                                    </div>
                                                 
-                                                <div id="accordion">
+                                                <!-- <div id="accordion">
                                                     <?php
-                                                    // Check if $notes is not empty
-                                                    if (!empty($tnotes)) {
-                                                        // Match all <h5> tags and their content
-                                                        preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $tnotes, $matches, PREG_SET_ORDER);
                                                     
-                                                        // Loop through each matched note
-                                                        foreach ($matches as $index => $match) {
-                                                            // Extract title and content
-                                                            $title = $match[1];
-                                                            $content = $match[2];
+                                                    // if (!empty($tnotes)) {
                                                         
-                                                            // Display accordion item
+                                                    //     preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $tnotes, $matches, PREG_SET_ORDER);
+                                                    
+                                                        
+                                                    //     foreach ($matches as $index => $match) {
+                                                            
+                                                    //         $title = $match[1];
+                                                    //         $content = $match[2];
+                                                        
+                                                           
                                                             ?>
                                                             <div class="accordion-item">
                                                         
-                                                                <h5 class="accordion-header" id="heading<?= $index ?>">
-                                                                    <button class="accordion-button collapsed fw-bold" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
-                                                                        <?= $title ?> <!-- Use text within <h5> tags as button/title -->
+                                                                <h5 class="accordion-header" id="heading<?= //$index ?>">
+                                                                    <button class="accordion-button collapsed fw-bold" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= //$index ?>" aria-expanded="false" aria-controls="collapse<?= //$index ?>">
+                                                                        <?= //$title ?> 
                                                                         <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
                                                                     </button>
                                                                 </h5>
-                                                                <div id="collapse<?= $index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= $index ?>" data-bs-parent="#accordion">
+                                                                <div id="collapse<?= //$index ?>" class="accordion-collapse collapse" aria-labelledby="heading<?= //$index ?>" data-bs-parent="#accordion">
                                                                     <div class="accordion-body">
-                                                                        <?= $content ?> <!-- Output the content under the <h5> tag as accordion body -->
+                                                                        <?= //$content ?> 
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <?php
-                                                        }
-                                                    } else {
-                                                        // Display message if $notes is empty
+                                                        //}
+                                                    //} else {
                                                         ?>
                                                         <div class="accordion-item">
                                                             <h5 class="accordion-header">
@@ -364,9 +367,10 @@ if(isLoggedIn() == false) {
                                                             </h5>
                                                         </div>
                                                         <?php
-                                                    }
+                                                    //}
                                                     ?>
-                                                </div>
+                                                </div> -->
+
                                                 <hr>
                                                 <form method="POST">
                                                     <div class="row">
