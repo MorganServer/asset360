@@ -82,9 +82,10 @@ if(isLoggedIn() == false) {
                                     <tr>
                                     <th scope="col">Tag No</th>
                                     <th scope="col">Event Type</th>
-                                    <!-- <th scope="col">Location</th> -->
-                                    <th scope="col">Completed</th>
-                                    <th scope="col">Completed By</th>
+                                    <th scope="col">Performed</th>
+                                    <th scope="col">Performed By</th>
+                                    <th scope="col">Reviewed</th>
+                                    <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                     </tr>
