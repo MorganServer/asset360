@@ -42,12 +42,9 @@ if(isLoggedIn() == false) {
                 padding: 20px;
                 margin: 20px auto;
             }
-            /* .dropdown-menu {
+            .dropend::after {
                 display: none;
             }
-            .show {
-                display: block;
-            } */
         </style>
     <!-- end Styles -->
 
@@ -246,7 +243,7 @@ if(isLoggedIn() == false) {
 
                                         <td style="font-size: 20px;">
                                             <div class="btn-group dropend">
-                                                <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-three-dots"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
