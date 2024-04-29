@@ -323,7 +323,7 @@ if(isLoggedIn() == false) {
                                                             <?php echo $tdate_performed; ?>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                
                                                 <div id="accordion">
                                                     <?php
                                                     // Check if $notes is not empty
@@ -386,6 +386,7 @@ if(isLoggedIn() == false) {
                                                             <label class="form-label" for="notes">Notes</label>
                                                             <textarea class="form-control" name="notes" rows="5"></textarea>
                                                         </div>
+                                                    </div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
