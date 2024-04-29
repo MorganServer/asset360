@@ -261,7 +261,7 @@ if(isLoggedIn() == false) {
                                         $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
 
                                         $id = $_GET['id'];
-                                        $newsql = "SELECT event_log.event_type
+                                        $newsql = "SELECT *
                                         FROM event_log
                                         JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no
                                         WHERE event_log.event_type = 'Maintenance'
