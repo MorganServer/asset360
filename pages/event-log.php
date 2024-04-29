@@ -245,15 +245,17 @@ if(isLoggedIn() == false) {
                                         <!-- <td style="font-size: 20px;"><i class="bi bi-three-dots"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
 
                                         <td style="font-size: 20px;">
-                                          <div class="dropdown">
-                                            <button class="dropdown-toggle" type="button" id="dropdownMenuButton" aria-expanded="false">
-                                              <i class="bi bi-three-dots"></i>
-                                            </button>
+                                        <div class="btn-group dropend">
+                                          <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Dropend
+                                          </button>
+                                          <ul class="dropdown-menu">
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                               <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
                                               <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                             </ul>
-                                          </div>
+                                          </ul>
+                                        
                                         </td>
 
                                     </tr>
@@ -438,7 +440,7 @@ if(isLoggedIn() == false) {
     </script>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
-<script>
+<!-- <script>
   document.addEventListener('DOMContentLoaded', function () {
     var dropdownToggle = document.querySelector('.dropdown-toggle');
     var dropdownMenu = document.querySelector('.dropdown-menu');
@@ -454,7 +456,7 @@ if(isLoggedIn() == false) {
       }
     });
   });
-</script>
+</script> -->
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
