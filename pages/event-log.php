@@ -45,6 +45,9 @@ if(isLoggedIn() == false) {
             .btn-group.dropend .dropdown-toggle::after {
                 display: none;
             }
+            .btn-group.dropend .dropdown-toggle:focus {
+                outline: none;
+            }
         </style>
     <!-- end Styles -->
 
@@ -244,7 +247,7 @@ if(isLoggedIn() == false) {
                                         <td style="font-size: 20px;">
                                             <div class="btn-group dropend">
                                                 <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots"></i>
+                                                    <i class="bi bi-three-dots text-secondary"></i>
                                                 </button>
                                                 <ul class="dropdown-menu">
                                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
