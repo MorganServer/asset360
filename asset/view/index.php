@@ -217,34 +217,34 @@ if(isLoggedIn() == false) {
                                     <span class=""><?php echo $off_asset_type; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5">
+                                    <div class="ms-2" style="width: 15%;">
                                         <div class="fw-bold">Serial Number</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_serial_number; ?></span>
+                                    <span class=""><?php echo $off_serial_number; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5">
+                                    <div class="ms-2" style="width: 15%;">
                                         <div class="fw-bold">Model</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_model; ?></span>
+                                    <span class=""><?php echo $off_model; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5">
+                                    <div class="ms-2" style="width: 15%;">
                                         <div class="fw-bold">Model Number</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_model_no; ?></span>
+                                    <span class=""><?php echo $off_model_no; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5">
+                                    <div class="ms-2" style="width: 15%;">
                                         <div class="fw-bold">Model Number</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_model_no; ?></span>
+                                    <span class=""><?php echo $off_model_no; ?></span>
                                 </li>
                                 <li class="list-group-item d-flex align-items-start">
-                                    <div class="ms-2 me-5">
+                                    <div class="ms-2" style="width: 15%;">
                                         <div class="fw-bold">Manufacturer Name</div>
                                     </div>
-                                    <span class="ms-5"><?php echo $off_manufacturer_name; ?></span>
+                                    <span class=""><?php echo $off_manufacturer_name; ?></span>
                                 </li>
                             </ul>
                     
