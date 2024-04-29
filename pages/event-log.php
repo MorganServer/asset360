@@ -190,7 +190,7 @@ if(isLoggedIn() == false) {
                                     <th scope="col">Reviewed</th>
                                     <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
