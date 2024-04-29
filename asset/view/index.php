@@ -335,7 +335,7 @@ if(isLoggedIn() == false) {
                                 // Check if $notes is not empty
                                 if (!empty($notes)) {
                                     // Match all <h5> tags and their content
-                                    preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $notes, $matches, PREG_SET_ORDER);
+                                    preg_match_all('/<h5>(.*?)<\/h5>(.*?)(?=<h5>|$)/s', $off_notes, $matches, PREG_SET_ORDER);
                                 
                                     // Loop through each matched note
                                     foreach ($matches as $index => $match) {
