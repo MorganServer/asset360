@@ -250,10 +250,10 @@ if(isLoggedIn() == false) {
                                             Dropend
                                           </button>
                                           <ul class="dropdown-menu">
-                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <!-- <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton"> -->
                                               <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
                                               <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
-                                            </ul>
+                                            <!-- </ul> -->
                                           </ul>
                                         </td>
 
