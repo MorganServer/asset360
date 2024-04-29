@@ -45,7 +45,7 @@ if(isLoggedIn() == false) {
             .btn-group.dropend .dropdown-toggle::after {
                 display: none;
             }
-            .btn:focus {
+            .btn-group.dropend .btn:focus {
                 outline: none;
             }
         </style>
