@@ -1,4 +1,0 @@
-asset audit page
-<?php
-
-?>
