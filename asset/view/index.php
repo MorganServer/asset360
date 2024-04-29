@@ -348,7 +348,7 @@ if(isLoggedIn() == false) {
                                         <div class="accordion-item">
 
                                             <h5 class="accordion-header" id="heading<?= $index ?>">
-                                                <button class="accordion-button collapsed" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
+                                                <button class="accordion-button collapsed fw-bold" id="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $index ?>" aria-expanded="false" aria-controls="collapse<?= $index ?>">
                                                     <?= $title ?> <!-- Use text within <h5> tags as button/title -->
                                                     <i id="chev" class="bi bi-chevron-down" style="position: absolute; top: 50%; transform: translateY(-50%); right: 10px;"></i>
                                                 </button>
