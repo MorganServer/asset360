@@ -153,16 +153,6 @@ if(isLoggedIn() == false) {
                     <span>
                         Created: <?php echo $created_at_formatted; ?>
                     </span>
-                    <span>
-                        <?php if($interview_set == 1 && $watchlist == 0){ ?>
-                            <span class="pe-3"></span><i class="bi bi-person-video"></i>
-                        <?php } else if($interview_set == 0 && $watchlist == 1) { ?>
-                            <span class="pe-3"></span><i class="bi bi-eye-fill"></i>
-                        <?php } else if($interview_set == 1 && $watchlist == 1) { ?>
-                            <span class="pe-3"></span><i class="bi bi-person-video"></i>&nbsp;&nbsp;<i class="bi bi-eye-fill"></i>
-                        <?php } else { }
-                        ?>
-                    </span>
                 </p>
 
 

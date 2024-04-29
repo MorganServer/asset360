@@ -177,7 +177,7 @@ if(isLoggedIn() == false) {
                     <!-- Audit -->
                         <div class="tab-pane fade" id="Audit-tab-pane" role="tabpanel" aria-labelledby="Audit-tab" tabindex="0">
                             <div class="mt-4"></div>
-                            <h4><i class="bi bi-tools"></i> Audit Events</h4>
+                            <h4><i class="bi bi-shield-fill-check"></i> Audit Events</h4>
                             <hr>
 
                             <table class="table">
