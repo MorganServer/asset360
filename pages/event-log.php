@@ -42,8 +42,13 @@ if(isLoggedIn() == false) {
                 padding: 20px;
                 margin: 20px auto;
             }
-
-            
+            .btn-group .dropdown-toggle::after {
+                display: none;
+            }
+            .btn:focus {
+                outline: none;
+                box-shadow: none;
+            }
         </style>
     <!-- end Styles -->
 
@@ -117,10 +122,10 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $mrow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';                  
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';                  
 
                                                     // Format audit schedule if not null
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
@@ -140,8 +145,119 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                        <td style="font-size: 20px;">
+                                            <div class="btn-group">
+                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
+                                                    <i class="bi bi-three-dots text-secondary"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
+                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/pages/event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
+
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
+
+                                            <?php
+
+                                                $tsql = "SELECT * FROM event_log WHERE event_id = $id";
+                                                $tresult = mysqli_query($conn, $tsql);
+                                                if($tresult) {
+                                                    $tnum_rows = mysqli_num_rows($tresult);
+                                                    if($tnum_rows > 0) {
+                                                        while ($trow = mysqli_fetch_assoc($tresult)) {
+                                                            $tid                     = $trow['event_id'];
+                                                            $tidno                   = $trow['idno'];
+                                                            $tstatus                 = $trow['status'];
+                                                            $tdate_performed         = $trow['date_performed'];
+                                                            $tdate_reviewed          = $trow['date_reviewed'];
+                                                            $tasset_tag_no           = $trow['asset_tag_no'];
+                                                            $tperformed_by           = $trow['performed_by'];
+                                                            $treviewed_by            = $trow['reviewed_by'];
+                                                            $tevent_type             = $trow['event_type'];
+                                                            $tnotes                  = $trow['notes'];
+                                                            $tevent_created          = $trow['event_created'];    
+                                                            $tevent_updated          = $trow['event_updated'];  
+                                                        }
+                                                    }
+                                                }
+                                            ?>
+                                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
+                                                                <?php echo $tasset_tag_no; ?>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="status" class="form-label fw-bold">Status</label><br>
+                                                                <?php echo $tstatus; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pt-3">
+                                                            <div class="col">
+                                                                <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
+                                                                <?php echo $tperformed_by; ?>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
+                                                                <?php echo $tdate_performed; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col pt-3">
+                                                            <label for="notes" class="form-label fw-bold">Notes</label><br>
+                                                            <?php echo $tnotes; ?>
+                                                        </div>
+
+
+                                            
+                                                    <hr>
+                                                    <form method="POST">
+                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
+                                                                <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                                            </div>
+                                                            <div class="col">
+                                                                <?php $cdate = date("Y-m-d"); ?>
+                                                                <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
+                                                                <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label class="form-label" for="status">Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Completed">Completed</option>
+                                                                <option value="Rescheduled">Rescheduled</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="row pt-3">
+                                                            <div class="col">
+                                                                <label class="form-label" for="notes"><strong>Notes</strong></label>
+                                                                <textarea class="form-control" name="notes" rows="5"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
+                                                        </div>
+                                                    </form>  
+                                                </div>
+                                              </div>
+                                            </div>
+                                    <!-- end Modal -->
+
                                     <?php
                                             }
                                         }
@@ -172,7 +288,7 @@ if(isLoggedIn() == false) {
                     <!-- Audit -->
                         <div class="tab-pane fade" id="Audit-tab-pane" role="tabpanel" aria-labelledby="Audit-tab" tabindex="0">
                             <div class="mt-4"></div>
-                            <h4><i class="bi bi-tools"></i> Audit Events</h4>
+                            <h4><i class="bi bi-shield-fill-check"></i> Audit Events</h4>
                             <hr>
 
                             <table class="table">
@@ -185,7 +301,7 @@ if(isLoggedIn() == false) {
                                     <th scope="col">Reviewed</th>
                                     <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
+                                    <th scope="col"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -215,10 +331,10 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $mrow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '-';                  
+                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';                  
 
                                                     // Format audit schedule if not null
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '-';
+                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
@@ -238,8 +354,128 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                        <!-- <td style="font-size: 20px;"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+
+                                        <td style="font-size: 20px;">
+                                            <div class="btn-group">
+                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
+                                                    <i class="bi bi-three-dots text-secondary"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
+                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/pages/event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+
                                     </tr>
+
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
+
+                                        <?php
+
+                                            $tsql = "SELECT * FROM event_log WHERE event_id = $id";
+                                            $tresult = mysqli_query($conn, $tsql);
+                                            if($tresult) {
+                                                $tnum_rows = mysqli_num_rows($tresult);
+                                                if($tnum_rows > 0) {
+                                                    while ($trow = mysqli_fetch_assoc($tresult)) {
+                                                        $tid                     = $trow['event_id'];
+                                                        $tidno                   = $trow['idno'];
+                                                        $tstatus                 = $trow['status'];
+                                                        $tdate_performed         = $trow['date_performed'];
+                                                        $tdate_reviewed          = $trow['date_reviewed'];
+                                                        $tasset_tag_no           = $trow['asset_tag_no'];
+                                                        $tperformed_by           = $trow['performed_by'];
+                                                        $treviewed_by            = $trow['reviewed_by'];
+                                                        $tevent_type             = $trow['event_type'];
+                                                        $tnotes                  = $trow['notes'];
+                                                        $tevent_created          = $trow['event_created'];    
+                                                        $tevent_updated          = $trow['event_updated'];  
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
+                                                            <?php echo $tasset_tag_no; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="status" class="form-label fw-bold">Status</label><br>
+                                                            <?php echo $tstatus; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row pt-3">
+                                                        <div class="col">
+                                                            <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
+                                                            <?php echo $tperformed_by; ?>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
+                                                            <?php echo $tdate_performed; ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col pt-3">
+                                                        <label for="notes" class="form-label fw-bold">Notes</label><br>
+                                                        <?php echo $tnotes; ?>
+                                                    </div>
+                                                
+                                                
+
+                                                <hr>
+                                                <form method="POST">
+                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
+                                                            <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                                        </div>
+                                                        <div class="col">
+                                                            <?php $cdate = date("Y-m-d"); ?>
+                                                            <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
+                                                            <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                            <label class="form-label" for="status">Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Completed">Completed</option>
+                                                                <option value="Rescheduled">Rescheduled</option>
+                                                            </select>
+                                                        </div>
+                                                    <div class="row pt-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="notes"><strong>Notes</strong></label>
+                                                            <textarea class="form-control" name="notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
+                                                    </div>
+                                                </form>  
+                                            </div>
+                                          </div>
+                                        </div>
+                                    <!-- end Modal -->
+
+
+
+
+
+
+
                                     <?php
                                             }
                                         }
@@ -410,6 +646,35 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
+<script>
+//     document.addEventListener('DOMContentLoaded', function() {
+//     var accordionButton = document.getElementById('accordion-button');
+//     if (accordionButton) {
+//         var chev_i = document.getElementById('chev');
+        
+//         if (chev_i) {
+//             accordionButton.addEventListener('click', function() {
+                
+//                 var isCollapsed = accordionButton.classList.contains('collapsed');
+                
+//                 if (isCollapsed) {
+//                     chev_i.classList.remove('bi-chevron-up');
+//                     chev_i.classList.add('bi-chevron-down');
+//                 } else {
+//                     chev_i.classList.remove('bi-chevron-down');
+//                     chev_i.classList.add('bi-chevron-up');
+//                 }
+//             });
+//         } else {
+//             console.log('Chevron icon not found');
+//         }
+//     } else {
+//         console.log('Accordion button not found');
+//     }
+// });
+
+</script>
+
 
 
 <script>
@@ -419,6 +684,7 @@ if(isLoggedIn() == false) {
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
+
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
