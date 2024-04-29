@@ -389,10 +389,10 @@ if(isLoggedIn() == false) {
                                     <tr>
                                     <th scope="col">Tag No</th>
                                     <th scope="col">Event Type</th>
-                                    <th scope="col">Requested</th>
-                                    <th scope="col">Requested By</th>
-                                    <th scope="col">Completed</th>
-                                    <th scope="col">Completed By</th>
+                                    <th scope="col">Performed</th>
+                                    <th scope="col">Performed By</th>
+                                    <th scope="col">Reviewed</th>
+                                    <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
                                     <!-- <th scope="col">Actions</th> -->
                                     </tr>
@@ -413,11 +413,11 @@ if(isLoggedIn() == false) {
                                                     $id                     = $erow['event_id'];
                                                     $idno                   = $erow['idno'];
                                                     $status                 = $erow['status'];
-                                                    $date_completed         = $erow['date_completed'];
-                                                    $date_requested         = $erow['date_requested'];
+                                                    $date_reviewed          = $erow['date_reviewed'];
+                                                    $date_performed         = $erow['date_performed'];
                                                     $asset_tag_no           = $erow['asset_tag_no'];
-                                                    $requested_by           = $erow['requested_by'];
-                                                    $completed_by           = $erow['completed_by'];
+                                                    $performed_by           = $erow['performed_by'];
+                                                    $reviewed_by            = $erow['reviewed_by'];
                                                     $event_type             = $erow['event_type'];
                                                     $notes                  = $erow['notes'];
                                                     $event_created          = $erow['event_created'];    
@@ -500,10 +500,10 @@ if(isLoggedIn() == false) {
                                 <div class="modal-body">
                                     <form method="POST">
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Maintenance">
-                                        <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
+                                        <!-- <input type="hidden" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
-                                        <input type="hidden" class="form-control" id="requested_by" name="requested_by" value="System Administrator">
+                                        <input type="hidden" class="form-control" id="performed_by" name="performed_by" value="System Administrator">
                                         
                                         <div class="row">
                                             <div class="col">
@@ -511,15 +511,15 @@ if(isLoggedIn() == false) {
                                                 <?php echo $off_asset_tag_no; ?>
                                             </div>
                                             <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Requested By</label><br>
+                                                <label for="performed_by" class="form-label fw-bold">Performed By</label><br>
                                                 <?php echo 'System Administrator'; ?>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_requested" class="form-label">Date Requested</label>
-                                            <input type="date" class="form-control" id="date_requested" name="date_requested" value="<?php echo $cdate; ?>">
+                                            <label for="date_requested" class="form-label">Date Performed</label>
+                                            <input type="date" class="form-control" id="date_performed" name="date_performed" value="<?php echo $cdate; ?>">
                                         </div>
                                         <div class="row pt-3">
                                             <div class="col">
@@ -549,10 +549,10 @@ if(isLoggedIn() == false) {
                                 <div class="modal-body">
                                     <form method="POST">
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
-                                        <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
+                                        <!-- <input type="hidden" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
-                                        <input type="hidden" class="form-control" id="requested_by" name="requested_by" value="Compliance Analyst">
+                                        <input type="hidden" class="form-control" id="performed_by" name="performed_by" value="Compliance Analyst">
 
                                         <div class="row">
                                             <div class="col">
@@ -560,15 +560,15 @@ if(isLoggedIn() == false) {
                                                 <?php echo $off_asset_tag_no; ?>
                                             </div>
                                             <div class="col">
-                                                <label for="requested_by" class="form-label fw-bold">Requested By</label><br>
+                                                <label for="performed_by" class="form-label fw-bold">Performed By</label><br>
                                                 <?php echo 'Compliance Analyst'; ?>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_requested" class="form-label">Date Requested</label>
-                                            <input type="date" class="form-control" id="date_requested" name="date_requested" value="<?php echo $cdate; ?>">
+                                            <label for="date_performed" class="form-label">Date Performed</label>
+                                            <input type="date" class="form-control" id="date_performed" name="date_performed" value="<?php echo $cdate; ?>">
                                         </div>
                                         <div class="row pt-3">
                                             <div class="col">
