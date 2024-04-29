@@ -446,7 +446,7 @@ if(isLoggedIn() == false) {
                             <br>
                             <?php
                                 // Pagination links
-                                $sql = "SELECT COUNT(*) as total FROM assets WHERE asset_type = 'Server'";
+                                $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
                                 $result = mysqli_query($conn, $sql);
                                 $row = mysqli_fetch_assoc($result);
                                 $total_pages = ceil($row["total"] / $limit);                    
