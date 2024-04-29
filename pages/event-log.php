@@ -444,6 +444,15 @@ if(isLoggedIn() == false) {
                                                             <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
                                                         </div>
                                                     </div>
+                                                    <div class="col">
+                                                            <label class="form-label" for="status">Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Completed">Completed</option>
+                                                                <option value="Rescheduled">Rescheduled</option>
+                                                            </select>
+                                                        </div>
                                                     <div class="row pt-3">
                                                         <div class="col">
                                                             <label class="form-label" for="notes"><strong>Notes</strong></label>
