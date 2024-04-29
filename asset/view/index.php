@@ -405,11 +405,11 @@ if(isLoggedIn() == false) {
                                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                         $offset = ($page - 1) * $limit;
 
-                                        $esql = "SELECT * FROM event_log WHERE asset_id = '$off_id' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                        $esql = "SELECT * FROM event_log WHERE asset_tag_no = '$off_asset_tag_no' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
                                         $eresult = mysqli_query($conn, $esql);
                                         if($eresult) {
-                                            $num_rows = mysqli_num_rows($eresult);
-                                            if($num_rows > 0) {
+                                            $enum_rows = mysqli_num_rows($eresult);
+                                            if($enum_rows > 0) {
                                                 while ($erow = mysqli_fetch_assoc($eresult)) {
                                                     $id                     = $erow['event_id'];
                                                     $idno                   = $erow['idno'];
