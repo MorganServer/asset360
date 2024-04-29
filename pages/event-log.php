@@ -157,6 +157,97 @@ if(isLoggedIn() == false) {
                                             </div>
                                         </td>
                                     </tr>
+
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
+
+                                            <?php
+
+                                                $tsql = "SELECT * FROM event_log WHERE event_id = $id";
+                                                $tresult = mysqli_query($conn, $tsql);
+                                                if($tresult) {
+                                                    $tnum_rows = mysqli_num_rows($tresult);
+                                                    if($tnum_rows > 0) {
+                                                        while ($trow = mysqli_fetch_assoc($tresult)) {
+                                                            $tid                     = $trow['event_id'];
+                                                            $tidno                   = $trow['idno'];
+                                                            $tstatus                 = $trow['status'];
+                                                            $tdate_performed         = $trow['date_performed'];
+                                                            $tdate_reviewed          = $trow['date_reviewed'];
+                                                            $tasset_tag_no           = $trow['asset_tag_no'];
+                                                            $tperformed_by           = $trow['performed_by'];
+                                                            $treviewed_by            = $trow['reviewed_by'];
+                                                            $tevent_type             = $trow['event_type'];
+                                                            $tnotes                  = $trow['notes'];
+                                                            $tevent_created          = $trow['event_created'];    
+                                                            $tevent_updated          = $trow['event_updated'];  
+                                                        }
+                                                    }
+                                                }
+                                            ?>
+                                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
+                                                                <?php echo $tasset_tag_no; ?>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="status" class="form-label fw-bold">Status</label><br>
+                                                                <?php echo $tstatus; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
+                                                                <?php echo $tperformed_by; ?>
+                                                            </div>
+                                                            <div class="col">
+                                                                <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
+                                                                <?php echo $tdate_performed; ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <label for="notes" class="form-label fw-bold">Notes</label><br>
+                                                            <?php echo $tnotes; ?>
+                                                        </div>
+
+
+                                            
+                                                    <hr>
+                                                    <form method="POST">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
+                                                                <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                                            </div>
+                                                            <div class="col">
+                                                                <?php $cdate = date("Y-m-d"); ?>
+                                                                <label for="date_reviewed" class="form-label">Date Reviewed</label>
+                                                                <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row pt-3">
+                                                            <div class="col">
+                                                                <label class="form-label" for="notes">Notes</label>
+                                                                <textarea class="form-control" name="notes" rows="5"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
+                                                        </div>
+                                                    </form>  
+                                                </div>
+                                              </div>
+                                            </div>
+                                        <!-- end Modal -->
+
                                     <?php
                                             }
                                         }
@@ -357,6 +448,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                           </div>
                                         </div>
+                                    <!-- end Modal -->
 
 
 
