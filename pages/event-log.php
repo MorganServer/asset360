@@ -221,6 +221,7 @@ if(isLoggedIn() == false) {
                                             
                                                     <hr>
                                                     <form method="POST">
+                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
                                                         <div class="row">
                                                             <div class="col">
                                                                 <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
@@ -232,6 +233,15 @@ if(isLoggedIn() == false) {
                                                                 <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
                                                             </div>
                                                         </div>
+                                                        <div class="col">
+                                                            <label class="form-label" for="status">Status</label>
+                                                            <select class="form-control" name="status">
+                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
+                                                                <option value="Rejected">Rejected</option>
+                                                                <option value="Completed">Completed</option>
+                                                                <option value="Rescheduled">Rescheduled</option>
+                                                            </select>
+                                                        </div>
                                                         <div class="row pt-3">
                                                             <div class="col">
                                                                 <label class="form-label" for="notes"><strong>Notes</strong></label>
@@ -240,7 +250,7 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
+                                                            <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
                                                         </div>
                                                     </form>  
                                                 </div>
@@ -442,7 +452,7 @@ if(isLoggedIn() == false) {
                                                     </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
+                                                        <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
                                                     </div>
                                                 </form>  
                                             </div>
