@@ -96,7 +96,7 @@ if(isLoggedIn() == false) {
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <!-- Maintenance -->
-                        <div class="tab-pane fade" id="maintenance-tab-pane" role="tabpanel" aria-labelledby="maintenance-tab" tabindex="0">
+                        <div class="tab-pane fade show active" id="maintenance-tab-pane" role="tabpanel" aria-labelledby="maintenance-tab" tabindex="0">
                             <div class="mt-4"></div>
                             <h4><i class="bi bi-tools"></i> Maintenance Events</h4>
                             <hr>
