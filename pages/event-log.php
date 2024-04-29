@@ -271,10 +271,35 @@ if(isLoggedIn() == false) {
 
                                     <!-- Modal -->
                                         <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
+
+                                        <?php
+
+                                            $tsql = "SELECT * FROM event_log WHERE event_type = 'Audit' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                            $tresult = mysqli_query($conn, $tsql);
+                                            if($tresult) {
+                                                $tnum_rows = mysqli_num_rows($tresult);
+                                                if($tnum_rows > 0) {
+                                                    while ($trow = mysqli_fetch_assoc($tresult)) {
+                                                        $tid                     = $trow['event_id'];
+                                                        $tidno                   = $trow['idno'];
+                                                        $tstatus                 = $trow['status'];
+                                                        $tdate_performed         = $trow['date_performed'];
+                                                        $tdate_reviewed          = $trow['date_reviewed'];
+                                                        $tasset_tag_no           = $trow['asset_tag_no'];
+                                                        $tperformed_by           = $trow['performed_by'];
+                                                        $treviewed_by            = $trow['reviewed_by'];
+                                                        $tevent_type             = $trow['event_type'];
+                                                        $tnotes                  = $trow['notes'];
+                                                        $tevent_created          = $trow['event_created'];    
+                                                        $tevent_updated          = $trow['event_updated'];  
+                                                    }
+                                                }
+                                            }
+                                        ?>
                                           <div class="modal-dialog">
                                             <div class="modal-content">
                                               <div class="modal-header">
-                                                <h5 class="modal-title" id="maintenanceModalLabel<?php echo $id; ?>">Maintenance Information</h5>
+                                                <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Maintenance Information <?php echo $tidno; ?></h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                               </div>
                                               <div class="modal-body">
