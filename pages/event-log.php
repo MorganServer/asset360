@@ -145,7 +145,17 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                        <td style="font-size: 20px;">
+                                            <div class="btn-group">
+                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
+                                                    <i class="bi bi-three-dots text-secondary"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
+                                                    <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
                                     </tr>
                                     <?php
                                             }
@@ -251,13 +261,39 @@ if(isLoggedIn() == false) {
                                                     <i class="bi bi-three-dots text-secondary"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
+                                                    <li><a class="dropdown-item" href="event_log.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
                                             </div>
                                         </td>
 
                                     </tr>
+
+                                    <!-- Modal -->
+                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h5 class="modal-title" id="maintenanceModalLabel<?php echo $id; ?>">Maintenance Information</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+                                              <div class="modal-body">
+                                                <!-- Add your maintenance information here -->
+                                                <!-- You can use PHP to fetch additional information based on the $id -->
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+
+
+
+
+
+
                                     <?php
                                             }
                                         }
