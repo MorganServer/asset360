@@ -42,10 +42,10 @@ if(isLoggedIn() == false) {
                 padding: 20px;
                 margin: 20px auto;
             }
-            .btn-group.dropend .dropdown-toggle::after {
+            .btn-group .dropdown-toggle::after {
                 display: none;
             }
-            .btn-group.dropend .btn:focus {
+            .btn-group .btn:focus {
                 outline: none;
             }
         </style>
@@ -245,11 +245,11 @@ if(isLoggedIn() == false) {
                                         <!-- <td style="font-size: 20px;"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
 
                                         <td style="font-size: 20px;">
-                                            <div class="btn-group dropend">
+                                            <div class="btn-group">
                                                 <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <i class="bi bi-three-dots text-secondary"></i>
                                                 </button>
-                                                <ul class="dropdown-menu">
+                                                <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> View</a></li>
                                                     <li><a class="dropdown-item" href="open-app.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
