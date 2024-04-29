@@ -268,15 +268,15 @@ if(isLoggedIn() == false) {
                                         JOIN assets ON event_log.asset_tag_no = assets.asset_tag_no
                                         WHERE event_log.event_type = 'Maintenance'
                                         AND assets.asset_id = '$off_id'
-                                        ORDER BY event_log.date_completed DESC
+                                        ORDER BY event_log.date_reviewed DESC
                                         LIMIT 1";
                                         $newresult = mysqli_query($conn, $newsql);
                                         if (mysqli_num_rows($newresult) > 0) {
                                             while ($newrow = mysqli_fetch_assoc($newresult)) { 
-                                                $completed = $newrow['date_completed'];
+                                                $reviewed = $newrow['date_reviewed'];
 
-                                                $completed = strtotime($completed);
-                                                $completed_formatted = date('M j, Y', $completed);
+                                                $reviewed = strtotime($reviewed);
+                                                $reviewed_formatted = date('M j, Y', $reviewed);
 
                                             }
                                         }
@@ -311,7 +311,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class=""><?php echo $completed_formatted ? $completed_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $reviewed_formatted ? $reviewed_formatted : '--'; ?></span>
                                         </li>
                                     </ul>
                                 </div>
