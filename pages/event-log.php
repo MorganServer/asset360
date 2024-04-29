@@ -152,7 +152,7 @@ if(isLoggedIn() == false) {
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="event_log.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                    <li><a class="dropdown-item" href="event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
                                             </div>
                                         </td>
@@ -363,7 +363,7 @@ if(isLoggedIn() == false) {
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="event_log.php?deleteid=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
+                                                    <li><a class="dropdown-item" href="event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
                                                 </ul>
                                             </div>
                                         </td>
