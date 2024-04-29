@@ -274,7 +274,7 @@ if(isLoggedIn() == false) {
 
                                         <?php
 
-                                            $tsql = "SELECT * FROM event_log WHERE event_type = 'Audit' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                            $tsql = "SELECT * FROM event_log WHERE event_id = $id";
                                             $tresult = mysqli_query($conn, $tsql);
                                             if($tresult) {
                                                 $tnum_rows = mysqli_num_rows($tresult);
