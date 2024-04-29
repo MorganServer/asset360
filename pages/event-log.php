@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
                                         <td><?php echo $f_date_completed ? $f_date_completed : '--'; ?></td>
                                         <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
                                         <?php if($status == "Awaiting Approval") { ?>
-                                            <td class="badge text-bg-primary"><?php echo $status; ?></td>
+                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
                                         <?php } else if($status == "Completed") { ?>
                                             <td><?php echo $status ? $status : '--'; ?></td>
                                         <?php } else if($status == "Rejected") { ?>
