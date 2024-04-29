@@ -325,6 +325,8 @@ if(isLoggedIn() == false) {
 
 
                         </div>
+                    <!-- end Details -->
+
                     <!-- Notes -->
                         <div class="tab-pane fade" id="notes-tab-pane" role="tabpanel" aria-labelledby="notes-tab" tabindex="0">
                     
@@ -376,14 +378,19 @@ if(isLoggedIn() == false) {
 
 
                         </div>
+                    <!-- end Notes -->
+
                     <!-- Events -->
                         <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
-                    
-
+                            <div class="mt-4"></div>
+                            <h4><i class="bi bi-tools"></i> Latest Events</h4>
 
                         </div>
+                    <!-- end Notes -->
+
                     <!-- Jira -->
-                        <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div>
+                        <!-- <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div> -->
+                    <!-- end Jira -->
                 </div>
 
 
