@@ -407,7 +407,7 @@ if(isLoggedIn() == false) {
 
                                         $esql = "SELECT * FROM event_log WHERE asset_id = '$off_id' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
                                         $eresult = mysqli_query($conn, $esql);
-                                        if($result) {
+                                        if($eresult) {
                                             $num_rows = mysqli_num_rows($eresult);
                                             if($num_rows > 0) {
                                                 while ($erow = mysqli_fetch_assoc($eresult)) {
@@ -423,10 +423,10 @@ if(isLoggedIn() == false) {
                                                     $event_updated          = $erow['event_updated'];                 
 
                                                     // Format maintenance schedule if not null
-                                                    $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';                  
+                                                    // $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';                  
 
                                                     // Format audit schedule if not null
-                                                    $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                                    // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
@@ -434,7 +434,7 @@ if(isLoggedIn() == false) {
                                         <td><?php echo $date_completed ? $date_completed : '--'; ?></td>
                                         <td><?php echo $completed_by ? $completed_by : '--'; ?></td>
                                         <td><?php echo $status ? $status : '--'; ?></td>
-                                        <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                                        <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
                                     </tr>
                                     <?php
                                             }
