@@ -127,9 +127,9 @@ if(isLoggedIn() == false) {
                                         <?php if($status == "Awaiting Approval") { ?>
                                             <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
                                         <?php } else if($status == "Completed") { ?>
-                                            <td><?php echo $status ? $status : '--'; ?></td>
+                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
                                         <?php } else if($status == "Rejected") { ?>
-                                            <td class=""><?php echo $status; ?></td>
+                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
