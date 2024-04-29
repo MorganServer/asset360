@@ -466,37 +466,6 @@ if(isLoggedIn() == false) {
                     <!-- end Jira -->
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-                
-
-
-
-
-
-
-
-
-
-                
-
-                
-
-                    
-
-                
                 
                 <!-- __________ -->
                 
@@ -515,7 +484,7 @@ if(isLoggedIn() == false) {
                                 <div class="modal-body">
                                     <form method="POST">
                                         <input type="hidden" class="form-control" id="event_type" name="event_type" value="Maintenance">
-                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
+                                        <!-- <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php //echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>"> -->
                                         <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
                                         <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
                                         
@@ -525,15 +494,15 @@ if(isLoggedIn() == false) {
                                                 <?php echo $off_asset_tag_no; ?>
                                             </div>
                                             <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
-                                                <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
+                                                <label for="completed_by" class="form-label fw-bold">Requested By</label><br>
+                                                <?php echo 'System Administrator'; ?>
                                             </div>
                                         </div>
                                         <hr>
                                         <div class="col">
                                             <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_completed" class="form-label">Date Completed</label>
-                                            <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
+                                            <label for="date_requested" class="form-label">Date Requested</label>
+                                            <input type="date" class="form-control" id="date_requested" name="date_requested" value="<?php echo $cdate; ?>">
                                         </div>
                                         <div class="row pt-3">
                                             <div class="col">
