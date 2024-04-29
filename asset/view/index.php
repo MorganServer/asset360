@@ -250,7 +250,7 @@ if(isLoggedIn() == false) {
                                         </li>
                                     </ul>
                                 </div>
-                                <div class=" w-50">
+                                <div class="ms-2 w-50">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
