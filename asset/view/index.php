@@ -275,8 +275,7 @@ if(isLoggedIn() == false) {
                                             while ($newrow = mysqli_fetch_assoc($newresult)) { 
                                                 $reviewed = $newrow['date_reviewed'];
 
-                                                $reviewed = strtotime($reviewed);
-                                                $reviewed_formatted = date('M j, Y', $reviewed);
+                                                $reviewed_formatted = !empty($reviewed) ? date_format(date_create($reviewed), 'M d, Y') : '-';  
 
                                             }
                                         }
