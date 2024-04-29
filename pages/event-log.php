@@ -42,7 +42,7 @@ if(isLoggedIn() == false) {
                 padding: 20px;
                 margin: 20px auto;
             }
-            .dropend::after {
+            .btn-group.dropend .dropdown-toggle::after {
                 display: none;
             }
         </style>
