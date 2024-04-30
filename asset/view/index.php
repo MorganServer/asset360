@@ -138,9 +138,20 @@ if(isLoggedIn() == false) {
 
 <script>
     document.getElementById("createTicketButton").addEventListener("click", function() {
-        // Make an AJAX request to your PHP script
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/create_ticket.php", true); // Replace with the actual URL of your PHP script
+        xhr.open("POST", "../../api/create_ticket.php", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // Request was successful, handle response here
+                    console.log("Jira ticket created successfully!");
+                    console.log("Response:", xhr.responseText);
+                } else {
+                    // Error handling for non-200 status codes
+                    console.error("Error:", xhr.status);
+                }
+            }
+        };
         xhr.send();
     });
 </script>
