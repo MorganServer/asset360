@@ -1,14 +1,13 @@
 <?php
-// Load environment variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 
-// Set up Jira credentials and URL
-$jiraUrl = "https://garrett-morgan.atlassian.net/rest/api/3/issue"; // e.g., "https://yourdomain.atlassian.net/rest/api/3/issue"
-$username = "garrett.morgan.pro@gmail.com";
-$password = $_ENV['PASSWORD'];
-error_log('Reached this point in the script');
-// Ticket data
+// Jira API endpoint to create an issue
+$jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
+
+// Jira username and API token (for authentication)
+$jiraUsername = "garrett.morgan.pro@gmail.com";
+$jiraApiToken = $_ENV['PASSWORD'];
+
+// Issue data (you can customize this according to your needs)
 $issueData = array(
     "fields" => array(
         "project" => array(
@@ -35,33 +34,30 @@ $issueData = array(
         )
     )
 );
-error_log('Reached this point in the script');
 
-// Convert data to JSON format
-$data = json_encode($issueData);
+// Encode issue data to JSON
+$issueDataJson = json_encode($issueData);
 
-// Set up cURL request
-$ch = curl_init($jiraUrl);
-curl_setopt($ch, CURLOPT_USERPWD, "$username:$password");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    "Content-Type: application/json",
-    "Content-Length: " . strlen($data)
-));
-error_log('Reached this point in the script');
-// Execute the cURL request
-$result = curl_exec($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-error_log('Reached this point in the script');
+// Create HTTP context options
+$contextOptions = array(
+    'http' => array(
+        'method' => 'POST',
+        'header' => "Content-Type: application/json\r\n" .
+                    "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
+        'content' => $issueDataJson,
+        'ignore_errors' => true // Set to true to suppress errors from response headers
+    )
+);
+
+// Create stream context
+$context = stream_context_create($contextOptions);
+
+// Make the API request
+$response = file_get_contents($jiraApiUrl, false, $context);
+
 // Check for errors
-if ($httpCode == 201) {
-    echo "Ticket created successfully!";
+if ($response === false) {
+    echo "Error: Unable to create Jira ticket.";
 } else {
-    echo "Error creating ticket: " . $result;
+    echo "Jira API Response: " . $response;
 }
-error_log('Reached this point in the script');
-// Close cURL session
-curl_close($ch);
-?>
