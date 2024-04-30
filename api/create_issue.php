@@ -6,7 +6,7 @@ $dotenv->load();
 // Set up Jira credentials and URL
 $jiraUrl = "https://garrett-morgan.atlassian.net/rest/api/3/issue"; // e.g., "https://yourdomain.atlassian.net/rest/api/3/issue"
 $username = "garrett.morgan.pro@gmail.com";
-$password = $_ENV['jira_token'];
+$password = $_ENV['PASSWORD'];
 
 // Ticket data
 $issueData = array(
