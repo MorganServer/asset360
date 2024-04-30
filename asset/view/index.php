@@ -13,7 +13,7 @@ if(isLoggedIn() == false) {
     header('location:' . BASE_URL . '/login.php');
 }
 
-require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
+// require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
 
 // Load environment variables
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
