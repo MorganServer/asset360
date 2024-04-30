@@ -1,9 +1,13 @@
 <?php
 
+// Load environment variables
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // Set up Jira credentials and URL
 $jiraUrl = "https://garrett-morgan.atlassian.net/rest/api/3/issue"; // e.g., "https://yourdomain.atlassian.net/rest/api/3/issue"
 $username = "garrett.morgan.pro@gmail.com";
-$password = "ATATT3xFfGF0xQDSVqyPxXeCS8sBme1cSEeKQiPKzsJYkcOV-Xf_1chFleVeXT31G1bpPm08fOvrBRTOjubsZvV48fVWeBGjkIRwFhA52x5el5w0KqriC0K0g9_mCkc-nm5qPAYFgxAmFJrd6zUfjvnbgr0ifyYpDr3KFYVKsXEGITBSAOyUj_o=613CF7AB"; // For authentication, it's recommended to use an API token instead of your password
+$password = $_ENV['jira_token'];
 
 // Ticket data
 $issueData = array(
