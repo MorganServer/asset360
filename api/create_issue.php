@@ -6,6 +6,9 @@ require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+error_reporting(E_ALL); 
+ini_set('display_errors', 1);
+
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
     // Jira API endpoint to create an issue
