@@ -1,5 +1,9 @@
 <?php
 
+// Load environment variables
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // Jira API endpoint to create an issue
 $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
 
