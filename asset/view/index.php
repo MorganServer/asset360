@@ -136,14 +136,14 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
                         <button id="createTicketButton">Create Jira Ticket</button>
 
-    <script>
-        document.getElementById("createTicketButton").addEventListener("click", function() {
-            // Make an AJAX request to your PHP script
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "<?php echo BASE_URL; ?>/api/create_issue.php", true);
-            xhr.send();
-        });
-    </script>
+<script>
+    document.getElementById("createTicketButton").addEventListener("click", function() {
+        // Make an AJAX request to your PHP script
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "<?php echo BASE_URL; ?>/api/create_ticket.php", true); // Replace with the actual URL of your PHP script
+        xhr.send();
+    });
+</script>
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
