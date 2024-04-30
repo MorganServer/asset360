@@ -145,59 +145,7 @@ $jiraApiToken = $_ENV['JIRA_API_TOKEN'];
                     <span class="float-end d-flex">
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
-                        <button id="createTicketButton">Create Jira Ticket</button>
-
-    <script>
-        document.getElementById("createTicketButton").addEventListener("click", function() {
-            var jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
-            var jiraUsername = "garrett.morgan.pro@gmail.com";
-            var jiraApiToken = "<?php echo $jiraApiToken; ?>";
-
-            // Issue data
-            var issueData = {
-                "fields": {
-                    "project": {
-                        "key": "INFRA"
-                    },
-                    "summary": "Test issue created via JavaScript",
-                    "description": {
-                        "type": "doc",
-                        "version": 1,
-                        "content": [
-                            {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": "description"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "issuetype": {
-                        "id": "10013"
-                    }
-                }
-            };
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", jiraApiUrl, true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("Authorization", "Basic " + btoa(jiraUsername + ":" + jiraApiToken));
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 201) {
-                        console.log("Jira ticket created successfully!");
-                        console.log("Response:", xhr.responseText);
-                    } else {
-                        console.error("Error:", xhr.status);
-                    }
-                }
-            };
-            xhr.send(JSON.stringify(issueData));
-        });
-    </script>
+                        <script src="../../assets/js/create_issue.js"></script>
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
