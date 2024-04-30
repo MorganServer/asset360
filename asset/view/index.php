@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
         document.getElementById("createTicketButton").addEventListener("click", function() {
             // Make an AJAX request to your PHP script
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "<?php echo BASE_URL; ?>/api/create_issue.php", true);
+            xhr.open("POST", "<?php echo BASE_URL; ?>/api/create_issue.php", true);
             xhr.send();
         });
     </script>
