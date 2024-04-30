@@ -1,15 +1,39 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
+
 // Load environment variables
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-// Jira API endpoint to create an issue
-$jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
+// Function to create a Jira issue
+function createJiraIssue($issueDataJson) {
+    // Jira API endpoint to create an issue
+    $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
 
-// Jira username and API token (for authentication)
-$jiraUsername = "garrett.morgan.pro@gmail.com";
-$jiraApiToken = $_ENV['PASSWORD'];
+    // Jira username and API token (for authentication)
+    $jiraUsername = "garrett.morgan.pro@gmail.com";
+    $jiraApiToken = $_ENV['PASSWORD'];
+
+    // Create HTTP context options
+    $contextOptions = array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\n" .
+                        "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
+            'content' => $issueDataJson,
+            'ignore_errors' => true // Set to true to suppress errors from response headers
+        )
+    );
+
+    // Create stream context
+    $context = stream_context_create($contextOptions);
+
+    // Make the API request
+    $response = file_get_contents($jiraApiUrl, false, $context);
+
+    return $response;
+}
 
 // Issue data (you can customize this according to your needs)
 $issueData = array(
@@ -42,22 +66,8 @@ $issueData = array(
 // Encode issue data to JSON
 $issueDataJson = json_encode($issueData);
 
-// Create HTTP context options
-$contextOptions = array(
-    'http' => array(
-        'method' => 'POST',
-        'header' => "Content-Type: application/json\r\n" .
-                    "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
-        'content' => $issueDataJson,
-        'ignore_errors' => true // Set to true to suppress errors from response headers
-    )
-);
-
-// Create stream context
-$context = stream_context_create($contextOptions);
-
-// Make the API request
-$response = file_get_contents($jiraApiUrl, false, $context);
+// Create the issue
+$response = createJiraIssue($issueDataJson);
 
 // Check for errors
 if ($response === false) {
