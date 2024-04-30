@@ -7,7 +7,7 @@ $dotenv->load();
 $jiraUrl = "https://garrett-morgan.atlassian.net/rest/api/3/issue"; // e.g., "https://yourdomain.atlassian.net/rest/api/3/issue"
 $username = "garrett.morgan.pro@gmail.com";
 $password = $_ENV['PASSWORD'];
-
+error_log('Reached this point in the script');
 // Ticket data
 $issueData = array(
     "fields" => array(
@@ -35,7 +35,7 @@ $issueData = array(
         )
     )
 );
-
+error_log('Reached this point in the script');
 
 // Convert data to JSON format
 $data = json_encode($issueData);
@@ -50,18 +50,18 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
     "Content-Type: application/json",
     "Content-Length: " . strlen($data)
 ));
-
+error_log('Reached this point in the script');
 // Execute the cURL request
 $result = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
+error_log('Reached this point in the script');
 // Check for errors
 if ($httpCode == 201) {
     echo "Ticket created successfully!";
 } else {
     echo "Error creating ticket: " . $result;
 }
-
+error_log('Reached this point in the script');
 // Close cURL session
 curl_close($ch);
 ?>
