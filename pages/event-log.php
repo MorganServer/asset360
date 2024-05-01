@@ -37,11 +37,11 @@ if(isLoggedIn() == false) {
 
     <!-- Styles -->
         <style>
-            .application-details {
+            /* .application-details {
                 max-width: 80%;
                 padding: 20px;
                 margin: 20px auto;
-            }
+            } */
             .btn-group .dropdown-toggle::after {
                 display: none;
             }
