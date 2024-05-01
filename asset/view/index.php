@@ -69,11 +69,11 @@ if(isLoggedIn() == false) {
             }
             .icon_rotate {
                 /* filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=1); */
-                -webkit-transform: rotate(90deg);
-                -moz-transform: rotate(90deg);
-                -ms-transform: rotate(90deg);
-                -o-transform: rotate(90deg);
-                transform: rotate(90deg);
+                -webkit-transform: rotate(45deg);
+                -moz-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                -o-transform: rotate(45deg);
+                transform: rotate(45deg);
                 display: inline-block;
             }
         </style>
