@@ -579,9 +579,9 @@ if(isLoggedIn() == false) {
                         <!-- get audit issues script -->
                             <script>
                                 // Assuming $off_asset_tag_no contains the current asset tag
-                                var assetTag = "<?php echo $off_asset_tag_no; ?>";
+                                var offassetTag = "<?php echo $off_asset_tag_no; ?>";
 
-                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + offassetTag)
                                   .then(response => {
                                     return response.json();
                                   })
