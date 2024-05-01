@@ -67,7 +67,7 @@ if(isLoggedIn() == false) {
                     width: 100%; 
                 }
             }
-            .bi-ticket-fill {
+            .icon_rotate {
                 transform: rotate(-45deg) !important;
             }
         </style>
@@ -138,7 +138,7 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
 
                         <!-- JIRA BUTTON -->
-                            <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill"></i> Create an Issue</a>
+                            <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> Create an Issue</a>
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
