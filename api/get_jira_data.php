@@ -3,7 +3,7 @@
 $assetTag = $_GET['asset_tag']; // Assuming the asset tag is passed as a query parameter
 
 // Construct the JQL query string dynamically
-$jqlQuery = "project=SG+AND+summary~\"" . urlencode($assetTag) . "\"";
+$jqlQuery = "project=SG+AND+summary~\"" . $assetTag . "\"";
 $fields = "summary"; // Define the fields you want to retrieve
 
 // Construct the URL for the Jira API endpoint
