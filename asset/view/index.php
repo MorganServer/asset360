@@ -90,7 +90,7 @@ if(isLoggedIn() == false) {
               left: 0;
               bottom: 0;
               width: 100%;
-              border-bottom: 1px solid rgb(217, 222, 226);
+              border-bottom: 2px solid rgb(217, 222, 226);
             }
         </style>
     <!-- end Styles -->
