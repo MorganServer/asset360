@@ -597,7 +597,9 @@ if(isLoggedIn() == false) {
                                   .catch(error => {
                                     console.error('Fetch Error:', error);
                                     // Handle the error gracefully, e.g., display a message to the user
+                                    // Since the response is not JSON, you might want to inform the user accordingly
                                   });
+
                             </script>
 
                         <!-- end get audit issues script -->
