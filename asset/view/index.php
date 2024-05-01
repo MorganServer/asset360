@@ -13,16 +13,6 @@ if(isLoggedIn() == false) {
     header('location:' . BASE_URL . '/login.php');
 }
 
-// require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
-
-// Load environment variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-// Get Jira API token from environment variable
-$jiraApiToken = $_ENV['JIRA_API_TOKEN'];
-
-// Now you can inject $jiraApiToken into your HTML/JavaScript code
 
 ?>
 <!DOCTYPE html>
@@ -146,8 +136,8 @@ $jiraApiToken = $_ENV['JIRA_API_TOKEN'];
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
 
-                        <!-- <script src="../../assets/js/create_issue.js"></script> -->
-
+                        <script src="../../assets/js/create_issue.js"></script>
+                        
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
