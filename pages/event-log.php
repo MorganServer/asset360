@@ -67,623 +67,76 @@ if(isLoggedIn() == false) {
 
 
 
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="maintenance-tab" data-bs-toggle="tab" data-bs-target="#maintenance-tab-pane" type="button" role="tab" aria-controls="maintenance-tab-pane" aria-selected="true">Maintenance</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="audit-tab" data-bs-toggle="tab" data-bs-target="#Audit-tab-pane" type="button" role="tab" aria-controls="Audit-tab-pane" aria-selected="false">Audit</button>
-                  </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <!-- Maintenance -->
-                        <div class="tab-pane fade show active" id="maintenance-tab-pane" role="tabpanel" aria-labelledby="maintenance-tab" tabindex="0">
-                            <div class="mt-4"></div>
-                            <h4><i class="bi bi-tools"></i> Maintenance Events</h4>
-                            <hr>
-
-                            <table class="table">
-                                <thead>
+        <div class="scrollable-table-container">
+                                <table class="table">
+                                  <thead class="sticky-header">
                                     <tr>
-                                    <th scope="col">Tag No</th>
-                                    <th scope="col">Event Type</th>
-                                    <th scope="col">Performed</th>
-                                    <th scope="col">Performed By</th>
-                                    <th scope="col">Reviewed</th>
-                                    <th scope="col">Reviewed By</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Actions</th>
+                                      <th scope="col">Issue Key</th>
+                                      <th scope="col">Issue Type</th>
+                                      <th scope="col">Summary</th>
+                                      <th scope="col">Link</th>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        // Pagination variables
-                                        $limit = 10; // Number of entries per page
-                                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                        $offset = ($page - 1) * $limit;
-
-                                        $msql = "SELECT * FROM event_log WHERE event_type = 'Maintenance' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        $mresult = mysqli_query($conn, $msql);
-                                        if($mresult) {
-                                            $mnum_rows = mysqli_num_rows($mresult);
-                                            if($mnum_rows > 0) {
-                                                while ($mrow = mysqli_fetch_assoc($mresult)) {
-                                                    $id                     = $mrow['event_id'];
-                                                    $idno                   = $mrow['idno'];
-                                                    $status                 = $mrow['status'];
-                                                    $date_performed         = $mrow['date_performed'];
-                                                    $date_reviewed          = $mrow['date_reviewed'];
-                                                    $asset_tag_no           = $mrow['asset_tag_no'];
-                                                    $performed_by           = $mrow['performed_by'];
-                                                    $reviewed_by            = $mrow['reviewed_by'];
-                                                    $event_type             = $mrow['event_type'];
-                                                    $notes                  = $mrow['notes'];
-                                                    $event_created          = $mrow['event_created'];    
-                                                    $event_updated          = $mrow['event_updated'];                 
-
-                                                    // Format maintenance schedule if not null
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';                  
-
-                                                    // Format audit schedule if not null
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php echo $asset_tag_no; ?></th>
-                                        <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
-                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
-                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
-                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
-                                        <?php if($status == "Awaiting Approval") { ?>
-                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Completed") { ?>
-                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rejected") { ?>
-                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rescheduled") { ?>
-                                            <td><span class="badge text-bg-warning"><?php echo $status; ?></span></td>
-                                        <?php } else { ?>
-                                            <td>--</td>
-                                        <?php } ?>
-                                        <td style="font-size: 20px;">
-                                            <div class="btn-group">
-                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
-                                                    <i class="bi bi-three-dots text-secondary"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/pages/event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Modal -->
-                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
-
-                                            <?php
-
-                                                $tsql = "SELECT * FROM event_log WHERE event_id = $id";
-                                                $tresult = mysqli_query($conn, $tsql);
-                                                if($tresult) {
-                                                    $tnum_rows = mysqli_num_rows($tresult);
-                                                    if($tnum_rows > 0) {
-                                                        while ($trow = mysqli_fetch_assoc($tresult)) {
-                                                            $tid                     = $trow['event_id'];
-                                                            $tidno                   = $trow['idno'];
-                                                            $tstatus                 = $trow['status'];
-                                                            $tdate_performed         = $trow['date_performed'];
-                                                            $tdate_reviewed          = $trow['date_reviewed'];
-                                                            $tasset_tag_no           = $trow['asset_tag_no'];
-                                                            $tperformed_by           = $trow['performed_by'];
-                                                            $treviewed_by            = $trow['reviewed_by'];
-                                                            $tevent_type             = $trow['event_type'];
-                                                            $tnotes                  = $trow['notes'];
-                                                            $tevent_created          = $trow['event_created'];    
-                                                            $tevent_updated          = $trow['event_updated'];  
-                                                        }
-                                                    }
-                                                }
-                                            ?>
-                                              <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
-                                                                <?php echo $tasset_tag_no; ?>
-                                                            </div>
-                                                            <div class="col">
-                                                                <label for="status" class="form-label fw-bold">Status</label><br>
-                                                                <?php echo $tstatus; ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row pt-3">
-                                                            <div class="col">
-                                                                <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
-                                                                <?php echo $tperformed_by; ?>
-                                                            </div>
-                                                            <div class="col">
-                                                                <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
-                                                                <?php echo $tdate_performed; ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col pt-3">
-                                                            <label for="notes" class="form-label fw-bold">Notes</label><br>
-                                                            <?php echo $tnotes; ?>
-                                                        </div>
-
-
-                                            
-                                                    <hr>
-                                                    <form method="POST">
-                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
-                                                                <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                                            </div>
-                                                            <div class="col">
-                                                                <?php $cdate = date("Y-m-d"); ?>
-                                                                <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
-                                                                <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <label class="form-label" for="status">Status</label>
-                                                            <select class="form-control" name="status">
-                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
-                                                                <option value="Rejected">Rejected</option>
-                                                                <option value="Completed">Completed</option>
-                                                                <option value="Rescheduled">Rescheduled</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="row pt-3">
-                                                            <div class="col">
-                                                                <label class="form-label" for="notes"><strong>Notes</strong></label>
-                                                                <textarea class="form-control" name="notes" rows="5"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
-                                                        </div>
-                                                    </form>  
-                                                </div>
-                                              </div>
-                                            </div>
-                                    <!-- end Modal -->
-
-                                    <?php
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <br>
-                            <?php
-                                // Pagination links
-                                $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $total_pages = ceil($row["total"] / $limit);                    
-
-                                    echo '<ul class="pagination justify-content-center">';
-                                    for ($i = 1; $i <= $total_pages; $i++) {
-                                        $active = ($page == $i) ? "active" : "";
-                                        echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                                    }
-                                    echo '</ul>';
-                            ?>
-
-
-                        </div>
-                    <!-- end Maintenance -->
-
-                    <!-- Audit -->
-                        <div class="tab-pane fade" id="Audit-tab-pane" role="tabpanel" aria-labelledby="Audit-tab" tabindex="0">
-                            <div class="mt-4"></div>
-                            <h4><i class="bi bi-shield-fill-check"></i> Audit Events</h4>
-                            <hr>
-
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Tag No</th>
-                                    <th scope="col">Event Type</th>
-                                    <th scope="col">Performed</th>
-                                    <th scope="col">Performed By</th>
-                                    <th scope="col">Reviewed</th>
-                                    <th scope="col">Reviewed By</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        // Pagination variables
-                                        $limit = 10; // Number of entries per page
-                                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                        $offset = ($page - 1) * $limit;
-
-                                        $msql = "SELECT * FROM event_log WHERE event_type = 'Audit' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        $mresult = mysqli_query($conn, $msql);
-                                        if($mresult) {
-                                            $mnum_rows = mysqli_num_rows($mresult);
-                                            if($mnum_rows > 0) {
-                                                while ($mrow = mysqli_fetch_assoc($mresult)) {
-                                                    $id                     = $mrow['event_id'];
-                                                    $idno                   = $mrow['idno'];
-                                                    $status                 = $mrow['status'];
-                                                    $date_performed         = $mrow['date_performed'];
-                                                    $date_reviewed          = $mrow['date_reviewed'];
-                                                    $asset_tag_no           = $mrow['asset_tag_no'];
-                                                    $performed_by           = $mrow['performed_by'];
-                                                    $reviewed_by            = $mrow['reviewed_by'];
-                                                    $event_type             = $mrow['event_type'];
-                                                    $notes                  = $mrow['notes'];
-                                                    $event_created          = $mrow['event_created'];    
-                                                    $event_updated          = $mrow['event_updated'];                 
-
-                                                    // Format maintenance schedule if not null
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';                  
-
-                                                    // Format audit schedule if not null
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php echo $asset_tag_no; ?></th>
-                                        <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
-                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
-                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
-                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
-                                        <?php if($status == "Awaiting Approval") { ?>
-                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Completed") { ?>
-                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rejected") { ?>
-                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rescheduled") { ?>
-                                            <td><span class="badge text-bg-warning"><?php echo $status; ?></span></td>
-                                        <?php } else { ?>
-                                            <td>--</td>
-                                        <?php } ?>
-                                        <!-- <td style="font-size: 20px;"></i><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
-
-                                        <td style="font-size: 20px;">
-                                            <div class="btn-group">
-                                                <button class="btn btn-link text-decoration-none dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onmousedown="this.style.outline='none';" onclick="this.blur(); runFn(this);" onmouseup="this.style.outline=null;">
-                                                    <i class="bi bi-three-dots text-secondary"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#review<?php echo $id; ?>"><i class="bi bi-eye text-success"></i> Review</a></li>
-                                                    <li><a class="dropdown-item" href="<?php echo BASE_URL; ?>/pages/event_log.php?id=<?php echo $id; ?>"><i class="bi bi-trash" style="color:#941515;"></i> Delete</a></li>
-                                                </ul>
-                                            </div>
-                                        </td>
-
-                                    </tr>
-
-                                    <!-- Modal -->
-                                        <div class="modal fade" id="review<?php echo $id; ?>" tabindex="-1" aria-labelledby="reviewLabel<?php echo $id; ?>" aria-hidden="true">
-
-                                        <?php
-
-                                            $tsql = "SELECT * FROM event_log WHERE event_id = $id";
-                                            $tresult = mysqli_query($conn, $tsql);
-                                            if($tresult) {
-                                                $tnum_rows = mysqli_num_rows($tresult);
-                                                if($tnum_rows > 0) {
-                                                    while ($trow = mysqli_fetch_assoc($tresult)) {
-                                                        $tid                     = $trow['event_id'];
-                                                        $tidno                   = $trow['idno'];
-                                                        $tstatus                 = $trow['status'];
-                                                        $tdate_performed         = $trow['date_performed'];
-                                                        $tdate_reviewed          = $trow['date_reviewed'];
-                                                        $tasset_tag_no           = $trow['asset_tag_no'];
-                                                        $tperformed_by           = $trow['performed_by'];
-                                                        $treviewed_by            = $trow['reviewed_by'];
-                                                        $tevent_type             = $trow['event_type'];
-                                                        $tnotes                  = $trow['notes'];
-                                                        $tevent_created          = $trow['event_created'];    
-                                                        $tevent_updated          = $trow['event_updated'];  
-                                                    }
-                                                }
-                                            }
-                                        ?>
-                                          <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="reviewLabel<?php echo $id; ?>">Event Log Details</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
-                                                            <?php echo $tasset_tag_no; ?>
-                                                        </div>
-                                                        <div class="col">
-                                                            <label for="status" class="form-label fw-bold">Status</label><br>
-                                                            <?php echo $tstatus; ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row pt-3">
-                                                        <div class="col">
-                                                            <label for="asset_tag_no" class="form-label fw-bold">Performed By</label><br>
-                                                            <?php echo $tperformed_by; ?>
-                                                        </div>
-                                                        <div class="col">
-                                                            <label for="date_performed" class="form-label fw-bold">Date Performed</label><br>
-                                                            <?php echo $tdate_performed; ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col pt-3">
-                                                        <label for="notes" class="form-label fw-bold">Notes</label><br>
-                                                        <?php echo $tnotes; ?>
-                                                    </div>
-                                                
-                                                
-
-                                                <hr>
-                                                <form method="POST">
-                                                    <input type="hidden" class="form-control" id="event_id" name="event_id" value="<?php echo $tid;?>">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label for="reviewed_by" class="form-label fw-bold">Reviewed By</label><br>
-                                                            <input type="text" class="form-control" id="reviewed_by" name="reviewed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                                        </div>
-                                                        <div class="col">
-                                                            <?php $cdate = date("Y-m-d"); ?>
-                                                            <label for="date_reviewed" class="form-label fw-bold">Date Reviewed</label>
-                                                            <input type="date" class="form-control" id="date_reviewed" name="date_reviewed" value="<?php echo $cdate; ?>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col">
-                                                            <label class="form-label" for="status">Status</label>
-                                                            <select class="form-control" name="status">
-                                                                <option value="<?php echo $tstatus; ?>"><?php echo $tstatus; ?></option>
-                                                                <option value="Rejected">Rejected</option>
-                                                                <option value="Completed">Completed</option>
-                                                                <option value="Rescheduled">Rescheduled</option>
-                                                            </select>
-                                                        </div>
-                                                    <div class="row pt-3">
-                                                        <div class="col">
-                                                            <label class="form-label" for="notes"><strong>Notes</strong></label>
-                                                            <textarea class="form-control" name="notes" rows="5"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" name="review-event" class="btn btn-primary mt-3">Submit</button>
-                                                    </div>
-                                                </form>  
-                                            </div>
-                                          </div>
-                                        </div>
-                                    <!-- end Modal -->
-
-
-
-
-
-
-
-                                    <?php
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                            <br>
-                            <?php
-                                // Pagination links
-                                $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $total_pages = ceil($row["total"] / $limit);                    
-
-                                    echo '<ul class="pagination justify-content-center">';
-                                    for ($i = 1; $i <= $total_pages; $i++) {
-                                        $active = ($page == $i) ? "active" : "";
-                                        echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                                    }
-                                    echo '</ul>';
-                            ?>
-
-
-                        </div>
-                    <!-- end Audit -->
-
-
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-                
-
-
-                
-
-
-
-
-
-
-
-
-
-                
-
-                
-
-                    
-
-                
-                
-                <!-- __________ -->
-                
-                
-
-                <!-- Maintenance Modal -->
-                    <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="maintenanceModalLabel">Maintenance Request</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <!-- Modal Body - Your form goes here -->
-                                <div class="modal-body">
-                                    <form method="POST">
-                                        <input type="hidden" class="form-control" id="event_type" name="event_type" value="Maintenance">
-                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                        <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
-                                        <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
-                                        
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
-                                                <?php echo $off_asset_tag_no; ?>
-                                            </div>
-                                            <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
-                                                <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="col">
-                                            <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_completed" class="form-label">Date Completed</label>
-                                            <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
-                                        </div>
-                                        <div class="row pt-3">
-                                            <div class="col">
-                                                <label class="form-label" for="notes">Notes</label>
-                                                <textarea class="form-control" name="notes" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                        <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
-                                    </form>
-                                </div>
+                                  </thead>
+                                  <tbody id="jiraTableBody">
+                                    <!-- Table rows will be dynamically added here -->
+                                  </tbody>
+                                </table>
                             </div>
-                        </div>
-                    </div>
-                <!-- end Maintenance Modal -->
-                <!-- Audit Modal -->
-                    <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="auditModalLabel">Audit Request</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <!-- Modal Body - Your form goes here -->
-                                <div class="modal-body">
-                                    <form method="POST">
-                                        <input type="hidden" class="form-control" id="event_type" name="event_type" value="Audit">
-                                        <input type="hidden" class="form-control" id="completed_by" name="completed_by" value="<?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>">
-                                        <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $off_asset_tag_no;?>">
-                                        <input type="hidden" class="form-control" id="status" name="status" value="Awaiting Approval">
 
-                                        <div class="row">
-                                            <div class="col">
-                                                <label for="asset_tag_no" class="form-label fw-bold">Asset Tag Number</label><br>
-                                                <?php echo $off_asset_tag_no; ?>
-                                            </div>
-                                            <div class="col">
-                                                <label for="completed_by" class="form-label fw-bold">Completed By</label><br>
-                                                <?php echo $_SESSION['fname'] . ' ' . $_SESSION['lname']; ?>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="col">
-                                            <?php $cdate = date("Y-m-d"); ?>
-                                            <label for="date_completed" class="form-label">Date Completed</label>
-                                            <input type="date" class="form-control" id="date_completed" name="date_completed" value="<?php echo $cdate; ?>">
-                                        </div>
-                                        <div class="row pt-3">
-                                            <div class="col">
-                                                <label class="form-label" for="notes">Notes</label>
-                                                <textarea class="form-control" name="notes" rows="5"></textarea>
-                                            </div>
-                                        </div>
-                                        <!-- Add more form fields as needed -->
-                                        <button type="submit" name="add-event" class="btn btn-primary mt-3">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <!-- end Audit Modal -->
+                        <!-- get audit issues script -->
+                            <script>
+                                // Assuming $off_asset_tag_no contains the current asset tag
+                                // var assetTag = "<?php //echo $off_asset_tag_no; ?>";
+
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_all_data.php')
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        // Check if the response contains issues
+                                        if (data && data.issues && data.issues.length > 0) {
+                                            document.getElementById("jiraTableBody").innerHTML = "";
+                                            data.issues.forEach(issue => {
+                                                var newRow = document.createElement("tr");
+                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                                document.getElementById("jiraTableBody").appendChild(newRow);
+                                            });
+                                        } else {
+                                            // Handle case where no issues are found
+                                            document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>No issues found</td></tr>";
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        // Handle other errors, e.g., network issues or server errors
+                                        document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>Error fetching data</td></tr>";
+                                    });
+                            </script>
+
+
+                        <!-- end get audit issues script -->
 
 
 
 
 
-                <!-- ___________ -->
             
     </div>
 </div>
 
-<script>
-//     document.addEventListener('DOMContentLoaded', function() {
-//     var accordionButton = document.getElementById('accordion-button');
-//     if (accordionButton) {
-//         var chev_i = document.getElementById('chev');
-        
-//         if (chev_i) {
-//             accordionButton.addEventListener('click', function() {
-                
-//                 var isCollapsed = accordionButton.classList.contains('collapsed');
-                
-//                 if (isCollapsed) {
-//                     chev_i.classList.remove('bi-chevron-up');
-//                     chev_i.classList.add('bi-chevron-down');
-//                 } else {
-//                     chev_i.classList.remove('bi-chevron-down');
-//                     chev_i.classList.add('bi-chevron-up');
-//                 }
-//             });
-//         } else {
-//             console.log('Chevron icon not found');
-//         }
-//     } else {
-//         console.log('Accordion button not found');
-//     }
-// });
-
-</script>
 
 
-
+<!-- 
 <script>
         tinymce.init({
             selector: 'textarea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
-    </script>
+    </script> -->
 
 
 
