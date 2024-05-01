@@ -701,7 +701,7 @@ if(isLoggedIn() == false) {
         var issueDataJson = JSON.stringify(issueData);
 
         // Make AJAX request to create Jira issue
-        fetch('<?php echo BASE_URL; ?>/api/create_issue.php', {
+        fetch('create_issue.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -714,7 +714,8 @@ if(isLoggedIn() == false) {
             console.log(data);
             // You can add further actions based on the response here
             // For example, show success message or close modal
-            document.getElementById('createIssueModal').modal('hide'); // Close modal
+            var myModal = new bootstrap.Modal(document.getElementById('createIssueModal'));
+            myModal.hide(); // Close modal
         })
         .catch(error => {
             console.error('Error:', error);
@@ -722,6 +723,7 @@ if(isLoggedIn() == false) {
         });
     });
 </script>
+
 
 
 </body>
