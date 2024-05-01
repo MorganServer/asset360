@@ -42,7 +42,7 @@ if(isLoggedIn() == false) {
             <hr>
 
             <div class="row">
-                <div class="col" style="width: 100% !important;">
+                <div class="col" style="width: 100vw !important;">
                     <div class="card">
                       <div class="card-body">
                         <h5 class="card-title">Account Information</h5>
