@@ -10,7 +10,7 @@ $fields = "summary"; // Define the fields you want to retrieve
 $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery . "&fields=" . $fields;
 
 // Display the endpoint being used
-echo "Endpoint:" . $url . "<br>";
+echo "<p>Endpoint: " . $url . "</p>";
 
 // Make a request to the Jira API endpoint
 $response = file_get_contents($url);
@@ -18,7 +18,7 @@ $response = file_get_contents($url);
 // Check if the request was successful
 if ($response === false) {
     // Handle the error
-    echo "Failed to fetch data from Jira API";
+    echo "<p>Failed to fetch data from Jira API</p>";
 } else {
     // Return the response data to the client
     echo $response;
