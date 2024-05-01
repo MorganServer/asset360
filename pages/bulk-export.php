@@ -40,8 +40,6 @@ if(isLoggedIn() == false) {
             <h2 class="mt-4">
                 Bulk Export Asset Inventory
             </h2>
-            <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
-            <!-- <button class="float-end export-button btn btn-success" style="margin-top: -40px;" id="generatePdfButton">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></button> -->
             <a href="convert-pdf.php?generatePdf=1" class="float-end export-button btn btn-success" style="margin-top: -40px;">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></a>
 
 
@@ -450,19 +448,6 @@ if(isLoggedIn() == false) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#generatePdfButton').click(function() {
-        // Redirect to the same page with a query parameter indicating PDF generation
-        window.location.href = 'convert-pdf.php?generatePdf=1';
-    });
-});
-</script>
 
-
-
-
-
-    <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
 </html>
