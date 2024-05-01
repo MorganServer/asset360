@@ -39,6 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     // Get Jira issues
     $response = getJiraIssues($url);
 
+    echo json_encode(["url" => "Endpoint: " . $url]);
+
     // Check if the request was successful
     if ($response === false) {
         // Handle the error
