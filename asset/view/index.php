@@ -73,6 +73,10 @@ if(isLoggedIn() == false) {
                 transform: rotate(-45deg);
                 display: inline-block;
             }
+            #jiraTableBody {
+                height: 300px; /* Set your desired height here */
+                overflow-y: auto; /* Enable vertical scrolling */
+            }
         </style>
     <!-- end Styles -->
 
@@ -536,6 +540,8 @@ if(isLoggedIn() == false) {
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
 
+                                
+                            <div class="mt-4"></div>
                             <h4><i class="bi bi-ticket-fill icon_rotate"></i> Latest Issues</h4>
                             <hr>
 
