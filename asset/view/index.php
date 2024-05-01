@@ -78,12 +78,20 @@ if(isLoggedIn() == false) {
                 overflow-y: auto; /* Enable vertical scrollbar */
             }
             .sticky-header th {
-                position: sticky;
-                top: 0;
-                background-color: #fff; /* Optional: Set background color for the sticky header */
-                z-index: 1; /* Ensure the header stays above the content */
-                border-bottom: 1px solid black;
-            }   
+              position: sticky;
+              top: 0;
+              background-color: #fff; /* Optional: Set background color for the sticky header */
+              z-index: 1; /* Ensure the header stays above the content */
+            }
+            
+            .sticky-header th::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              border-bottom: 1px solid black;
+            }
         </style>
     <!-- end Styles -->
 
