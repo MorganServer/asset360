@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     $assetTag = $_GET['asset_tag'];
 
     // Construct the JQL query string dynamically
-    $jqlQuery = "project in (SG, INFRA) AND summary~' '" . $assetTag . "'";
+    $jqlQuery = "project in (SG, INFRA) AND summary ~ '" . $assetTag . "'";
     $fields = "summary, issuetype"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
@@ -38,18 +38,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
 
     // Get Jira issues
     $response = getJiraIssues($url);
-    
-    // Echo the URL and the response
-    echo json_encode(["url" => "Endpoint: " . $url, "response" => $response]);
-
 
     // Check if the request was successful
-    if ($response === false) {
-        // Handle the error
-        echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
-    } else {
+    if ($response !== false) {
         // Return the response data to the client
         echo $response;
+    } else {
+        // Handle the error
+        echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
     }
 } else {
     echo "Error: Invalid request.";
