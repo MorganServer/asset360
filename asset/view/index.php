@@ -73,6 +73,25 @@ if(isLoggedIn() == false) {
                 transform: rotate(-45deg);
                 display: inline-block;
             }
+            .scrollable-table-container {
+                overflow-y: auto; 
+                height: calc(100vh - 375px);
+            }
+            .sticky-header th {
+              position: sticky;
+              top: 0;
+              background-color: #fff;
+              z-index: 1;
+            }
+
+            .sticky-header th::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              border-bottom: 2px solid rgb(217, 222, 226);
+            }
         </style>
     <!-- end Styles -->
 
@@ -80,7 +99,6 @@ if(isLoggedIn() == false) {
 <body>
 
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-    <?php //include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
 <div class="container-fluid" style="margin-top: 60px;">
     <div class="application-details">
@@ -137,19 +155,15 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
-                        <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a> -->
 
-                        <!-- JIRA BUTTON -->
+                        <!-- JIRA BUTTONS -->
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                             </a>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
-                            <!-- <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a> -->
-
-
+                            
                             <!-- AUDIT modal -->
                                 <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -160,6 +174,9 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="auditModalForm">
+                                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                                    <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
+                                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
                                                     <div class="mb-3">
                                                         <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="summary" name="summary" required>
@@ -171,7 +188,7 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                     </div>
                                                     <!-- Add more fields as needed -->
-                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -180,15 +197,18 @@ if(isLoggedIn() == false) {
                             <!-- End Modal for AUDIT -->
 
                             <!-- MAINTENANCE modal -->
-                            <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="maintenanceModalLabel">Perform Audit</h5>
+                                                <h5 class="modal-title" id="maintenanceModalLabel">Create a Maintenance Ticket</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
                                                 <form id="maintenanceModalForm">
+                                                    <input type="hidden" class="form-control" id="m_asset_tag" name="m_asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                                    <input type="hidden" class="form-control" id="m_actual_asset_tag" name="m_actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
+                                                    <input type="hidden" class="form-control" id="m_asset_id" name="m_asset_id" value="<?php echo $off_id; ?>">
                                                     <div class="mb-3">
                                                         <label for="m_summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="m_summary" name="m_summary" required>
@@ -200,13 +220,15 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                     </div>
                                                     <!-- Add more fields as needed -->
-                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             <!-- End Modal for MAINTENANCE -->
+
+                        <!-- end JIRA BUTTONS -->
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
@@ -242,9 +264,9 @@ if(isLoggedIn() == false) {
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
                   </li>
-                  <!-- <li class="nav-item" role="presentation">
+                  <li class="nav-item" role="presentation">
                     <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
-                  </li> -->
+                  </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <!-- Details -->
@@ -442,7 +464,7 @@ if(isLoggedIn() == false) {
                     <!-- end Notes -->
 
                     <!-- Events -->
-                        <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
+                        <!-- <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
                             <div class="mt-4"></div>
                             <h4><i class="bi bi-tools"></i> Latest Events</h4>
                             <hr>
@@ -457,13 +479,11 @@ if(isLoggedIn() == false) {
                                     <th scope="col">Reviewed</th>
                                     <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
-                                    <!-- <th scope="col">Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        // Pagination variables
-                                        $limit = 10; // Number of entries per page
+                                        $limit = 10; 
                                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                         $offset = ($page - 1) * $limit;
 
@@ -486,12 +506,11 @@ if(isLoggedIn() == false) {
                                                     $event_created          = $erow['event_created'];    
                                                     $event_updated          = $erow['event_updated'];                 
 
-                                                    // Format maintenance schedule if not null
+                                                    
                                                     $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
                                                     $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
 
-                                                    // Format audit schedule if not null
-                                                    // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                                    
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
@@ -511,7 +530,7 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+                                        
                                     </tr>
                                     <?php
                                             }
@@ -522,7 +541,7 @@ if(isLoggedIn() == false) {
                             </table>
                             <br>
                             <?php
-                                // Pagination links
+                                
                                 $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
                                 $result = mysqli_query($conn, $sql);
                                 $row = mysqli_fetch_assoc($result);
@@ -537,11 +556,71 @@ if(isLoggedIn() == false) {
                             ?>
 
 
-                        </div>
+                        </div> -->
                     <!-- end Events -->
 
                     <!-- Jira -->
-                        <!-- <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div> -->
+                        <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
+
+                                
+                            <div class="mt-4"></div>
+                            <h4><i class="bi bi-ticket-fill icon_rotate"></i> Latest Issues</h4>
+                            <hr>
+
+                            <div class="scrollable-table-container">
+                                <table class="table">
+                                  <thead class="sticky-header">
+                                    <tr>
+                                      <th scope="col">Issue Key</th>
+                                      <th scope="col">Issue Type</th>
+                                      <th scope="col">Summary</th>
+                                      <th scope="col">Link</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="jiraTableBody">
+                                    <!-- Table rows will be dynamically added here -->
+                                  </tbody>
+                                </table>
+                            </div>
+
+                        <!-- get audit issues script -->
+                            <script>
+                                // Assuming $off_asset_tag_no contains the current asset tag
+                                var assetTag = "<?php echo $off_asset_tag_no; ?>";
+
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        // Check if the response contains issues
+                                        if (data && data.issues && data.issues.length > 0) {
+                                            document.getElementById("jiraTableBody").innerHTML = "";
+                                            data.issues.forEach(issue => {
+                                                var newRow = document.createElement("tr");
+                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                                document.getElementById("jiraTableBody").appendChild(newRow);
+                                            });
+                                        } else {
+                                            // Handle case where no issues are found
+                                            document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>No issues found</td></tr>";
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        // Handle other errors, e.g., network issues or server errors
+                                        document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>Error fetching data</td></tr>";
+                                    });
+                            </script>
+
+
+                        <!-- end get audit issues script -->
+
+
+                        </div>
                     <!-- end Jira -->
                 </div>
 
@@ -660,55 +739,30 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var accordionButton = document.getElementById('accordion-button');
-    if (accordionButton) {
-        var chev_i = document.getElementById('chev');
-        
-        if (chev_i) {
-            accordionButton.addEventListener('click', function() {
-                
-                var isCollapsed = accordionButton.classList.contains('collapsed');
-                
-                if (isCollapsed) {
-                    chev_i.classList.remove('bi-chevron-up');
-                    chev_i.classList.add('bi-chevron-down');
-                } else {
-                    chev_i.classList.remove('bi-chevron-down');
-                    chev_i.classList.add('bi-chevron-up');
-                }
-            });
-        } else {
-            console.log('Chevron icon not found');
-        }
-    } else {
-        console.log('Accordion button not found');
-    }
-    });
-
-</script> -->
 
    
 
-    <script src="<?php echo BASE_URL; ?>/assets/js/create_issue.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
-
-<script>
-    document.getElementById('auditModalForm').addEventListener('submit', function(event) {
+<!-- audit script -->
+    <script>
+        document.getElementById('auditModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
+        var actual_asset_tag = document.getElementById('actual_asset_tag').value;
+        var asset_id = document.getElementById('asset_id').value;
+        var asset_tag = document.getElementById('asset_tag').value;
         var summary = document.getElementById('summary').value;
         var notes = document.getElementById('notes').value;
+        var combinedSummary = asset_tag + summary;
         var auditIssueData = {
             "fields": {
                 "project": {
                     "key": "SG"
                 },
-                "summary": summary,
+                "summary": combinedSummary,
                 "description": {
                     "type": "doc",
                     "version": 1,
@@ -726,10 +780,14 @@ if(isLoggedIn() == false) {
                 },
                 "issuetype": {
                     "id": "10029"
-                }
+                },
+                "labels": [
+                    actual_asset_tag,
+                    asset_id
+                ]
             }
         };
-        
+
         // Convert issueData to FormData object
         var formData = new FormData();
         formData.append('auditIssueData', JSON.stringify(auditIssueData));
@@ -743,74 +801,86 @@ if(isLoggedIn() == false) {
         .then(data => {
             // Handle response
             console.log(data);
-            // You can add further actions based on the response here
-            // For example, show success message or close modal
+            // Close modal
             var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
-            myModal.hide(); // Close modal
+            myModal.hide();
         })
         .catch(error => {
             console.error('Error:', error);
             // Handle error
         });
     });
-</script>
+    </script>
+<!-- end audit script -->
 
-<script>
-    document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-        var m_summary = document.getElementById('m_summary').value;
-        var m_notes = document.getElementById('m_notes').value;
-        var maintenanceIssueData = {
-            "fields": {
-                "project": {
-                    "key": "INFRA"
-                },
-                "summary": m_summary,
-                "description": {
-                    "type": "doc",
-                    "version": 1,
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": m_notes
-                                }
-                            ]
-                        }
+<!-- maintenance script -->
+    <script>
+        document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var m_actual_asset_tag = document.getElementById('m_actual_asset_tag').value;
+            var m_asset_id = document.getElementById('m_asset_id').value;
+            var m_asset_tag = document.getElementById('m_asset_tag').value;
+            var m_summary = document.getElementById('m_summary').value;
+            var m_notes = document.getElementById('m_notes').value;
+            var m_combinedSummary = m_asset_tag + m_summary;
+            var maintenanceIssueData = {
+                "fields": {
+                    "project": {
+                        "key": "INFRA"
+                    },
+                    "summary": m_combinedSummary,
+                    "description": {
+                        "type": "doc",
+                        "version": 1,
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": m_notes
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "issuetype": {
+                        "id": "10030"
+                    },
+                    "labels": [
+                        m_actual_asset_tag,
+                        m_asset_id
                     ]
-                },
-                "issuetype": {
-                    "id": "10030"
                 }
-            }
-        };
-        
-        // Convert issueData to FormData object
-        var m_formData = new FormData();
-        m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
+            };
 
-        // Make AJAX request to create Jira issue
-        fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
-            method: 'POST',
-            body: m_formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Handle response
-            console.log(data);
-            // You can add further actions based on the response here
-            // For example, show success message or close modal
-            var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
-            m_myModal.hide(); // Close modal
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle error
+            // Convert issueData to FormData object
+            var m_formData = new FormData();
+            m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
+
+            // Make AJAX request to create Jira issue
+            fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
+                method: 'POST',
+                body: m_formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Handle response
+                console.log(data);
+                // You can add further actions based on the response here
+                // For example, show success message or close modal
+                var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
+                m_myModal.hide(); // Close modal
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error
+            });
         });
-    });
-</script>
+    </script>
+<!-- end maintenance script -->
+
+
 
 
 </body>
