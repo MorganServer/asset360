@@ -108,7 +108,7 @@ if(isLoggedIn() == false) {
             $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-            WHERE asset_tag_no = $id
+            WHERE asset_id = $id
             ORDER BY assets.asset_created ASC";
             $off_result = mysqli_query($conn, $off_sql);
             if($off_result) {
