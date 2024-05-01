@@ -42,8 +42,8 @@ if(isLoggedIn() == false) {
             <hr>
 
             <div class="row">
-                <div class="col" style="width: 100vw !important;">
-                    <div class="card">
+                <div class="col">
+                    <div class="card w-50">
                       <div class="card-body">
                         <h5 class="card-title">Account Information</h5>
                         <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
