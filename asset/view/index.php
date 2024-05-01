@@ -73,9 +73,9 @@ if(isLoggedIn() == false) {
                 transform: rotate(-45deg);
                 display: inline-block;
             }
-            tbody {
-                height: 300px; /* Set your desired height here */
-                overflow-y: auto; /* Enable vertical scrolling */
+            .scrollable-table-container {
+                height: 300px; /* Adjust the height as needed */
+                overflow-y: auto; /* Enable vertical scrollbar */
             }
         </style>
     <!-- end Styles -->
@@ -545,19 +545,21 @@ if(isLoggedIn() == false) {
                             <h4><i class="bi bi-ticket-fill icon_rotate"></i> Latest Issues</h4>
                             <hr>
 
-                            <table class="table">
-                              <thead>
-                                <tr>
-                                  <th scope="col">Issue Key</th>
-                                  <th scope="col">Issue Type</th>
-                                  <th scope="col">Summary</th>
-                                  <th scope="col">Link</th>
-                                </tr>
-                              </thead>
-                              <tbody id="jiraTableBody">
-                                <!-- Table rows will be dynamically added here -->
-                              </tbody>
-                            </table>
+                            <div class="scrollable-table-container">
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">Issue Key</th>
+                                      <th scope="col">Issue Type</th>
+                                      <th scope="col">Summary</th>
+                                      <th scope="col">Link</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody id="jiraTableBody">
+                                    <!-- Table rows will be dynamically added here -->
+                                  </tbody>
+                                </table>
+                            </div>
 
                         <!-- get audit issues script -->
                             <script>
