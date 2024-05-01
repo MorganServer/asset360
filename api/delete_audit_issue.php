@@ -28,8 +28,6 @@ function getJiraIssues($url) {
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     // Assuming $off_asset_tag_no contains the current asset tag
     $assetTag = $_GET['asset_tag'];
-    $issueKey = $_GET['issue_key'];
-    echo $issueKey;
 
     // Construct the JQL query string dynamically
     $jqlQuery = "project=SG+AND+summary~'" . $assetTag . "'";

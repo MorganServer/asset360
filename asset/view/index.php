@@ -559,7 +559,7 @@ if(isLoggedIn() == false) {
                                 var jqlQuery = "project=SG+AND+summary~\"" + assetTag + "\"";
 
                                 // Make a request to your server-side endpoint
-                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag + '&issue_key=' + issue.key)
                                   .then(response => response.json())
                                   .then(data => {
                                     // Handle the retrieved issues data
