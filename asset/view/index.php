@@ -554,39 +554,34 @@ if(isLoggedIn() == false) {
                         <script>
                             // Assuming $off_asset_tag_no contains the current asset tag
                             var assetTag = "<?php echo $off_asset_tag_no; ?>";
-                                                        
+
                             // Construct the JQL query string dynamically
                             var jqlQuery = "project=SG+AND+summary~\"" + assetTag + "\"";
-                                                        
+
                             // Make a request to your server-side endpoint
                             fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
-                                .then(response => response.json())
-                                .then(data => {
-                                    // Handle the retrieved issues data
-                                    console.log(data);
-                                    // Clear existing table rows
-                                    document.getElementById("jiraTableBody").innerHTML = "";
-                                    // Add each issue to the table
-                                    data.issues.forEach(issue => {
-                                        fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag + '&issue_key=' + issue.key)
-                                            .then(response => response.json())
-                                            .then(data => {
-                                                // Create a new table row for each issue
-                                                var newRow = document.createElement("tr");
-                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td>`;
-                                                // Append the new row to the table body
-                                                document.getElementById("jiraTableBody").appendChild(newRow);
-                                            })
-                                            .catch(error => {
-                                                console.error('Error:', error);
-                                                // Handle error
-                                            });
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    // Handle error
+                              .then(response => {
+                                // Log the raw response data to the console
+                                console.log("Raw Response Data:", response);
+                                // Parse the response as JSON
+                                return response.json();
+                              })
+                              .then(data => {
+                                // Handle the retrieved issues data
+                                console.log("Parsed Response Data:", data);
+                                // Clear existing table rows
+                                document.getElementById("jiraTableBody").innerHTML = "";
+                                // Add each issue to the table
+                                data.issues.forEach(issue => {
+                                  var newRow = document.createElement("tr");
+                                  newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td>`;
+                                  document.getElementById("jiraTableBody").appendChild(newRow);
                                 });
+                              })
+                              .catch(error => {
+                                console.error('Error:', error);
+                                // Handle error
+                              });
                         </script>
 
                         <!-- end get audit issues script -->
