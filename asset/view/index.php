@@ -261,9 +261,9 @@ if(isLoggedIn() == false) {
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button" role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
                   </li>
-                  <li class="nav-item" role="presentation">
+                  <!-- <li class="nav-item" role="presentation">
                     <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
-                  </li>
+                  </li> -->
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
                   </li>
@@ -483,76 +483,76 @@ if(isLoggedIn() == false) {
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $limit = 10; 
-                                        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                        $offset = ($page - 1) * $limit;
+                                        // $limit = 10; 
+                                        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                                        // $offset = ($page - 1) * $limit;
 
-                                        $esql = "SELECT * FROM event_log WHERE asset_tag_no = '$off_asset_tag_no' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        $eresult = mysqli_query($conn, $esql);
-                                        if($eresult) {
-                                            $enum_rows = mysqli_num_rows($eresult);
-                                            if($enum_rows > 0) {
-                                                while ($erow = mysqli_fetch_assoc($eresult)) {
-                                                    $id                     = $erow['event_id'];
-                                                    $idno                   = $erow['idno'];
-                                                    $status                 = $erow['status'];
-                                                    $date_reviewed          = $erow['date_reviewed'];
-                                                    $date_performed         = $erow['date_performed'];
-                                                    $asset_tag_no           = $erow['asset_tag_no'];
-                                                    $performed_by           = $erow['performed_by'];
-                                                    $reviewed_by            = $erow['reviewed_by'];
-                                                    $event_type             = $erow['event_type'];
-                                                    $notes                  = $erow['notes'];
-                                                    $event_created          = $erow['event_created'];    
-                                                    $event_updated          = $erow['event_updated'];                 
+                                        // $esql = "SELECT * FROM event_log WHERE asset_tag_no = '$off_asset_tag_no' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
+                                        // $eresult = mysqli_query($conn, $esql);
+                                        // if($eresult) {
+                                        //     $enum_rows = mysqli_num_rows($eresult);
+                                        //     if($enum_rows > 0) {
+                                        //         while ($erow = mysqli_fetch_assoc($eresult)) {
+                                        //             $id                     = $erow['event_id'];
+                                        //             $idno                   = $erow['idno'];
+                                        //             $status                 = $erow['status'];
+                                        //             $date_reviewed          = $erow['date_reviewed'];
+                                        //             $date_performed         = $erow['date_performed'];
+                                        //             $asset_tag_no           = $erow['asset_tag_no'];
+                                        //             $performed_by           = $erow['performed_by'];
+                                        //             $reviewed_by            = $erow['reviewed_by'];
+                                        //             $event_type             = $erow['event_type'];
+                                        //             $notes                  = $erow['notes'];
+                                        //             $event_created          = $erow['event_created'];    
+                                        //             $event_updated          = $erow['event_updated'];                 
 
                                                     
-                                                    $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
-                                                    $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
+                                        //             $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
+                                        //             $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
 
                                                     
                                     ?>
                                     <tr>
-                                        <th scope="row"><?php echo $asset_tag_no; ?></th>
-                                        <td><?php echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php echo $f_date_performed ? $f_date_performed : '--'; ?></td>
-                                        <td><?php echo $performed_by ? $performed_by : '--'; ?></td>
-                                        <td><?php echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
-                                        <td><?php echo $reviewed_by ? $reviewed_by : '--'; ?></td>
-                                        <?php if($status == "Awaiting Approval") { ?>
-                                            <td><span class="badge text-bg-primary"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Completed") { ?>
-                                            <td><span class="badge text-bg-success"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rejected") { ?>
-                                            <td><span class="badge text-bg-danger"><?php echo $status; ?></span></td>
-                                        <?php } else if($status == "Rescheduled") { ?>
-                                            <td><span class="badge text-bg-warning"><?php echo $status; ?></span></td>
-                                        <?php } else { ?>
+                                        <th scope="row"><?php //echo $asset_tag_no; ?></th>
+                                        <td><?php //echo $event_type ? $event_type : '--'; ?></td>
+                                        <td><?php //echo $f_date_performed ? $f_date_performed : '--'; ?></td>
+                                        <td><?php //echo $performed_by ? $performed_by : '--'; ?></td>
+                                        <td><?php //echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
+                                        <td><?php //echo $reviewed_by ? $reviewed_by : '--'; ?></td>
+                                        <?php //if($status == "Awaiting Approval") { ?>
+                                            <td><span class="badge text-bg-primary"><?php //echo $status; ?></span></td>
+                                        <?php //} else if($status == "Completed") { ?>
+                                            <td><span class="badge text-bg-success"><?php //echo $status; ?></span></td>
+                                        <?php //} else if($status == "Rejected") { ?>
+                                            <td><span class="badge text-bg-danger"><?php //echo $status; ?></span></td>
+                                        <?php //} else if($status == "Rescheduled") { ?>
+                                            <td><span class="badge text-bg-warning"><?php //echo $status; ?></span></td>
+                                        <?php //} else { ?>
                                             <td>--</td>
-                                        <?php } ?>
+                                        <?php //} ?>
                                         
                                     </tr>
                                     <?php
-                                            }
-                                        }
-                                    }
+                                           // }
+                                        //}
+                                    //}
                                     ?>
                                 </tbody>
                             </table>
                             <br>
                             <?php
                                 
-                                $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
-                                $result = mysqli_query($conn, $sql);
-                                $row = mysqli_fetch_assoc($result);
-                                $total_pages = ceil($row["total"] / $limit);                    
+                                // $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
+                                // $result = mysqli_query($conn, $sql);
+                                // $row = mysqli_fetch_assoc($result);
+                                // $total_pages = ceil($row["total"] / $limit);                    
 
-                                    echo '<ul class="pagination justify-content-center">';
-                                    for ($i = 1; $i <= $total_pages; $i++) {
-                                        $active = ($page == $i) ? "active" : "";
-                                        echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                                    }
-                                    echo '</ul>';
+                                //     echo '<ul class="pagination justify-content-center">';
+                                //     for ($i = 1; $i <= $total_pages; $i++) {
+                                //         $active = ($page == $i) ? "active" : "";
+                                //         echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
+                                //     }
+                                //     echo '</ul>';
                             ?>
 
 
@@ -623,11 +623,7 @@ if(isLoggedIn() == false) {
                         </div>
                     <!-- end Jira -->
                 </div>
-
-                
-                <!-- __________ -->
-                
-                
+                   
 
                 <!-- Maintenance Modal -->
                     <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
@@ -726,22 +722,12 @@ if(isLoggedIn() == false) {
                         </div>
                     </div>
                 <!-- end Audit Modal -->
-
-
-
-
-
-                <!-- ___________ -->
                 
 
             <?php }
         } ?>
     </div>
 </div>
-
-
-   
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -879,8 +865,6 @@ if(isLoggedIn() == false) {
         });
     </script>
 <!-- end maintenance script -->
-
-
 
 
 </body>
