@@ -539,14 +539,14 @@ if(isLoggedIn() == false) {
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
 
                         <script>
-    // Assuming $off_asset_tag_no contains the current asset tag
+                            // Assuming $off_asset_tag_no contains the current asset tag
 var assetTag = "<?php echo $off_asset_tag_no; ?>";
 
 // Construct the JQL query string dynamically
 var jqlQuery = "project=SG+AND+summary~\"" + assetTag + "\"";
 
-// Make the fetch request using the constructed JQL query
-fetch('https://garrett-morgan.atlassian.net/rest/api/3/search?jql=' + encodeURIComponent(jqlQuery) + '&fields=summary')
+// Make a request to your server-side endpoint
+fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?jql=' + encodeURIComponent(jqlQuery))
     .then(response => response.json())
     .then(data => {
         // Handle the retrieved issues data
