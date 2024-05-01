@@ -93,7 +93,7 @@ if(isLoggedIn() == false) {
               border-bottom: 2px solid rgb(217, 222, 226);
             }
             /* Media query for smaller screens */
-            @media (max-height: 750px) {
+            @media (min-height: 750px) {
               .scrollable-table-container {
                 height: calc(100vh - 20%); /* Adjust the percentage as needed */
               }
