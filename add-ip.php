@@ -59,11 +59,15 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="ip_address" name="ip_address">
             </div>
             <div class="col">
+                <label for="vpn_ip_address" class="form-label">VPN IP Address</label>
+                <input type="text" class="form-control" id="vpn_ip_address" name="vpn_ip_address">
+            </div>
+            <div class="col">
                 <label for="assigned_asset_tag_no" class="form-label">Asset Tag Number</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" value="<?php echo $asset_tag_no; ?>">
                     <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#assetModal">
-                        <i class="bi bi-search"></i> <!-- Bootstrap magnify glass icon -->
+                        <i class="bi bi-search"></i>
                     </button>
                 </div>
             </div>
