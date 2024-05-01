@@ -560,8 +560,8 @@ if(isLoggedIn() == false) {
                                       <th scope="col">Summary</th>
                                       <th scope="col">Link</th>
                                     </tr>
+                                    <hr>
                                   </thead>
-                                  <hr>
                                   <tbody id="jiraTableBody">
                                     <!-- Table rows will be dynamically added here -->
                                   </tbody>
