@@ -438,7 +438,7 @@ if(isLoggedIn() == false) {
                     <!-- end Notes -->
 
                     <!-- Events -->
-                        <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
+                        <!-- <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
                             <div class="mt-4"></div>
                             <h4><i class="bi bi-tools"></i> Latest Events</h4>
                             <hr>
@@ -453,13 +453,11 @@ if(isLoggedIn() == false) {
                                     <th scope="col">Reviewed</th>
                                     <th scope="col">Reviewed By</th>
                                     <th scope="col">Status</th>
-                                    <!-- <th scope="col">Actions</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                        // Pagination variables
-                                        $limit = 10; // Number of entries per page
+                                        $limit = 10; 
                                         $page = isset($_GET['page']) ? $_GET['page'] : 1;
                                         $offset = ($page - 1) * $limit;
 
@@ -482,12 +480,11 @@ if(isLoggedIn() == false) {
                                                     $event_created          = $erow['event_created'];    
                                                     $event_updated          = $erow['event_updated'];                 
 
-                                                    // Format maintenance schedule if not null
+                                                    
                                                     $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
                                                     $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
 
-                                                    // Format audit schedule if not null
-                                                    // $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                                    
                                     ?>
                                     <tr>
                                         <th scope="row"><?php echo $asset_tag_no; ?></th>
@@ -507,7 +504,7 @@ if(isLoggedIn() == false) {
                                         <?php } else { ?>
                                             <td>--</td>
                                         <?php } ?>
-                                        <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+                                        
                                     </tr>
                                     <?php
                                             }
@@ -518,7 +515,7 @@ if(isLoggedIn() == false) {
                             </table>
                             <br>
                             <?php
-                                // Pagination links
+                                
                                 $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
                                 $result = mysqli_query($conn, $sql);
                                 $row = mysqli_fetch_assoc($result);
@@ -533,11 +530,14 @@ if(isLoggedIn() == false) {
                             ?>
 
 
-                        </div>
+                        </div> -->
                     <!-- end Events -->
 
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
+
+                            <h4><i class="bi bi-ticket-fill icon_rotate"></i> Latest Issues</h4>
+                            <hr>
 
                             <table class="table">
                               <thead>
