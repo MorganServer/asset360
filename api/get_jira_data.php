@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     $assetTag = $_GET['asset_tag'];
 
     // Construct the JQL query string dynamically
-    $jqlQuery = "project=SG+OR+project=INFRA+AND+summary~'" . $assetTag . "'";
+    $jqlQuery = "project = SG OR project = INFRA AND summary ~ '" . $assetTag . "'";
     $fields = "summary, issuetype"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
-    $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery . "&fields=" . $fields;
+    $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields);
 
     // Get Jira issues
     $response = getJiraIssues($url);
@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
         echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
     } else {
         // Return the response data to the client
-        echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
         echo $response;
     }
 } else {
