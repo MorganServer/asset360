@@ -698,15 +698,15 @@ if(isLoggedIn() == false) {
                 }
             }
         };
-        var issueDataJson = JSON.stringify(issueData);
+        
+        // Convert issueData to FormData object
+        var formData = new FormData();
+        formData.append('issueData', JSON.stringify(issueData));
 
         // Make AJAX request to create Jira issue
         fetch('<?php echo BASE_URL; ?>/api/create_issue.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: issueDataJson
+            body: formData
         })
         .then(response => response.text())
         .then(data => {
@@ -723,6 +723,7 @@ if(isLoggedIn() == false) {
         });
     });
 </script>
+
 
 
 
