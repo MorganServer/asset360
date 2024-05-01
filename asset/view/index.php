@@ -801,10 +801,9 @@ if(isLoggedIn() == false) {
         .then(data => {
             // Handle response
             console.log(data);
-            // You can add further actions based on the response here
-            // For example, show success message or close modal
+            // Close modal
             var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
-            myModal.hide(); // Close modal
+            myModal.hide();
         })
         .catch(error => {
             console.error('Error:', error);
