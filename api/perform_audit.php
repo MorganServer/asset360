@@ -109,7 +109,7 @@ function createJiraIssue($issueDataJson) {
 // Check if request method is POST and if data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['issueData'])) {
     // Retrieve issue data from POST request
-    $issueDataJson = $_POST['issueData'];
+    $issueDataJson = $_POST['auditIssueData'];
     
     // Create the issue
     $response = createJiraIssue($issueDataJson);

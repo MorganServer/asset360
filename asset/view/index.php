@@ -26,9 +26,6 @@ if(isLoggedIn() == false) {
     <!-- Custom Styles -->
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
 
-    <!-- TinyMCE
-    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> -->
-
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
@@ -150,33 +147,63 @@ if(isLoggedIn() == false) {
                             <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a>
 
 
-                            <!-- Modal for capturing additional information -->
-                            <div class="modal fade" id="createIssueModal" tabindex="-1" aria-labelledby="createIssueModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="createIssueModalLabel">Create Jira Issue</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="createIssueForm">
-                                                <div class="mb-3">
-                                                    <label for="summary" class="form-label">Summary Title:</label>
-                                                    <input type="text" class="form-control" id="summary" name="summary" required>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <label class="form-label" for="notes">Notes</label>
-                                                        <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
+                            <!-- AUDIT modal -->
+                                <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="auditModalLabel">Perform Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="auditModalForm">
+                                                    <div class="mb-3">
+                                                        <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
+                                                        <input type="text" class="form-control" id="summary" name="summary" required>
                                                     </div>
-                                                </div>
-                                                <!-- Add more fields as needed -->
-                                                <button type="submit" class="btn btn-primary">Create Issue</button>
-                                            </form>
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="notes" style="font-size: 14px;">Notes</label>
+                                                            <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            <!-- End Modal for AUDIT -->
+
+                            <!-- AUDIT modal -->
+                            <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="maintenanceModalLabel">Perform Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="maintenanceModalForm">
+                                                    <div class="mb-3">
+                                                        <label for="m_summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
+                                                        <input type="text" class="form-control" id="m_summary" name="m_summary" required>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="m_notes" style="font-size: 14px;">Notes</label>
+                                                            <textarea class="form-control" id="m_notes" name="m_notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="m_submit" class="btn btn-primary">Create Issue</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- End Modal for AUDIT -->
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
@@ -659,13 +686,7 @@ if(isLoggedIn() == false) {
 
 </script> -->
 
-    <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-    </script>
+   
 
     <script src="<?php echo BASE_URL; ?>/assets/js/create_issue.js"></script>
 
@@ -675,14 +696,14 @@ if(isLoggedIn() == false) {
 
 
 <script>
-    document.getElementById('createIssueForm').addEventListener('submit', function(event) {
+    document.getElementById('auditModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
         var summary = document.getElementById('summary').value;
         var notes = document.getElementById('notes').value;
-        var issueData = {
+        var auditIssueData = {
             "fields": {
                 "project": {
-                    "key": "INFRA"
+                    "key": "SG"
                 },
                 "summary": summary,
                 "description": {
@@ -701,17 +722,17 @@ if(isLoggedIn() == false) {
                     ]
                 },
                 "issuetype": {
-                    "id": "10013"
+                    "id": "10029"
                 }
             }
         };
         
         // Convert issueData to FormData object
         var formData = new FormData();
-        formData.append('issueData', JSON.stringify(issueData));
+        formData.append('auditIssueData', JSON.stringify(auditIssueData));
 
         // Make AJAX request to create Jira issue
-        fetch('<?php echo BASE_URL; ?>/api/create_issue.php', {
+        fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
             method: 'POST',
             body: formData
         })
@@ -721,7 +742,7 @@ if(isLoggedIn() == false) {
             console.log(data);
             // You can add further actions based on the response here
             // For example, show success message or close modal
-            var myModal = new bootstrap.Modal(document.getElementById('createIssueModal'));
+            var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
             myModal.hide(); // Close modal
         })
         .catch(error => {
@@ -731,14 +752,62 @@ if(isLoggedIn() == false) {
     });
 </script>
 
+<script>
+    document.getElementById('maintenanceModalForm').addEventListener('m_submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var m_summary = document.getElementById('m_summary').value;
+        var m_notes = document.getElementById('m_notes').value;
+        var maintenanceIssueData = {
+            "fields": {
+                "project": {
+                    "key": "SG"
+                },
+                "summary": m_summary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": m_notes
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "issuetype": {
+                    "id": "10030"
+                }
+            }
+        };
+        
+        // Convert issueData to FormData object
+        var m_formData = new FormData();
+        m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
 
-<!-- <script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
+            method: 'POST',
+            body: m_formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // You can add further actions based on the response here
+            // For example, show success message or close modal
+            var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
+            m_myModal.hide(); // Close modal
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
         });
-    </script> -->
+    });
+</script>
 
 
 </body>
