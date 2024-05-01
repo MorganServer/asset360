@@ -179,7 +179,7 @@ if(isLoggedIn() == false) {
                                 </div>
                             <!-- End Modal for AUDIT -->
 
-                            <!-- AUDIT modal -->
+                            <!-- MAINTENANCE modal -->
                             <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -200,13 +200,13 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                     </div>
                                                     <!-- Add more fields as needed -->
-                                                    <button type="m_submit" class="btn btn-primary">Create Issue</button>
+                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <!-- End Modal for AUDIT -->
+                            <!-- End Modal for MAINTENANCE -->
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
@@ -756,7 +756,7 @@ if(isLoggedIn() == false) {
 </script>
 
 <script>
-    document.getElementById('maintenanceModalForm').addEventListener('m_submit', function(event) {
+    document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
         var m_summary = document.getElementById('m_summary').value;
         var m_notes = document.getElementById('m_notes').value;
