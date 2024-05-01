@@ -49,6 +49,25 @@ if(isLoggedIn() == false) {
                 outline: none;
                 box-shadow: none;
             }
+            .scrollable-table-container {
+                overflow-y: auto; 
+                height: calc(100vh - 375px);
+            }
+            .sticky-header th {
+              position: sticky;
+              top: 0;
+              background-color: #fff;
+              z-index: 1;
+            }
+
+            .sticky-header th::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              border-bottom: 2px solid rgb(217, 222, 226);
+            }
         </style>
     <!-- end Styles -->
 
