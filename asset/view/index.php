@@ -21,14 +21,10 @@ if(isLoggedIn() == false) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/main.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
-
-    <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -67,6 +63,15 @@ if(isLoggedIn() == false) {
                 .card {
                     width: 100%; 
                 }
+            }
+            .icon_rotate {
+                /* filter: progid: DXImageTransform.Microsoft.BasicImage(rotation=1); */
+                -webkit-transform: rotate(-45deg);
+                -moz-transform: rotate(-45deg);
+                -ms-transform: rotate(-45deg);
+                -o-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+                display: inline-block;
             }
         </style>
     <!-- end Styles -->
@@ -132,8 +137,77 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
-                        <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
+                        <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a> -->
+
+                        <!-- JIRA BUTTON -->
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
+                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                            </a>
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
+                                <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
+                            </a>
+                            <!-- <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a> -->
+
+
+                            <!-- AUDIT modal -->
+                                <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="auditModalLabel">Perform Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="auditModalForm">
+                                                    <div class="mb-3">
+                                                        <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
+                                                        <input type="text" class="form-control" id="summary" name="summary" required>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="notes" style="font-size: 14px;">Notes</label>
+                                                            <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- End Modal for AUDIT -->
+
+                            <!-- MAINTENANCE modal -->
+                            <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="maintenanceModalLabel">Perform Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="maintenanceModalForm">
+                                                    <div class="mb-3">
+                                                        <label for="m_summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
+                                                        <input type="text" class="form-control" id="m_summary" name="m_summary" required>
+                                                    </div>
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label class="form-label" for="m_notes" style="font-size: 14px;">Notes</label>
+                                                            <textarea class="form-control" id="m_notes" name="m_notes" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- End Modal for MAINTENANCE -->
+
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
@@ -464,7 +538,7 @@ if(isLoggedIn() == false) {
 
 
                         </div>
-                    <!-- end Notes -->
+                    <!-- end Events -->
 
                     <!-- Jira -->
                         <!-- <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div> -->
@@ -586,7 +660,7 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
     var accordionButton = document.getElementById('accordion-button');
     if (accordionButton) {
@@ -611,19 +685,133 @@ if(isLoggedIn() == false) {
     } else {
         console.log('Accordion button not found');
     }
-});
+    });
 
-</script>
+</script> -->
 
-<script>
-        tinymce.init({
-            selector: 'textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-        });
-    </script>
+   
+
+    <script src="<?php echo BASE_URL; ?>/assets/js/create_issue.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+
+<script>
+    document.getElementById('auditModalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var summary = document.getElementById('summary').value;
+        var notes = document.getElementById('notes').value;
+        var auditIssueData = {
+            "fields": {
+                "project": {
+                    "key": "SG"
+                },
+                "summary": summary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": notes
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "issuetype": {
+                    "id": "10029"
+                }
+            }
+        };
+        
+        // Convert issueData to FormData object
+        var formData = new FormData();
+        formData.append('auditIssueData', JSON.stringify(auditIssueData));
+
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // You can add further actions based on the response here
+            // For example, show success message or close modal
+            var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
+            myModal.hide(); // Close modal
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var m_summary = document.getElementById('m_summary').value;
+        var m_notes = document.getElementById('m_notes').value;
+        var maintenanceIssueData = {
+            "fields": {
+                "project": {
+                    "key": "INFRA"
+                },
+                "summary": m_summary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": m_notes
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "issuetype": {
+                    "id": "10030"
+                }
+            }
+        };
+        
+        // Convert issueData to FormData object
+        var m_formData = new FormData();
+        m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
+
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
+            method: 'POST',
+            body: m_formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // You can add further actions based on the response here
+            // For example, show success message or close modal
+            var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
+            m_myModal.hide(); // Close modal
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+    });
+</script>
+
+
 </body>
 </html>
