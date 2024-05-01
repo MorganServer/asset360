@@ -15,7 +15,7 @@ $response = file_get_contents($url);
 // Check if the request was successful
 if ($response === false) {
     // Handle the error
-    echo json_encode(["url" => $url]);
+    echo json_encode(["url" => "endpoint: " . $url]);
     echo json_encode(["error" => "Failed to fetch data from Jira API"]);
 } else {
     // Return the response data to the client
