@@ -73,7 +73,7 @@ if(isLoggedIn() == false) {
                 transform: rotate(-45deg);
                 display: inline-block;
             }
-            #jiraTableBody {
+            tbody {
                 height: 300px; /* Set your desired height here */
                 overflow-y: auto; /* Enable vertical scrolling */
             }
