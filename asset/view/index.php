@@ -561,7 +561,8 @@ if(isLoggedIn() == false) {
                                       <th scope="col">Link</th>
                                     </tr>
                                   </thead>
-                                  <tbody id="jiraTableBody" class="table-group-divider">
+                                  <hr>
+                                  <tbody id="jiraTableBody">
                                     <!-- Table rows will be dynamically added here -->
                                   </tbody>
                                 </table>
