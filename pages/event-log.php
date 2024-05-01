@@ -110,7 +110,6 @@ if(isLoggedIn() == false) {
                             <script>
                                 // Assuming $off_asset_tag_no contains the current asset tag
                                 // var assetTag = "<?php //echo $off_asset_tag_no; ?>";
-
                                 fetch('<?php echo BASE_URL; ?>/api/get_jira_all_data.php')
                                     .then(response => {
                                         if (!response.ok) {
