@@ -52,6 +52,7 @@ if(isLoggedIn() == false) {
             <button class="float-end export-button btn btn-success" style="margin-top: -40px;" id="generatePdfButton">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></button>
 
 
+
             <hr>
 
             <table class="table">
