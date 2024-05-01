@@ -27,10 +27,10 @@ function getJiraIssues($url) {
 // Check if request method is GET and if asset tag is received
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     // Assuming $off_asset_tag_no contains the current asset tag
-    $offassetTag = $_GET['asset_tag'];
+    $assetTag = $_GET['asset_tag'];
 
     // Construct the JQL query string dynamically
-    $jqlQuery = "project=SG+OR+project=INFRA+AND+summary~'" . $offassetTag . "'";
+    $jqlQuery = "project=SG+OR+project=INFRA+AND+summary~'" . $assetTag . "'";
     $fields = "summary, issuetype"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
