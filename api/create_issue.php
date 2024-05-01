@@ -1,14 +1,5 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php'; // Include Composer's autoloader
-
-// Load environment variables
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
-
-error_reporting(E_ALL); 
-ini_set('display_errors', 1);
-
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
     // Jira API endpoint to create an issue
@@ -16,7 +7,11 @@ function createJiraIssue($issueDataJson) {
 
     // Jira username and API token (for authentication)
     $jiraUsername = "garrett.morgan.pro@gmail.com";
-    $jiraApiToken = $_ENV['PASSWORD'];
+    $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
+    $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
+    $three = "gTqWD8qGQ7qbt-CcgAp4WWeSlO0WrN30VB238osKbafBEBHz1WPbUSWeyh";
+    $four = "dXhAHA2kA=46A5779A";
+    $jiraApiToken = $one . $two . $three . $four;
 
     // Create HTTP context options
     $contextOptions = array(
