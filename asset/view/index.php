@@ -577,33 +577,38 @@ if(isLoggedIn() == false) {
                             </div>
 
                         <!-- get audit issues script -->
-                        <script>
-                            var assetTag = "<?php echo $off_asset_tag_no; ?>";
-                                                        
-                            fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Network response was not ok');
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    document.getElementById("jiraTableBody").innerHTML = "";
-                                    if (data.issues) { // Check if 'issues' property exists
-                                        data.issues.forEach(issue => {
-                                            var newRow = document.createElement("tr");
-                                            newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
-                                            document.getElementById("jiraTableBody").appendChild(newRow);
-                                        });
-                                    } else {
-                                        console.error('Error: No issues data found in the response');
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Fetch Error:', error);
-                                    // Handle the error gracefully, e.g., display a message to the user
-                                });
-                        </script>
+                            <script>
+                                // Assuming $off_asset_tag_no contains the current asset tag
+                                var assetTag = "<?php echo $off_asset_tag_no; ?>";
+
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                    .then(response => {
+                                        if (!response.ok) {
+                                            throw new Error('Network response was not ok');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        // Check if the response contains issues
+                                        if (data && data.issues && data.issues.length > 0) {
+                                            document.getElementById("jiraTableBody").innerHTML = "";
+                                            data.issues.forEach(issue => {
+                                                var newRow = document.createElement("tr");
+                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                                document.getElementById("jiraTableBody").appendChild(newRow);
+                                            });
+                                        } else {
+                                            // Handle case where no issues are found
+                                            document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>No issues found</td></tr>";
+                                        }
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                        // Handle other errors, e.g., network issues or server errors
+                                        document.getElementById("jiraTableBody").innerHTML = "<tr><td colspan='4'>Error fetching data</td></tr>";
+                                    });
+                            </script>
+
 
                         <!-- end get audit issues script -->
 
