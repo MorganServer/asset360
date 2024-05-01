@@ -144,8 +144,33 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a> -->
 
                         <!-- JIRA BUTTON -->
-                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit</a>
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#createIssueModal">
+                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                            </a>
                             <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a>
+
+
+                            <!-- Modal for capturing additional information -->
+                            <div class="modal fade" id="createIssueModal" tabindex="-1" aria-labelledby="createIssueModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="createIssueModalLabel">Create Jira Issue</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="createIssueForm">
+                                                <div class="mb-3">
+                                                    <label for="summary" class="form-label">Summary Title:</label>
+                                                    <input type="text" class="form-control" id="summary" name="summary" required>
+                                                </div>
+                                                <!-- Add more fields as needed -->
+                                                <button type="submit" class="btn btn-primary">Create Issue</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
@@ -640,5 +665,64 @@ if(isLoggedIn() == false) {
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+
+<script>
+    document.getElementById('createIssueForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var summary = document.getElementById('summary').value;
+        var issueData = {
+            "fields": {
+                "project": {
+                    "key": "INFRA"
+                },
+                "summary": summary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": "description"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "issuetype": {
+                    "id": "10013"
+                }
+            }
+        };
+        var issueDataJson = JSON.stringify(issueData);
+
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/create_issue.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: issueDataJson
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // You can add further actions based on the response here
+            // For example, show success message or close modal
+            document.getElementById('createIssueModal').modal('hide'); // Close modal
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+    });
+</script>
+
+
 </body>
 </html>
