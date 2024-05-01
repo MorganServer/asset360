@@ -1,18 +1,6 @@
-// load-env.js
-function loadEnvFile() {
-    return fetch('../../.env')
-      .then(response => response.text())
-      .then(text => {
-        const env = {};
-        text.split('\n').forEach(line => {
-          const [key, value] = line.split('=');
-          env[key.trim()] = value.trim();
-        });
-        return env;
-      });
-  }
-  
-  // Usage example
-  loadEnvFile().then(env => {
-    console.log(env.PASSWORD);
-  });
+document.getElementById("createTicketButton").addEventListener("click", function() {
+    // Make an AJAX request to your PHP script
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "../../api/create_issue.php", true); // Replace with the actual URL of your PHP script
+    xhr.send();
+});

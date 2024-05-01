@@ -133,16 +133,10 @@ if(isLoggedIn() == false) {
                     <span class="float-end d-flex">
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
                         <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
-                        <button id="createTicketButton">Create Jira Ticket</button>
 
-<script>
-    document.getElementById("createTicketButton").addEventListener("click", function() {
-        // Make an AJAX request to your PHP script
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/create_issue.php", true); // Replace with the actual URL of your PHP script
-        xhr.send();
-    });
-</script>
+                        <!-- JIRA BUTTON -->
+                            <button class="badge text-bg-primary" id="createTicketButton"><i class="bi bi-ticket-detailed"></i></button>
+
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
@@ -473,7 +467,7 @@ if(isLoggedIn() == false) {
 
 
                         </div>
-                    <!-- end Notes -->
+                    <!-- end Events -->
 
                     <!-- Jira -->
                         <!-- <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div> -->
@@ -620,17 +614,19 @@ if(isLoggedIn() == false) {
     } else {
         console.log('Accordion button not found');
     }
-});
+    });
 
 </script> -->
 
-<script>
+    <script>
         tinymce.init({
             selector: 'textarea',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
+
+    <script src="<?php echo BASE_URL; ?>/assets/js/create_issue.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
