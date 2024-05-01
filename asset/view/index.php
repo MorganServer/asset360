@@ -188,7 +188,7 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                     </div>
                                                     <!-- Add more fields as needed -->
-                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -220,7 +220,7 @@ if(isLoggedIn() == false) {
                                                         </div>
                                                     </div>
                                                     <!-- Add more fields as needed -->
-                                                    <button type="submit" class="btn btn-primary">Create Issue</button>
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
