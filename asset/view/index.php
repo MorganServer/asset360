@@ -68,10 +68,10 @@ if(isLoggedIn() == false) {
                 }
             }
             .bi-ticket-fill {
-                transform: scaleX(-1);
-                -moz-transform: scaleX(-1);
-                -webkit-transform: scaleX(-1);
-                -ms-transform: scaleX(-1);
+                transform: scaleX(-.5);
+                -moz-transform: scaleX(-.5);
+                -webkit-transform: scaleX(-.5);
+                -ms-transform: scaleX(-.5);
             }
         </style>
     <!-- end Styles -->
