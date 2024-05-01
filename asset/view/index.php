@@ -578,11 +578,12 @@ if(isLoggedIn() == false) {
 
                         <!-- get audit issues script -->
                             <script>
-                                // Assuming $off_asset_tag_no contains the current asset tag
                                 var assetTag = "<?php echo $off_asset_tag_no; ?>";
-
                                 fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
                                   .then(response => {
+                                    if (!response.ok) {
+                                      throw new Error('Network response was not ok');
+                                    }
                                     return response.json();
                                   })
                                   .then(data => {
@@ -594,7 +595,8 @@ if(isLoggedIn() == false) {
                                     });
                                   })
                                   .catch(error => {
-                                    console.error('Error:', error);
+                                    console.error('Fetch Error:', error);
+                                    // Handle the error gracefully, e.g., display a message to the user
                                   });
                             </script>
 
