@@ -543,7 +543,9 @@ if(isLoggedIn() == false) {
                               <thead>
                                 <tr>
                                   <th scope="col">Issue Key</th>
+                                  <th scope="col">Issue Type</th>
                                   <th scope="col">Summary</th>
+                                  <th scope="col">Link</th>
                                 </tr>
                               </thead>
                               <tbody id="jiraTableBody">
@@ -564,7 +566,7 @@ if(isLoggedIn() == false) {
                                     document.getElementById("jiraTableBody").innerHTML = "";
                                     data.issues.forEach(issue => {
                                       var newRow = document.createElement("tr");
-                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td>`;
+                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" class="badge text-bg-danger text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
                                       document.getElementById("jiraTableBody").appendChild(newRow);
                                     });
                                   })
