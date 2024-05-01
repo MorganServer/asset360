@@ -184,6 +184,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="maintenanceModalForm">
+                                                    <input type="text" class="form-control" id="m_asset_tag" name="m_asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                                     <div class="mb-3">
                                                         <label for="m_summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="m_summary" name="m_summary" required>
@@ -551,43 +552,26 @@ if(isLoggedIn() == false) {
                             </table>
 
                         <!-- get audit issues script -->
-                        <script>
-                            // Assuming $off_asset_tag_no contains the current asset tag
-                            var assetTag = "<?php echo $off_asset_tag_no; ?>";
-                                                            
-                            // Construct the JQL query string dynamically
-                            var jqlQuery = "project=SG+AND+summary~\"" + assetTag + "\"";
-                                                            
-                            // Make a request to your server-side endpoint
-                            fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
-                              .then(response => {
-                                // Parse the response as JSON
-                                return response.json();
-                              })
-                              .then(data => {
-                                // Handle the retrieved issues data
-                                console.log(data);
-                                // Assuming data.issues is an array of issues
-                                data.issues.forEach(issue => {
-                                  // Here you can use issue.key in your fetch URL
-                                  fetch('<?php echo BASE_URL; ?>/api/delete_audit_issue.php?asset_tag=' + assetTag + '&issue_key=' + issue.key)
-                                    .then(response => response.json())
-                                    .then(data => {
-                                      // Handle the response from the delete_audit_issue.php endpoint
-                                      console.log(data);
-                                    })
-                                    .catch(error => {
-                                      console.error('Error:', error);
-                                      // Handle error
-                                    });
-                                });
-                              })
-                              .catch(error => {
-                                console.error('Error:', error);
-                                // Handle error
-                              });
+                            <script>
+                                // Assuming $off_asset_tag_no contains the current asset tag
+                                var assetTag = "<?php echo $off_asset_tag_no; ?>";
 
-                        </script>
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                  .then(response => {
+                                    return response.json();
+                                  })
+                                  .then(data => {
+                                    document.getElementById("jiraTableBody").innerHTML = "";
+                                    data.issues.forEach(issue => {
+                                      var newRow = document.createElement("tr");
+                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td>`;
+                                      document.getElementById("jiraTableBody").appendChild(newRow);
+                                    });
+                                  })
+                                  .catch(error => {
+                                    console.error('Error:', error);
+                                  });
+                            </script>
 
                         <!-- end get audit issues script -->
 
@@ -720,122 +704,126 @@ if(isLoggedIn() == false) {
 
 
 <!-- audit script -->
-<script>
-    document.getElementById('auditModalForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-        var asset_tag = document.getElementById('asset_tag').value;
-        var summary = document.getElementById('summary').value;
-        var notes = document.getElementById('notes').value;
-        var combinedSummary = asset_tag + summary;
-        var auditIssueData = {
-            "fields": {
-                "project": {
-                    "key": "SG"
-                },
-                "summary": combinedSummary,
-                "description": {
-                    "type": "doc",
-                    "version": 1,
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": notes
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "issuetype": {
-                    "id": "10029"
+    <script>
+        document.getElementById('auditModalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var asset_tag = document.getElementById('asset_tag').value;
+            var summary = document.getElementById('summary').value;
+            var notes = document.getElementById('notes').value;
+            var combinedSummary = asset_tag + summary;
+            var auditIssueData = {
+                "fields": {
+                    "project": {
+                        "key": "SG"
+                    },
+                    "summary": combinedSummary,
+                    "description": {
+                        "type": "doc",
+                        "version": 1,
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": notes
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "issuetype": {
+                        "id": "10029"
+                    }
                 }
-            }
-        };
-        
-        // Convert issueData to FormData object
-        var formData = new FormData();
-        formData.append('auditIssueData', JSON.stringify(auditIssueData));
+            };
 
-        // Make AJAX request to create Jira issue
-        fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Handle response
-            console.log(data);
-            // You can add further actions based on the response here
-            // For example, show success message or close modal
-            var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
-            myModal.hide(); // Close modal
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle error
+            // Convert issueData to FormData object
+            var formData = new FormData();
+            formData.append('auditIssueData', JSON.stringify(auditIssueData));
+
+            // Make AJAX request to create Jira issue
+            fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Handle response
+                console.log(data);
+                // You can add further actions based on the response here
+                // For example, show success message or close modal
+                var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
+                myModal.hide(); // Close modal
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error
+            });
         });
-    });
-</script>
+    </script>
+<!-- end audit script -->
 
 <!-- maintenance script -->
-<script>
-    document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
-        var m_summary = document.getElementById('m_summary').value;
-        var m_notes = document.getElementById('m_notes').value;
-        var maintenanceIssueData = {
-            "fields": {
-                "project": {
-                    "key": "INFRA"
-                },
-                "summary": m_summary,
-                "description": {
-                    "type": "doc",
-                    "version": 1,
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": m_notes
-                                }
-                            ]
-                        }
-                    ]
-                },
-                "issuetype": {
-                    "id": "10030"
+    <script>
+        document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            var m_asset_tag = document.getElementById('m_asset_tag').value;
+            var m_summary = document.getElementById('m_summary').value;
+            var m_notes = document.getElementById('m_notes').value;
+            var m_combinedSummary = m_asset_tag + m_summary;
+            var maintenanceIssueData = {
+                "fields": {
+                    "project": {
+                        "key": "INFRA"
+                    },
+                    "summary": m_combinedSummary,
+                    "description": {
+                        "type": "doc",
+                        "version": 1,
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": m_notes
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "issuetype": {
+                        "id": "10030"
+                    }
                 }
-            }
-        };
-        
-        // Convert issueData to FormData object
-        var m_formData = new FormData();
-        m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
+            };
 
-        // Make AJAX request to create Jira issue
-        fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
-            method: 'POST',
-            body: m_formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Handle response
-            console.log(data);
-            // You can add further actions based on the response here
-            // For example, show success message or close modal
-            var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
-            m_myModal.hide(); // Close modal
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            // Handle error
+            // Convert issueData to FormData object
+            var m_formData = new FormData();
+            m_formData.append('maintenanceIssueData', JSON.stringify(maintenanceIssueData));
+
+            // Make AJAX request to create Jira issue
+            fetch('<?php echo BASE_URL; ?>/api/create_maintenance.php', {
+                method: 'POST',
+                body: m_formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Handle response
+                console.log(data);
+                // You can add further actions based on the response here
+                // For example, show success message or close modal
+                var m_myModal = new bootstrap.Modal(document.getElementById('maintenanceModal'));
+                m_myModal.hide(); // Close modal
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error
+            });
         });
-    });
-</script>
+    </script>
+<!-- end maintenance script -->
 
 
 
