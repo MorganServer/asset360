@@ -564,7 +564,7 @@ if(isLoggedIn() == false) {
                                     document.getElementById("jiraTableBody").innerHTML = "";
                                     data.issues.forEach(issue => {
                                       var newRow = document.createElement("tr");
-                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td>`;
+                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td>`;
                                       document.getElementById("jiraTableBody").appendChild(newRow);
                                     });
                                   })
