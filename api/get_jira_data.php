@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
         echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
     } else {
         // Return the response data to the client
+        echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
         echo $response;
     }
 } else {
