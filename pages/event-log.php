@@ -102,7 +102,7 @@ if(isLoggedIn() == false) {
                                             document.getElementById("jiraTableBody").innerHTML = "";
                                             data.issues.forEach(issue => {
                                                 var newRow = document.createElement("tr");
-                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td>${issue.fields.created}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                                newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td>${new Date(issue.fields.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
                                                 document.getElementById("jiraTableBody").appendChild(newRow);
                                             });
                                         } else {
