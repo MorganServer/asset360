@@ -80,7 +80,6 @@ if(isLoggedIn() == false) {
 <body>
 
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
-    <?php //include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
 <div class="container-fluid" style="margin-top: 60px;">
     <div class="application-details">
@@ -137,19 +136,14 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
-                        <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a> -->
-
-                        <!-- JIRA BUTTON -->
+                        <!-- JIRA BUTTONS -->
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                             </a>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
-                            <!-- <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a> -->
-
-
+                            
                             <!-- AUDIT modal -->
                                 <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -180,11 +174,11 @@ if(isLoggedIn() == false) {
                             <!-- End Modal for AUDIT -->
 
                             <!-- MAINTENANCE modal -->
-                            <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="maintenanceModalLabel">Perform Audit</h5>
+                                                <h5 class="modal-title" id="maintenanceModalLabel">Create a Maintenance Ticket</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
@@ -242,9 +236,9 @@ if(isLoggedIn() == false) {
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
                   </li>
-                  <!-- <li class="nav-item" role="presentation">
+                  <li class="nav-item" role="presentation">
                     <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
-                  </li> -->
+                  </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <!-- Details -->
@@ -541,7 +535,9 @@ if(isLoggedIn() == false) {
                     <!-- end Events -->
 
                     <!-- Jira -->
-                        <!-- <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">...</div> -->
+                        <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
+                            
+                        </div>
                     <!-- end Jira -->
                 </div>
 
@@ -660,44 +656,15 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var accordionButton = document.getElementById('accordion-button');
-    if (accordionButton) {
-        var chev_i = document.getElementById('chev');
-        
-        if (chev_i) {
-            accordionButton.addEventListener('click', function() {
-                
-                var isCollapsed = accordionButton.classList.contains('collapsed');
-                
-                if (isCollapsed) {
-                    chev_i.classList.remove('bi-chevron-up');
-                    chev_i.classList.add('bi-chevron-down');
-                } else {
-                    chev_i.classList.remove('bi-chevron-down');
-                    chev_i.classList.add('bi-chevron-up');
-                }
-            });
-        } else {
-            console.log('Chevron icon not found');
-        }
-    } else {
-        console.log('Accordion button not found');
-    }
-    });
-
-</script> -->
 
    
 
-    <script src="<?php echo BASE_URL; ?>/assets/js/create_issue.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
-
+<!-- audit script -->
 <script>
     document.getElementById('auditModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
@@ -755,6 +722,7 @@ if(isLoggedIn() == false) {
     });
 </script>
 
+<!-- maintenance script -->
 <script>
     document.getElementById('maintenanceModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
