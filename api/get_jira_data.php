@@ -9,6 +9,9 @@ $fields = "summary"; // Define the fields you want to retrieve
 // Construct the URL for the Jira API endpoint
 $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery . "&fields=" . $fields;
 
+// Display the endpoint being used
+echo "Endpoint: " . $url . "<br>";
+
 // Make a request to the Jira API endpoint
 $response = file_get_contents($url);
 
