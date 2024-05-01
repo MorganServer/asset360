@@ -108,7 +108,7 @@ if(isLoggedIn() == false) {
             $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-            WHERE asset_id = $id
+            WHERE asset_tag_no = $id
             ORDER BY assets.asset_created ASC";
             $off_result = mysqli_query($conn, $off_sql);
             if($off_result) {
@@ -155,7 +155,7 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
-                        
+
                         <!-- JIRA BUTTONS -->
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
