@@ -21,7 +21,6 @@ if(isLoggedIn() == false) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../assets/css/main.css?v=<?php echo time(); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- Custom Styles -->
@@ -140,7 +139,7 @@ if(isLoggedIn() == false) {
     document.getElementById("createTicketButton").addEventListener("click", function() {
         // Make an AJAX request to your PHP script
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../../api/create_ticket.php", true); // Replace with the actual URL of your PHP script
+        xhr.open("POST", "../../api/create_issue.php", true); // Replace with the actual URL of your PHP script
         xhr.send();
     });
 </script>
@@ -596,7 +595,7 @@ if(isLoggedIn() == false) {
     </div>
 </div>
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
     var accordionButton = document.getElementById('accordion-button');
     if (accordionButton) {
@@ -623,7 +622,7 @@ if(isLoggedIn() == false) {
     }
 });
 
-</script>
+</script> -->
 
 <script>
         tinymce.init({
