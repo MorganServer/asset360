@@ -74,7 +74,6 @@ if(isLoggedIn() == false) {
                 display: inline-block;
             }
             .scrollable-table-container {
-                height: calc(100vh - 20%); /* Adjust the height as needed */
                 overflow-y: auto; /* Enable vertical scrollbar */
                 border: 1px solid black;
             }
@@ -92,6 +91,19 @@ if(isLoggedIn() == false) {
               bottom: 0;
               width: 100%;
               border-bottom: 2px solid rgb(217, 222, 226);
+            }
+            /* Media query for smaller screens */
+            @media (max-width: 768px) {
+              .scrollable-table-container {
+                height: calc(100vh - 20%); /* Adjust the percentage as needed */
+              }
+            }
+            
+            /* Media query for larger screens */
+            @media (min-width: 769px) {
+              .scrollable-table-container {
+                height: calc(100vh - 30%); /* Adjust the percentage as needed */
+              }
             }
         </style>
     <!-- end Styles -->
