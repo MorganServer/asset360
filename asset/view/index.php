@@ -750,67 +750,67 @@ if(isLoggedIn() == false) {
 <!-- audit script -->
     <script>
         document.getElementById('auditModalForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-            var actual_asset_tag = document.getElementById('actual_asset_tag').value;
-            var asset_id = document.getElementById('asset_id').value;
-            var asset_tag = document.getElementById('asset_tag').value;
-            var summary = document.getElementById('summary').value;
-            var notes = document.getElementById('notes').value;
-            var combinedSummary = asset_tag + summary;
-            var auditIssueData = {
-                "fields": {
-                    "project": {
-                        "key": "SG"
-                    },
-                    "summary": combinedSummary,
-                    "description": {
-                        "type": "doc",
-                        "version": 1,
-                        "content": [
-                            {
-                                "type": "paragraph",
-                                "content": [
-                                    {
-                                        "type": "text",
-                                        "text": notes
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    "issuetype": {
-                        "id": "10029"
-                    },
-                    "labels": [
-                        actual_asset_tag,
-                        asset_id
+        event.preventDefault(); // Prevent form submission
+        var actual_asset_tag = document.getElementById('actual_asset_tag').value;
+        var asset_id = document.getElementById('asset_id').value;
+        var asset_tag = document.getElementById('asset_tag').value;
+        var summary = document.getElementById('summary').value;
+        var notes = document.getElementById('notes').value;
+        var combinedSummary = asset_tag + summary;
+        var auditIssueData = {
+            "fields": {
+                "project": {
+                    "key": "SG"
+                },
+                "summary": combinedSummary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": notes
+                                }
+                            ]
+                        }
                     ]
-                }
-            };
+                },
+                "issuetype": {
+                    "id": "10029"
+                },
+                "labels": [
+                    actual_asset_tag,
+                    asset_id
+                ]
+            }
+        };
 
-            // Convert issueData to FormData object
-            var formData = new FormData();
-            formData.append('auditIssueData', JSON.stringify(auditIssueData));
+        // Convert issueData to FormData object
+        var formData = new FormData();
+        formData.append('auditIssueData', JSON.stringify(auditIssueData));
 
-            // Make AJAX request to create Jira issue
-            fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                // Handle response
-                console.log(data);
-                // You can add further actions based on the response here
-                // For example, show success message or close modal
-                var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
-                myModal.hide(); // Close modal
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                // Handle error
-            });
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // You can add further actions based on the response here
+            // For example, show success message or close modal
+            var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
+            myModal.hide(); // Close modal
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
         });
+    });
     </script>
 <!-- end audit script -->
 
