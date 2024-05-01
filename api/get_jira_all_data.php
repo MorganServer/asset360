@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     // Construct the JQL query string dynamically
     $jqlQuery = "project in (SG, INFRA) AND issueType in (10029,10030)";
-    $fields = "summary, issuetype"; // Define the fields you want to retrieve
+    $fields = "summary, issuetype, created"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
     $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields);
