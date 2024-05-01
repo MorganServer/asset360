@@ -577,36 +577,30 @@ if(isLoggedIn() == false) {
                             </div>
 
                         <!-- get audit issues script -->
-                        <script>
-                            var assetTags = "<?php echo $off_asset_tag_no; ?>" // Array containing asset tags
-                            var promises = assetTags.map(assetTag => {
-                                return fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            throw new Error('Network response was not ok');
-                                        }
-                                        return response.json();
-                                    })
-                                    .catch(error => {
-                                        console.error('Fetch Error:', error);
-                                        // Handle the error gracefully, e.g., display a message to the user
-                                        // Since the response is not JSON, you might want to inform the user accordingly
+                            <script>
+                                var assetTag = "<?php echo $off_asset_tag_no; ?>";
+                                fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
+                                  .then(response => {
+                                    if (!response.ok) {
+                                      throw new Error('Network response was not ok');
+                                    }
+                                    return response.json();
+                                  })
+                                  .then(data => {
+                                    document.getElementById("jiraTableBody").innerHTML = "";
+                                    data.issues.forEach(issue => {
+                                      var newRow = document.createElement("tr");
+                                      newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                      document.getElementById("jiraTableBody").appendChild(newRow);
                                     });
-                            });
-                        
-                            Promise.all(promises)
-                                .then(responses => {
-                                    responses.forEach(data => {
-                                        document.getElementById("jiraTableBody").innerHTML = "";
-                                        data.issues.forEach(issue => {
-                                            var newRow = document.createElement("tr");
-                                            newRow.innerHTML = `<td>${issue.key}</td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
-                                            document.getElementById("jiraTableBody").appendChild(newRow);
-                                        });
-                                    });
-                                });
-                        </script>
+                                  })
+                                  .catch(error => {
+                                    console.error('Fetch Error:', error);
+                                    // Handle the error gracefully, e.g., display a message to the user
+                                    // Since the response is not JSON, you might want to inform the user accordingly
+                                  });
 
+                            </script>
 
                         <!-- end get audit issues script -->
 
