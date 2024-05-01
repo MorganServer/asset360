@@ -763,7 +763,7 @@ if(isLoggedIn() == false) {
         var maintenanceIssueData = {
             "fields": {
                 "project": {
-                    "key": "SG"
+                    "key": "INFRA"
                 },
                 "summary": m_summary,
                 "description": {
