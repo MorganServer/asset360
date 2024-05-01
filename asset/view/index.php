@@ -68,10 +68,7 @@ if(isLoggedIn() == false) {
                 }
             }
             .bi-ticket-fill {
-                transform: scaleX(-.5);
-                -moz-transform: scaleX(-.5);
-                -webkit-transform: scaleX(-.5);
-                -ms-transform: scaleX(-.5);
+                transform: rotate(-45deg) !important;
             }
         </style>
     <!-- end Styles -->
