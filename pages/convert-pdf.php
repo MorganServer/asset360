@@ -23,6 +23,7 @@ ini_set('display_errors', 1);
 
 // Include TCPDF library
 include_once(ROOT_PATH . '/TCPDF/tcpdf.php');
+// require_once(ROOT_PATH . '/TCPDF/tcpdf_include.php');
 
 // Check if PDF generation is requested
 if (isset($_GET['generatePdf'])) {
