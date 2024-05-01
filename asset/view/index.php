@@ -673,13 +673,12 @@ if(isLoggedIn() == false) {
         var summary = document.getElementById('summary').value;
         var notes = document.getElementById('notes').value;
         var combinedSummary = asset_tag + summary;
-        console.log(combinedSummary);
         var auditIssueData = {
             "fields": {
                 "project": {
                     "key": "SG"
                 },
-                "summary": summary,
+                "summary": combinedSummary,
                 "description": {
                     "type": "doc",
                     "version": 1,
