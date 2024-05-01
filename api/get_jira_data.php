@@ -12,6 +12,9 @@ $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery
 // Encode the endpoint as JSON
 $endpointJSON = json_encode(["Endpoint" => $url]);
 
+// Set the Content-Type header to application/json
+header('Content-Type: application/json');
+
 // Echo the JSON-encoded endpoint
 echo $endpointJSON;
 
