@@ -771,7 +771,10 @@ if(isLoggedIn() == false) {
                     },
                     "issuetype": {
                         "id": "10029"
-                    }
+                    },
+                    "labels": [
+                        asset_tag
+                    ]
                 }
             };
 
