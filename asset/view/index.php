@@ -26,8 +26,8 @@ if(isLoggedIn() == false) {
     <!-- Custom Styles -->
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
 
-    <!-- TinyMCE -->
-    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- TinyMCE
+    <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script> -->
 
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
