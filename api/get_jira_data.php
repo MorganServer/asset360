@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     $assetTag = $_GET['asset_tag'];
 
     // Construct the JQL query string dynamically
-    $jqlQuery = "project = SG OR project = INFRA AND summary ~ '" . $assetTag . "'";
+    $jqlQuery = "project in (SG, INFRA) AND summary~' '" . $assetTag . "'";
     $fields = "summary, issuetype"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
