@@ -82,6 +82,7 @@ if(isLoggedIn() == false) {
                 top: 0;
                 background-color: #fff; /* Optional: Set background color for the sticky header */
                 z-index: 1; /* Ensure the header stays above the content */
+                border-bottom: 1px solid black;
             }   
         </style>
     <!-- end Styles -->
@@ -560,7 +561,6 @@ if(isLoggedIn() == false) {
                                       <th scope="col">Summary</th>
                                       <th scope="col">Link</th>
                                     </tr>
-                                    <hr>
                                   </thead>
                                   <tbody id="jiraTableBody">
                                     <!-- Table rows will be dynamically added here -->
