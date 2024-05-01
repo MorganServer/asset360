@@ -76,6 +76,7 @@ if(isLoggedIn() == false) {
             .scrollable-table-container {
                 overflow-y: auto; /* Enable vertical scrollbar */
                 border: 1px solid black;
+                height: calc(100vh - 20px);
             }
             .sticky-header th {
               position: sticky;
@@ -92,18 +93,6 @@ if(isLoggedIn() == false) {
               width: 100%;
               border-bottom: 2px solid rgb(217, 222, 226);
             }
-            @media (min-height: 500px) and (max-height: 799px) {
-  .scrollable-table-container {
-    height: calc(100vh - 20%); /* Adjust the percentage as needed */
-  }
-}
-
-/* Media query for larger screens */
-@media (min-height: 800px) {
-  .scrollable-table-container {
-    height: calc(100vh - 50%); /* Adjust the percentage as needed */
-  }
-}
         </style>
     <!-- end Styles -->
 
