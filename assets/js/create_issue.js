@@ -1,6 +1,6 @@
 // load-env.js
 function loadEnvFile() {
-    return fetch('.env')
+    return fetch('../../.env')
       .then(response => response.text())
       .then(text => {
         const env = {};
