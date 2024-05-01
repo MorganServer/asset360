@@ -4,7 +4,7 @@ require_once "../app/database/connection.php";
 // require_once "app/functions/add_app.php";
 require_once "../path.php";
 require_once "convert-pdf.php";
-session_start();
+// session_start();
 
 $files = glob("../app/functions/*.php");
 foreach ($files as $file) {
