@@ -74,7 +74,7 @@ if(isLoggedIn() == false) {
                 display: inline-block;
             }
             .scrollable-table-container {
-                height: 300px; /* Adjust the height as needed */
+                height: calc(100vh - 20%); /* Adjust the height as needed */
                 overflow-y: auto; /* Enable vertical scrollbar */
             }
             .sticky-header th {
