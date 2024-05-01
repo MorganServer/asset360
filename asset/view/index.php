@@ -77,6 +77,12 @@ if(isLoggedIn() == false) {
                 height: 300px; /* Adjust the height as needed */
                 overflow-y: auto; /* Enable vertical scrollbar */
             }
+            .sticky-header th {
+                position: sticky;
+                top: 0;
+                background-color: #fff; /* Optional: Set background color for the sticky header */
+                z-index: 1; /* Ensure the header stays above the content */
+            }   
         </style>
     <!-- end Styles -->
 
@@ -547,7 +553,7 @@ if(isLoggedIn() == false) {
 
                             <div class="scrollable-table-container">
                                 <table class="table">
-                                  <thead>
+                                  <thead class="sticky-header">
                                     <tr>
                                       <th scope="col">Issue Key</th>
                                       <th scope="col">Issue Type</th>
