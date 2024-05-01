@@ -89,11 +89,11 @@ if(isLoggedIn() == false) {
                 // $maintenance_schedule   = $row['maintenance_schedule'];
                 $audit_schedule         = $row['audit_schedule']; 
                 $asset_type             = $row['asset_type']; 
-                $created_at             = $row['asset_created']; 
+                // $created_at             = $row['asset_created']; 
                 $ip_address             = $row['ip_address']; 
 
                 // Format maintenance schedule if not null
-                $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
+                // $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
 
                 // Format audit schedule if not null
                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
