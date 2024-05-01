@@ -32,7 +32,7 @@ function createJiraIssue($issueDataJson) {
 }
 
 // Check if request method is POST and if data is received
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['issueData'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['maintenanceIssueData'])) {
     // Retrieve issue data from POST request
     $issueDataJson = $_POST['maintenanceIssueData'];
     
