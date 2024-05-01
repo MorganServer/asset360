@@ -86,10 +86,10 @@ if(isLoggedIn() == false) {
                 $asset_name             = $row['asset_name']; 
                 $asset_tag_no           = $row['asset_tag_no']; 
                 $status                 = $row['status']; 
-                $maintenance_schedule   = $row['maintenance_schedule'];
+                // $maintenance_schedule   = $row['maintenance_schedule'];
                 $audit_schedule         = $row['audit_schedule']; 
                 $asset_type             = $row['asset_type']; 
-                $created_at             = $row['created_at']; 
+                $created_at             = $row['asset_created']; 
                 $ip_address             = $row['ip_address']; 
 
                 // Format maintenance schedule if not null
