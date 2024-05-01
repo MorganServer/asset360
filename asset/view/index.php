@@ -74,15 +74,14 @@ if(isLoggedIn() == false) {
                 display: inline-block;
             }
             .scrollable-table-container {
-                overflow-y: auto; /* Enable vertical scrollbar */
-                border: 1px solid black;
+                overflow-y: auto; 
                 height: calc(100vh - 375px);
             }
             .sticky-header th {
               position: sticky;
               top: 0;
-              background-color: #fff; /* Optional: Set background color for the sticky header */
-              z-index: 1; /* Ensure the header stays above the content */
+              background-color: #fff;
+              z-index: 1;
             }
 
             .sticky-header th::after {
