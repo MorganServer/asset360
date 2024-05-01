@@ -89,7 +89,7 @@ if(isLoggedIn() == false) {
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
-                    <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                    <td style="font-size: 20px;"><a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $asset_tag_no; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
                 </tr>
                 <?php
                         }
