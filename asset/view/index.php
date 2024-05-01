@@ -701,7 +701,7 @@ if(isLoggedIn() == false) {
         var issueDataJson = JSON.stringify(issueData);
 
         // Make AJAX request to create Jira issue
-        fetch('create_issue.php', {
+        fetch('<?php echo BASE_URL; ?>/api/create_issue.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
