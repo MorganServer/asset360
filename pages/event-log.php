@@ -80,9 +80,10 @@ if(isLoggedIn() == false) {
 <div class="container" style="padding: 0 75px 0 75px;">
     <div class="application-details">
 
-        <h2>
-            Event Log
-        </h2>
+            <h2 class="mt-4">
+                Event Log
+            </h2>
+            <hr>
 
 
 
