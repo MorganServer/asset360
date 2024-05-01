@@ -76,7 +76,7 @@ if(isLoggedIn() == false) {
             .scrollable-table-container {
                 overflow-y: auto; /* Enable vertical scrollbar */
                 border: 1px solid black;
-                height: calc(100vh - 20px);
+                height: calc(100vh - 300px);
             }
             .sticky-header th {
               position: sticky;
