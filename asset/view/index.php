@@ -83,14 +83,14 @@ if(isLoggedIn() == false) {
               background-color: #fff; /* Optional: Set background color for the sticky header */
               z-index: 1; /* Ensure the header stays above the content */
             }
-            
+
             .sticky-header th::after {
               content: '';
               position: absolute;
               left: 0;
               bottom: 0;
               width: 100%;
-              border-bottom: 1px solid black;
+              border-bottom: 1px solid rgb(217, 222, 226);
             }
         </style>
     <!-- end Styles -->
