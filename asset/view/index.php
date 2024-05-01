@@ -154,7 +154,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="auditModalForm">
-                                                    <input type="text" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                                     <div class="mb-3">
                                                         <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="summary" name="summary" required>
@@ -184,7 +184,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="maintenanceModalForm">
-                                                    <input type="text" class="form-control" id="m_asset_tag" name="m_asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                                    <input type="hidden" class="form-control" id="m_asset_tag" name="m_asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                                     <div class="mb-3">
                                                         <label for="m_summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="m_summary" name="m_summary" required>
