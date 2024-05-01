@@ -154,6 +154,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="auditModalForm">
+                                                    <input type="text" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo $asset_tag_no; ?>">
                                                     <div class="mb-3">
                                                         <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="summary" name="summary" required>
@@ -536,7 +537,7 @@ if(isLoggedIn() == false) {
 
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
-                            
+
                         </div>
                     <!-- end Jira -->
                 </div>
@@ -668,6 +669,7 @@ if(isLoggedIn() == false) {
 <script>
     document.getElementById('auditModalForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
+        var asset_tag = document.getElementById('asset_tag').value;
         var summary = document.getElementById('summary').value;
         var notes = document.getElementById('notes').value;
         var auditIssueData = {
