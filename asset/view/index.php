@@ -578,7 +578,7 @@ if(isLoggedIn() == false) {
 
                         <!-- get audit issues script -->
                         <script>
-                            var assetTags = <?php echo $off_asset_tag_no; ?> // Array containing asset tags
+                            var assetTags = "<?php echo $off_asset_tag_no; ?>" // Array containing asset tags
                             var promises = assetTags.map(assetTag => {
                                 return fetch('<?php echo BASE_URL; ?>/api/get_jira_data.php?asset_tag=' + assetTag)
                                     .then(response => {
