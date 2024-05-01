@@ -538,6 +538,27 @@ if(isLoggedIn() == false) {
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
 
+                        <script>
+    // Assuming $off_asset_tag_no contains the current asset tag
+var assetTag = "<?php echo $off_asset_tag_no; ?>";
+
+// Construct the JQL query string dynamically
+var jqlQuery = "project=SG+AND+summary~\"" + assetTag + "\"";
+
+// Make the fetch request using the constructed JQL query
+fetch('https://garrett-morgan.atlassian.net/rest/api/3/search?jql=' + encodeURIComponent(jqlQuery) + '&fields=summary')
+    .then(response => response.json())
+    .then(data => {
+        // Handle the retrieved issues data
+        console.log(data);
+        // Further processing of the retrieved issues data can be done here
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        // Handle error
+    });
+</script>
+
                         </div>
                     <!-- end Jira -->
                 </div>
@@ -782,6 +803,8 @@ if(isLoggedIn() == false) {
         });
     });
 </script>
+
+
 
 
 </body>
