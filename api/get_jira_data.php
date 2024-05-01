@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
     $fields = "summary, issuetype"; // Define the fields you want to retrieve
 
     // Construct the URL for the Jira API endpoint
-    $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . encodeURIComponent($jqlQuery) . "&fields=" . $fields;
+    $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery . "&fields=" . $fields;
 
     // Get Jira issues
     $response = getJiraIssues($url);
