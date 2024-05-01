@@ -11,8 +11,8 @@
         <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/iot.php"><i class="bi bi-tv"></i> IOT Devices</a></li>
         <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/peripherals.php"><i class="bi bi-printer"></i> Peripherals</a></li>
         <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/event-log.php"><i class="bi bi-journal-text"></i> Event Log</a></li>
-        <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/system-settings.php"><i class="bi bi-building-fill-gear"></i> System Setting</a></li>
-        <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/users.php"><i class="bi bi-people-fill"></i> Manage Users</a></li>
+        <!-- <li class="list-group-item"><a class="stretched-link" href="<?php //echo BASE_URL; ?>/pages/system-settings.php"><i class="bi bi-building-fill-gear"></i> System Setting</a></li> -->
+        <!-- <li class="list-group-item"><a class="stretched-link" href="<?php //echo BASE_URL; ?>/pages/users.php"><i class="bi bi-people-fill"></i> Manage Users</a></li> -->
         <li class="list-group-item"><a class="stretched-link" href="<?php echo BASE_URL; ?>/pages/bulk-export.php"><i class="bi bi-file-earmark-arrow-down-fill"></i> Bulk Export</a></li>
     </ul>
 
