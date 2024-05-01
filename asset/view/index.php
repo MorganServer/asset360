@@ -152,7 +152,7 @@ if(isLoggedIn() == false) {
 
                             <!-- Modal for capturing additional information -->
                             <div class="modal fade" id="createIssueModal" tabindex="-1" aria-labelledby="createIssueModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
+                                <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="createIssueModalLabel">Create Jira Issue</h5>
@@ -163,6 +163,12 @@ if(isLoggedIn() == false) {
                                                 <div class="mb-3">
                                                     <label for="summary" class="form-label">Summary Title:</label>
                                                     <input type="text" class="form-control" id="summary" name="summary" required>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <label class="form-label" for="notes">Notes</label>
+                                                        <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
+                                                    </div>
                                                 </div>
                                                 <!-- Add more fields as needed -->
                                                 <button type="submit" class="btn btn-primary">Create Issue</button>
@@ -672,6 +678,7 @@ if(isLoggedIn() == false) {
     document.getElementById('createIssueForm').addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent form submission
         var summary = document.getElementById('summary').value;
+        var notes = document.getElementById('notes').value;
         var issueData = {
             "fields": {
                 "project": {
@@ -687,7 +694,7 @@ if(isLoggedIn() == false) {
                             "content": [
                                 {
                                     "type": "text",
-                                    "text": "description"
+                                    "text": notes
                                 }
                             ]
                         }
@@ -725,6 +732,13 @@ if(isLoggedIn() == false) {
 </script>
 
 
+<script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
 
 
 </body>
