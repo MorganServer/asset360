@@ -1,10 +1,6 @@
 <?php
-
-// Function to create a Jira issue
-function createJiraIssue($issueDataJson) {
-    $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
-
-
+// Function to get Jira issues
+function getJiraIssues($url) {
     $jiraUsername = "garrett.morgan.pro@gmail.com";
     $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
     $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
@@ -14,39 +10,44 @@ function createJiraIssue($issueDataJson) {
 
     $contextOptions = array(
         'http' => array(
-            'method' => 'POST',
+            'method' => 'GET',
             'header' => "Content-Type: application/json\r\n" .
                         "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
-            'content' => $issueDataJson,
             'ignore_errors' => true 
         )
     );
 
-
     $context = stream_context_create($contextOptions);
 
-
-    $response = file_get_contents($jiraApiUrl, false, $context);
+    $response = file_get_contents($url, false, $context);
 
     return $response;
 }
 
-// Check if request method is POST and if data is received
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['maintenanceIssueData'])) {
-    // Retrieve issue data from POST request
-    $issueDataJson = $_POST['maintenanceIssueData'];
-    
-    // Create the issue
-    $response = createJiraIssue($issueDataJson);
-    
-    // Check for errors
+// Check if request method is GET and if asset tag is received
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['asset_tag'])) {
+    // Assuming $off_asset_tag_no contains the current asset tag
+    $assetTag = $_GET['asset_tag'];
+
+    // Construct the JQL query string dynamically
+    $jqlQuery = "project=SG+AND+summary~'" . $assetTag . "'";
+    $fields = "summary"; // Define the fields you want to retrieve
+
+    // Construct the URL for the Jira API endpoint
+    $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . $jqlQuery . "&fields=" . $fields;
+
+    // Get Jira issues
+    $response = getJiraIssues($url);
+
+    // Check if the request was successful
     if ($response === false) {
-        echo "Error: Unable to create Jira ticket.";
+        // Handle the error
+        echo json_encode(["error" => "Failed to fetch data from Jira API", "url" => "Endpoint: " . $url]);
     } else {
-        echo $response; // Return Jira API response
+        // Return the response data to the client
+        echo $response;
     }
 } else {
     echo "Error: Invalid request.";
 }
-
 ?>
