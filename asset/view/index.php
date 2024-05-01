@@ -140,11 +140,11 @@ if(isLoggedIn() == false) {
                         <?php } ?>
                     </span>
                     <span class="float-end d-flex">
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a>
+                        <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#auditModal"><i class="bi bi-shield-fill-check"></i></a>
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px;" data-bs-toggle="modal" data-bs-target="#maintenanceModal"><i class="bi bi-tools"></i></a> -->
 
                         <!-- JIRA BUTTON -->
-                            <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-shield-fill-check icon_rotate"></i> &nbsp;Perform Aduit</a>
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit</a>
                             <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" id="createTicketButton"><i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket</a>
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
