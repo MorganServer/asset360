@@ -14,8 +14,8 @@ db_config = {
 
 # Email configuration
 email_config = {
-    'sender_email': 'garrett.morgan@morganserver.com',
-    'receiver_email': 'garrett.morgan.pro@gmail.com',
+    'sender_email': 'garrett.morgan.pro@gmail.com',
+    'receiver_email': 'garrett.morgan@morganserver.com',
     'smtp_server': 'smtp.gmail.com',
     'smtp_port': 587,
     'smtp_username': 'garrett.morgan.pro@gmail.com',
