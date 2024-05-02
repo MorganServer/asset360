@@ -41,9 +41,29 @@ try:
     if assets:
         # Compose email message
         subject = "Assets with Audit Scheduled for Today"
-        body = "The following assets have an audit scheduled for today:\n\n"
+        body = f"""\
+        <html>
+          <head></head>
+          <body>
+            <p>The following assets have an audit scheduled for {formatted_today}:</p>
+            <table border="1">
+              <tr>
+                <th>Asset ID</th>
+                <th>Name</th>
+              </tr>
+        """
         for asset in assets:
-            body += f"Asset ID: {asset[0]}, Name: {asset[1]}\n"
+            body += f"""
+              <tr>
+                <td>{asset[0]}</td>
+                <td>{asset[1]}</td>
+              </tr>
+            """
+        body += """
+            </table>
+          </body>
+        </html>
+        """
 
         message = MIMEMultipart()
         message['From'] = email_config['sender_email']
