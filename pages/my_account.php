@@ -117,7 +117,7 @@ if(isLoggedIn() == false) {
                       </div>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col" style="min-width: 100%;">
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
                       <div class="card-body ps-2">
                         <h5 class="card-title">Admin Settings</h5>
