@@ -8,6 +8,26 @@
         <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu">
           <!-- Notifications will be dynamically added here -->
+          <?php
+            $notify_sql = "SELECT * FROM notifications ORDER BY notification_created DESC LIMIT 5";
+            $notify_result = mysqli_query($conn, $notify_sql);
+            if($notify_result) {
+                $notify_num_rows = mysqli_num_rows($notify_result);
+                if($notify_num_rows > 0) {
+                    while ($notify_row = mysqli_fetch_assoc($notify_result)) {
+                        $details                     = $notify_row['details'];
+                        $fname                  = $notify_row['fname'];
+                        $lname                  = $notify_row['lname'];
+                        $email                  = $notify_row['email'];
+                        $account_type           = $notify_row['account_type'];
+                        $account_created        = $notify_row['account_created'];
+
+                        // Format maintenance schedule if not null
+                        $f_account_created = !empty($account_created) ? date_format(date_create($account_created), 'M d, Y') : '-';
+                    
+                    }}}
+
+          ?>
         </div>
       </div>
       <div class="dropdown d-flex dropdown">
@@ -32,12 +52,12 @@
   </div>
 </nav>
 
-<script>
+<!-- <script>
     $(document).ready(function() {
         // Function to fetch notifications from the server
         function fetchNotifications() {
             $.ajax({
-                url: '<?php echo BASE_URL; ?>/api/fetch_notifications.php', // Replace with your server-side script URL
+                url: '<?php //echo BASE_URL; ?>/api/fetch_notifications.php', // Replace with your server-side script URL
                 method: 'GET',
                 dataType: 'json',
                 success: function(response) {
@@ -67,4 +87,4 @@
         // Refresh notifications every 30 seconds (adjust as needed)
         setInterval(fetchNotifications, 30000);
     });
-</script>
+</script> -->
