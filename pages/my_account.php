@@ -53,8 +53,8 @@ if(isLoggedIn() == false) {
                                 if($a_num_rows > 0) {
                                     while ($a_row = mysqli_fetch_assoc($a_result)) {
                                         $id                     = $a_row['user_id'];
-                                        $idno                   = $a_row['idno'];
                                         $fname                  = $a_row['fname'];
+                                        $lname                  = $a_row['lname'];
                                         $email                  = $a_row['email'];
                                         $account_type           = $a_row['account_type'];
                                         $account_created        = $a_row['account_created'];
