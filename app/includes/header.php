@@ -18,7 +18,7 @@
                       $unread_count = $unread_count_row['unread_count'];
                       // Display badge only if there are unread notifications
                       if ($unread_count > 0) {
-                          echo '<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 12px; margin-top: 25%;">' . $unread_count . '</span>';
+                          echo '<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; margin-top: 30%;">' . $unread_count . '</span>';
                       }
                   }
               ?>
