@@ -81,7 +81,7 @@ try:
             server.login(email_config['smtp_username'], email_config['smtp_password'])
             server.sendmail(email_config['sender_email'], email_config['receiver_email'], message.as_string())
 
-        print("Email sent successfully!")
+        # print("Email sent successfully!")
 
     else:
         print("No assets found with audit scheduled for today.")
