@@ -19,7 +19,7 @@
                                 $created = $notify_row['notification_created'];
                                 $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
                 ?>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-group-item">
                     <?php echo $notify_row['details']; ?>
                     <span class="text-secondary" style="font-size: 12px;"><?php echo $notify_created; ?></span>
                     <form action="acknowledge_notification.php" method="POST">
