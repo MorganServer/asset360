@@ -120,7 +120,7 @@ if(isLoggedIn() == false) {
                 <div class="col">
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
                       <div class="card-body ps-2">
-                        <h5 class="card-title">Admin Settings</h5>
+                        <h5 class="card-title mb-4">Admin Settings</h5>
 
                         <div class="row ms-3 ">
                             <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
