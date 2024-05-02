@@ -24,7 +24,7 @@
                     <span class="text-secondary" style="font-size: 12px;"><?php echo $notify_created; ?></span>
                     <form action="acknowledge_notification.php" method="POST">
                         <!-- Hidden input field to send notification ID -->
-                        <input type="hidden" name="notification_id" value="<?php echo $notify_row['id']; ?>">
+                        <input type="hidden" name="notification_id" value="<?php echo $notify_row['notification_id']; ?>">
                         <!-- Acknowledge button -->
                         <button type="submit" class="btn btn-primary btn-sm">Acknowledge</button>
                     </form>
