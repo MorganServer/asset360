@@ -63,8 +63,6 @@ if(isLoggedIn() == false) {
     $limit = 10; // Number of entries per page
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($page - 1) * $limit;
-
-    echo $page;
     
     $sql = "SELECT assets.*, ip_address.*
             FROM assets
