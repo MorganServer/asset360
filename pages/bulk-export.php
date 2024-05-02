@@ -3,7 +3,7 @@ date_default_timezone_set('America/Denver');
 require_once "../app/database/connection.php";
 // require_once "app/functions/add_app.php";
 require_once "../path.php";
-// require_once "convert-pdf.php";
+require_once "convert-pdf.php";
 // session_start();
 
 $files = glob("../app/functions/*.php");
@@ -66,7 +66,7 @@ if(isLoggedIn() == false) {
 
     echo $page;
     
-    $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
+    $sql = "SELECT assets.*, ip_address.*
             FROM assets
             LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
             ORDER BY assets.asset_created ASC
@@ -102,45 +102,45 @@ if(isLoggedIn() == false) {
 </tr>
 
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
+<!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
   <div class="offcanvas-header d-block">
-    <!-- PHP for OFF CANVAS -->
+
         <?php
-            $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
-            FROM assets
-            LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
-            WHERE asset_id = $id
-            ORDER BY assets.created_at ASC
-            LIMIT $limit OFFSET $offset";
-            $off_result = mysqli_query($conn, $off_sql);
-            if($off_result) {
-            $num_rows = mysqli_num_rows($off_result);
-            if($num_rows > 0) {
-                while ($off_row = mysqli_fetch_assoc($off_result)) {
-                    $off_id                     = $off_row['asset_id']; 
-                    $off_asset_name             = $off_row['asset_name']; 
-                    $off_asset_tag_no           = $off_row['asset_tag_no'];
-                    $off_manufacturer_name      = $off_row['manufacturer_name'];
-                    $off_model                  = $off_row['model'];
-                    $off_model_no               = $off_row['model_no'];
-                    $off_acquisition_date       = $off_row['acquisition_date'];
-                    $off_end_of_life_date       = $off_row['end_of_life_date'];
-                    $off_location               = $off_row['location'];
-                    $off_custodian              = $off_row['custodian'];
-                    $off_serial_number          = $off_row['serial_number'];
-                    $off_notes                  = $off_row['notes']; 
-                    $off_status                 = $off_row['status']; 
-                    $off_maintenance_schedule   = $off_row['maintenance_schedule'];
-                    $off_audit_schedule         = $off_row['audit_schedule']; 
-                    $off_asset_type             = $off_row['asset_type']; 
-                    $off_created_at             = $off_row['created_at'];
-                    $off_updated_at             = $off_row['updated_at'];
-                    $off_ip_address             = $off_row['ip_address']; 
-                }}}
+            // $off_sql = "SELECT assets.*, ip_address.ip_address AS ip_address
+            // FROM assets
+            // LEFT JOIN ip_address ON assets.asset_tag_no = ip_address.assigned_asset_tag_no
+            // WHERE asset_id = $id
+            // ORDER BY assets.created_at ASC
+            // LIMIT $limit OFFSET $offset";
+            // $off_result = mysqli_query($conn, $off_sql);
+            // if($off_result) {
+            // $num_rows = mysqli_num_rows($off_result);
+            // if($num_rows > 0) {
+            //     while ($off_row = mysqli_fetch_assoc($off_result)) {
+            //         $off_id                     = $off_row['asset_id']; 
+            //         $off_asset_name             = $off_row['asset_name']; 
+            //         $off_asset_tag_no           = $off_row['asset_tag_no'];
+            //         $off_manufacturer_name      = $off_row['manufacturer_name'];
+            //         $off_model                  = $off_row['model'];
+            //         $off_model_no               = $off_row['model_no'];
+            //         $off_acquisition_date       = $off_row['acquisition_date'];
+            //         $off_end_of_life_date       = $off_row['end_of_life_date'];
+            //         $off_location               = $off_row['location'];
+            //         $off_custodian              = $off_row['custodian'];
+            //         $off_serial_number          = $off_row['serial_number'];
+            //         $off_notes                  = $off_row['notes']; 
+            //         $off_status                 = $off_row['status']; 
+            //         $off_maintenance_schedule   = $off_row['maintenance_schedule'];
+            //         $off_audit_schedule         = $off_row['audit_schedule']; 
+            //         $off_asset_type             = $off_row['asset_type']; 
+            //         $off_created_at             = $off_row['created_at'];
+            //         $off_updated_at             = $off_row['updated_at'];
+            //         $off_ip_address             = $off_row['ip_address']; 
+            //     }}}
         ?>
-    <!-- end PHP for OFF CANVAS -->
+
     <div class="top-header d-flex">
-        <h5 class="offcanvas-title" id="offcanvasRightLabel">View Asset <?php echo $off_asset_tag_no; ?></h5>
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">View Asset <?php //echo $off_asset_tag_no; ?></h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     
@@ -148,15 +148,15 @@ if(isLoggedIn() == false) {
         <span class="pe-3">
             Last updated: 
             <?php 
-            $formatted_off_updated_at = date("M d, Y", strtotime($off_updated_at));
-            echo $formatted_off_updated_at ? $formatted_off_updated_at : '-'; 
+            // $formatted_off_updated_at = date("M d, Y", strtotime($off_updated_at));
+            // echo $formatted_off_updated_at ? $formatted_off_updated_at : '-'; 
             ?>
         </span>
         <span>
             Created: 
             <?php 
-            $formatted_off_created_at = date("M d, Y", strtotime($off_created_at));
-            echo $formatted_off_created_at ? $formatted_off_created_at : '-'; 
+            // $formatted_off_created_at = date("M d, Y", strtotime($off_created_at));
+            // echo $formatted_off_created_at ? $formatted_off_created_at : '-'; 
             ?>
         </span>
     </p>
@@ -172,7 +172,7 @@ if(isLoggedIn() == false) {
                 Asset Tag No
             </span>
             <span class="float-end">
-                <?php echo $off_asset_tag_no ? $off_asset_tag_no : '-'; ?>
+                <?php //echo $off_asset_tag_no ? $off_asset_tag_no : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -180,7 +180,7 @@ if(isLoggedIn() == false) {
                 Asset Name
             </span>
             <span class="float-end">
-                <?php echo $off_asset_name ? $off_asset_name : '-'; ?>
+                <?php //echo $off_asset_name ? $off_asset_name : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -188,7 +188,7 @@ if(isLoggedIn() == false) {
                 Type
             </span>
             <span class="float-end">
-                <?php echo $off_asset_type ? $off_asset_type : '-'; ?>
+                <?php //echo $off_asset_type ? $off_asset_type : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -196,7 +196,7 @@ if(isLoggedIn() == false) {
                 Serial Number
             </span>
             <span class="float-end">
-                <?php echo $off_serial_number ? $off_serial_number : '-'; ?>
+                <?php //echo $off_serial_number ? $off_serial_number : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -204,7 +204,7 @@ if(isLoggedIn() == false) {
                 Manufacturer Name
             </span>
             <span class="float-end">
-                <?php echo $off_manufacturer_name ? $off_manufacturer_name : '-'; ?>
+                <?php //echo $off_manufacturer_name ? $off_manufacturer_name : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -212,7 +212,7 @@ if(isLoggedIn() == false) {
                 Model
             </span>
             <span class="float-end">
-                <?php echo $off_model ? $off_model : '-'; ?>
+                <?php //echo $off_model ? $off_model : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -220,7 +220,7 @@ if(isLoggedIn() == false) {
                 Model Number
             </span>
             <span class="float-end">
-                <?php echo $off_model_no ? $off_model_no : '-'; ?>
+                <?php //echo $off_model_no ? $off_model_no : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -228,7 +228,7 @@ if(isLoggedIn() == false) {
                 IP Address
             </span>
             <span class="float-end">
-                <?php echo $off_ip_address ? $off_ip_address : '-'; ?>
+                <?php //echo $off_ip_address ? $off_ip_address : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -236,7 +236,7 @@ if(isLoggedIn() == false) {
                 Location
             </span>
             <span class="float-end">
-                <?php echo $off_location ? $off_location : '-'; ?>
+                <?php //echo $off_location ? $off_location : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -244,7 +244,7 @@ if(isLoggedIn() == false) {
                 Custodian
             </span>
             <span class="float-end">
-                <?php echo $off_custodian ? $off_custodian : '-'; ?>
+                <?php //echo $off_custodian ? $off_custodian : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -253,8 +253,8 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
                 <?php 
-                $formatted_off_acquisition_date = date("M d, Y", strtotime($off_acquisition_date));
-                echo $formatted_off_acquisition_date ? $formatted_off_acquisition_date : '-'; 
+                // $formatted_off_acquisition_date = date("M d, Y", strtotime($off_acquisition_date));
+                // echo $formatted_off_acquisition_date ? $formatted_off_acquisition_date : '-'; 
                 ?>
             </span>
         </li>
@@ -264,8 +264,8 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
                 <?php 
-                $formatted_off_end_of_life_date = date("M d, Y", strtotime($off_end_of_life_date));
-                echo $formatted_off_end_of_life_date ? $formatted_off_end_of_life_date : '-'; 
+                // $formatted_off_end_of_life_date = date("M d, Y", strtotime($off_end_of_life_date));
+                // echo $formatted_off_end_of_life_date ? $formatted_off_end_of_life_date : '-'; 
                 ?>
             </span>
         </li>
@@ -275,8 +275,8 @@ if(isLoggedIn() == false) {
             </span>
             <span class="float-end">
                 <?php 
-                $formatted_off_audit_schedule = date("M d, Y", strtotime($off_audit_schedule));
-                echo $formatted_off_audit_schedule ? $formatted_off_audit_schedule : '-'; 
+                // $formatted_off_audit_schedule = date("M d, Y", strtotime($off_audit_schedule));
+                // echo $formatted_off_audit_schedule ? $formatted_off_audit_schedule : '-'; 
                 ?>
             </span>
         </li>
@@ -285,46 +285,41 @@ if(isLoggedIn() == false) {
                 Last Completed Maintenance
             </span>
             <span class="float-end">
-            <!-- PHP CODE EVENT -->
                 <?php
-                $e_sql = "SELECT *
-                FROM event_log
-                WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
-                LIMIT 1";
-                $e_result = mysqli_query($conn, $e_sql);
-                if ($e_result) {
-                    $num_rows = mysqli_num_rows($e_result);
-                    if ($num_rows > 0) {
-                        while ($e_row = mysqli_fetch_assoc($e_result)) {
-                            $e_id               = $e_row['event_id'];
-                            $e_asset_tag_no     = $e_row['asset_tag_no'];
-                            $e_event_type       = $e_row['event_type'];
-                            $e_date_completed   = $e_row['completed_date'];
-                            $e_status           = $e_row['status'];
-                            $e_completed_by     = $e_row['completed_by'];
-                            $e_notes            = $e_row['notes'];
-                            $e_created_at       = $e_row['created_at'];
-                            $e_updated_at       = $e_row['updated_at'];
-                        }
-                    } else {
-                        // No records found, set default values or handle accordingly
-                        $e_id               = null;
-                        $e_asset_tag_no     = null;
-                        $e_event_type       = null;
-                        $e_date_completed   = null;
-                        $e_status           = null;
-                        $e_completed_by     = null;
-                        $e_notes            = null;
-                        $e_created_at       = null;
-                        $e_updated_at       = null;
-                    }
-                } else {
-                    // Error executing the query
-                    // Handle the error
-                }
+                // $e_sql = "SELECT *
+                // FROM event_log
+                // WHERE asset_tag_no = '$off_asset_tag_no' AND event_type = 2
+                // LIMIT 1";
+                // $e_result = mysqli_query($conn, $e_sql);
+                // if ($e_result) {
+                //     $num_rows = mysqli_num_rows($e_result);
+                //     if ($num_rows > 0) {
+                //         while ($e_row = mysqli_fetch_assoc($e_result)) {
+                //             $e_id               = $e_row['event_id'];
+                //             $e_asset_tag_no     = $e_row['asset_tag_no'];
+                //             $e_event_type       = $e_row['event_type'];
+                //             $e_date_completed   = $e_row['completed_date'];
+                //             $e_status           = $e_row['status'];
+                //             $e_completed_by     = $e_row['completed_by'];
+                //             $e_notes            = $e_row['notes'];
+                //             $e_created_at       = $e_row['created_at'];
+                //             $e_updated_at       = $e_row['updated_at'];
+                //         }
+                //     } else {
+                //         $e_id               = null;
+                //         $e_asset_tag_no     = null;
+                //         $e_event_type       = null;
+                //         $e_date_completed   = null;
+                //         $e_status           = null;
+                //         $e_completed_by     = null;
+                //         $e_notes            = null;
+                //         $e_created_at       = null;
+                //         $e_updated_at       = null;
+                //     }
+                // } else {
+                // }
                 ?>
-            <!-- end PHP CODE EVENT -->
-            <?php echo isset($e_date_completed) ? $e_date_completed : '-'; ?>
+            <?php //echo isset($e_date_completed) ? $e_date_completed : '-'; ?>
             </span>
         </li>
         <li class="list-group-item">
@@ -332,11 +327,13 @@ if(isLoggedIn() == false) {
                 Notes
             </span>
             <span class="">
-                <?php echo $off_notes ? $off_notes : '-'; ?>
+                <?php //echo $off_notes ? $off_notes : '-'; ?>
             </span>
         </li>
     </ul>
-</div>
+</div> -->
+
+
 <div class="col-sm-3 ms-3" style="">
     <button class="badge text-bg-primary" data-bs-toggle="modal" data-bs-target="#maintenanceModal">Maintenance</button>
 
