@@ -56,7 +56,7 @@ if(isLoggedIn() == false) {
                                         $idno                   = $a_row['idno'];
                                         $fname                  = $a_row['fname'];
                                         $email                  = $a_row['email'];
-                                        $acounnt_type           = $a_row['acounnt_type'];
+                                        $account_type            = $a_row['acounnt_type'];
                                         $account_created        = $a_row['account_created'];
 
                                         // Format maintenance schedule if not null
