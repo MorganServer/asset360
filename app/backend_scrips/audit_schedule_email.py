@@ -69,7 +69,9 @@ try:
         message['From'] = email_config['sender_email']
         message['To'] = email_config['receiver_email']
         message['Subject'] = subject
-        message.attach(MIMEText(body, 'plain'))
+        part1 = MIMEText(body, "html")
+
+        message.attach(part1)
 
         # Connect to SMTP server and send email
         with smtplib.SMTP(email_config['smtp_server'], email_config['smtp_port']) as server:
