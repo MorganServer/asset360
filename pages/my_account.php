@@ -43,16 +43,8 @@ if(isLoggedIn() == false) {
 
             <div class="row">
                 <div class="col">
-                    <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
-                      <div class="card-body ps-2">
-                        <h5 class="card-title">Account Information</h5>
-                        <p class="card-text">
-                        <div class="text-secondary d-flex justify-content-center align-items-center mx-auto" style="border-radius: 100%; border: 4px solid #6c757d; width: 150px; height: 150px; overflow: hidden;">
-                            <img src="../assets/images/bg-profile-pic.JPG" style="width: 93%; height: 93%; border-radius: 100%;" alt="">
-                        </div>
                         <?php
-                        echo $_SESSION['fname'];
-                        $user_id = $_SESSION['user_id'];
+                            $user_id = $_SESSION['user_id'];
 
                             $a_sql = "SELECT * FROM users WHERE user_id = $user_id";
                             $a_result = mysqli_query($conn, $a_sql);
@@ -63,21 +55,47 @@ if(isLoggedIn() == false) {
                                         $id                     = $a_row['user_id'];
                                         $idno                   = $a_row['idno'];
                                         $fname                  = $a_row['fname'];
-                                        $asset_name             = $a_row['asset_name'];
-                                        $asset_tag_no           = $a_row['asset_tag_no'];
-                                        $maintenance_schedule   = $a_row['maintenance_schedule'];
-                                        $audit_schedule         = $a_row['audit_schedule'];
-                                        $location               = $a_row['location'];
-                                        $created_at             = $a_row['created_at'];
+                                        $email                  = $a_row['email'];
+                                        $acounnt_type           = $a_row['acounnt_type'];
+                                        $account_created        = $a_row['account_created'];
+
+                                        // Format maintenance schedule if not null
+                                        $f_account_created = !empty($account_created) ? date_format(date_create($account_created), 'M d, Y') : '-';
                                     
                                     }}}
                         ?>
+                    <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
+                      <div class="card-body ps-2">
+                        <h5 class="card-title">Account Information</h5>
+                        <p class="card-text">
+                        <div class="text-secondary d-flex justify-content-center align-items-center mx-auto" style="border-radius: 100%; border: 4px solid #6c757d; width: 150px; height: 150px; overflow: hidden;">
+                            <img src="../assets/images/bg-profile-pic.JPG" style="width: 93%; height: 93%; border-radius: 100%;" alt="">
+                            <p class="text-secondary">
+                                <?php echo $account_type; ?>
+                            </p>
+                            <p class="text-secondary">
+                                Member since: <?php echo $f_account_created; ?>
+                            </p>
+                        </div>
+                        
 
                         <form>
                           <div class="row mb-3">
-                            <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                            <label for="fname" class="col-sm-2 col-form-label">First Name</label>
                             <div class="col-sm-10">
-                              <input type="email" class="form-control" id="inputEmail3" value="<?php echo $fname; ?>">
+                              <input type="text" class="form-control" id="fname" value="<?php echo $fname; ?>">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="lname" value="<?php echo $lname; ?>">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="email" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="email" value="<?php echo $email; ?>">
                             </div>
                           </div>
                           <div class="row mb-3">
