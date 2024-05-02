@@ -44,21 +44,24 @@ if(isLoggedIn() == false) {
             <div class="row">
                 <div class="col">
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
-                      <div class="card-body">
-                        <h5 class="card-title ps-2">Account Information</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                      <div class="card-body ps-2">
+                        <h5 class="card-title">Account Information</h5>
+                        <p class="card-text">
+                            <div style="border-radius: 100px; border: 1.5px solid gray; width: 150px;">
+
+                            </div>
+
+                        </p>
                       </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
-                      <div class="card-body">
-                        <h5 class="card-title ps-2">Account Statistics</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                      <div class="card-body ps-2">
+                        <h5 class="card-title">Account Statistics</h5>
+                        <p class="card-text">
+
+                        </p>
                       </div>
                     </div>
                 </div>
