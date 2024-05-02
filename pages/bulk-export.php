@@ -64,7 +64,7 @@ if(isLoggedIn() == false) {
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
     $offset = ($page - 1) * $limit;
 
-    echo $offset;
+    echo $page;
     
     $sql = "SELECT assets.*, ip_address.ip_address AS ip_address
             FROM assets
