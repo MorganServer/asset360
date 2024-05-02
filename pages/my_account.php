@@ -65,7 +65,7 @@ if(isLoggedIn() == false) {
                                     }}}
                         ?>
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
-                      <div class="card-body p-5">
+                      <div class="card-body p-4">
                         <h5 class="card-title">Account Information</h5>
                         <p class="card-text">
                         <div class="text-secondary d-flex justify-content-center align-items-center mx-auto" style="border-radius: 100%; border: 4px solid #6c757d; width: 150px; height: 150px; overflow: hidden;">
