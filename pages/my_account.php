@@ -128,7 +128,7 @@ if(isLoggedIn() == false) {
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 35px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Change Password, Two-factor</h6>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" style="fotn-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
                             <div class="card pe-2" style="width: 10rem;">
