@@ -4,7 +4,7 @@
         <img src="<?php echo BASE_URL . "/assets/images/logo-white.png"; ?>" class="header_logo" alt="Logo">
     </a>
     <div class="header_right">
-      <div class="dropdown d-flex dropdown">
+      <div class="n_dropdown d-flex">
         <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu" aria-labelledby="notificationDropdown">
           <a class="dropdown-item" href="<?php echo BASE_URL; ?>/add-asset.php"><i class="bi bi-pc-display"></i> Add Asset</a>
