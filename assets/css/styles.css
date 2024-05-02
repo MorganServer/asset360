@@ -78,7 +78,7 @@
 .sidebar ul li {
   /* background-color: rgb(36, 45, 49); */
   background-color: rgb(30,40,43);
-  border-color: rgb(33, 39, 43);
+  border-color: rgba(186, 189, 190, 0.40);
   /* border-color: rgb(46, 50, 57); */
 }
 
