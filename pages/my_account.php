@@ -123,21 +123,21 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title">Admin Settings</h5>
 
                         <div class="row ms-3 ">
-                            <div class="card me-2" style="width: 33.3%;">
+                            <div class="card me-2" style="width: 30%;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
-                            <div class="card me-2" style="width: 33.3%;">
+                            <div class="card me-2" style="width: 30%;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
-                            <div class="card" style="width: 33.3%;">
+                            <div class="card" style="width: 30%;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
