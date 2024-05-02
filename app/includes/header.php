@@ -6,7 +6,7 @@
     <div class="header_right">
       <div class="dropdown d-flex">
         <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-        <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu">
+        <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu" style="width: 25px;">
           <!-- Notifications will be dynamically added here -->
           <?php
             $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
@@ -16,11 +16,11 @@
                 if($notify_num_rows > 0) {
                     while ($notify_row = mysqli_fetch_assoc($notify_result)) {
                         // Output each notification as a list group item
-                        echo '<a class="dropdown-item" href="#">';
-                        echo '<h5 class="mb-1">' . $notify_row['details'] . '</h5>';
+                        // echo '<a class="dropdown-item" href="#">';
+                        echo '<p class="mb-1">' . $notify_row['details'] . '</p>';
                         // echo '<p class="mb-1">' . $notify_row['fname'] . ' ' . $notify_row['lname'] . ' - ' . $notify_row['email'] . '</p>';
                         // echo '<small>' . date_format(date_create($notify_row['account_created']), 'M d, Y') . '</small>';
-                        echo '</a>';
+                        // echo '</a>';
                     }
                 } else {
                     echo '<a class="dropdown-item" href="#">No new notifications</a>';
