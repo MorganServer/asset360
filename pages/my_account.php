@@ -72,11 +72,11 @@ if(isLoggedIn() == false) {
                             <img src="../assets/images/bg-profile-pic.JPG" style="width: 93%; height: 93%; border-radius: 100%;" alt="">
                             
                         </div>
-                        <div class="text-center">
+                        <div class="text-center mt-3">
                             <p class="text-secondary text-capitalize">
                                 <?php echo $account_type; ?> Account
                             </p>
-                            <p class="text-secondary">
+                            <p class="text-secondary" style="margin-top: -10px;">
                                 Member since: <?php echo $f_account_created; ?>
                             </p>
                         </div>
