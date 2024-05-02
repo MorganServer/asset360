@@ -43,7 +43,7 @@ if(isLoggedIn() == false) {
 
             <div class="row">
                 <div class="col">
-                    <div class="card w-100" style="border-top: 2px solid blue;">
+                    <div class="card w-100" style="border-top: 4px solid blue; border-radius: 5px !important;">
                       <div class="card-body">
                         <h5 class="card-title text-center">Account Information</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -53,7 +53,7 @@ if(isLoggedIn() == false) {
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card w-100">
+                    <div class="card w-100" style="border-top: 4px solid blue; border-radius: 5px !important;">
                       <div class="card-body">
                         <h5 class="card-title text-center">Account Statistics</h5>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
