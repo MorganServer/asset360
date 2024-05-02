@@ -123,23 +123,25 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title">Admin Settings</h5>
 
                         <div class="row ms-3 d-flex justify-content-center align-items-center mx-auto">
-                            <div class="card me-2" style="width: 15rem;">
+                            <div class="card me-2" style="width: 20rem;">
                               <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 65px;"><i class="bi bi-shield-lock-fill"></i></p>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary" style="font-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
-                            <div class="card me-2" style="width: 15rem;">
+                            <div class="card me-2" style="width: 20rem;">
                               <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title text-center">Card title</h5>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
+                                <h5 class="card-title text-center">Security</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" style="font-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
-                            <div class="card" style="width: 15rem;">
+                            <div class="card" style="width: 20rem;">
                               <div class="card-body">
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title text-center">Card title</h5>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
+                                <h5 class="card-title text-center">Security</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary" style="font-size: 12px;">Change Password, Two-factor</h6>
                               </div>
                             </div>
                         </div>
