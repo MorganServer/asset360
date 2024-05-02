@@ -5,7 +5,9 @@
     </a>
     <div class="header_right">
       <div class="dropdown d-flex notify_dropdown">
-          <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="position-relative">
+              <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </i>
               <!-- Display badge with notification count here -->
               <?php
                   // Count the number of notifications that are not acknowledged
@@ -16,11 +18,11 @@
                       $unread_count = $unread_count_row['unread_count'];
                       // Display badge only if there are unread notifications
                       if ($unread_count > 0) {
-                          echo '<span class="badge badge-pill badge-danger">' . $unread_count . '</span>';
+                          echo '<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">' . $unread_count . '</span>';
                       }
                   }
               ?>
-          </i>
+          </div>
           <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu" style="width: 500px; padding: 15px; border-radius: 10px !important;">
               <ul class="list-group list-group-flush">
                   <!-- Notifications will be dynamically added here -->
@@ -58,6 +60,7 @@
               </ul>
           </div>
       </div>
+
 
       <div class="dropdown d-flex dropdown">
         <i class="bi bi-plus-circle-fill" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
