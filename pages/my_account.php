@@ -122,7 +122,7 @@ if(isLoggedIn() == false) {
                       <div class="card-body ps-2">
                         <h5 class="card-title">Account Statistics</h5>
 
-                        <div class="row">
+                        <div class="row ms-5">
                             <div class="card" style="width: 5rem;">
                               <img src="..." class="card-img-top" alt="...">
                               <div class="card-body">
