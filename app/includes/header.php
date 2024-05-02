@@ -27,19 +27,19 @@
               <ul class="list-group list-group-flush">
                   <!-- Notifications will be dynamically added here -->
                   <?php
-                      $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
+                      $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notify_date DESC LIMIT 5";
                       $notify_result = mysqli_query($conn, $notify_sql);
                       if($notify_result) {
                           $notify_num_rows = mysqli_num_rows($notify_result);
                           if($notify_num_rows > 0) {
                               while ($notify_row = mysqli_fetch_assoc($notify_result)) {
-                                  $created = $notify_row['notification_created'];
-                                  $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
+                                  $notfied = $notify_row['notify_date'];
+                                  $format_notfied = !empty($notfied) ? date_format(date_create($notfied), 'M d, Y hh:mm A') : '-';
                   ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                       <div class="d-flex flex-column">
                           <?php echo $notify_row['details']; ?>
-                          <span class="text-secondary" style="font-size: 12px;"><?php echo $notify_created; ?></span>
+                          <span class="text-secondary" style="font-size: 12px;"><?php echo $format_notfied; ?></span>
                       </div>
                       <form action="" method="POST">
                           <!-- Hidden input field to send notification ID -->
