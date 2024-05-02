@@ -20,8 +20,11 @@
                                 $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
                 ?>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div class="d-flex">
                     <?php echo $notify_row['details']; ?>
                     <span class="text-secondary" style="font-size: 12px;"><?php echo $notify_created; ?></span>
+                  </div>
+                    
                     <form action="acknowledge_notification.php" method="POST">
                         <!-- Hidden input field to send notification ID -->
                         <input type="hidden" name="notification_id" value="<?php echo $notify_row['notification_id']; ?>">
