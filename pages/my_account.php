@@ -48,7 +48,7 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title">Account Information</h5>
                         <p class="card-text">
                         <div class="text-secondary d-flex justify-content-center align-items-center mx-auto" style="border-radius: 100%; border: 3px solid #6c757d; width: 150px; height: 150px; overflow: hidden;">
-                            <img src="../assets/images/bg-profile-pic.JPG" style="width: 90%; height: 90%; border-radius: 100%;" alt="">
+                            <img src="../assets/images/bg-profile-pic.JPG" style="width: 93%; height: 93%; border-radius: 100%;" alt="">
                         </div>
 
 
