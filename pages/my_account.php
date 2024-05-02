@@ -73,8 +73,8 @@ if(isLoggedIn() == false) {
                             
                         </div>
                         <div class="text-center">
-                            <p class="text-secondary">
-                                <?php echo $account_type; ?>
+                            <p class="text-secondary text-capitalize">
+                                <?php echo $account_type; ?> Account
                             </p>
                             <p class="text-secondary">
                                 Member since: <?php echo $f_account_created; ?>
