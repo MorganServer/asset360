@@ -6,7 +6,7 @@
     <div class="header_right">
       <div class="dropdown d-flex">
         <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-        <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu" style="width: 25px;">
+        <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu" style="width: 40px;">
           <!-- Notifications will be dynamically added here -->
           <?php
             $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
