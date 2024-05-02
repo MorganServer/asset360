@@ -86,30 +86,30 @@ if(isLoggedIn() == false) {
                           <div class="row mb-3">
                             <label for="fname" class="col-sm-2 col-form-label">First Name</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="fname" value="<?php echo $fname; ?>">
+                              <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>">
                             </div>
                           </div>
                           <div class="row mb-3">
                             <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="lname" value="<?php echo $lname; ?>">
+                              <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>">
                             </div>
                           </div>
                           <div class="row mb-3">
                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="email" value="<?php echo $email; ?>">
+                              <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
                             </div>
                           </div>
-                          <div class="row mb-3">
-                            <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                          <!-- <div class="row mb-3">
+                            <label for="password" class="col-sm-2 col-form-label">Password</label>
                             <div class="col-sm-10">
-                              <input type="password" class="form-control" id="inputPassword3">
+                              <input type="password" class="form-control" id="password" name="password">
                             </div>
-                          </div>
+                          </div> -->
                     
                           
-                          <button type="submit" class="btn btn-primary">Sign in</button>
+                          <button type="submit" name="update" class="btn btn-primary">Update</button>
                         </form>
 
 
