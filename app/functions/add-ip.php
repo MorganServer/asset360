@@ -5,6 +5,7 @@ if (isset($_POST['add-ip'])) {
     // Sanitize input data
     $assigned_asset_tag_no = isset($_POST['assigned_asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['assigned_asset_tag_no']) : "";
     $ip_address = isset($_POST['ip_address']) ? mysqli_real_escape_string($conn, $_POST['ip_address']) : "";
+    $vpn_ip_address = isset($_POST['vpn_ip_address']) ? mysqli_real_escape_string($conn, $_POST['vpn_ip_address']) : "";
     $custodian = isset($_POST['custodian']) ? mysqli_real_escape_string($conn, $_POST['custodian']) : "";
     $maintenance_schedule = isset($_POST['maintenance_schedule']) ? mysqli_real_escape_string($conn, $_POST['maintenance_schedule']) : "";
     $audit_schedule = isset($_POST['audit_schedule']) ? mysqli_real_escape_string($conn, $_POST['audit_schedule']) : "";
@@ -18,8 +19,8 @@ if (isset($_POST['add-ip'])) {
         $error[] = 'Asset already exists!';
     } else {
         // Insert the new asset into the database
-        $insert = "INSERT INTO ip_address (idno, assigned_asset_tag_no, ip_address, custodian, maintenance_schedule, audit_schedule, notes, status) 
-            VALUES ('$idno', NULLIF('$assigned_asset_tag_no', ''), NULLIF('$ip_address', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
+        $insert = "INSERT INTO ip_address (idno, assigned_asset_tag_no, ip_address, vpn_ip_address, custodian, maintenance_schedule, audit_schedule, notes, status) 
+            VALUES ('$idno', NULLIF('$assigned_asset_tag_no', ''), NULLIF('$ip_address', ''), NULLIF('$vpn_ip_address', ''), NULLIF('$custodian', ''), NULLIF('$maintenance_schedule', ''), NULLIF('$audit_schedule', ''), NULLIF('$notes', ''), NULLIF('$status', ''))";
 
         if (mysqli_query($conn, $insert)) {
             header('location:' . BASE_URL . '/');

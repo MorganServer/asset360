@@ -1,10 +1,29 @@
 <?php
+
+date_default_timezone_set('America/Denver');
+require_once "../app/database/connection.php";
+// require_once "app/functions/add_app.php";
+require_once "../path.php";
+// require_once "convert-pdf.php";
+session_start();
+
+$files = glob("../app/functions/*.php");
+foreach ($files as $file) {
+    require_once $file;
+}
+logoutUser($conn);
+if(isLoggedIn() == false) {
+    header('location:' . BASE_URL . '/login.php');
+}
+
+
 // Turn on error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include TCPDF library
 include_once(ROOT_PATH . '/TCPDF/tcpdf.php');
+// require_once(ROOT_PATH . '/TCPDF/tcpdf_include.php');
 
 // Check if PDF generation is requested
 if (isset($_GET['generatePdf'])) {
@@ -17,42 +36,37 @@ if (isset($_GET['generatePdf'])) {
     $result = $conn->query($sql);
 
     // Create new TCPDF instance
-    // $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    $pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// Create new TCPDF instance
-$pdf = new \TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+    // Set document information
+    $currentDate = date('m-d-Y');
+    $pdf->SetCreator(PDF_CREATOR);
+    $pdf->SetAuthor('Garrett Morgan');
+    $pdf->SetTitle('Asset Inventory Report - ' . $currentDate);
+    $pdf->SetSubject('TCPDF Tutorial');
+    $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-$currentDate = date('m-d-Y');
+    // Set default header data
+    $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' ' . $currentDate, PDF_HEADER_STRING);
+    $pdf->setFooterData(array(0,64,0), array(0,64,128));
 
-// set document information
-$pdf->SetCreator(PDF_CREATOR);
-$pdf->SetAuthor('Garrett Morgan');
-$pdf->SetTitle('Asset Inventory Report - ' . $currentDate);
-$pdf->SetSubject('TCPDF Tutorial');
-$pdf->SetKeywords('TCPDF, PDF, example, test, guide');
+    // Set header and footer fonts
+    $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
+    $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-// set default header data
-// Set header logo
-$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' ' . $currentDate, PDF_HEADER_STRING);
-$pdf->setFooterData(array(0,64,0), array(0,64,128));
+    // Set default monospaced font
+    $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-// set header and footer fonts
-$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-$pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+    // Set margins
+    $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+    $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-// set default monospaced font
-$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+    // Set auto page breaks
+    $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-// set margins
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-
-// set auto page breaks
-$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
-// set image scale factor
-$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+    // Set image scale factor
+    $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
     // Add a page
     $pdf->AddPage();
@@ -63,14 +77,13 @@ $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
     // Create HTML content
     $html = <<<EOF
-<!-- EXAMPLE OF CSS STYLE -->
-<style>
-tr.border_bottom td {
-    border-bottom: 1px solid black;
-}
-</style>
+    <!-- EXAMPLE OF CSS STYLE -->
+    <style>
+    tr.border_bottom td {
+        border-bottom: 1px solid black;
+    }
+    </style>
 EOF;
-
 
     $html .= '<h2>Asset Details</h2>';
     if ($result->num_rows > 0) {

@@ -4,7 +4,7 @@ require_once "../app/database/connection.php";
 // require_once "app/functions/add_app.php";
 require_once "../path.php";
 require_once "convert-pdf.php";
-session_start();
+// session_start();
 
 $files = glob("../app/functions/*.php");
 foreach ($files as $file) {
@@ -15,14 +15,6 @@ if(isLoggedIn() == false) {
     header('location:' . BASE_URL . '/login.php');
 }
 
-
-
-// 
-
-
-
-
-// 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,8 +40,8 @@ if(isLoggedIn() == false) {
             <h2 class="mt-4">
                 Bulk Export Asset Inventory
             </h2>
-            <!-- <button class="btn btn-primary" onclick="exportToCSV()">Export to CSV</button> -->
-            <button class="float-end export-button btn btn-success" style="margin-top: -40px;" id="generatePdfButton">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></button>
+            <a href="convert-pdf.php?generatePdf=1" class="float-end export-button btn btn-success" style="margin-top: -40px;">Export <i class="bi bi-file-earmark-arrow-down-fill"></i></a>
+
 
 
             <hr>
@@ -86,14 +78,14 @@ if(isLoggedIn() == false) {
                 $asset_name             = $row['asset_name']; 
                 $asset_tag_no           = $row['asset_tag_no']; 
                 $status                 = $row['status']; 
-                $maintenance_schedule   = $row['maintenance_schedule'];
+                // $maintenance_schedule   = $row['maintenance_schedule'];
                 $audit_schedule         = $row['audit_schedule']; 
                 $asset_type             = $row['asset_type']; 
-                $created_at             = $row['created_at']; 
+                // $created_at             = $row['asset_created']; 
                 $ip_address             = $row['ip_address']; 
 
                 // Format maintenance schedule if not null
-                $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
+                // $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
 
                 // Format audit schedule if not null
                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
@@ -456,19 +448,6 @@ if(isLoggedIn() == false) {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('#generatePdfButton').click(function() {
-        // Redirect to the same page with a query parameter indicating PDF generation
-        window.location.href = 'bulk-export.php?generatePdf=1';
-    });
-});
-</script>
 
-
-
-
-
-    <!-- <script src="<?php //echo ROOT_PATH; ?>/assets/js/export_pdf.js"></script> -->
 </body>
 </html>

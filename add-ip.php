@@ -59,11 +59,15 @@ if(isLoggedIn() == false) {
                 <input type="text" class="form-control" id="ip_address" name="ip_address">
             </div>
             <div class="col">
+                <label for="vpn_ip_address" class="form-label">VPN IP Address</label>
+                <input type="text" class="form-control" id="vpn_ip_address" name="vpn_ip_address">
+            </div>
+            <div class="col">
                 <label for="assigned_asset_tag_no" class="form-label">Asset Tag Number</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="assigned_asset_tag_no" name="assigned_asset_tag_no" value="<?php echo $asset_tag_no; ?>">
                     <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#assetModal">
-                        <i class="bi bi-search"></i> <!-- Bootstrap magnify glass icon -->
+                        <i class="bi bi-search"></i>
                     </button>
                 </div>
             </div>
@@ -141,8 +145,6 @@ if(isLoggedIn() == false) {
                 </div>
             </div>
             <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                <!-- <button type="button" class="btn btn-primary" id="selectAssetBtn">Select</button> -->
             </div>
         </div>
     </div>
@@ -172,25 +174,7 @@ if(isLoggedIn() == false) {
     </script>
 
 
-<!-- <script>
-    // JavaScript to handle selecting an asset and populating the input field
-    document.addEventListener('DOMContentLoaded', function () {
-        var assetLinks = document.querySelectorAll('.asset-link');
-        assetLinks.forEach(function (link) {
-            link.addEventListener('click', function (event) {
-                try {
-                    event.preventDefault();
-                    var selectedAssetTagNo = link.getAttribute('data-asset-id'); // Get the value of data-asset-id attribute
-                    document.getElementById('assigned_asset_tag_no').value = selectedAssetTagNo;
-                    $('#assetModal').modal('hide'); // Close the modal
-                } catch (error) {
-                    console.error('An error occurred while closing the modal:', error);
-                    // Handle the error gracefully or log it for debugging
-                }
-            });
-        });
-    });
-</script> -->
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -204,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function fetchAssets(searchValue) {
         // Fetch assets from the server based on the search value
-        fetch('api/search_assets.php', {
+        fetch('<?php echo BASE_URL; ?>/api/search_assets.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
