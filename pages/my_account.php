@@ -52,25 +52,25 @@ if(isLoggedIn() == false) {
                         </div>
                         <?php
                         echo $_SESSION['fname'];
-                        echo $_SESSION['user_id'];
+                        $user_id = $_SESSION['user_id'];
 
-                            // $a_sql = "SELECT * FROM users WHERE user_id = '$_SESSION['user_id']'";
-                            // $a_result = mysqli_query($conn, $a_sql);
-                            // if($a_result) {
-                            //     $a_num_rows = mysqli_num_rows($a_result);
-                            //     if($a_num_rows > 0) {
-                            //         while ($a_row = mysqli_fetch_assoc($a_result)) {
-                            //             $id                     = $a_row['user_id'];
-                            //             $idno                   = $a_row['idno'];
-                            //             $fname                  = $a_row['fname'];
-                            //             $asset_name             = $a_row['asset_name'];
-                            //             $asset_tag_no           = $a_row['asset_tag_no'];
-                            //             $maintenance_schedule   = $a_row['maintenance_schedule'];
-                            //             $audit_schedule         = $a_row['audit_schedule'];
-                            //             $location               = $a_row['location'];
-                            //             $created_at             = $a_row['created_at'];
+                            $a_sql = "SELECT * FROM users WHERE user_id = $user_id";
+                            $a_result = mysqli_query($conn, $a_sql);
+                            if($a_result) {
+                                $a_num_rows = mysqli_num_rows($a_result);
+                                if($a_num_rows > 0) {
+                                    while ($a_row = mysqli_fetch_assoc($a_result)) {
+                                        $id                     = $a_row['user_id'];
+                                        $idno                   = $a_row['idno'];
+                                        $fname                  = $a_row['fname'];
+                                        $asset_name             = $a_row['asset_name'];
+                                        $asset_tag_no           = $a_row['asset_tag_no'];
+                                        $maintenance_schedule   = $a_row['maintenance_schedule'];
+                                        $audit_schedule         = $a_row['audit_schedule'];
+                                        $location               = $a_row['location'];
+                                        $created_at             = $a_row['created_at'];
                                     
-                            //         }}}
+                                    }}}
                         ?>
 
                         <form>
