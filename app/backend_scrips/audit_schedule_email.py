@@ -29,10 +29,11 @@ try:
 
     # Get today's date
     today = date.today()
+    formatted_today = today.strftime('%Y-%m-%d')
 
     # Query to find assets with audit_schedule set to today's date
     query = "SELECT * FROM assets WHERE audit_schedule = %s"
-    cursor.execute(query, (today,))
+    cursor.execute(query, (formatted_today,))
 
     assets = cursor.fetchall()
 
