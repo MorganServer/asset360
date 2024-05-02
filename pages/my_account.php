@@ -47,7 +47,7 @@ if(isLoggedIn() == false) {
                       <div class="card-body ps-2">
                         <h5 class="card-title">Account Information</h5>
                         <p class="card-text">
-                            <div style="border-radius: 100px; border: 1.5px solid gray; width: 100px; height: 100px">
+                            <div class="text-secondary" style="border-radius: 100px; border: 2.5px solid #6c757d; width: 100px; height: 100px">
 
                             </div>
 
