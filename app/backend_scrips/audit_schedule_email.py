@@ -8,7 +8,7 @@ from email.mime.multipart import MIMEMultipart
 db_config = {
     'host': 'localhost',
     'user': 'dbuser',
-    'password': 'DBuser123',
+    'password': 'DBuser123!',
     'database': 'asset_management'
 }
 
