@@ -102,7 +102,7 @@ if(isLoggedIn() == false) {
 </tr>
 
 
-<!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
+<!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="view_asset<?php //echo $id; ?>" aria-labelledby="offcanvasRightLabel" style="width: 40%;">
   <div class="offcanvas-header d-block">
 
         <?php
