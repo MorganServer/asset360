@@ -80,6 +80,7 @@ if(isLoggedIn() == false) {
                                 Member since <?php echo $f_account_created; ?>
                             </p>
                         </div>
+                        <br>
                         
 
                         <form>
@@ -112,8 +113,6 @@ if(isLoggedIn() == false) {
                           <button type="submit" name="update" class="btn btn-primary">Update</button>
                         </form>
 
-
-
                         </p>
                       </div>
                     </div>
@@ -123,6 +122,30 @@ if(isLoggedIn() == false) {
                       <div class="card-body ps-2">
                         <h5 class="card-title">Account Statistics</h5>
                         <p class="card-text">
+
+                        <div class="row">
+                            <div class="card" style="width: 5rem;">
+                              <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title text-center">Card title</h5>
+                              </div>
+                            </div>
+                            <div class="card" style="width: 5rem;">
+                              <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title text-center">Card title</h5>
+                              </div>
+                            </div>
+                            <div class="card" style="width: 5rem;">
+                              <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                <h5 class="card-title text-center">Card title</h5>
+                              </div>
+                            </div>
+                        </div>
 
                         </p>
                       </div>
