@@ -128,6 +128,7 @@ if(isLoggedIn() == false) {
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
+                                <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
                             <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
@@ -135,13 +136,15 @@ if(isLoggedIn() == false) {
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
                                 <h5 class="card-title text-center">Notifications</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts, audit settings</h6>
+                                <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
                             <div class="card" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
-                                <h5 class="card-title text-center">Security</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-slack"></i></p>
+                                <h5 class="card-title text-center">Slack Integrations</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Slack settings</h6>
+                                <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
                         </div>
@@ -152,6 +155,7 @@ if(isLoggedIn() == false) {
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-trash-fill"></i></p>
                                 <h5 class="card-title text-center">Purge Data</h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Purge all data</h6>
+                                <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
                         </div>
