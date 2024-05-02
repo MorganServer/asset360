@@ -121,7 +121,6 @@ if(isLoggedIn() == false) {
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
                       <div class="card-body ps-2">
                         <h5 class="card-title">Account Statistics</h5>
-                        <p class="card-text">
 
                         <div class="row">
                             <div class="card" style="width: 5rem;">
@@ -146,8 +145,6 @@ if(isLoggedIn() == false) {
                               </div>
                             </div>
                         </div>
-
-                        </p>
                       </div>
                     </div>
                 </div>
