@@ -34,7 +34,7 @@
                           if($notify_num_rows > 0) {
                               while ($notify_row = mysqli_fetch_assoc($notify_result)) {
                                   $notified = $notify_row['notify_date'];
-                                  $format_notified = !empty($notified) ? date_format(date_create($notified), 'M d, Y h:m A') : '-';
+                                  $format_notified = !empty($notified) ? date_format(date_create($notified), 'M d, Y H:m A') : '-';
 
                   ?>
                   <li class="list-group-item d-flex justify-content-between align-items-center">
