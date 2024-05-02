@@ -48,15 +48,17 @@ try:
             <p>The following assets have an audit scheduled for {formatted_today}:</p>
             <table border="1">
               <tr>
-                <th>Asset ID</th>
-                <th>Name</th>
+                <th>Asset Tag</th>
+                <th>Asset Name</th>
+                <th>Link</th>
               </tr>
         """
         for asset in assets:
             body += f"""
               <tr>
-                <td>{asset[0]}</td>
-                <td>{asset[1]}</td>
+                <td>{asset[2]}</td>
+                <td>{asset[3]}</td>
+                <td><a href='https://asset360.morganserver.com/asset/view/?id={asset[0]}'>Perform</a></td>
               </tr>
             """
         body += """
