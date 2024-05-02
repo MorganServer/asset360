@@ -9,24 +9,25 @@
         <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu">
           <!-- Notifications will be dynamically added here -->
           <?php
-            $notify_sql = "SELECT * FROM notifications ORDER BY notification_created DESC LIMIT 5";
+            $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
             $notify_result = mysqli_query($conn, $notify_sql);
             if($notify_result) {
                 $notify_num_rows = mysqli_num_rows($notify_result);
                 if($notify_num_rows > 0) {
                     while ($notify_row = mysqli_fetch_assoc($notify_result)) {
-                        $details                     = $notify_row['details'];
-                        $fname                  = $notify_row['fname'];
-                        $lname                  = $notify_row['lname'];
-                        $email                  = $notify_row['email'];
-                        $account_type           = $notify_row['account_type'];
-                        $account_created        = $notify_row['account_created'];
-
-                        // Format maintenance schedule if not null
-                        $f_account_created = !empty($account_created) ? date_format(date_create($account_created), 'M d, Y') : '-';
-                    
-                    }}}
-
+                        // Output each notification as a list group item
+                        echo '<a class="dropdown-item" href="#">';
+                        echo '<h5 class="mb-1">' . $notify_row['details'] . '</h5>';
+                        // echo '<p class="mb-1">' . $notify_row['fname'] . ' ' . $notify_row['lname'] . ' - ' . $notify_row['email'] . '</p>';
+                        // echo '<small>' . date_format(date_create($notify_row['account_created']), 'M d, Y') . '</small>';
+                        echo '</a>';
+                    }
+                } else {
+                    echo '<a class="dropdown-item" href="#">No new notifications</a>';
+                }
+              } else {
+                echo '<a class="dropdown-item" href="#">Error fetching notifications</a>';
+              }
           ?>
         </div>
       </div>
