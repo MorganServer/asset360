@@ -7,32 +7,38 @@
       <div class="dropdown d-flex notify_dropdown">
         <i class="bi bi-bell-fill" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
         <div class="dropdown-menu" aria-labelledby="notificationDropdown" id="notificationMenu" style="width: 500px; padding: 15px; border-radius: 10px !important;">
-          <ul class="list-group list-group-flush">
-            <!-- Notifications will be dynamically added here -->
-            <?php
-              $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
-              $notify_result = mysqli_query($conn, $notify_sql);
-              if($notify_result) {
-                  $notify_num_rows = mysqli_num_rows($notify_result);
-                  if($notify_num_rows > 0) {
-                      while ($notify_row = mysqli_fetch_assoc($notify_result)) {
-                        $created = $notify_row['notification_created'];
-                        $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
-                          // Output each notification as a list group item
-                          // echo '<a class="dropdown-item" href="#">';
-                          echo '<li class="list-group-item">' . $notify_row['details'] . '<br><span class="text-secondary" style="font-size: 12px;">' . $notify_created . '</span></li>';
-                          // echo '<p class="mb-1">' . $notify_row['fname'] . ' ' . $notify_row['lname'] . ' - ' . $notify_row['email'] . '</p>';
-                          // echo '<small>' . date_format(date_create($notify_row['account_created']), 'M d, Y') . '</small>';
-                          // echo '</a>';
-                      }
-                  } else {
-                      echo '<a class="dropdown-item" href="#">No new notifications</a>';
-                  }
-                } else {
-                  echo '<a class="dropdown-item" href="#">Error fetching notifications</a>';
-                }
-            ?>
-          </ul>
+            <ul class="list-group list-group-flush">
+                <!-- Notifications will be dynamically added here -->
+                <?php
+                    $notify_sql = "SELECT * FROM notifications WHERE acknowledged = 0 ORDER BY notification_created DESC LIMIT 5";
+                    $notify_result = mysqli_query($conn, $notify_sql);
+                    if($notify_result) {
+                        $notify_num_rows = mysqli_num_rows($notify_result);
+                        if($notify_num_rows > 0) {
+                            while ($notify_row = mysqli_fetch_assoc($notify_result)) {
+                                $created = $notify_row['notification_created'];
+                                $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
+                ?>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <?php echo $notify_row['details']; ?>
+                    <span class="text-secondary" style="font-size: 12px;"><?php echo $notify_created; ?></span>
+                    <form action="acknowledge_notification.php" method="POST">
+                        <!-- Hidden input field to send notification ID -->
+                        <input type="hidden" name="notification_id" value="<?php echo $notify_row['id']; ?>">
+                        <!-- Acknowledge button -->
+                        <button type="submit" class="btn btn-primary btn-sm">Acknowledge</button>
+                    </form>
+                </li>
+                <?php
+                            }
+                        } else {
+                            echo '<li class="list-group-item">No new notifications</li>';
+                        }
+                    } else {
+                        echo '<li class="list-group-item">Error fetching notifications</li>';
+                    }
+                ?>
+            </ul>
         </div>
       </div>
       <div class="dropdown d-flex dropdown">
