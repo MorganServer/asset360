@@ -15,11 +15,11 @@
                 $notify_num_rows = mysqli_num_rows($notify_result);
                 if($notify_num_rows > 0) {
                     while ($notify_row = mysqli_fetch_assoc($notify_result)) {
-                      $created = $notify_row['notification_created'];
-                      $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
+                      // $created = $notify_row['notification_created'];
+                      // $notify_created = !empty($created) ? date_format(date_create($created), 'M d, Y') : '-';
                         // Output each notification as a list group item
                         // echo '<a class="dropdown-item" href="#">';
-                        echo '<p class="mb-1">' . $notify_row['details'] . '<br><span class="text-secondary" style="font-size: 12px;">' . $notify_created; . '</span></p>';
+                        echo '<p class="mb-1">' . $notify_row['details'] . '<br><span class="text-secondary" style="font-size: 12px;">' . !empty($notify_row['notification_created'];) ? date_format(date_create($notify_row['notification_created'];), 'M d, Y') : '-'; . '</span></p>';
                         // echo '<p class="mb-1">' . $notify_row['fname'] . ' ' . $notify_row['lname'] . ' - ' . $notify_row['email'] . '</p>';
                         // echo '<small>' . date_format(date_create($notify_row['account_created']), 'M d, Y') . '</small>';
                         // echo '</a>';
