@@ -120,24 +120,25 @@ if(isLoggedIn() == false) {
                 <div class="col">
                     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
                       <div class="card-body ps-2">
-                        <h5 class="card-title">Account Statistics</h5>
+                        <h5 class="card-title">Admin Settings</h5>
 
-                        <div class="row ms-5">
-                            <div class="card" style="width: 5rem;">
+                        <div class="row ms-3">
+                            <div class="card pe-2" style="width: 10rem;">
                               <img src="..." class="card-img-top" alt="...">
                               <div class="card-body">
-                                <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <h5 class="card-title text-center">Card title</h5>
+                                <p class="card-text text-center" style="font-size: 35px;"><i class="bi bi-shield-lock-fill"></i></p>
+                                <h5 class="card-title text-center">Security</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Change Password, Two-factor</h6>
                               </div>
                             </div>
-                            <div class="card" style="width: 5rem;">
+                            <div class="card pe-2" style="width: 10rem;">
                               <img src="..." class="card-img-top" alt="...">
                               <div class="card-body">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                 <h5 class="card-title text-center">Card title</h5>
                               </div>
                             </div>
-                            <div class="card" style="width: 5rem;">
+                            <div class="card" style="width: 10rem;">
                               <img src="..." class="card-img-top" alt="...">
                               <div class="card-body">
                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
