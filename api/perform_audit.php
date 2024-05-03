@@ -31,7 +31,7 @@ function createJiraIssue($issueDataJson) {
 // Function to update asset table
 function updateAssetTable($asset_id) {
     // Connect to database
-    $conn = mysqli_connect("localhost", "username", "password", "database");
+    $conn = mysqli_connect("localhost", "dbuser", "DBuser123!", "asset_management");
 
     // Check connection
     if (!$conn) {
