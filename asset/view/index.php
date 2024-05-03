@@ -450,6 +450,30 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <span class="">
                                                 <?php
+
+                                                    function getAllJiraIssues($url) {
+                                                        $jiraUsername = "garrett.morgan.pro@gmail.com";
+                                                        $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
+                                                        $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
+                                                        $three = "gTqWD8qGQ7qbt-CcgAp4WWeSlO0WrN30VB238osKbafBEBHz1WPbUSWeyh";
+                                                        $four = "dXhAHA2kA=46A5779A";
+                                                        $jiraApiToken = $one . $two . $three . $four;
+                                                    
+                                                        $contextOptions = array(
+                                                            'http' => array(
+                                                                'method' => 'GET',
+                                                                'header' => "Content-Type: application/json\r\n" .
+                                                                            "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
+                                                                'ignore_errors' => true 
+                                                            )
+                                                        );
+                                                    
+                                                        $context = stream_context_create($contextOptions);
+                                                    
+                                                        $response = file_get_contents($url, false, $context);
+                                                    
+                                                        return $response;
+                                                    }
                                                 // Construct the JQL query string dynamically
                                                 $jqlQuery = "project in (SG, INFRA) AND summary~'$off_asset_tag_no' AND issueType = 10030 ORDER BY created DESC";
                                                 $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
@@ -457,11 +481,14 @@ if(isLoggedIn() == false) {
                                                 // Construct the URL for the Jira API endpoint
                                                 $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
 
+                                                $response = getAllJiraIssues($url);
+
                                                 // Perform API request to fetch the latest maintenance issue
                                                 // Code to perform API request and handle response goes here
 
                                                 // Assuming $latestMaintenanceIssue contains the fetched issue data
                                                 echo isset($latestMaintenanceIssue['created']) ? $latestMaintenanceIssue['created'] : '--';
+
                                                 ?>
                                             </span>
                                         </li>
