@@ -42,14 +42,14 @@ if(isLoggedIn() == false) {
             <hr>
 
             <div class="mb-4" style="background-color: rgb(229, 233, 236); border-radius: 5px; padding: 10px;">
-            <p>
-                You may change your password at any time by following the steps below:
-            </p>
-            <ul>
-                <li>Enter your current password and new password. You will need to enter the new password twice in order to confirm that you have entered it correctly.</li>
-                <li>An email with a confirmation number will be sent to your email address on record. Enter the confirmation number on the next page.</li>
-                <li>The password change will be effective immediately.</li>
-            </ul>
+                <p>
+                    You may change your password at any time by following the steps below:
+                </p>
+                <ul>
+                    <li>Enter your current password and new password. You will need to enter the new password twice in order to confirm that you have entered it correctly.</li>
+                    <li>An email with a confirmation number will be sent to your email address on record. Enter the confirmation number on the next page.</li>
+                    <li>The password change will be effective immediately.</li>
+                </ul>
             </div>
             
 
@@ -132,10 +132,7 @@ if(isLoggedIn() == false) {
                         </form>
 
                         </p>
-                      </div>
                     </div>
-                </div
-                
                 </div>
             </div>
             
