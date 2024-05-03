@@ -37,7 +37,7 @@ if(isLoggedIn() == false) {
     <!-- main-container -->
     <div class="container" style="padding: 0 75px 0 75px;">
             <h2 class="mt-4">
-                Servers
+                Mobile Devices
             </h2>
             <hr>
 
