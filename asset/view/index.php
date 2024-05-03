@@ -232,7 +232,7 @@ if(isLoggedIn() == false) {
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
                         <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="<?php echo BASE_URL; ?>/asset/update/?id=<?php echo $id; ?>">Edit</a>
-                        <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
+                        <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="<?php echo BASE_URL; ?>/app/functions/delete-asset.php?id=<?php echo $id; ?>">Delete</a>
                     </span>
                 </h2>
 
