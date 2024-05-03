@@ -35,9 +35,9 @@ if(isLoggedIn() == false) {
     <?php include(ROOT_PATH . "/app/includes/sidebar.php"); ?>
 
     <!-- main-container -->
-        <div class="container" style="padding: 0 75px 0 75px;">
+    <div class="container" style="padding: 0 75px 0 75px;">
             <h2 class="mt-4">
-                Mobile Devices
+                Servers
             </h2>
             <hr>
 
@@ -89,7 +89,19 @@ if(isLoggedIn() == false) {
                     <td><?php echo $f_maintenance_schedule ? $f_maintenance_schedule : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
-                    <td style="font-size: 20px;"><a href="view-app.php?viewid=<?php echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td>
+                    <td style="font-size: 20px;">
+                        <a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view">
+                            <i class="bi bi-eye text-success"></i>
+                        </a> 
+                        &nbsp; 
+                        <a href="<?php echo BASE_URL; ?>/asset/update/?id=<?php echo $id; ?>">
+                            <i class="bi bi-pencil-square" style="color:#005382;"></i>
+                        </a> 
+                        &nbsp; 
+                        <a href="<?php echo BASE_URL; ?>/asset/delete/?id=<?php echo $id; ?>" class="delete">
+                            <i class="bi bi-trash" style="color:#941515;"></i>
+                        </a>
+                    </td>
                 </tr>
                 <?php
                         }
