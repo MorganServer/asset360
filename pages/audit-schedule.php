@@ -80,7 +80,7 @@ if(isLoggedIn() == false) {
                                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
                                 $is_today = ($audit_schedule == $today) ? true : false;
                 ?>
-                <tr <?php if ($is_today) echo 'class="bs-warning-border-subtle"'; ?>>
+                <tr <?php if ($is_today) echo 'class="table-warning"'; ?>>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
