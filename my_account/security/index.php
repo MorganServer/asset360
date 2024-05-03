@@ -56,25 +56,106 @@ if(isLoggedIn() == false) {
                 <div class="card-body p-4">
                     <h5 class="card-title">Account Information</h5>
                     <p class="card-text">
-                        <!-- Profile Picture -->
-                        <div class="text-secondary d-flex justify-content-center align-items-center mx-auto" style="border-radius: 100%; border: 4px solid #6c757d; width: 150px; height: 150px; overflow: hidden;">
-                            <img src="../assets/images/bg-profile-pic.JPG" style="width: 93%; height: 93%; border-radius: 100%;" alt="">
-                        </div>
                         <!-- Account Type and Creation Date -->
-                        <div class="text-center mt-3">
+                        <div class="mt-3">
                             <p class="text-secondary text-capitalize"><?php echo $account_type; ?> Account</p>
                             <p class="text-secondary" style="margin-top: -10px;">Member since <?php echo $f_account_created; ?></p>
                         </div>
                         <br>
                         <!-- Account Update Form -->
-                        <form>
+                        <form method="POST">
                             <div class="row mb-3">
-                                <label for="fname" class="col-sm-2 col-form-label">First Name</label>
+                                <label for="fname" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="fname" name="fname" value="<?php echo $fname; ?>">
+                                    <?php echo $uname; ?>
                                 </div>
                             </div>
-                            <!-- Other form fields -->
+                            <div class="row">
+                                <style>
+                                    .wrong .fa-check {
+                                        display: none;
+                                    }
+                                    .good .fa-times {
+                                        display: none;
+                                    }
+                                    .valid-feedback,
+                                    .invalid-feedback {
+                                      margin-left: calc(2em + 0.25rem + 1.5rem);
+                                    }
+                                </style>
+                              <div class="col-6">
+                                <div class="input-group d-flex">
+                                  <span
+                                    class="input-group-text border-0"
+                                    id="password"
+                                    >
+                                    <i class="fas fa-lock fa-2x me-1"></i>
+                                </span>
+                                  <input
+                                    type="password"
+                                    class="form-control rounded mt-1"
+                                    placeholder="Type your password"
+                                    name="n_password"
+                                    aria-label="password"
+                                    aria-describedby="password"
+                                    id="password-input"
+                                  />
+                                  <div class="valid-feedback">Good</div>
+                                  <div class="invalid-feedback">Wrong</div>
+                                </div>
+                              </div>
+
+                              <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+
+                                <div
+                                  data-mdb-alert-init class="alert px-4 py-3 mb-0 d-none"
+                                  role="alert"
+                                  data-mdb-color="warning"
+                                  id="password-alert"
+                                  >
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="requirements leng">
+                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="fas fa-times text-danger me-3"></i>
+                                      Your password must have at least 8 chars</li>
+                                    <li class="requirements big-letter">
+                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="fas fa-times text-danger me-3"></i>
+                                      Your password must have at least 1 big letter.</li>
+                                    <li class="requirements num">
+                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="fas fa-times text-danger me-3"></i>
+                                      Your password must have at least 1 number.</li>
+                                    <li class="requirements special-char">
+                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="fas fa-times text-danger me-3"></i>
+                                      Your password must have at least 1 special char.</li>
+                                  </ul>
+                                </div>
+
+                              </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password" class="col-sm-2 col-form-label">Current Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="n_password" name="n_password" required>
+                                    <p>
+                                        Your password
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="c_password" class="col-sm-2 col-form-label">Confirm Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="c_password" name="c_password" required>
+                                </div>
+                            </div>
                             <!-- Update Button -->
                             <button type="submit" name="update" class="btn btn-primary">Update</button>
                         </form>
@@ -84,5 +165,70 @@ if(isLoggedIn() == false) {
         </div>
     </div>
     <!-- END main-container -->
+
+
+
+    <script>
+        addEventListener("DOMContentLoaded", (event) => {
+  const password = document.getElementById("password-input");
+  const passwordAlert = document.getElementById("password-alert");
+  const requirements = document.querySelectorAll(".requirements");
+  const leng = document.querySelector(".leng");
+  const bigLetter = document.querySelector(".big-letter");
+  const num = document.querySelector(".num");
+  const specialChar = document.querySelector(".special-char");
+
+  requirements.forEach((element) => element.classList.add("wrong"));
+
+  password.addEventListener("focus", () => {
+      passwordAlert.classList.remove("d-none");
+      if (!password.classList.contains("is-valid")) {
+          password.classList.add("is-invalid");
+      }
+  });
+
+  password.addEventListener("input", () => {
+      const value = password.value;
+      const isLengthValid = value.length >= 8;
+      const hasUpperCase = /[A-Z]/.test(value);
+      const hasNumber = /\d/.test(value);
+      const hasSpecialChar = /[!@#$%^&*()\[\]{}\\|;:'",<.>/?`~]/.test(value);
+
+      leng.classList.toggle("good", isLengthValid);
+      leng.classList.toggle("wrong", !isLengthValid);
+      bigLetter.classList.toggle("good", hasUpperCase);
+      bigLetter.classList.toggle("wrong", !hasUpperCase);
+      num.classList.toggle("good", hasNumber);
+      num.classList.toggle("wrong", !hasNumber);
+      specialChar.classList.toggle("good", hasSpecialChar);
+      specialChar.classList.toggle("wrong", !hasSpecialChar);
+
+      const isPasswordValid = isLengthValid && hasUpperCase && hasNumber && hasSpecialChar;
+
+      if (isPasswordValid) {
+          password.classList.remove("is-invalid");
+          password.classList.add("is-valid");
+
+          requirements.forEach((element) => {
+              element.classList.remove("wrong");
+              element.classList.add("good");
+          });
+
+          passwordAlert.classList.remove("alert-warning");
+          passwordAlert.classList.add("alert-success");
+      } else {
+          password.classList.remove("is-valid");
+          password.classList.add("is-invalid");
+
+          passwordAlert.classList.add("alert-warning");
+          passwordAlert.classList.remove("alert-success");
+      }
+  });
+
+  password.addEventListener("blur", () => {
+      passwordAlert.classList.add("d-none");
+  });
+});
+    </script>
 </body>
 </html>
