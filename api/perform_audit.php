@@ -33,41 +33,36 @@ function createJiraIssue($issueDataJson) {
 }
 
 // Function to update the audit_schedule field in the assets table
-function updateAuditSchedule($assetId) {
-
-    // Update query
-    $id = $_GET['id'];
-    echo $id;
+function updateAuditSchedule($conn, $assetId) {
     $nextMonth = date('Y-m-d', strtotime('+1 month'));
-    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $id";
-        if (mysqli_query($conn, $sql)) {
-            header("Location: " . $_SERVER['HTTP_REFERER']);
-            exit; // Ensure script stops execution after redirecting
-        } else {
-            $error[] = 'Error: ' . mysqli_error($conn);
-        }
+    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $assetId";
+    if (mysqli_query($conn, $sql)) {
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit; // Ensure script stops execution after redirecting
+    } else {
+        $error[] = 'Error: ' . mysqli_error($conn);
+    }
 }
 
 // Check if request method is POST and if data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     // Retrieve issue data from POST request
     $issueDataJson = $_POST['auditIssueData'];
-    
+
     // Create the issue
     $response = createJiraIssue($issueDataJson);
-    
+
     // Check for errors
     if ($response === false) {
         echo "Error: Unable to create Jira ticket.";
     } else {
         echo $response; // Return Jira API response
-        
+
         // Assuming you have an asset ID available, you can call the update function here
         $assetId = 123; // Replace 123 with the actual asset ID
-        updateAuditSchedule($assetId);
+        updateAuditSchedule($conn, $assetId);
     }
 } else {
     echo "Error: Invalid request.";
 }
-
 ?>
