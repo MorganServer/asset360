@@ -184,7 +184,7 @@ if(isLoggedIn() == false) {
 
   password.addEventListener("focus", () => {
       passwordAlert.classList.remove("d-none");
-      passwordAlert.classList.add("d-flex");
+      passwordAlert.classList.add("d-flex flex-column");
       if (!password.classList.contains("is-valid")) {
           password.classList.add("is-invalid");
       }
@@ -230,6 +230,7 @@ if(isLoggedIn() == false) {
 
   password.addEventListener("blur", () => {
       passwordAlert.classList.add("d-none");
+      passwordAlert.classList.remove("d-flex flex-column");
   });
 });
     </script>
