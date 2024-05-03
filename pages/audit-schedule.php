@@ -80,15 +80,17 @@ if(isLoggedIn() == false) {
                                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
                                 $is_today = ($audit_schedule == $today) ? true : false;
                 ?>
-                <tr <?php if ($is_today) echo 'class="table-info"'; ?>>
+                <tr <?php if (strtotime($audit_schedule) >= strtotime($today)) echo 'class="table-info"'; ?>>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
-                            Perform
-                        </a>
+                        <?php if (strtotime($audit_schedule) >= strtotime($today)) { ?>
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
+                                Perform
+                            </a>
+                        <?php } ?>
                         <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
                             Reschedule
                         </a>
