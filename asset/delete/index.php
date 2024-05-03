@@ -13,10 +13,10 @@ if(isset($_GET['id'])) {
 
     // Execute the query
     if (mysqli_query($conn, $d_sql)) {
-        // Check if the previous page was an asset view page
-        if (strpos($_SERVER['HTTP_REFERER'], 'asset/view') !== false) {
-            // If so, go back to the previous page before that
-            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        // Check if the previous page URL parameter is set
+        if (isset($_GET['prev'])) {
+            // If so, redirect back to the previous page
+            header('Location: ' . $_GET['prev']);
         } else {
             // Otherwise, go back one page
             header('Location: ' . BASE_URL);
