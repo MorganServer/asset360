@@ -18,12 +18,13 @@ if(isset($_GET['id'])) {
         $redirect_url = $_SERVER['HTTP_REFERER'];
         if (strpos($redirect_url, '/asset/view') !== false) {
             // If the previous page was /asset/view, go back two pages
-            header('Location: ' . $redirect_url);
+            echo '<script>window.history.go(-2);</script>';
+            exit;
         } else {
             // Otherwise, go back one page
             header('Location: ' . $redirect_url);
+            exit;
         }
-        exit;
     } else {
         // Handle errors if any
         echo "Error deleting record: " . mysqli_error($conn);
