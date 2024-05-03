@@ -31,6 +31,27 @@ function createJiraIssue($issueDataJson) {
     return $response;
 }
 
+// Function to update the audit_schedule field in the assets table
+function updateAuditSchedule($assetId) {
+    // Check if $assetId is provided
+    if (!empty($assetId)) {
+        // Sanitize the input to prevent SQL injection
+        $safeAssetId = mysqli_real_escape_string($yourDbConnection, $assetId);
+
+        // Update the audit_schedule field for the given asset_id
+        $sql = "UPDATE assets SET audit_schedule = NOW() WHERE asset_id = '$safeAssetId'";
+        
+        // Execute the query
+        if (mysqli_query($yourDbConnection, $sql)) {
+            echo "Audit schedule updated successfully for asset_id: $safeAssetId";
+        } else {
+            echo "Error updating audit schedule: " . mysqli_error($yourDbConnection);
+        }
+    } else {
+        echo "Error: Missing asset_id.";
+    }
+}
+
 // Check if request method is POST and if data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     // Retrieve issue data from POST request
@@ -43,10 +64,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     if ($response === false) {
         echo "Error: Unable to create Jira ticket.";
     } else {
+        // Check if asset_id is provided
+        if (isset($_POST['asset_id'])) {
+            // Update audit_schedule for the asset
+            updateAuditSchedule($_POST['asset_id']);
+        } else {
+            echo "Warning: No asset_id provided for updating audit schedule.";
+        }
+
         echo $response; // Return Jira API response
     }
 } else {
     echo "Error: Invalid request.";
 }
-
 ?>
