@@ -29,6 +29,19 @@ if(isLoggedIn() == false) {
     <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
 
     <title>My Account | Asset360</title>
+    <style>
+        .wrong .fa-check {
+            display: none;
+        }
+        .good .fa-times {
+            display: none;
+        }
+        .valid-feedback,
+        .invalid-feedback {
+          margin-left: calc(2em + 0.25rem + 1.5rem);
+        }
+    </style>
+    
 </head>
 <body>
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
@@ -71,18 +84,7 @@ if(isLoggedIn() == false) {
                                 </div>
                             </div>
                             <div class="row">
-                                <style>
-                                    .wrong .fa-check {
-                                        display: none;
-                                    }
-                                    .good .fa-times {
-                                        display: none;
-                                    }
-                                    .valid-feedback,
-                                    .invalid-feedback {
-                                      margin-left: calc(2em + 0.25rem + 1.5rem);
-                                    }
-                                </style>
+                                
                               <div class="col-6">
                                 <div class="input-group d-flex">
                                   <span
