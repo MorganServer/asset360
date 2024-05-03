@@ -141,9 +141,9 @@ if(isLoggedIn() == false) {
                             </div>
                             <div class="card" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-slack"></i></p>
-                                <h5 class="card-title text-center">Slack Integrations</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Slack settings</h6>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
+                                <h5 class="card-title text-center">User Access</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">User and group settings</h6>
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
