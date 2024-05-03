@@ -38,10 +38,10 @@ if(isLoggedIn() == false) {
         }
         .valid-feedback,
         .invalid-feedback {
-          margin-left: calc(2em + 0.25rem + 1.5rem);
+          /* margin-left: calc(2em + 0.25rem + 1.5rem); */
         }
     </style>
-    
+
 </head>
 <body>
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
