@@ -142,7 +142,7 @@ if(isLoggedIn() == false) {
 
                 <!-- RESCHEDULE modal -->
                     <div class="modal fade" id="rescheduleModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="rescheduleModalLabel">Perform Audit</h5>
@@ -167,10 +167,10 @@ if(isLoggedIn() == false) {
                                         <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
                                         <div class="mb-3">
                                             <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
-                                            <input type="text" class="form-control" id="audit_schedule" name="audit_schedule" required>
+                                            <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
                                         </div>
                                         <!-- Add more fields as needed -->
-                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Create Issue</button>
                                         <?php }}} ?>
                                     </form>
                                 </div>
