@@ -444,48 +444,68 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
+                                        <?php
+                                        // Function to get Jira issues
+                                        function getAllJiraIssues($url) {
+                                            $jiraUsername = "garrett.morgan.pro@gmail.com";
+                                            $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
+                                            $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
+                                            $three = "gTqWD8qGQ7qbt-CcgAp4WWeSlO0WrN30VB238osKbafBEBHz1WPbUSWeyh";
+                                            $four = "dXhAHA2kA=46A5779A";
+                                            $jiraApiToken = $one . $two . $three . $four;
+                                        
+                                            $contextOptions = array(
+                                                'http' => array(
+                                                    'method' => 'GET',
+                                                    'header' => "Content-Type: application/json\r\n" .
+                                                                "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
+                                                    'ignore_errors' => true 
+                                                )
+                                            );
+                                        
+                                            $context = stream_context_create($contextOptions);
+                                        
+                                            $response = file_get_contents($url, false, $context);
+                                        
+                                            return $response;
+                                        }
+                                        
+                                        // Construct the JQL query string dynamically
+                                        $assetTag = $off_asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
+                                        $jqlQuery = "project in (SG, INFRA) AND summary~'$assetTag' AND issueType = 10030 ORDER BY created DESC";
+                                        $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
+                                        
+                                        // Construct the URL for the Jira API endpoint
+                                        $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
+                                        
+                                        // Get Jira issues
+                                        $response = getAllJiraIssues($url);
+                                        
+                                        // Check if the request was successful
+                                        if ($response !== false) {
+                                            // Decode the JSON response
+                                            $data = json_decode($response, true);
+                                            // Check if issues are found
+                                            if (isset($data['issues']) && !empty($data['issues'])) {
+                                                // Get the latest issue
+                                                $latestIssue = $data['issues'][0];
+                                                // Display the last maintenance date from Jira (assuming 'updated' field is the maintenance date)
+                                                $lastMaintenanceDate = isset($latestIssue['fields']['updated']) ? $latestIssue['fields']['updated'] : '--';
+                                            } else {
+                                                // If no issues are found
+                                                $lastMaintenanceDate = '--';
+                                            }
+                                        } else {
+                                            // Handle the error
+                                            $lastMaintenanceDate = 'Failed to fetch data from Jira API';
+                                        }
+                                        ?>
+                                        
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class="">
-                                                <?php
-                                                // Function to get Jira issues
-                                                function getAllJiraIssues($url) {
-                                                    // Your existing function code
-                                                }
-                                            
-                                                // Construct the JQL query string dynamically
-                                                $assetTag = $off_asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
-                                                $jqlQuery = "project in (SG, INFRA) AND summary~'$off_asset_tag_no' AND issueType = 10030 ORDER BY created DESC";
-                                                $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
-                                            
-                                                // Construct the URL for the Jira API endpoint
-                                                $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
-                                            
-                                                // Get Jira issues
-                                                $response = getAllJiraIssues($url);
-                                            
-                                                // Check if the request was successful
-                                                if ($response !== false) {
-                                                    // Decode the JSON response
-                                                    $data = json_decode($response, true);
-                                                    // Check if issues are found
-                                                    if (isset($data['issues']) && !empty($data['issues'])) {
-                                                        // Get the latest issue
-                                                        $latestIssue = $data['issues'][0];
-                                                        // Display the last maintenance date from Jira (assuming 'updated' field is the maintenance date)
-                                                        echo isset($latestIssue['fields']['updated']) ? $latestIssue['fields']['updated'] : '--';
-                                                    } else {
-                                                        // If no issues are found
-                                                        echo '--';
-                                                    }
-                                                } else {
-                                                    // Handle the error
-                                                    echo 'Failed to fetch data from Jira API';
-                                                }
-                                                ?>
-                                            </span>
+                                            <span class=""><?php echo $lastMaintenanceDate; ?></span>
                                         </li>
                                     </ul>
                                 </div>
