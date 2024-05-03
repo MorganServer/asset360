@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 
 // Include the necessary files
 include_once '../../path.php'; // Assuming this defines BASE_URL
-include_once BASE_URL . '/app/database/connection.php';
+include_once ROOT_PATH . '/app/database/connection.php';
 
 // Check if ID is provided in the URL
 if(isset($_GET['id'])) {
