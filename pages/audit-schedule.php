@@ -145,7 +145,7 @@ if(isLoggedIn() == false) {
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="rescheduleModalLabel">Perform Audit</h5>
+                                    <h5 class="modal-title" id="rescheduleModalLabel">Reschedule Audit</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -170,7 +170,7 @@ if(isLoggedIn() == false) {
                                             <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
                                         </div>
                                         <!-- Add more fields as needed -->
-                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Create Issue</button>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Reschedule Audit</button>
                                         <?php }}} ?>
                                     </form>
                                 </div>
