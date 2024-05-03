@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['review-event'])) {
+if (isset($_POST['reschedule'])) {
     $idno = rand(1000000, 9999999);
 
     // Sanitize input data
