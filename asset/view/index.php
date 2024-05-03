@@ -491,6 +491,7 @@ if(isLoggedIn() == false) {
                                                 $latestIssue = $data['issues'][0];
                                                 // Display the last maintenance date from Jira (assuming 'updated' field is the maintenance date)
                                                 $lastMaintenanceDate = isset($latestIssue['fields']['updated']) ? date('M d, Y', strtotime($latestIssue['fields']['updated'])) : '--';
+                                                $key = $latestIsse['key'];
                                             } else {
                                                 // If no issues are found
                                                 $lastMaintenanceDate = '--';
@@ -505,7 +506,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class=""><?php echo $lastMaintenanceDate; ?></span>
+                                            <a href="https://garrett-morgan.atlassian.net/browse/<?php echo $key; ?>" class=""><?php echo $lastMaintenanceDate; ?></a>
                                         </li>
                                     </ul>
                                 </div>
