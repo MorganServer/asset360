@@ -87,7 +87,14 @@ if(isLoggedIn() == false) {
                             <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                         </a>
                     </td>
-                    <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
+                    <td>
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                            <div class="position-relative">
+                                <i class="bi bi-shield-fill-check"></i> &nbsp;Reschedule Audit
+                                <span class="position-absolute bottom-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; margin-bottom: 30%;"><i class="bi bi-clock-history"></i></span>
+                            </div>
+                        </a>
+                    </td>                    
                 </tr>
 
                 <!-- AUDIT modal -->
@@ -100,9 +107,9 @@ if(isLoggedIn() == false) {
                                 </div>
                                 <div class="modal-body">
                                     <form id="auditModalForm">
-                                        <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
-                                        <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
-                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
+                                        <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $asset_tag_no. '] '; ?>">
+                                        <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $asset_tag_no; ?>">
+                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
                                         <div class="mb-3">
                                             <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                             <input type="text" class="form-control" id="summary" name="summary" required>
@@ -121,6 +128,30 @@ if(isLoggedIn() == false) {
                         </div>
                     </div>
                 <!-- End Modal for AUDIT -->
+
+                <!-- RESCHEDULE modal -->
+                    <div class="modal fade" id="rescheduleModal" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="rescheduleModalLabel">Perform Audit</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="auditModalForm">
+                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
+                                        <div class="mb-3">
+                                            <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
+                                            <input type="text" class="form-control" id="audit_schedule" name="audit_schedule" required>
+                                        </div>
+                                        <!-- Add more fields as needed -->
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End Modal for RESCHEDULE -->
 
                 <?php
                         }
