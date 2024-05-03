@@ -41,7 +41,7 @@ if(isLoggedIn() == false) {
         <br>
 
         <?php
-        $id = $_GET['updateid'];
+        $id = $_GET['id'];
         $u_sql = "SELECT * FROM assets
         WHERE asset_id = $id";
         $u_result = mysqli_query($conn, $u_sql);
@@ -53,7 +53,7 @@ if(isLoggedIn() == false) {
                 $u_asset_name             = $u_row['asset_name']; 
                 $u_asset_tag_no           = $u_row['asset_tag_no'];
                 $u_manufacturer_name      = $u_row['manufacturer_name'];
-                $u_model                  = $u_row['model'];
+                // $u_model                  = $u_row['model'];
                 $u_model_no               = $u_row['model_no'];
                 $u_acquisition_date       = $u_row['acquisition_date'];
                 $u_end_of_life_date       = $u_row['end_of_life_date'];
