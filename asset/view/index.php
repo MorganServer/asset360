@@ -207,6 +207,45 @@ if(isLoggedIn() == false) {
                                 </div>
                             <!-- End Modal for AUDIT -->
 
+                            <!-- RESCHEDULE modal -->
+                                <div class="modal fade" id="rescheduleModal<?php echo $off_id; ?>" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="rescheduleModalLabel">Reschedule Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                <?php
+                                                    $r_sql = "SELECT * FROM assets WHERE asset_id = $off_id";
+                                                    $r_result = mysqli_query($conn, $r_sql);
+                                                    if($r_result) {
+                                                        $r_num_rows = mysqli_num_rows($r_result);
+                                                        if($r_num_rows > 0) {
+                                                            while ($r_row = mysqli_fetch_assoc($r_result)) {
+                                                                $r_id                       = $r_row['asset_id'];
+                                                                $r_asset_tag_no             = $r_row['asset_tag_no'];
+                                                                $r_maintenance_schedule     = $r_row['maintenance_schedule'];
+                                                                $r_audit_schedule           = $r_row['audit_schedule'];
+                                                                $r_location                 = $r_row['location'];
+                                                                $r_created_at               = $r_row['created_at'];
+                                                ?>
+                                                    <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $r_id; ?>">
+                                                    <div class="mb-3">
+                                                        <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
+                                                        <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Reschedule</button>
+                                                    <?php }}} ?>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- End Modal for RESCHEDULE -->
+
                             <!-- MAINTENANCE modal -->
                                 <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
