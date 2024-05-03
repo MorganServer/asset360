@@ -43,7 +43,7 @@ function updateAssetTable($asset_id) {
     // $next_month_weekday = date('N', strtotime($next_month));
 
     // Assuming $specific_date contains the specific date you want to start from
-$specific_date = "2024-05-08"; // Example specific date
+$specific_date = "2024-05-07"; // Example specific date
 
 // Calculate one month from the specific date
 $next_month = date('Y-m-d', strtotime('+1 month', strtotime($specific_date)));
