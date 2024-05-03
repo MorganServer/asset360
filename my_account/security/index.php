@@ -83,8 +83,15 @@ if(isLoggedIn() == false) {
                                     <?php echo $uname; ?>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-6">
+                            <div class="row mb-3">
+                                <label for="password" class="col-sm-2 col-form-label">Current Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="password" class="col-sm-2 col-form-label">New Password</label>
+                                <div class="col">
                                   <div class="input-group d-flex">
                                     <input
                                       type="password"
@@ -93,6 +100,7 @@ if(isLoggedIn() == false) {
                                       aria-label="password"
                                       aria-describedby="password"
                                       id="password-input"
+                                      name="n_password"
                                     />
                                     <div class="valid-feedback"></div>
                                     <div class="invalid-feedback"></div>
@@ -130,21 +138,7 @@ if(isLoggedIn() == false) {
                             
                               </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="password" class="col-sm-2 col-form-label">Current Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="password" name="password" required>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="n_password" name="n_password" required>
-                                    <p>
-                                        Your password
-                                    </p>
-                                </div>
-                            </div>
+
                             <div class="row mb-3">
                                 <label for="c_password" class="col-sm-2 col-form-label">Confirm Password</label>
                                 <div class="col-sm-10">
