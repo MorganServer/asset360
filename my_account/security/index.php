@@ -109,33 +109,32 @@ if(isLoggedIn() == false) {
 
                               <div class="col">
 
-                                <div
-                                  data-mdb-alert-init class="alert d-none"
-                                  role="alert"
-                                  data-mdb-color="warning"
-                                  id="password-alert"
-                                  style="margin-left: -100%; margin-top: 35px;"
-                                  >
-                                  <ul class="list-unstyled mb-0">
-                                    <li class="requirements leng">
-                                      <i class="bi bi-check text-success me-2"></i>
-                                      <i class="bi bi-x text-danger me-3"></i>
-                                      Your password must have at least 8 chars</li>
-                                    <li class="requirements big-letter">
-                                      <i class="bi bi-x text-success me-2"></i>
-                                      <i class="fas fa-times text-danger me-3"></i>
-                                      Your password must have at least 1 big letter.</li>
-                                    <li class="requirements num">
-                                      <i class="bi bi-x text-success me-2"></i>
-                                      <i class="fas fa-times text-danger me-3"></i>
-                                      Your password must have at least 1 number.</li>
-                                    <li class="requirements special-char">
-                                      <i class="bi bi-x text-success me-2"></i>
-                                      <i class="fas fa-times text-danger me-3"></i>
-                                      Your password must have at least 1 special char.</li>
-                                  </ul>
-                                </div>
-
+                              <div
+                              data-mdb-alert-init class="alert px-4 py-3 mb-0 d-none"
+                              role="alert"
+                              data-mdb-color="warning"
+                              id="password-alert"
+                              >
+                              <ul class="list-unstyled mb-0">
+                                <li class="requirements leng">
+                                  <i class="bi bi-check text-success me-2"></i>
+                                  <i class="bi bi-x text-danger me-3"></i>
+                                  Your password must have at least 8 chars</li>
+                                <li class="requirements big-letter">
+                                  <i class="bi bi-check text-success me-2"></i>
+                                  <i class="bi bi-x text-danger me-3"></i>
+                                  Your password must have at least 1 big letter.</li>
+                                <li class="requirements num">
+                                  <i class="bi bi-check text-success me-2"></i>
+                                  <i class="bi bi-x text-danger me-3"></i>
+                                  Your password must have at least 1 number.</li>
+                                <li class="requirements special-char">
+                                  <i class="bi bi-check text-success me-2"></i>
+                                  <i class="bi bi-x text-danger me-3"></i>
+                                  Your password must have at least 1 special char.</li>
+                              </ul>
+                              </div>
+                            
                               </div>
                             </div>
                             <div class="row mb-3">
