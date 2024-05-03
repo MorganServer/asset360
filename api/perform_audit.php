@@ -39,8 +39,15 @@ function updateAssetTable($asset_id) {
     }
 
     // Calculate one month from today, being a Monday - Friday
-    $next_month = date('Y-m-d', strtotime('+1 month'));
-    $next_month_weekday = date('N', strtotime($next_month));
+    // $next_month = date('Y-m-d', strtotime('+1 month'));
+    // $next_month_weekday = date('N', strtotime($next_month));
+
+    // Assuming $specific_date contains the specific date you want to start from
+$specific_date = "2024-05-08"; // Example specific date
+
+// Calculate one month from the specific date
+$next_month = date('Y-m-d', strtotime('+1 month', strtotime($specific_date)));
+$next_month_weekday = date('N', strtotime($next_month));
 
     // If next month starts on a Saturday or Sunday, add days to make it Monday
     if ($next_month_weekday == 6) {
