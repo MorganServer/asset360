@@ -57,6 +57,8 @@ if(isLoggedIn() == false) {
                     $limit = 10; // Number of entries per page
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
+
+                    $today = date('Y-m-d');
                     
                     $audit_sql = "SELECT * FROM assets ORDER BY audit_schedule ASC LIMIT $limit OFFSET $offset";
                     $audit_result = mysqli_query($conn, $audit_sql);
@@ -76,8 +78,9 @@ if(isLoggedIn() == false) {
 
                                 // Format audit schedule if not null
                                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                $is_today = ($audit_schedule == $today) ? true : false;
                 ?>
-                <tr>
+                <tr <?php if ($is_today) echo 'class="bs-warning-border-subtle"'; ?>>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
