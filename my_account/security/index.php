@@ -30,10 +30,10 @@ if(isLoggedIn() == false) {
 
     <title>My Account | Asset360</title>
     <style>
-        .wrong .fa-check {
+        .wrong .bi-check {
             display: none;
         }
-        .good .fa-times {
+        .good .bi-x {
             display: none;
         }
         .valid-feedback,
@@ -104,7 +104,7 @@ if(isLoggedIn() == false) {
                                     <div class="invalid-feedback">Wrong</div>
                                   </div>
                                 </div>
-                                    
+
                                 <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
 
                               <div
