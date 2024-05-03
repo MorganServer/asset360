@@ -455,7 +455,7 @@ if(isLoggedIn() == false) {
                                                 $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
 
                                                 // Construct the URL for the Jira API endpoint
-                                                $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields);
+                                                $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
 
                                                 // Perform API request to fetch the latest maintenance issue
                                                 // Code to perform API request and handle response goes here
