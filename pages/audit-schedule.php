@@ -91,7 +91,7 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal">
                             <div class="position-relative">
                                 <i class="bi bi-shield-fill-check"></i>
-                                <span class="position-absolute bottom-0 end-50 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; margin-bottom: 30%;"><i class="bi bi-clock-history"></i></span>  &nbsp;Reschedule Audit
+                                <span class="position-absolute bottom-0 end-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px; margin-bottom: 30%;"><i class="bi bi-clock-history"></i></span>  &nbsp;Reschedule Audit
                             </div>
                         </a>
                     </td>                    
