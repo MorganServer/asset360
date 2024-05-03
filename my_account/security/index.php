@@ -108,6 +108,7 @@ if(isLoggedIn() == false) {
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-label">New Password</label>
                                 <div class="col-sm-10">
+                                  <div class="input-group">
                                     <input
                                       type="password"
                                       class="form-control rounded mt-1 w-50"
@@ -119,6 +120,7 @@ if(isLoggedIn() == false) {
                                     />
                                     <div class="valid-feedback"></div>
                                     <div class="invalid-feedback"></div>
+                                  </div>
                                 </div>
 
                                 <div class="col-6">
