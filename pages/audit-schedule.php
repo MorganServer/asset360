@@ -86,7 +86,7 @@ if(isLoggedIn() == false) {
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
-                        <?php if (strtotime($audit_schedule) >= strtotime($today)) { ?>
+                        <?php if (strtotime($audit_schedule) <= strtotime($today)) { ?>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
                                 Perform
                             </a>
