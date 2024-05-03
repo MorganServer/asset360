@@ -1,5 +1,9 @@
 <?php
 
+// Include the necessary files
+include_once '../path.php'; // Assuming this defines BASE_URL
+include_once ROOT_PATH . '/app/database/connection.php';
+
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
     $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
@@ -30,32 +34,17 @@ function createJiraIssue($issueDataJson) {
 
 // Function to update the audit_schedule field in the assets table
 function updateAuditSchedule($assetId) {
-    // Modify these credentials with your MySQL connection details
-    $servername = "localhost";
-    $username = "dbuser";
-    $password = "DBuser123!";
-    $dbname = "asset_management";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
 
     // Update query
     $id = $_GET['id'];
     echo $id;
     $sql = "UPDATE assets SET audit_schedule = DATE_ADD(NOW(), INTERVAL 1 MONTH) WHERE asset_id = $id";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Audit schedule updated successfully.";
-    } else {
-        echo "Error updating audit schedule: " . $conn->error;
-    }
-
-    $conn->close();
+        if (mysqli_query($conn, $sql)) {
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            exit; // Ensure script stops execution after redirecting
+        } else {
+            $error[] = 'Error: ' . mysqli_error($conn);
+        }
 }
 
 // Check if request method is POST and if data is received
