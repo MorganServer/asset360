@@ -110,7 +110,7 @@ if(isLoggedIn() == false) {
                               <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
 
                                 <div
-                                  data-mdb-alert-init class="alert px-4 py-3 mb-0 d-none"
+                                  data-mdb-alert-init class="alert  d-none"
                                   role="alert"
                                   data-mdb-color="warning"
                                   id="password-alert"
