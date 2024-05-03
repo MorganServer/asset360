@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                                     $r_location               = $r_row['location'];
                                                     $r_created_at             = $r_row['created_at'];
                                     ?>
-                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
+                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
                                         <div class="mb-3">
                                             <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
                                             <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
