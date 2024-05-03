@@ -146,7 +146,10 @@ if(isLoggedIn() == false) {
                                                                         <td>${issue.fields.issuetype.name}</td>
                                                                         <td><span class="${statusBadgeClass}">${issue.fields.status.name}</span></td>
                                                                         <td>${new Date(issue.fields.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                                                                        <td>${new Date(issue.fields.duedate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                                                                        <?php
+                                                                            $due_date = $issue.fields.duedate;
+                                                                            echo $due_date ? (new Date($due_date)).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '--';
+                                                                        ?>
                                                                         <td>${new Date(issue.fields.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                                                         <td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
 
