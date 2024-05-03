@@ -375,7 +375,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo isset($end_of_life_date_formatted) && !empty($end_of_life_date_formatted) ? $end_of_life_date_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $end_of_life_date_formatted ? $end_of_life_date_formatted : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
@@ -678,6 +678,7 @@ if(isLoggedIn() == false) {
         // Convert issueData to FormData object
         var formData = new FormData();
         formData.append('auditIssueData', JSON.stringify(auditIssueData));
+        formData.append('asset_id', asset_id); // Append asset_id to FormData
 
         // Make AJAX request to create Jira issue
         fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
