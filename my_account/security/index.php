@@ -67,14 +67,30 @@ if(isLoggedIn() == false) {
         <div class="col">
             <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
                 <div class="card-body p-4">
+                <?php
+                            $user_id = $_SESSION['user_id'];
+
+                            $a_sql = "SELECT * FROM users WHERE user_id = $user_id";
+                            $a_result = mysqli_query($conn, $a_sql);
+                            if($a_result) {
+                                $a_num_rows = mysqli_num_rows($a_result);
+                                if($a_num_rows > 0) {
+                                    while ($a_row = mysqli_fetch_assoc($a_result)) {
+                                        $id                     = $a_row['user_id'];
+                                        $fname                  = $a_row['fname'];
+                                        $lname                  = $a_row['lname'];
+                                        $uname                  = $a_row['uname'];
+                                        $email                  = $a_row['email'];
+                                        $account_type           = $a_row['account_type'];
+                                        $account_created        = $a_row['account_created'];
+
+                                        // Format maintenance schedule if not null
+                                        $f_account_created = !empty($account_created) ? date_format(date_create($account_created), 'M d, Y') : '-';
+                                    
+                                    }}}
+                        ?>
                     <h5 class="card-title">Account Information</h5>
                     <p class="card-text">
-                        <!-- Account Type and Creation Date -->
-                        <div class="mt-3">
-                            <p class="text-secondary text-capitalize"><?php echo $account_type; ?> Account</p>
-                            <p class="text-secondary" style="margin-top: -10px;">Member since <?php echo $f_account_created; ?></p>
-                        </div>
-                        <br>
                         <!-- Account Update Form -->
                         <form method="POST">
                             <div class="row mb-3">
