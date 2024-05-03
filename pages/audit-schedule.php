@@ -149,7 +149,7 @@ if(isLoggedIn() == false) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="POST">
                                     <?php
                                         $r_sql = "SELECT * FROM assets WHERE asset_id = $id";
                                         $r_result = mysqli_query($conn, $r_sql);
