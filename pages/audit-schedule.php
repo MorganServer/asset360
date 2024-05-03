@@ -58,7 +58,7 @@ if(isLoggedIn() == false) {
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
                     
-                    $audit_sql = "SELECT * FROM assets ORDER BY next_audit DESC LIMIT $limit OFFSET $offset";
+                    $audit_sql = "SELECT * FROM assets ORDER BY audit_schedule DESC LIMIT $limit OFFSET $offset";
                     $audit_result = mysqli_query($conn, $audit_sql);
                     if($audit_result) {
                         $audit_num_rows = mysqli_num_rows($audit_result);
