@@ -375,7 +375,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo $end_of_life_date_formatted ? $end_of_life_date_formatted : '--'; ?></span>
+                                            <span class=""><?php echo isset($end_of_life_date_formatted) && !empty($end_of_life_date_formatted) ? $end_of_life_date_formatted : '--'; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
