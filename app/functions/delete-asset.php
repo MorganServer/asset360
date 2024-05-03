@@ -1,7 +1,7 @@
 <?php
 
-if(isset($_GET['deleteid'])) {
-    $id = $_GET['deleteid'];
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];
 
     $sql = "DELETE FROM assets WHERE asset_id=$id";
     $result = mysqli_query($conn, $sql);
