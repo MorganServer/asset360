@@ -2,8 +2,7 @@
 if (isset($_POST['update-asset'])) {
     // Sanitize input data
     $idno = isset($_POST['idno']) ? mysqli_real_escape_string($conn, $_POST['idno']) : "";
-    $tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : ""; 
-    $asset_tag_no = "M-" . $tag_no;
+    $asset_tag_no = isset($_POST['asset_tag_no']) ? mysqli_real_escape_string($conn, $_POST['asset_tag_no']) : "";
     $asset_name = isset($_POST['asset_name']) ? mysqli_real_escape_string($conn, $_POST['asset_name']) : "";
     $asset_type = isset($_POST['asset_type']) ? mysqli_real_escape_string($conn, $_POST['asset_type']) : "";
     $serial_number = isset($_POST['serial_number']) ? mysqli_real_escape_string($conn, $_POST['serial_number']) : "";
