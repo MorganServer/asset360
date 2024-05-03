@@ -84,30 +84,28 @@ if(isLoggedIn() == false) {
                                 </div>
                             </div>
                             <div class="row">
-                                
-                              <div class="col">
-                                <div class="input-group d-flex">
-                                  <span
-                                    class="input-group-text border-0"
-                                    id="password"
-                                    >
-                                    <i class="bi bi-lock me-1"></i>
-                                </span>
-                                  <input
-                                    type="password"
-                                    class="form-control rounded mt-1"
-                                    placeholder="Type your password"
-                                    name="n_password"
-                                    aria-label="password"
-                                    aria-describedby="password"
-                                    id="password-input"
-                                  />
-                                  <div class="valid-feedback"></div>
-                                  <div class="invalid-feedback"></div>
+                                <div class="col-6">
+                                  <div class="input-group d-flex">
+                                    <span
+                                      class="input-group-text border-0"
+                                      id="password"
+                                      >
+                                      <i class="fas fa-lock fa-2x me-1"></i>
+                                  </span>
+                                    <input
+                                      type="password"
+                                      class="form-control rounded mt-1"
+                                      placeholder="Type your password"
+                                      aria-label="password"
+                                      aria-describedby="password"
+                                      id="password-input"
+                                    />
+                                    <div class="valid-feedback">Good</div>
+                                    <div class="invalid-feedback">Wrong</div>
+                                  </div>
                                 </div>
-                              </div>
-
-                              <div class="col">
+                                    
+                                <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
 
                               <div
                               data-mdb-alert-init class="alert px-4 py-3 mb-0 d-none"
