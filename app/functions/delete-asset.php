@@ -22,6 +22,6 @@ if(isset($_GET['id'])) {
     }
 } else {
     // Handle the case when id is not set in the URL
-    echo "ID not provided.";
+    // echo "ID not provided.";
 }
 ?>
