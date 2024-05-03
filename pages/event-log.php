@@ -140,15 +140,29 @@ if(isLoggedIn() == false) {
                                                     }
                                                     
                                                     var newRow = document.createElement("tr");
+                                                    // Parse the due date from issue.fields.duedate
+                                                    const dueDate = issue.fields.duedate ? new Date(issue.fields.duedate) : null;
+                                                                                                    
+                                                    // If dueDate is not null, format it to string with timezone offset
+                                                    const formattedDueDate = dueDate ? 
+                                                        dueDate.toLocaleDateString('en-US', { 
+                                                            month: 'short', 
+                                                            day: 'numeric', 
+                                                            year: 'numeric',
+                                                            timeZone: 'UTC' // Set the timezone offset to UTC
+                                                        }) : '--';
+                                                    
+                                                    // Assign the formatted due date to the table cell
                                                     newRow.innerHTML = `<td>${issue.key}</td>
                                                         <td><a href="https://asset360.morganserver.com/asset/view/?id=${issue.fields.labels[0]}" target="_blank" class="" style="">${issue.fields.labels[1]}</a></td>
                                                         <td>${issue.fields.summary}</td>
                                                         <td>${issue.fields.issuetype.name}</td>
                                                         <td><span class="${statusBadgeClass}">${issue.fields.status.name}</span></td>
                                                         <td>${new Date(issue.fields.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
-                                                        <td>${issue.fields.duedate ? new Date(issue.fields.duedate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '--'}</td>
+                                                        <td>${formattedDueDate}</td>
                                                         <td>${new Date(issue.fields.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
                                                         <td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+
 
 
                                                 document.getElementById("jiraTableBody").appendChild(newRow);
