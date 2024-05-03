@@ -33,9 +33,10 @@ function createJiraIssue($issueDataJson) {
 }
 
 // Function to update the audit_schedule field in the assets table
-function updateAuditSchedule($conn, $assetId) {
+function updateAuditSchedule() {
+    $id = $_GET['id'];
     $nextMonth = date('Y-m-d', strtotime('+1 month'));
-    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $assetId";
+    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $id";
     if (mysqli_query($conn, $sql)) {
         header("Location: " . $_SERVER['HTTP_REFERER']);
         exit; // Ensure script stops execution after redirecting
@@ -60,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
 
         // Assuming you have an asset ID available, you can call the update function here
         $assetId = 123; // Replace 123 with the actual asset ID
-        updateAuditSchedule($conn, $assetId);
+        updateAuditSchedule();
     }
 } else {
     echo "Error: Invalid request.";
