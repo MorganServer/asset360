@@ -118,19 +118,19 @@ if(isLoggedIn() == false) {
                                   >
                                   <ul class="list-unstyled mb-0">
                                     <li class="requirements leng">
-                                      <i class="fas fa-check text-success me-2"></i>
-                                      <i class="fas fa-times text-danger me-3"></i>
+                                      <i class="bi bi-check text-success me-2"></i>
+                                      <i class="bi bi-x text-danger me-3"></i>
                                       Your password must have at least 8 chars</li>
                                     <li class="requirements big-letter">
-                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="bi bi-x text-success me-2"></i>
                                       <i class="fas fa-times text-danger me-3"></i>
                                       Your password must have at least 1 big letter.</li>
                                     <li class="requirements num">
-                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="bi bi-x text-success me-2"></i>
                                       <i class="fas fa-times text-danger me-3"></i>
                                       Your password must have at least 1 number.</li>
                                     <li class="requirements special-char">
-                                      <i class="fas fa-check text-success me-2"></i>
+                                      <i class="bi bi-x text-success me-2"></i>
                                       <i class="fas fa-times text-danger me-3"></i>
                                       Your password must have at least 1 special char.</li>
                                   </ul>
