@@ -76,7 +76,7 @@ if(isLoggedIn() == false) {
             <div class="float-end" style="margin-top: -50px;">
                 <button type="submit" name="update-asset" class="btn btn-primary">Submit</button>
             </div>
-            <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $u_id; ?>">
+            <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $u_id; ?>">
         </div>
         <br>
         <hr>
@@ -89,7 +89,7 @@ if(isLoggedIn() == false) {
                 <label for="asset_tag_no" class="form-label">Asset Tag Number</label>
                 <div class="input-group">
                     <div class="input-group-text">M-</div>
-                    <input type="hidden" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $u_asset_tag_no; ?>">
+                    <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $u_asset_tag_no; ?>">
                 </div>
             </div>
             <div class="col">
