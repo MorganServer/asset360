@@ -41,7 +41,7 @@ if(isLoggedIn() == false) {
             </h2>
             <hr>
 
-            <div class="bg-secondary" style="border-radius: 5px; padding: 10px;">
+            <div class="" style="background-color: $gray-400; border-radius: 5px; padding: 10px;">
             <p>
                 You may change your password at any time by following the steps below:
             </p>
