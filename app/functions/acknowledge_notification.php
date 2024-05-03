@@ -2,9 +2,10 @@
 if (isset($_POST['acknowledge'])) {
     // Sanitize input data
     $notification_id = isset($_POST['notification_id']) ? mysqli_real_escape_string($conn, $_POST['notification_id']) : "";
+    $ack_by = isset($_POST['ack_by']) ? mysqli_real_escape_string($conn, $_POST['ack_by']) : "";
 
     // Update the notification to mark it as acknowledged
-    $update_query = "UPDATE notifications SET acknowledged = 1 WHERE notification_id = '$notification_id'";
+    $update_query = "UPDATE notifications SET acknowledged = 1, ack_by = $ack_by WHERE notification_id = '$notification_id'";
 
     if (mysqli_query($conn, $update_query)) {
         // Notification acknowledged successfully
