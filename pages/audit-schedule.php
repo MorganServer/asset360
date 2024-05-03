@@ -90,10 +90,11 @@ if(isLoggedIn() == false) {
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
                                 Perform
                             </a>
-                        <?php } ?>
+                        <?php } else { ?>
                         <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
                             Reschedule
                         </a>
+                        <?php } ?>
                     </td>                   
                 </tr>
 

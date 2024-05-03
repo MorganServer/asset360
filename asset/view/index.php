@@ -167,10 +167,11 @@ if(isLoggedIn() == false) {
                                 <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                 </a>
-                            <?php } ?>
+                            <?php } else { ?>
                                 <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
                                     <i class="bi bi-calendar2-week-fill"></i> &nbsp;Reschedule Audit
                                 </a>
+                            <?php } ?>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
