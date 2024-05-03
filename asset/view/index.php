@@ -231,7 +231,7 @@ if(isLoggedIn() == false) {
                         <!-- end JIRA BUTTONS -->
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
-                        <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
+                        <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="?updateid=<?php echo $id; ?>">Edit</a>
                         <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
                     </span>
                 </h2>
@@ -261,9 +261,6 @@ if(isLoggedIn() == false) {
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button" role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
                   </li>
-                  <!-- <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
-                  </li> -->
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
                   </li>
@@ -462,102 +459,6 @@ if(isLoggedIn() == false) {
 
                         </div>
                     <!-- end Notes -->
-
-                    <!-- Events -->
-                        <!-- <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
-                            <div class="mt-4"></div>
-                            <h4><i class="bi bi-tools"></i> Latest Events</h4>
-                            <hr>
-
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Tag No</th>
-                                    <th scope="col">Event Type</th>
-                                    <th scope="col">Performed</th>
-                                    <th scope="col">Performed By</th>
-                                    <th scope="col">Reviewed</th>
-                                    <th scope="col">Reviewed By</th>
-                                    <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        // $limit = 10; 
-                                        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                        // $offset = ($page - 1) * $limit;
-
-                                        // $esql = "SELECT * FROM event_log WHERE asset_tag_no = '$off_asset_tag_no' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        // $eresult = mysqli_query($conn, $esql);
-                                        // if($eresult) {
-                                        //     $enum_rows = mysqli_num_rows($eresult);
-                                        //     if($enum_rows > 0) {
-                                        //         while ($erow = mysqli_fetch_assoc($eresult)) {
-                                        //             $id                     = $erow['event_id'];
-                                        //             $idno                   = $erow['idno'];
-                                        //             $status                 = $erow['status'];
-                                        //             $date_reviewed          = $erow['date_reviewed'];
-                                        //             $date_performed         = $erow['date_performed'];
-                                        //             $asset_tag_no           = $erow['asset_tag_no'];
-                                        //             $performed_by           = $erow['performed_by'];
-                                        //             $reviewed_by            = $erow['reviewed_by'];
-                                        //             $event_type             = $erow['event_type'];
-                                        //             $notes                  = $erow['notes'];
-                                        //             $event_created          = $erow['event_created'];    
-                                        //             $event_updated          = $erow['event_updated'];                 
-
-                                                    
-                                        //             $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
-                                        //             $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
-
-                                                    
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php //echo $asset_tag_no; ?></th>
-                                        <td><?php //echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php //echo $f_date_performed ? $f_date_performed : '--'; ?></td>
-                                        <td><?php //echo $performed_by ? $performed_by : '--'; ?></td>
-                                        <td><?php //echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
-                                        <td><?php //echo $reviewed_by ? $reviewed_by : '--'; ?></td>
-                                        <?php //if($status == "Awaiting Approval") { ?>
-                                            <td><span class="badge text-bg-primary"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Completed") { ?>
-                                            <td><span class="badge text-bg-success"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Rejected") { ?>
-                                            <td><span class="badge text-bg-danger"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Rescheduled") { ?>
-                                            <td><span class="badge text-bg-warning"><?php //echo $status; ?></span></td>
-                                        <?php //} else { ?>
-                                            <td>--</td>
-                                        <?php //} ?>
-                                        
-                                    </tr>
-                                    <?php
-                                           // }
-                                        //}
-                                    //}
-                                    ?>
-                                </tbody>
-                            </table>
-                            <br>
-                            <?php
-                                
-                                // $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
-                                // $result = mysqli_query($conn, $sql);
-                                // $row = mysqli_fetch_assoc($result);
-                                // $total_pages = ceil($row["total"] / $limit);                    
-
-                                //     echo '<ul class="pagination justify-content-center">';
-                                //     for ($i = 1; $i <= $total_pages; $i++) {
-                                //         $active = ($page == $i) ? "active" : "";
-                                //         echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                                //     }
-                                //     echo '</ul>';
-                            ?>
-
-
-                        </div> -->
-                    <!-- end Events -->
 
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
