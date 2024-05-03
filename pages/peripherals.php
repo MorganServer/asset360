@@ -112,7 +112,7 @@ if(isLoggedIn() == false) {
                         return $response;
                     }
                     // Construct the JQL query string dynamically
-                    $assetTag = $off_asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
+                    $assetTag = $asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
                     $jqlQuery = "project in (SG, INFRA) AND summary~'$assetTag' AND issueType = 10030 ORDER BY created DESC";
                     $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
                     // Construct the URL for the Jira API endpoint
