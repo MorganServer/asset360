@@ -107,13 +107,14 @@ if(isLoggedIn() == false) {
                                 </div>
                               </div>
 
-                              <div class="col d-flex flex-column">
+                              <div class="col">
 
                                 <div
-                                  data-mdb-alert-init class="alert  d-none"
+                                  data-mdb-alert-init class="alert d-none"
                                   role="alert"
                                   data-mdb-color="warning"
                                   id="password-alert"
+                                  style="margin-left: -100%; margin-top: 30px;"
                                   >
                                   <ul class="list-unstyled mb-0">
                                     <li class="requirements leng">
@@ -184,7 +185,6 @@ if(isLoggedIn() == false) {
 
   password.addEventListener("focus", () => {
       passwordAlert.classList.remove("d-none");
-      passwordAlert.classList.add("d-flex flex-column");
       if (!password.classList.contains("is-valid")) {
           password.classList.add("is-invalid");
       }
@@ -230,7 +230,6 @@ if(isLoggedIn() == false) {
 
   password.addEventListener("blur", () => {
       passwordAlert.classList.add("d-none");
-      passwordAlert.classList.remove("d-flex flex-column");
   });
 });
     </script>
