@@ -123,8 +123,31 @@ if(isLoggedIn() == false) {
                                         if (data && data.issues && data.issues.length > 0) {
                                             document.getElementById("jiraTableBody").innerHTML = "";
                                             data.issues.forEach(issue => {
-                                                var newRow = document.createElement("tr");
-                                                newRow.innerHTML = `<td>${issue.key}</td><td><a href="https://asset360.morganserver.com/asset/view/?id=${issue.fields.labels[0]}" target="_blank" class="" style="">${issue.fields.labels[1]}</a></td><td>${issue.fields.summary}</td><td>${issue.fields.issuetype.name}</td><td>${issue.fields.status.name}</td><td>${new Date(issue.fields.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td><td>${new Date(issue.fields.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td><td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+                                                var statusBadgeClass;
+                                                    switch (issue.fields.status.name) {
+                                                      case "Completed":
+                                                        statusBadgeClass = "badge bg-success";
+                                                        break;
+                                                      case "In Progress":
+                                                        statusBadgeClass = "badge bg-primary";
+                                                        break;
+                                                      case "Open":
+                                                        statusBadgeClass = "badge bg-danger";
+                                                        break;
+                                                      default:
+                                                        statusBadgeClass = "badge bg-secondary";
+                                                    }
+                                                    
+                                                    var newRow = document.createElement("tr");
+                                                    newRow.innerHTML = `<td>${issue.key}</td>
+                                                                        <td><a href="https://asset360.morganserver.com/asset/view/?id=${issue.fields.labels[0]}" target="_blank" class="" style="">${issue.fields.labels[1]}</a></td>
+                                                                        <td>${issue.fields.summary}</td>
+                                                                        <td>${issue.fields.issuetype.name}</td>
+                                                                        <td><span class="${statusBadgeClass}">${issue.fields.status.name}</span></td>
+                                                                        <td>${new Date(issue.fields.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                                                                        <td>${new Date(issue.fields.updated).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</td>
+                                                                        <td><a href="https://garrett-morgan.atlassian.net/browse/${issue.key}" target="_blank" class="badge text-bg-primary text-decoration-none" style="font-size: 14px;">Visit</a></td>`;
+
                                                 document.getElementById("jiraTableBody").appendChild(newRow);
                                             });
                                         } else {
