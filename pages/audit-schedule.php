@@ -91,7 +91,7 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal">
                             <div class="position-relative">
                                 <i class="bi bi-calendar-fill"></i>
-                                <span class="position-absolute bottom-0 end-75 translate-middle" style="font-size: 14px; margin-bottom: -5%;"><i class="bi bi-clock-history"></i></span>  &nbsp;Reschedule Audit
+                                <span class="position-absolute bottom-0 end-75 translate-middle" style="font-size: 14px; margin-bottom: -10%; margin-left: -15px !important;"><i class="bi bi-clock-history"></i></span>  &nbsp;Reschedule Audit
                             </div>
                         </a>
                     </td>                    
