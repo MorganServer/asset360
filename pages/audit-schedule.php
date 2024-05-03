@@ -58,24 +58,21 @@ if(isLoggedIn() == false) {
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
                     
-                    $sql = "SELECT * FROM assets ORDER BY next_audit DESC LIMIT $limit OFFSET $offset";
-                    $result = mysqli_query($conn, $sql);
-                    if($result) {
-                        $num_rows = mysqli_num_rows($result);
-                        if($num_rows > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                $id                     = $row['asset_id'];
-                                $idno                   = $row['idno'];
-                                $status                 = $row['status'];
-                                $asset_name             = $row['asset_name'];
-                                $asset_tag_no           = $row['asset_tag_no'];
-                                $maintenance_schedule   = $row['maintenance_schedule'];
-                                $audit_schedule         = $row['audit_schedule'];
-                                $location               = $row['location'];
-                                $created_at             = $row['created_at'];
-
-                                // Format maintenance schedule if not null
-                                $f_maintenance_schedule = !empty($maintenance_schedule) ? date_format(date_create($maintenance_schedule), 'M d, Y') : '-';
+                    $audit_sql = "SELECT * FROM assets ORDER BY next_audit DESC LIMIT $limit OFFSET $offset";
+                    $audit_result = mysqli_query($conn, $audit_sql);
+                    if($audit_result) {
+                        $audit_num_rows = mysqli_num_rows($audit_result);
+                        if($audit_num_rows > 0) {
+                            while ($audit_row = mysqli_fetch_assoc($audit_result)) {
+                                $id                     = $audit_row['asset_id'];
+                                $idno                   = $audit_row['idno'];
+                                $status                 = $audit_row['status'];
+                                $asset_name             = $audit_row['asset_name'];
+                                $asset_tag_no           = $audit_row['asset_tag_no'];
+                                $maintenance_schedule   = $audit_row['maintenance_schedule'];
+                                $audit_schedule         = $audit_row['audit_schedule'];
+                                $location               = $audit_row['location'];
+                                $created_at             = $audit_row['created_at'];
 
                                 // Format audit schedule if not null
                                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
