@@ -414,7 +414,9 @@ if(isLoggedIn() == false) {
                                             }
                                         }
 
-                                        $end_of_life_date_formatted = !empty($off_end_of_life_date) ? date_format(date_create($off_end_of_life_date), 'M d, Y') : '-';
+                                        $end_of_life_date_formatted = !empty($off_end_of_life_date) ? date_format(date_create($off_end_of_life_date), 'M d, Y') : '--';
+                                        $acquisition_date_formatted = !empty($off_acquisition_date) ? date_format(date_create($off_acquisition_date), 'M d, Y') : '--';
+                                        $audit_schedule_formatted = !empty($off_audit_schedule) ? date_format(date_create($off_audit_schedule), 'M d, Y') : '--';
                                     ?>
 
                                     <ul class="list-group list-group-flush">
@@ -422,7 +424,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Acquisition Date</div>
                                             </div>
-                                            <span class=""><?php echo $acq_date_formatted ? $acq_date_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $acquisition_date_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
@@ -440,7 +442,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Next Audit</div>
                                             </div>
-                                            <span class=""><?php echo $audit_schedule_formatted ? $audit_schedule_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
