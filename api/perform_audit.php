@@ -32,9 +32,9 @@ function createJiraIssue($issueDataJson) {
 function updateAuditSchedule($assetId) {
     // Modify these credentials with your MySQL connection details
     $servername = "localhost";
-    $username = "username";
-    $password = "password";
-    $dbname = "database";
+    $username = "dbuser";
+    $password = "DBuser123!";
+    $dbname = "asset_management";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
