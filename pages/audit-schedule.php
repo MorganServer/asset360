@@ -83,17 +83,17 @@ if(isLoggedIn() == false) {
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
                             Perform Audit
                         </a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal">
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal<?php echo $id; ?>">
                             Reschedule Audit
                         </a>
                     </td>                   
                 </tr>
 
                 <!-- AUDIT modal -->
-                    <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="auditModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -102,9 +102,24 @@ if(isLoggedIn() == false) {
                                 </div>
                                 <div class="modal-body">
                                     <form id="auditModalForm">
-                                        <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $asset_tag_no. '] '; ?>">
-                                        <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $asset_tag_no; ?>">
-                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
+                                    <?php
+                                        $as_sql = "SELECT * FROM assets WHERE asset_id = $id";
+                                        $as_result = mysqli_query($conn, $as_sql);
+                                        if($as_result) {
+                                            $as_num_rows = mysqli_num_rows($as_result);
+                                            if($as_num_rows > 0) {
+                                                while ($as_row = mysqli_fetch_assoc($as_result)) {
+                                                    $as_id                  = $as_row['asset_id'];
+                                                    $as_asset_tag_no           = $as_row['asset_tag_no'];
+                                                    $as_maintenance_schedule   = $as_row['maintenance_schedule'];
+                                                    $as_audit_schedule         = $as_row['audit_schedule'];
+                                                    $as_location               = $as_row['location'];
+                                                    $as_created_at             = $as_row['created_at'];
+                                    ?>
+
+                                        <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $as_asset_tag_no. '] '; ?>">
+                                        <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $as_asset_tag_no; ?>">
+                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $as_id; ?>">
                                         <div class="mb-3">
                                             <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                             <input type="text" class="form-control" id="summary" name="summary" required>
@@ -117,6 +132,7 @@ if(isLoggedIn() == false) {
                                         </div>
                                         <!-- Add more fields as needed -->
                                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                        <?php }}} ?>
                                     </form>
                                 </div>
                             </div>
@@ -125,7 +141,7 @@ if(isLoggedIn() == false) {
                 <!-- End Modal for AUDIT -->
 
                 <!-- RESCHEDULE modal -->
-                    <div class="modal fade" id="rescheduleModal" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="rescheduleModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -134,6 +150,20 @@ if(isLoggedIn() == false) {
                                 </div>
                                 <div class="modal-body">
                                     <form id="auditModalForm">
+                                    <?php
+                                        $r_sql = "SELECT * FROM assets WHERE asset_id = $id";
+                                        $r_result = mysqli_query($conn, $r_sql);
+                                        if($r_result) {
+                                            $r_num_rows = mysqli_num_rows($r_result);
+                                            if($r_num_rows > 0) {
+                                                while ($r_row = mysqli_fetch_assoc($r_result)) {
+                                                    $r_id                  = $r_row['asset_id'];
+                                                    $r_asset_tag_no           = $r_row['asset_tag_no'];
+                                                    $r_maintenance_schedule   = $r_row['maintenance_schedule'];
+                                                    $r_audit_schedule         = $r_row['audit_schedule'];
+                                                    $r_location               = $r_row['location'];
+                                                    $r_created_at             = $r_row['created_at'];
+                                    ?>
                                         <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
                                         <div class="mb-3">
                                             <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
@@ -141,6 +171,7 @@ if(isLoggedIn() == false) {
                                         </div>
                                         <!-- Add more fields as needed -->
                                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                        <?php }}} ?>
                                     </form>
                                 </div>
                             </div>
