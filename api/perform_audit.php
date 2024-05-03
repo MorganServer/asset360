@@ -2,7 +2,7 @@
 
 // Include the necessary files
 include_once '../path.php'; // Assuming this defines BASE_URL
-include_once ROOT_PATH . '/app/database/connection.php';
+// include_once ROOT_PATH . '/app/database/connection.php';
 
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
@@ -34,9 +34,19 @@ function createJiraIssue($issueDataJson) {
 
 // Function to update the audit_schedule field in the assets table
 function updateAuditSchedule() {
+    // Include the database connection
+    include_once ROOT_PATH . '/app/database/connection.php';
+
+    // Get the asset ID from GET parameters
     $id = $_GET['id'];
+    
+    // Calculate the next month's date
     $nextMonth = date('Y-m-d', strtotime('+1 month'));
+
+    // SQL query to update the audit_schedule field
     $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $id";
+    
+    // Perform the query
     if (mysqli_query($conn, $sql)) {
         header("Location: " . $_SERVER['HTTP_REFERER']);
         exit; // Ensure script stops execution after redirecting
@@ -44,6 +54,7 @@ function updateAuditSchedule() {
         $error[] = 'Error: ' . mysqli_error($conn);
     }
 }
+
 
 // Check if request method is POST and if data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
