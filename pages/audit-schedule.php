@@ -86,7 +86,7 @@ if(isLoggedIn() == false) {
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
                             Perform Audit
                         </a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal<?php echo $id; ?>">
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
                             Reschedule Audit
                         </a>
                     </td>                   
@@ -119,7 +119,7 @@ if(isLoggedIn() == false) {
 
                                         <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $as_asset_tag_no. '] '; ?>">
                                         <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $as_asset_tag_no; ?>">
-                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $as_id; ?>">
+                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $as_id; ?>">
                                         <div class="mb-3">
                                             <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                             <input type="text" class="form-control" id="summary" name="summary" required>
