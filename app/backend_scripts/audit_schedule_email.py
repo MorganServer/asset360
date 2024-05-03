@@ -3,6 +3,8 @@ from datetime import date
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import random
+import string
 
 # Database connection configuration
 db_config = {
@@ -22,6 +24,10 @@ email_config = {
     'smtp_password': 'vvbl gien cbrg zxrf'
 }
 
+# Function to generate random ID number
+def generate_random_id():
+    return ''.join(random.choices(string.digits, k=6))
+
 # Connect to MySQL database
 try:
     conn = mysql.connector.connect(**db_config)
@@ -37,7 +43,7 @@ try:
 
     assets = cursor.fetchall()
 
-    # If assets found, send an email
+    # If assets found, send an email and create notifications
     if assets:
         # Compose email message
         subject = "Assets with Audit Scheduled for Today"
@@ -61,6 +67,15 @@ try:
                 <td><a href='https://asset360.morganserver.com/asset/view/?id={asset[0]}'>Perform</a></td>
               </tr>
             """
+
+            # Insert notification into notifications table
+            notification_id = generate_random_id()
+            notification_details = f"{asset[2]} awaiting audit."
+            assigned_asset_tag_no = asset[2]
+            insert_query = "INSERT INTO notifications (idno, details, assigned_asset_tag_no) VALUES (%s, %s, %s)"
+            cursor.execute(insert_query, (notification_id, notification_details, assigned_asset_tag_no))
+            conn.commit()
+
         body += """
             </table>
           </body>
@@ -81,7 +96,7 @@ try:
             server.login(email_config['smtp_username'], email_config['smtp_password'])
             server.sendmail(email_config['sender_email'], email_config['receiver_email'], message.as_string())
 
-        # print("Email sent successfully!")
+        print("Email sent successfully!")
 
     else:
         print("No assets found with audit scheduled for today.")
