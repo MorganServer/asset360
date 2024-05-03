@@ -38,7 +38,7 @@ if(isLoggedIn() == false) {
         }
         .valid-feedback,
         .invalid-feedback {
-          margin-left: calc(2em - 0.25rem - 1.5rem);
+          margin-left: calc(2em + 0.25rem + 1.5rem);
         }
     </style>
 
@@ -91,7 +91,7 @@ if(isLoggedIn() == false) {
                                     class="input-group-text border-0"
                                     id="password"
                                     >
-                                    <i class="bi bi-lock fa-2x me-1"></i>
+                                    <i class="bi bi-lock me-1"></i>
                                 </span>
                                   <input
                                     type="password"
@@ -107,7 +107,7 @@ if(isLoggedIn() == false) {
                                 </div>
                               </div>
 
-                              <div class="col mt-4">
+                              <div class="col">
 
                                 <div
                                   data-mdb-alert-init class="alert  d-none"
