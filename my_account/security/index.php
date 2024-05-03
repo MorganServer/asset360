@@ -117,7 +117,6 @@ if(isLoggedIn() == false) {
                                       aria-describedby="password"
                                       id="password-input"
                                       name="n_password"
-                                      style="width: 100% !important;"
                                     />
                                     <div class="valid-feedback"></div>
                                     <div class="invalid-feedback"></div>
