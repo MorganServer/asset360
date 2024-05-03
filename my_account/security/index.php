@@ -85,13 +85,13 @@ if(isLoggedIn() == false) {
                             </div>
                             <div class="row">
                                 
-                              <div class="col-6">
+                              <div class="col">
                                 <div class="input-group d-flex">
                                   <span
                                     class="input-group-text border-0"
                                     id="password"
                                     >
-                                    <i class="fas fa-lock fa-2x me-1"></i>
+                                    <i class="bi bi-lock fa-2x me-1"></i>
                                 </span>
                                   <input
                                     type="password"
@@ -107,7 +107,7 @@ if(isLoggedIn() == false) {
                                 </div>
                               </div>
 
-                              <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+                              <div class="col mt-4">
 
                                 <div
                                   data-mdb-alert-init class="alert  d-none"
