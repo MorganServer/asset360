@@ -184,6 +184,7 @@ if(isLoggedIn() == false) {
 
   password.addEventListener("focus", () => {
       passwordAlert.classList.remove("d-none");
+      passwordAlert.classList.add("d-flex");
       if (!password.classList.contains("is-valid")) {
           password.classList.add("is-invalid");
       }
