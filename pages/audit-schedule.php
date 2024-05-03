@@ -84,17 +84,12 @@ if(isLoggedIn() == false) {
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
-                            <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                            Perform Audit
                         </a>
-                    </td>
-                    <td>
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#scheduleModal">
-                            <div class="position-relative">
-                                <i class="bi bi-calendar-fill"></i>
-                                <span class="position-absolute bottom-0 end-75 translate-middle text-secondary" style="font-size: 14px; margin-bottom: -10%; margin-left: -5px !important;"><i class="bi bi-clock-fill"></i></span>  &nbsp;Reschedule Audit
-                            </div>
+                            Reschedule Audit
                         </a>
-                    </td>                    
+                    </td>                   
                 </tr>
 
                 <!-- AUDIT modal -->
