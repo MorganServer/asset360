@@ -84,10 +84,10 @@ if(isLoggedIn() == false) {
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
                         <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
-                            Perform Audit
+                            Perform
                         </a>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
-                            Reschedule Audit
+                        <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
+                            Reschedule
                         </a>
                     </td>                   
                 </tr>
@@ -131,7 +131,7 @@ if(isLoggedIn() == false) {
                                             </div>
                                         </div>
                                         <!-- Add more fields as needed -->
-                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Perform</button>
                                         <?php }}} ?>
                                     </form>
                                 </div>
@@ -170,7 +170,7 @@ if(isLoggedIn() == false) {
                                             <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
                                         </div>
                                         <!-- Add more fields as needed -->
-                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Reschedule Audit</button>
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Reschedule</button>
                                         <?php }}} ?>
                                     </form>
                                 </div>
