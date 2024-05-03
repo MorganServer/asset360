@@ -48,6 +48,7 @@ if(isLoggedIn() == false) {
                 <th scope="col">Asset Name</th>
                 <th scope="col">Next Audit</th>
                 <th scope="col">Status</th>
+                <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -81,8 +82,46 @@ if(isLoggedIn() == false) {
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
+                    <td>
+                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
+                            <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                        </a>
+                    </td>
                     <!-- <td style="font-size: 20px;"><a href="<?php //echo BASE_URL; ?>/asset/view/?id=<?php //echo $id; ?>" class="view"><i class="bi bi-eye text-success"></i></a> &nbsp; <a href="update-app.php?updateid=<?php //echo $id; ?>"><i class="bi bi-pencil-square" style="color:#005382;"></a></i> &nbsp; <a href="open-app.php?deleteid=<?php //echo $id; ?>" class="delete"><i class="bi bi-trash" style="color:#941515;"></i></a></td> -->
                 </tr>
+
+                <!-- AUDIT modal -->
+                    <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="auditModalLabel">Perform Audit</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="auditModalForm">
+                                        <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                        <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
+                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
+                                        <div class="mb-3">
+                                            <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
+                                            <input type="text" class="form-control" id="summary" name="summary" required>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <label class="form-label" for="notes" style="font-size: 14px;">Notes</label>
+                                                <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- Add more fields as needed -->
+                                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End Modal for AUDIT -->
+
                 <?php
                         }
                     }
@@ -109,6 +148,73 @@ if(isLoggedIn() == false) {
 
         </div>
     <!-- END main-container -->
+
+
+<!-- audit script -->
+    <script>
+        document.getElementById('auditModalForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+        var actual_asset_tag = document.getElementById('actual_asset_tag').value;
+        var asset_id = document.getElementById('asset_id').value;
+        var asset_tag = document.getElementById('asset_tag').value;
+        var summary = document.getElementById('summary').value;
+        var notes = document.getElementById('notes').value;
+        var combinedSummary = asset_tag + summary;
+        var auditIssueData = {
+            "fields": {
+                "project": {
+                    "key": "SG"
+                },
+                "summary": combinedSummary,
+                "description": {
+                    "type": "doc",
+                    "version": 1,
+                    "content": [
+                        {
+                            "type": "paragraph",
+                            "content": [
+                                {
+                                    "type": "text",
+                                    "text": notes
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "issuetype": {
+                    "id": "10029"
+                },
+                "labels": [
+                    actual_asset_tag,
+                    asset_id
+                ]
+            }
+        };
+
+        // Convert issueData to FormData object
+        var formData = new FormData();
+        formData.append('auditIssueData', JSON.stringify(auditIssueData));
+
+        // Make AJAX request to create Jira issue
+        fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Handle response
+            console.log(data);
+            // Close modal
+            var myModal = new bootstrap.Modal(document.getElementById('auditModal'));
+            myModal.hide();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Handle error
+        });
+    });
+    </script>
+<!-- end audit script -->
 
 </body>
 </html>
