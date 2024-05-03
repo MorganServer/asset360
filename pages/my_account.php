@@ -55,6 +55,7 @@ if(isLoggedIn() == false) {
                                         $id                     = $a_row['user_id'];
                                         $fname                  = $a_row['fname'];
                                         $lname                  = $a_row['lname'];
+                                        $uname                  = $a_row['uname'];
                                         $email                  = $a_row['email'];
                                         $account_type           = $a_row['account_type'];
                                         $account_created        = $a_row['account_created'];
@@ -94,6 +95,12 @@ if(isLoggedIn() == false) {
                             <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
                             <div class="col-sm-10">
                               <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="uname" class="col-sm-2 col-form-label">User Name</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="uname" name="uname" value="<?php echo $uname; ?>">
                             </div>
                           </div>
                           <div class="row mb-3">
@@ -141,9 +148,9 @@ if(isLoggedIn() == false) {
                             </div>
                             <div class="card" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-slack"></i></p>
-                                <h5 class="card-title text-center">Slack Integrations</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Slack settings</h6>
+                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
+                                <h5 class="card-title text-center">User Access</h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">User and group settings</h6>
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
