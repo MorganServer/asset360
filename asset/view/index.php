@@ -134,6 +134,9 @@ if(isLoggedIn() == false) {
                     $off_created_at             = $off_row['asset_created'];
                     $off_updated_at             = $off_row['asset_updated'];
                     $off_ip_address             = $off_row['ip_address']; 
+
+                    $today = date('Y-m-d');
+                    $is_today = ($off_audit_schedule == $today) ? true : false;
                 }
             // }}
             ?>
@@ -157,9 +160,17 @@ if(isLoggedIn() == false) {
                     <span class="float-end d-flex">
 
                         <!-- JIRA BUTTONS -->
-                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
+                            <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
-                            </a>
+                            </a> -->
+                            <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
+                                <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
+                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                                </a>
+                            <?php } ?>
+                                <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
+                                    <i class="bi bi-calendar2-week-fill"></i> &nbsp;Reschedule
+                                </a>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
