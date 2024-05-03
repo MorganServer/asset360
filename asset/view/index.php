@@ -506,7 +506,7 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <a href="https://garrett-morgan.atlassian.net/browse/<?php echo $key; ?>" class=""><?php echo $lastMaintenanceDate; ?></a>
+                                            <a href="https://garrett-morgan.atlassian.net/browse/<?php echo $key; ?>" class="" target="_blank"><?php echo $lastMaintenanceDate; ?></a>
                                         </li>
                                     </ul>
                                 </div>
