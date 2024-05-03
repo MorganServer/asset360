@@ -1,12 +1,9 @@
 <?php
 
-// Include the necessary files
-include_once '../../path.php'; // Assuming this defines BASE_URL
-include_once ROOT_PATH . '/app/database/connection.php';
-
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
     $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
+
 
     $jiraUsername = "garrett.morgan.pro@gmail.com";
     $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
@@ -25,7 +22,9 @@ function createJiraIssue($issueDataJson) {
         )
     );
 
+
     $context = stream_context_create($contextOptions);
+
 
     $response = file_get_contents($jiraApiUrl, false, $context);
 
@@ -44,13 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     if ($response === false) {
         echo "Error: Unable to create Jira ticket.";
     } else {
-        // Update asset_schedule field in the database
-        $sql = "UPDATE assets SET asset_schedule = DATE_ADD(NOW(), INTERVAL 1 MONTH) WHERE asset_id = <YOUR_ASSET_ID>";
-        if (mysqli_query($conn, $sql)) {
-            echo $response; // Return Jira API response
-        } else {
-            echo "Error updating asset_schedule: " . mysqli_error($conn);
-        }
+        echo $response; // Return Jira API response
     }
 } else {
     echo "Error: Invalid request.";
