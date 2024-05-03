@@ -1,8 +1,7 @@
 <?php
-
 // Include the necessary files
 include_once '../../path.php'; // Assuming this defines BASE_URL
-include_once ROOT_PATH . '/app/database/connection.php';
+include_once BASE_URL . '/app/database/connection.php';
 
 // Check if ID is provided in the URL
 if(isset($_GET['id'])) {
@@ -14,8 +13,14 @@ if(isset($_GET['id'])) {
 
     // Execute the query
     if (mysqli_query($conn, $d_sql)) {
-        // Redirect back to the page from where delete was initiated
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+        // Check if the previous page was an asset view page
+        if (strpos($_SERVER['HTTP_REFERER'], 'asset/view') !== false) {
+            // If so, go back to the previous page before that
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } else {
+            // Otherwise, go back one page
+            header('Location: ' . BASE_URL);
+        }
         exit;
     } else {
         // Handle errors if any
