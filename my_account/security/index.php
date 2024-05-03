@@ -41,7 +41,7 @@ if(isLoggedIn() == false) {
             </h2>
             <hr>
 
-            <div class="" style="background-color: rgb(229, 233, 236); border-radius: 5px; padding: 10px;">
+            <div class="mb-4" style="background-color: rgb(229, 233, 236); border-radius: 5px; padding: 10px;">
             <p>
                 You may change your password at any time by following the steps below:
             </p>
@@ -50,10 +50,9 @@ if(isLoggedIn() == false) {
                 <li>An email with a confirmation number will be sent to your email address on record. Enter the confirmation number on the next page.</li>
                 <li>The password change will be effective immediately.</li>
             </ul>
-
             </div>
+            
 
-            <div class="row">
                 <div class="col">
                         <?php
                             $user_id = $_SESSION['user_id'];
@@ -135,52 +134,8 @@ if(isLoggedIn() == false) {
                         </p>
                       </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
-                      <div class="card-body ps-2">
-                        <h5 class="card-title mb-4">Admin Settings</h5>
-
-                        <div class="row ms-3 ">
-                            <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
-                              <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
-                                <h5 class="card-title text-center">Security</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                            <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
-                              <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
-                                <h5 class="card-title text-center">Notifications</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts, audit settings</h6>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                            <div class="card" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
-                              <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
-                                <h5 class="card-title text-center">User Access</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">User and group settings</h6>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                        </div>
-
-                        <div class="row ms-3">
-                            <div class="card" style="width: 99%; border-top: 4px solid red; border-radius: 3px !important;">
-                              <div class="card-body">
-                                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-trash-fill"></i></p>
-                                <h5 class="card-title text-center">Purge Data</h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Purge all data</h6>
-                                <a href="#" class="stretched-link"></a>
-                              </div>
-                            </div>
-                        </div>
-
-                      </div>
-                    </div>
+                </div
+                
                 </div>
             </div>
             
