@@ -114,6 +114,7 @@ if(isLoggedIn() == false) {
                               role="alert"
                               data-mdb-color="warning"
                               id="password-alert"
+                              style="margin-left: -100%; margin-top: 35px;"
                               >
                               <ul class="list-unstyled mb-0">
                                 <li class="requirements leng">
