@@ -149,7 +149,7 @@ if(isLoggedIn() == false) {
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form id="auditModalForm">
+                                    <form>
                                     <?php
                                         $r_sql = "SELECT * FROM assets WHERE asset_id = $id";
                                         $r_result = mysqli_query($conn, $r_sql);
@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                                     $r_location                 = $r_row['location'];
                                                     $r_created_at               = $r_row['created_at'];
                                     ?>
-                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
+                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $r_id; ?>">
                                         <div class="mb-3">
                                             <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
                                             <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
