@@ -77,7 +77,7 @@ if(isLoggedIn() == false) {
         <div class="top-form" style="margin-bottom: -38px;">
             <h2 class="">Update <?php echo $u_asset_name; ?></h2>
             <div class="float-end" style="margin-top: -50px;">
-                <button type="submit" name="update-asset" class="btn btn-primary">Submit</button>
+                <button type="submit" name="update-asset" class="btn btn-primary">Update</button>
             </div>
             <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $u_id; ?>">
         </div>
