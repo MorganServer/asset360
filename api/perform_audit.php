@@ -39,7 +39,7 @@ function updateAuditSchedule($assetId) {
     $id = $_GET['id'];
     echo $id;
     $nextMonth = date('Y-m-d', strtotime('+1 month'));
-    $sql = "UPDATE assets SET audit_schedule = $nextMonth WHERE asset_id = $id";
+    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $id";
         if (mysqli_query($conn, $sql)) {
             header("Location: " . $_SERVER['HTTP_REFERER']);
             exit; // Ensure script stops execution after redirecting
