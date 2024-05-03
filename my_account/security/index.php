@@ -102,7 +102,7 @@ if(isLoggedIn() == false) {
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-label">Current Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control w-50" id="password" name="password" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -111,7 +111,7 @@ if(isLoggedIn() == false) {
                                   <div class="input-group d-flex">
                                     <input
                                       type="password"
-                                      class="form-control rounded mt-1"
+                                      class="form-control rounded mt-1 w-50"
                                       placeholder="Type your password"
                                       aria-label="password"
                                       aria-describedby="password"
@@ -158,7 +158,7 @@ if(isLoggedIn() == false) {
                             <div class="row mb-3">
                                 <label for="c_password" class="col-sm-2 col-form-label">Confirm Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="c_password" name="c_password" required>
+                                    <input type="password" class="form-control w-50" id="c_password" name="c_password" required>
                                 </div>
                             </div>
                             <!-- Update Button -->
