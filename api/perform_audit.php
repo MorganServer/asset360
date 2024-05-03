@@ -4,7 +4,6 @@
 function createJiraIssue($issueDataJson) {
     $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
 
-
     $jiraUsername = "garrett.morgan.pro@gmail.com";
     $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
     $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
@@ -22,34 +21,45 @@ function createJiraIssue($issueDataJson) {
         )
     );
 
-
     $context = stream_context_create($contextOptions);
-
 
     $response = file_get_contents($jiraApiUrl, false, $context);
 
     return $response;
 }
 
-// Function to update the audit_schedule field in the assets table
-function updateAuditSchedule($assetId) {
-    // Check if $assetId is provided
-    if (!empty($assetId)) {
-        // Sanitize the input to prevent SQL injection
-        $safeAssetId = mysqli_real_escape_string($yourDbConnection, $assetId);
+// Function to update asset table
+function updateAssetTable($asset_id) {
+    // Connect to database
+    $conn = mysqli_connect("localhost", "username", "password", "database");
 
-        // Update the audit_schedule field for the given asset_id
-        $sql = "UPDATE assets SET audit_schedule = NOW() WHERE asset_id = '$safeAssetId'";
-        
-        // Execute the query
-        if (mysqli_query($yourDbConnection, $sql)) {
-            echo "Audit schedule updated successfully for asset_id: $safeAssetId";
-        } else {
-            echo "Error updating audit schedule: " . mysqli_error($yourDbConnection);
-        }
-    } else {
-        echo "Error: Missing asset_id.";
+    // Check connection
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     }
+
+    // Calculate one month from today, being a Monday - Friday
+    $next_month = date('Y-m-d', strtotime('+1 month'));
+    $next_month_weekday = date('N', strtotime($next_month));
+
+    // If next month starts on a Saturday or Sunday, add days to make it Monday
+    if ($next_month_weekday == 6) {
+        $next_month = date('Y-m-d', strtotime($next_month . ' +2 days'));
+    } elseif ($next_month_weekday == 7) {
+        $next_month = date('Y-m-d', strtotime($next_month . ' +1 day'));
+    }
+
+    // Update asset table
+    $sql = "UPDATE assets SET audit_schedule = '$next_month' WHERE asset_id = $asset_id";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Asset table updated successfully.";
+    } else {
+        echo "Error updating asset table: " . mysqli_error($conn);
+    }
+
+    // Close connection
+    mysqli_close($conn);
 }
 
 // Check if request method is POST and if data is received
@@ -64,17 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     if ($response === false) {
         echo "Error: Unable to create Jira ticket.";
     } else {
-        // Check if asset_id is provided
-        if (isset($_POST['asset_id'])) {
-            // Update audit_schedule for the asset
-            updateAuditSchedule($_POST['asset_id']);
-        } else {
-            echo "Warning: No asset_id provided for updating audit schedule.";
-        }
-
         echo $response; // Return Jira API response
+        // If Jira issue created successfully, update asset table
+        if (isset($_POST['asset_id'])) {
+            $asset_id = $_POST['asset_id'];
+            updateAssetTable($asset_id);
+        }
     }
 } else {
     echo "Error: Invalid request.";
 }
+
 ?>
