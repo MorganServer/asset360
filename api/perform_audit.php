@@ -45,7 +45,8 @@ function updateAuditSchedule($assetId) {
     }
 
     // Update query
-    $sql = "UPDATE assets SET audit_schedule = DATE_ADD(NOW(), INTERVAL 1 MONTH) WHERE id = $assetId";
+    $id = $_GET['id'];
+    $sql = "UPDATE assets SET audit_schedule = DATE_ADD(NOW(), INTERVAL 1 MONTH) WHERE asset_id = $id";
 
     if ($conn->query($sql) === TRUE) {
         echo "Audit schedule updated successfully.";
