@@ -53,7 +53,7 @@ if(isLoggedIn() == false) {
                 $u_asset_name             = $u_row['asset_name']; 
                 $u_asset_tag_no           = $u_row['asset_tag_no'];
                 $u_manufacturer_name      = $u_row['manufacturer_name'];
-                // $u_model                  = $u_row['model'];
+                $u_model                  = $u_row['model'];
                 $u_model_no               = $u_row['model_no'];
                 $u_acquisition_date       = $u_row['acquisition_date'];
                 $u_end_of_life_date       = $u_row['end_of_life_date'];
@@ -100,10 +100,10 @@ if(isLoggedIn() == false) {
                 <label for="serial_number" class="form-label">Serial Number</label>
                 <input type="text" class="form-control" id="serial_number" name="serial_number" value="<?php echo $u_serial_number; ?>">
             </div>
-            <!-- <div class="col">
+            <div class="col">
                 <label for="model" class="form-label">Model</label>
-                <input type="text" class="form-control" id="model" name="model">
-            </div> -->
+                <input type="text" class="form-control" id="model" name="model" value="<?php echo $u_model; ?>">
+            </div>
             <div class="col">
                 <label for="model_no" class="form-label">Model Number</label>
                 <input type="text" class="form-control" id="model_no" name="model_no" value="<?php echo $u_model_no; ?>">
@@ -122,7 +122,7 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="asset_type">Asset Type</label>
                 <select class="form-control" name="asset_type">
-                    <option value="<?php echo $u_asset_type; ?>">Select an option...</option>
+                    <option value="<?php echo $u_asset_type; ?>"><?php echo $u_asset_type; ?></option>
                     <option value="Server">Server</option>
                     <option value="Computer">Computer</option>
                     <option value="Network Device">Network Device</option>
@@ -136,7 +136,7 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="status">Asset Custodian</label>
                 <select class="form-control" name="custodian">
-                    <option value="<?php echo $u_custodian; ?>">Select an option...</option>
+                    <option value="<?php echo $u_custodian; ?>"><?php echo $u_custodian; ?></option>
                     <?php
                     $sql = "SELECT fname, lname FROM users";
                     $result = mysqli_query($conn, $sql);
