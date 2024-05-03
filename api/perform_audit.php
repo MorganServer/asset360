@@ -1,12 +1,9 @@
 <?php
 
-// Include the necessary files
-include_once '../path.php'; // Assuming this defines BASE_URL
-// include_once ROOT_PATH . '/app/database/connection.php';
-
 // Function to create a Jira issue
 function createJiraIssue($issueDataJson) {
     $jiraApiUrl = 'https://garrett-morgan.atlassian.net/rest/api/3/issue';
+
 
     $jiraUsername = "garrett.morgan.pro@gmail.com";
     $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
@@ -25,56 +22,31 @@ function createJiraIssue($issueDataJson) {
         )
     );
 
+
     $context = stream_context_create($contextOptions);
+
 
     $response = file_get_contents($jiraApiUrl, false, $context);
 
     return $response;
 }
 
-// Function to update the audit_schedule field in the assets table
-function updateAuditSchedule() {
-    // Include the database connection
-    include_once ROOT_PATH . '/app/database/connection.php';
-
-    // Get the asset ID from GET parameters
-    $id = $_GET['id'];
-    
-    // Calculate the next month's date
-    $nextMonth = date('Y-m-d', strtotime('+1 month'));
-
-    // SQL query to update the audit_schedule field
-    $sql = "UPDATE assets SET audit_schedule = '$nextMonth' WHERE asset_id = $id";
-    
-    // Perform the query
-    if (mysqli_query($conn, $sql)) {
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit; // Ensure script stops execution after redirecting
-    } else {
-        $error[] = 'Error: ' . mysqli_error($conn);
-    }
-}
-
-
 // Check if request method is POST and if data is received
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['auditIssueData'])) {
     // Retrieve issue data from POST request
     $issueDataJson = $_POST['auditIssueData'];
-
+    
     // Create the issue
     $response = createJiraIssue($issueDataJson);
-
+    
     // Check for errors
     if ($response === false) {
         echo "Error: Unable to create Jira ticket.";
     } else {
         echo $response; // Return Jira API response
-
-        // Assuming you have an asset ID available, you can call the update function here
-        $assetId = 123; // Replace 123 with the actual asset ID
-        updateAuditSchedule();
     }
 } else {
     echo "Error: Invalid request.";
 }
+
 ?>
