@@ -44,6 +44,7 @@
                       </div>
                       <form action="" method="POST">
                           <!-- Hidden input field to send notification ID -->
+                          <input type="hidden" name="notification_id" value="<?php echo $_SESSION['fname']; ?> <?php echo $_SESSION['lname']; ?>">
                           <input type="hidden" name="notification_id" value="<?php echo $notify_row['notification_id']; ?>">
                           <!-- Acknowledge button -->
                           <button type="submit" name="acknowledge" class="btn btn-primary btn-sm">Acknowledge</button>
