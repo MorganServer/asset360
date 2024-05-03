@@ -107,7 +107,7 @@ if(isLoggedIn() == false) {
                                 </div>
                               </div>
 
-                              <div class="col">
+                              <div class="col d-flex flex-column">
 
                                 <div
                                   data-mdb-alert-init class="alert  d-none"
