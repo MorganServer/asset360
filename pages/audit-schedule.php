@@ -37,7 +37,7 @@ if(isLoggedIn() == false) {
     <!-- main-container -->
         <div class="container" style="padding: 0 75px 0 75px;">
             <h2 class="mt-4">
-                Servers
+                Audit Schedule
             </h2>
             <hr>
 
@@ -48,7 +48,6 @@ if(isLoggedIn() == false) {
                 <th scope="col">Asset Name</th>
                 <th scope="col">Next Audit</th>
                 <th scope="col">Status</th>
-                <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,7 +57,7 @@ if(isLoggedIn() == false) {
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
                     
-                    $audit_sql = "SELECT * FROM assets ORDER BY audit_schedule DESC LIMIT $limit OFFSET $offset";
+                    $audit_sql = "SELECT * FROM assets ORDER BY audit_schedule ASC LIMIT $limit OFFSET $offset";
                     $audit_result = mysqli_query($conn, $audit_sql);
                     if($audit_result) {
                         $audit_num_rows = mysqli_num_rows($audit_result);
