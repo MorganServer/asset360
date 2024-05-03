@@ -55,6 +55,7 @@ if(isLoggedIn() == false) {
                                         $id                     = $a_row['user_id'];
                                         $fname                  = $a_row['fname'];
                                         $lname                  = $a_row['lname'];
+                                        $uname                  = $a_row['uname'];
                                         $email                  = $a_row['email'];
                                         $account_type           = $a_row['account_type'];
                                         $account_created        = $a_row['account_created'];
@@ -94,6 +95,12 @@ if(isLoggedIn() == false) {
                             <label for="lname" class="col-sm-2 col-form-label">Last Name</label>
                             <div class="col-sm-10">
                               <input type="text" class="form-control" id="lname" name="lname" value="<?php echo $lname; ?>">
+                            </div>
+                          </div>
+                          <div class="row mb-3">
+                            <label for="uname" class="col-sm-2 col-form-label">User Name</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="uname" name="uname" value="<?php echo $uname; ?>">
                             </div>
                           </div>
                           <div class="row mb-3">
