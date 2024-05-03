@@ -469,18 +469,18 @@ if(isLoggedIn() == false) {
                                         
                                             return $response;
                                         }
-                                        
+
                                         // Construct the JQL query string dynamically
                                         $assetTag = $off_asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
                                         $jqlQuery = "project in (SG, INFRA) AND summary~'$assetTag' AND issueType = 10030 ORDER BY created DESC";
                                         $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
-                                        
+
                                         // Construct the URL for the Jira API endpoint
                                         $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
-                                        
+
                                         // Get Jira issues
                                         $response = getAllJiraIssues($url);
-                                        
+
                                         // Check if the request was successful
                                         if ($response !== false) {
                                             // Decode the JSON response
@@ -490,7 +490,7 @@ if(isLoggedIn() == false) {
                                                 // Get the latest issue
                                                 $latestIssue = $data['issues'][0];
                                                 // Display the last maintenance date from Jira (assuming 'updated' field is the maintenance date)
-                                                $lastMaintenanceDate = isset($latestIssue['fields']['updated']) ? $latestIssue['fields']['updated'] : '--';
+                                                $lastMaintenanceDate = isset($latestIssue['fields']['updated']) ? date('M d, Y', strtotime($latestIssue['fields']['updated'])) : '--';
                                             } else {
                                                 // If no issues are found
                                                 $lastMaintenanceDate = '--';
@@ -500,7 +500,7 @@ if(isLoggedIn() == false) {
                                             $lastMaintenanceDate = 'Failed to fetch data from Jira API';
                                         }
                                         ?>
-                                        
+
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
