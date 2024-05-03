@@ -157,12 +157,12 @@ if(isLoggedIn() == false) {
                                             $r_num_rows = mysqli_num_rows($r_result);
                                             if($r_num_rows > 0) {
                                                 while ($r_row = mysqli_fetch_assoc($r_result)) {
-                                                    $r_id                  = $r_row['asset_id'];
-                                                    $r_asset_tag_no           = $r_row['asset_tag_no'];
-                                                    $r_maintenance_schedule   = $r_row['maintenance_schedule'];
-                                                    $r_audit_schedule         = $r_row['audit_schedule'];
-                                                    $r_location               = $r_row['location'];
-                                                    $r_created_at             = $r_row['created_at'];
+                                                    $r_id                       = $r_row['asset_id'];
+                                                    $r_asset_tag_no             = $r_row['asset_tag_no'];
+                                                    $r_maintenance_schedule     = $r_row['maintenance_schedule'];
+                                                    $r_audit_schedule           = $r_row['audit_schedule'];
+                                                    $r_location                 = $r_row['location'];
+                                                    $r_created_at               = $r_row['created_at'];
                                     ?>
                                         <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $id; ?>">
                                         <div class="mb-3">
