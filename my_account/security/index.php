@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
 </div>
 
 <div class="row">
-  <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
+  <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto mb-2">
     <div
       data-mdb-alert-init
       class="alert px-4 py-3 mb-0 d-none"
