@@ -135,7 +135,7 @@ if(isLoggedIn() == false) {
             <div class="card-body">
                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                 <h5 class="card-title text-center">Security</h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
+                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password</h6>
                 <a href="<?php echo BASE_URL; ?>/my_account/security/" class="stretched-link"></a>
             </div>
         </div>
