@@ -4,7 +4,7 @@
 // Step 1: Validate current password
 if (isset($_POST['change'])) {
     $uname = $_SESSION['uname']; // Assuming you have stored the username in a session
-    $password = $_POST['password'];
+    $password = md5($_POST['password']); // Hash the current password
     // Query to check if the current password matches
     $query = "SELECT * FROM users WHERE uname='$uname' AND password='$password'";
     $result = mysqli_query($conn, $query);
@@ -31,12 +31,12 @@ if (isset($_POST['change'])) {
 // Step 7: If code is validated, update the password
 if (isset($_POST['confirm_code'])) {
     $uname = $_SESSION['uname']; // Assuming you have stored the username in a session
-    $code_entered = $_POST['code_entered'];
+    $code_entered = $_POST['email_code']; // Assuming the form field name is 'email_code'
     // Query to check if the entered code matches
     $code_query = "SELECT * FROM users WHERE uname='$uname' AND email_code='$code_entered'";
     $code_result = mysqli_query($conn, $code_query);
     if (mysqli_num_rows($code_result) == 1) {
-        $new_password = $_POST['n_password'];
+        $new_password = md5($_POST['n_password']); // Hash the new password
         // Update the password in the database
         $update_password_query = "UPDATE users SET password='$new_password' WHERE uname='$uname'";
         mysqli_query($conn, $update_password_query);
