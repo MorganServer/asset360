@@ -36,6 +36,7 @@ if(isset($_POST['change'])) {
     $uname = isset($_POST['uname']) ? mysqli_real_escape_string($conn, $_POST['uname']) : "";
 
     $current_password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : "";
+    $h_current_password = md5($current_password);
 
 
     // $new_password = $_POST['n_password'];
@@ -44,7 +45,7 @@ if(isset($_POST['change'])) {
 
     // Check if current password matches the one stored in the database
     // Replace 'YOUR_TABLE_NAME' with the name of your users table
-    $query = "SELECT * FROM users WHERE uname = '$uname' AND password = '$current_password'";
+    $query = "SELECT * FROM users WHERE uname = '$uname' AND password = '$h_current_password'";
     $result = mysqli_query($conn, $query);
     $user = mysqli_fetch_assoc($result);
 
