@@ -93,7 +93,6 @@ if (isset($_POST['email_code_confirm'])) {
     $code_query = "SELECT * FROM users WHERE uname='$uname' AND email_code='$email_code'";
     $code_result = mysqli_query($conn, $code_query);
     if (mysqli_num_rows($code_result) == 1) {
-        $new_password = md5($_POST['n_password']); // Hash the new password
         // Update the password in the database
         $update_password_query = "UPDATE users SET password='$new_password', n_password = NULL, c_password = NULL, email_code = NULL WHERE uname='$uname'";
         mysqli_query($conn, $update_password_query);
