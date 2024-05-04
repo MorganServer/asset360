@@ -130,7 +130,7 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title mb-4">Admin Settings</h5>
 
                         <div class="card-deck">
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6"> -->
                             <div class="card me-2" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
@@ -139,9 +139,9 @@ if(isLoggedIn() == false) {
                                 <a href="<?php echo BASE_URL; ?>/my_account/security/" class="stretched-link"></a>
                               </div>
                             </div>
-                          </div>
+                          <!-- </div> -->
 
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6"> -->
                             <div class="card me-2" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
@@ -150,9 +150,9 @@ if(isLoggedIn() == false) {
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
-                          </div>
+                          <!-- </div> -->
 
-                          <div class="col-sm-6">
+                          <!-- <div class="col-sm-6"> -->
                             <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
@@ -161,7 +161,7 @@ if(isLoggedIn() == false) {
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
-                          </div>
+                          <!-- </div> -->
                             
                         </div>
 
