@@ -134,6 +134,9 @@ if(isLoggedIn() == false) {
                     $off_created_at             = $off_row['asset_created'];
                     $off_updated_at             = $off_row['asset_updated'];
                     $off_ip_address             = $off_row['ip_address']; 
+
+                    $today = date('Y-m-d');
+                    $is_today = ($off_audit_schedule == $today) ? true : false;
                 }
             // }}
             ?>
@@ -157,9 +160,18 @@ if(isLoggedIn() == false) {
                     <span class="float-end d-flex">
 
                         <!-- JIRA BUTTONS -->
-                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
+                            <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
-                            </a>
+                            </a> -->
+                            <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
+                                <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
+                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                                </a>
+                            <?php } else { ?>
+                                <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
+                                    <i class="bi bi-calendar2-week-fill"></i> &nbsp;Reschedule Audit
+                                </a>
+                            <?php } ?>
                             <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
@@ -196,6 +208,45 @@ if(isLoggedIn() == false) {
                                 </div>
                             <!-- End Modal for AUDIT -->
 
+                            <!-- RESCHEDULE modal -->
+                                <div class="modal fade" id="rescheduleModal<?php echo $off_id; ?>" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="rescheduleModalLabel">Reschedule Audit</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form method="POST">
+                                                <?php
+                                                    $r_sql = "SELECT * FROM assets WHERE asset_id = $off_id";
+                                                    $r_result = mysqli_query($conn, $r_sql);
+                                                    if($r_result) {
+                                                        $r_num_rows = mysqli_num_rows($r_result);
+                                                        if($r_num_rows > 0) {
+                                                            while ($r_row = mysqli_fetch_assoc($r_result)) {
+                                                                $r_id                       = $r_row['asset_id'];
+                                                                $r_asset_tag_no             = $r_row['asset_tag_no'];
+                                                                $r_maintenance_schedule     = $r_row['maintenance_schedule'];
+                                                                $r_audit_schedule           = $r_row['audit_schedule'];
+                                                                $r_location                 = $r_row['location'];
+                                                                $r_created_at               = $r_row['created_at'];
+                                                ?>
+                                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $r_id; ?>">
+                                                    <div class="mb-3">
+                                                        <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
+                                                        <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">
+                                                    </div>
+                                                    <!-- Add more fields as needed -->
+                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" name="reschedule">Reschedule</button>
+                                                    <?php }}} ?>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <!-- End Modal for RESCHEDULE -->
+
                             <!-- MAINTENANCE modal -->
                                 <div class="modal fade" id="maintenanceModal" tabindex="-1" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -231,8 +282,8 @@ if(isLoggedIn() == false) {
                         <!-- end JIRA BUTTONS -->
 
                         <div class="vertical-line ms-2 me-2" style="border-left: 1px solid #999; height:25px;"></div>
-                        <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="update-app.php?updateid=<?php echo $id; ?>">Edit</a>
-                        <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="open-app.php?deleteid=<?php echo $id; ?>">Delete</a>
+                        <a class="badge text-bg-success text-decoration-none me-1" style="font-size: 14px;" href="<?php echo BASE_URL; ?>/asset/update/?id=<?php echo $id; ?>">Edit</a>
+                        <a class="badge text-bg-danger text-decoration-none" style="font-size: 14px;" href="<?php echo BASE_URL; ?>/asset/delete/?id=<?php echo $id; ?>">Delete</a>
                     </span>
                 </h2>
 
@@ -261,9 +312,6 @@ if(isLoggedIn() == false) {
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="notes-tab" data-bs-toggle="tab" data-bs-target="#notes-tab-pane" type="button" role="tab" aria-controls="notes-tab-pane" aria-selected="false">Notes</button>
                   </li>
-                  <!-- <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events-tab-pane" type="button" role="tab" aria-controls="events-tab-pane" aria-selected="false">Event Log</button>
-                  </li> -->
                   <li class="nav-item" role="presentation">
                     <button class="nav-link" id="jira-tab" data-bs-toggle="tab" data-bs-target="#jira-tab-pane" type="button" role="tab" aria-controls="jira-tab-pane" aria-selected="false">Jira Tickets</button>
                   </li>
@@ -341,12 +389,12 @@ if(isLoggedIn() == false) {
                                 <div class="ms-3 w-50">
                                     <?php
                                         
-                                        $off_acquisition_date = strtotime($off_acquisition_date);
-                                        $acq_date_formatted = date('M j, Y', $off_acquisition_date);
-                                        $off_end_of_life_date = strtotime($off_end_of_life_date);
-                                        $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
-                                        $off_audit_schedule = strtotime($off_audit_schedule);
-                                        $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
+                                        // $off_acquisition_date = strtotime($off_acquisition_date);
+                                        // $acq_date_formatted = date('M j, Y', $off_acquisition_date);
+                                        // $off_end_of_life_date = strtotime($off_end_of_life_date);
+                                        // $end_of_life_date_formatted = date('M j, Y', $off_end_of_life_date);
+                                        // $off_audit_schedule = strtotime($off_audit_schedule);
+                                        // $audit_schedule_formatted = date('M j, Y', $off_audit_schedule);
 
                                         $id = $_GET['id'];
                                         $newsql = "SELECT *
@@ -365,6 +413,10 @@ if(isLoggedIn() == false) {
 
                                             }
                                         }
+
+                                        $end_of_life_date_formatted = !empty($off_end_of_life_date) ? date_format(date_create($off_end_of_life_date), 'M d, Y') : '--';
+                                        $acquisition_date_formatted = !empty($off_acquisition_date) ? date_format(date_create($off_acquisition_date), 'M d, Y') : '--';
+                                        $audit_schedule_formatted = !empty($off_audit_schedule) ? date_format(date_create($off_audit_schedule), 'M d, Y') : '--';
                                     ?>
 
                                     <ul class="list-group list-group-flush">
@@ -372,13 +424,13 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Acquisition Date</div>
                                             </div>
-                                            <span class=""><?php echo $acq_date_formatted ? $acq_date_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $acquisition_date_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">End of Life Date</div>
                                             </div>
-                                            <span class=""><?php echo $end_of_life_date_formatted ? $end_of_life_date_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $end_of_life_date_formatted; ?></span>
                                         </li>
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
@@ -390,13 +442,71 @@ if(isLoggedIn() == false) {
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Next Audit</div>
                                             </div>
-                                            <span class=""><?php echo $audit_schedule_formatted ? $audit_schedule_formatted : '--'; ?></span>
+                                            <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
+                                        <?php
+                                        // Function to get Jira issues
+                                        function getAllJiraIssues($url) {
+                                            $jiraUsername = "garrett.morgan.pro@gmail.com";
+                                            $one = "ATATT3xFfGF0rALQ3ASzKULCbilrrrykWqEfW8yJlCjhGCHW0mBSQcSaGP";
+                                            $two = "Ewxq8DC39D1ElsXBo7Wp3tHueO26Jp3AZ2IQNmfrq5urdZ91wfhGWB5xWd";
+                                            $three = "gTqWD8qGQ7qbt-CcgAp4WWeSlO0WrN30VB238osKbafBEBHz1WPbUSWeyh";
+                                            $four = "dXhAHA2kA=46A5779A";
+                                            $jiraApiToken = $one . $two . $three . $four;
+                                        
+                                            $contextOptions = array(
+                                                'http' => array(
+                                                    'method' => 'GET',
+                                                    'header' => "Content-Type: application/json\r\n" .
+                                                                "Authorization: Basic " . base64_encode($jiraUsername . ':' . $jiraApiToken) . "\r\n",
+                                                    'ignore_errors' => true 
+                                                )
+                                            );
+                                        
+                                            $context = stream_context_create($contextOptions);
+                                        
+                                            $response = file_get_contents($url, false, $context);
+                                        
+                                            return $response;
+                                        }
+
+                                        // Construct the JQL query string dynamically
+                                        $assetTag = $off_asset_tag_no; // Assuming $off_asset_tag_no contains the current asset tag
+                                        $jqlQuery = "project in (SG, INFRA) AND summary~'$assetTag' AND issueType = 10030 ORDER BY created DESC";
+                                        $fields = "summary, issuetype, created, updated, labels, status, duedate"; // Define the fields you want to retrieve
+
+                                        // Construct the URL for the Jira API endpoint
+                                        $url = "https://garrett-morgan.atlassian.net/rest/api/3/search?jql=" . urlencode($jqlQuery) . "&fields=" . urlencode($fields) . "&maxResults=1";
+
+                                        // Get Jira issues
+                                        $response = getAllJiraIssues($url);
+
+                                        // Check if the request was successful
+                                        if ($response !== false) {
+                                            // Decode the JSON response
+                                            $data = json_decode($response, true);
+                                            // Check if issues are found
+                                            if (isset($data['issues']) && !empty($data['issues'])) {
+                                                // Get the latest issue
+                                                $latestIssue = $data['issues'][0];
+                                                // Display the last maintenance date from Jira (assuming 'updated' field is the maintenance date)
+                                                $lastMaintenanceDate = isset($latestIssue['fields']['updated']) ? date('M d, Y', strtotime($latestIssue['fields']['updated'])) : '--';
+                                                $key = $latestIssue['key'];
+                                            } else {
+                                                // If no issues are found
+                                                $lastMaintenanceDate = '--';
+                                            }
+                                        } else {
+                                            // Handle the error
+                                            $lastMaintenanceDate = 'Failed to fetch data from Jira API';
+                                        }
+                                        ?>
+
                                         <li class="list-group-item d-flex align-items-start">
                                             <div class="ms-2" style="width: 30%;">
                                                 <div class="fw-bold">Last Maintenance</div>
                                             </div>
-                                            <span class=""><?php echo $reviewed_formatted ? $reviewed_formatted : '--'; ?></span>
+                                            <a href="https://garrett-morgan.atlassian.net/browse/<?php echo $key; ?>" class="" target="_blank"><?php echo $lastMaintenanceDate; ?></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -462,102 +572,6 @@ if(isLoggedIn() == false) {
 
                         </div>
                     <!-- end Notes -->
-
-                    <!-- Events -->
-                        <!-- <div class="tab-pane fade" id="events-tab-pane" role="tabpanel" aria-labelledby="events-tab" tabindex="0">
-                            <div class="mt-4"></div>
-                            <h4><i class="bi bi-tools"></i> Latest Events</h4>
-                            <hr>
-
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                    <th scope="col">Tag No</th>
-                                    <th scope="col">Event Type</th>
-                                    <th scope="col">Performed</th>
-                                    <th scope="col">Performed By</th>
-                                    <th scope="col">Reviewed</th>
-                                    <th scope="col">Reviewed By</th>
-                                    <th scope="col">Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        // $limit = 10; 
-                                        // $page = isset($_GET['page']) ? $_GET['page'] : 1;
-                                        // $offset = ($page - 1) * $limit;
-
-                                        // $esql = "SELECT * FROM event_log WHERE asset_tag_no = '$off_asset_tag_no' ORDER BY event_created DESC LIMIT $limit OFFSET $offset";
-                                        // $eresult = mysqli_query($conn, $esql);
-                                        // if($eresult) {
-                                        //     $enum_rows = mysqli_num_rows($eresult);
-                                        //     if($enum_rows > 0) {
-                                        //         while ($erow = mysqli_fetch_assoc($eresult)) {
-                                        //             $id                     = $erow['event_id'];
-                                        //             $idno                   = $erow['idno'];
-                                        //             $status                 = $erow['status'];
-                                        //             $date_reviewed          = $erow['date_reviewed'];
-                                        //             $date_performed         = $erow['date_performed'];
-                                        //             $asset_tag_no           = $erow['asset_tag_no'];
-                                        //             $performed_by           = $erow['performed_by'];
-                                        //             $reviewed_by            = $erow['reviewed_by'];
-                                        //             $event_type             = $erow['event_type'];
-                                        //             $notes                  = $erow['notes'];
-                                        //             $event_created          = $erow['event_created'];    
-                                        //             $event_updated          = $erow['event_updated'];                 
-
-                                                    
-                                        //             $f_date_reviewed = !empty($date_reviewed) ? date_format(date_create($date_reviewed), 'M d, Y') : '--';           
-                                        //             $f_date_performed = !empty($date_performed) ? date_format(date_create($date_performed), 'M d, Y') : '--';       
-
-                                                    
-                                    ?>
-                                    <tr>
-                                        <th scope="row"><?php //echo $asset_tag_no; ?></th>
-                                        <td><?php //echo $event_type ? $event_type : '--'; ?></td>
-                                        <td><?php //echo $f_date_performed ? $f_date_performed : '--'; ?></td>
-                                        <td><?php //echo $performed_by ? $performed_by : '--'; ?></td>
-                                        <td><?php //echo $f_date_reviewed ? $f_date_reviewed : '--'; ?></td>
-                                        <td><?php //echo $reviewed_by ? $reviewed_by : '--'; ?></td>
-                                        <?php //if($status == "Awaiting Approval") { ?>
-                                            <td><span class="badge text-bg-primary"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Completed") { ?>
-                                            <td><span class="badge text-bg-success"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Rejected") { ?>
-                                            <td><span class="badge text-bg-danger"><?php //echo $status; ?></span></td>
-                                        <?php //} else if($status == "Rescheduled") { ?>
-                                            <td><span class="badge text-bg-warning"><?php //echo $status; ?></span></td>
-                                        <?php //} else { ?>
-                                            <td>--</td>
-                                        <?php //} ?>
-                                        
-                                    </tr>
-                                    <?php
-                                           // }
-                                        //}
-                                    //}
-                                    ?>
-                                </tbody>
-                            </table>
-                            <br>
-                            <?php
-                                
-                                // $sql = "SELECT COUNT(*) as total FROM event_log WHERE asset_tag_no = '$off_asset_tag_no'";
-                                // $result = mysqli_query($conn, $sql);
-                                // $row = mysqli_fetch_assoc($result);
-                                // $total_pages = ceil($row["total"] / $limit);                    
-
-                                //     echo '<ul class="pagination justify-content-center">';
-                                //     for ($i = 1; $i <= $total_pages; $i++) {
-                                //         $active = ($page == $i) ? "active" : "";
-                                //         echo "<li class='page-item {$active}'><a class='page-link' href='?page={$i}'>{$i}</a></li>";
-                                //     }
-                                //     echo '</ul>';
-                            ?>
-
-
-                        </div> -->
-                    <!-- end Events -->
 
                     <!-- Jira -->
                         <div class="tab-pane fade" id="jira-tab-pane" role="tabpanel" aria-labelledby="jira-tab" tabindex="0">
@@ -777,6 +791,7 @@ if(isLoggedIn() == false) {
         // Convert issueData to FormData object
         var formData = new FormData();
         formData.append('auditIssueData', JSON.stringify(auditIssueData));
+        formData.append('asset_id', asset_id); // Append asset_id to FormData
 
         // Make AJAX request to create Jira issue
         fetch('<?php echo BASE_URL; ?>/api/perform_audit.php', {

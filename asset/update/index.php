@@ -1,11 +1,10 @@
 <?php
 date_default_timezone_set('America/Denver');
-require_once "app/database/connection.php";
-// require_once "app/functions/add_app.php";
-require_once "path.php";
+require_once "../../app/database/connection.php";
+require_once "../../path.php";
 session_start();
 
-$files = glob("app/functions/*.php");
+$files = glob("../../app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
@@ -19,19 +18,21 @@ if(isLoggedIn() == false) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    <!-- Bootstrap Links -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
 
     <!-- TinyMCE -->
     <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <title>Home | Asset360</title>
+    <title>Update Asset | Asset360</title>
 </head>
 <body>
     <?php include(ROOT_PATH . "/app/includes/header.php"); ?>
@@ -41,11 +42,44 @@ if(isLoggedIn() == false) {
     <div class="container" style="padding: 0 75px 0 75px;">
     <form method="POST" action="">
         <br>
+
+        <?php
+        $id = $_GET['id'];
+        $u_sql = "SELECT * FROM assets
+        WHERE asset_id = $id";
+        $u_result = mysqli_query($conn, $u_sql);
+        if($u_result) {
+        $u_num_rows = mysqli_num_rows($u_result);
+        if($u_num_rows > 0) {
+            while ($u_row = mysqli_fetch_assoc($u_result)) {
+                $u_id                     = $u_row['asset_id']; 
+                $u_asset_name             = $u_row['asset_name']; 
+                $u_asset_tag_no           = $u_row['asset_tag_no'];
+                $u_manufacturer_name      = $u_row['manufacturer_name'];
+                $u_model                  = $u_row['model'];
+                $u_model_no               = $u_row['model_no'];
+                $u_acquisition_date       = $u_row['acquisition_date'];
+                $u_end_of_life_date       = $u_row['end_of_life_date'];
+                $u_location               = $u_row['location'];
+                $u_custodian              = $u_row['custodian'];
+                $u_serial_number          = $u_row['serial_number'];
+                $u_notes                  = $u_row['notes']; 
+                $u_status                 = $u_row['status']; 
+                $u_maintenance_schedule   = $u_row['maintenance_schedule'];
+                $u_audit_schedule         = $u_row['audit_schedule']; 
+                $u_asset_type             = $u_row['asset_type']; 
+                $u_created_at             = $u_row['asset_created'];
+                $u_updated_at             = $u_row['asset_updated'];
+                $u_ip_address             = $u_row['ip_address']; 
+            }
+        ?>
+
         <div class="top-form" style="margin-bottom: -38px;">
-            <h2 class="">Add an Asset</h2>
+            <h2 class="">Update <?php echo $u_asset_name; ?></h2>
             <div class="float-end" style="margin-top: -50px;">
-                <button type="submit" name="add-asset" class="btn btn-primary">Submit</button>
+                <button type="submit" name="update-asset" class="btn btn-primary">Update</button>
             </div>
+            <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $u_id; ?>">
         </div>
         <br>
         <hr>
@@ -57,33 +91,33 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label for="asset_tag_no" class="form-label">Asset Tag Number</label>
                 <div class="input-group">
-                    <div class="input-group-text">M-</div>
-                    <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no">
+                    <!-- <div class="input-group-text">M-</div> -->
+                    <input type="text" class="form-control" id="asset_tag_no" name="asset_tag_no" value="<?php echo $u_asset_tag_no; ?>">
                 </div>
             </div>
             <div class="col">
                 <label for="asset_name" class="form-label">Asset Name</label>
-                <input type="text" class="form-control" id="asset_name" name="asset_name">
+                <input type="text" class="form-control" id="asset_name" name="asset_name" value="<?php echo $u_asset_name; ?>">
             </div>
             <div class="col">
                 <label for="serial_number" class="form-label">Serial Number</label>
-                <input type="text" class="form-control" id="serial_number" name="serial_number">
+                <input type="text" class="form-control" id="serial_number" name="serial_number" value="<?php echo $u_serial_number; ?>">
             </div>
             <div class="col">
                 <label for="model" class="form-label">Model</label>
-                <input type="text" class="form-control" id="model" name="model">
+                <input type="text" class="form-control" id="model" name="model" value="<?php echo $u_model; ?>">
             </div>
             <div class="col">
                 <label for="model_no" class="form-label">Model Number</label>
-                <input type="text" class="form-control" id="model_no" name="model_no">
+                <input type="text" class="form-control" id="model_no" name="model_no" value="<?php echo $u_model_no; ?>">
             </div>
             <div class="col">
                 <label for="manufacturer_name" class="form-label">Manufacturer Name</label>
-                <input type="text" class="form-control" id="manufacturer_name" name="manufacturer_name">
+                <input type="text" class="form-control" id="manufacturer_name" name="manufacturer_name" value="<?php echo $u_manufacturer_name; ?>">
             </div>
             <div class="col">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location">
+                <input type="text" class="form-control" id="location" name="location"  value="<?php echo $u_location; ?>">
             </div>
         </div>
 
@@ -91,7 +125,7 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="asset_type">Asset Type</label>
                 <select class="form-control" name="asset_type">
-                    <option value="">Select an option...</option>
+                    <option value="<?php echo $u_asset_type; ?>"><?php echo $u_asset_type; ?></option>
                     <option value="Server">Server</option>
                     <option value="Computer">Computer</option>
                     <option value="Network Device">Network Device</option>
@@ -105,7 +139,7 @@ if(isLoggedIn() == false) {
             <div class="col">
                 <label class="form-label" for="status">Asset Custodian</label>
                 <select class="form-control" name="custodian">
-                    <option value="">Select an option...</option>
+                    <option value="<?php echo $u_custodian; ?>"><?php echo $u_custodian; ?></option>
                     <?php
                     $sql = "SELECT fname, lname FROM users";
                     $result = mysqli_query($conn, $sql);
@@ -122,27 +156,16 @@ if(isLoggedIn() == false) {
             </div>
             <div class="col">
                 <label for="acquisition_date" class="form-label">Acquisition Date</label>
-                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date">
+                <input type="date" class="form-control" id="acquisition_date" name="acquisition_date" value="<?php echo $u_acquisition_date; ?>">
             </div>
             <div class="col">
                 <label for="end_of_life_date" class="form-label">End of Life Date</label>
-                <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date">
-            </div>
-            <!-- <div class="col">
-                <label for="maintenance_schedule" class="form-label">Maintenance Schedule</label>
-                <input type="date" class="form-control" id="maintenance_schedule" name="maintenance_schedule">
-            </div> -->
-            <?php
-                $audit_schedule = date('M d, Y', strtotime('+1 months'));
-            ?>
-            <div class="col">
-                <label for="audit_schedule" class="form-label">First Audit</label>
-                <input type="text" class="form-control" id="audit_schedule" name="audit_schedule" readonly value="<?php echo $audit_schedule; ?>">
+                <input type="date" class="form-control" id="end_of_life_date" name="end_of_life_date" value="<?php echo $u_end_of_life_date; ?>">
             </div>
             <div class="col">
                 <label class="form-label" for="status">Status</label>
                 <select class="form-control" name="status">
-                    <option value="">Select an option...</option>
+                    <option value="<?php echo $u_status; ?>"><?php echo $u_status; ?></option>
                     <option value="In Use">In Use</option>
                     <option value="In Repair">In Repair</option>
                     <option value="In Storage">In Storage</option>
@@ -160,9 +183,10 @@ if(isLoggedIn() == false) {
         <div class="row">
             <div class="col">
                 <label class="form-label" for="notes">Notes</label>
-                <textarea class="form-control" name="notes" rows="5"></textarea>
+                <textarea class="form-control" name="notes" rows="5"><?php echo $u_notes; ?></textarea>
             </div>
         </div>
+        <?php }} ?>
     </form>
 
 

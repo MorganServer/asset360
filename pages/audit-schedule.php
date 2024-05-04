@@ -57,6 +57,8 @@ if(isLoggedIn() == false) {
                     $limit = 10; // Number of entries per page
                     $page = isset($_GET['page']) ? $_GET['page'] : 1;
                     $offset = ($page - 1) * $limit;
+
+                    $today = date('Y-m-d');
                     
                     $audit_sql = "SELECT * FROM assets ORDER BY audit_schedule ASC LIMIT $limit OFFSET $offset";
                     $audit_result = mysqli_query($conn, $audit_sql);
@@ -76,19 +78,23 @@ if(isLoggedIn() == false) {
 
                                 // Format audit schedule if not null
                                 $f_audit_schedule = !empty($audit_schedule) ? date_format(date_create($audit_schedule), 'M d, Y') : '-';
+                                $is_today = ($audit_schedule == $today) ? true : false;
                 ?>
-                <tr>
+                <tr <?php if (strtotime($audit_schedule) <= strtotime($today)) echo 'class="table-info"'; ?>>
                     <th scope="row"><?php echo $asset_tag_no; ?></th>
                     <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
                     <td>
-                        <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
-                            Perform
-                        </a>
+                        <?php if (strtotime($audit_schedule) <= strtotime($today)) { ?>
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
+                                Perform
+                            </a>
+                        <?php } else { ?>
                         <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
                             Reschedule
                         </a>
+                        <?php } ?>
                     </td>                   
                 </tr>
 
@@ -164,7 +170,7 @@ if(isLoggedIn() == false) {
                                                     $r_location                 = $r_row['location'];
                                                     $r_created_at               = $r_row['created_at'];
                                     ?>
-                                        <input type="text" class="form-control" id="asset_id" name="asset_id" value="<?php echo $r_id; ?>">
+                                        <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $r_id; ?>">
                                         <div class="mb-3">
                                             <label for="audit_schedule" class="form-label" style="font-size: 14px;">Audit Schedule Date</label>
                                             <input type="date" class="form-control" id="audit_schedule" name="audit_schedule" required value="<?php echo $r_audit_schedule; ?>">

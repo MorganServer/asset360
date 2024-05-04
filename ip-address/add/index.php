@@ -1,11 +1,11 @@
 <?php
 date_default_timezone_set('America/Denver');
-require_once "app/database/connection.php";
+require_once "../../app/database/connection.php";
 // require_once "app/functions/add_app.php";
-require_once "path.php";
+require_once "../../path.php";
 session_start();
 
-$files = glob("app/functions/*.php");
+$files = glob("../../app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
@@ -29,7 +29,7 @@ if(isLoggedIn() == false) {
     <script src="https://cdn.tiny.cloud/1/7kainuaawjddfzf3pj7t2fm3qdjgq5smjfjtsw3l4kqfd1h4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Custom Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../../assets/css/styles.css?v=<?php echo time(); ?>">
 
     <title>Add IP Address | Asset360</title>
 </head>
