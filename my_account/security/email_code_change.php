@@ -49,18 +49,17 @@ if(isLoggedIn() == false) {
 
     <!-- Main container -->
     <div class="container" style="padding: 0 75px 0 75px;">
-        <h2 class="mt-4">Change Password</h2>
+        <h2 class="mt-4">Confirmation Code</h2>
         <hr>
 
         <!-- Information -->
         <div class="mb-4" style="background-color: rgb(229, 233, 236); border-radius: 5px; padding: 10px;">
-            <!-- Steps -->
-            <p>You may change your password at any time by following the steps below:</p>
-            <ul>
+            <p>Check your email for the confirmation code.</p>
+            <!-- <ul>
                 <li>Enter your current password and new password. You will need to enter the new password twice in order to confirm that you have entered it correctly.</li>
                 <li>An email with a confirmation number will be sent to your email address on record. Enter the confirmation number on the next page.</li>
                 <li>The password change will be effective immediately.</li>
-            </ul>
+            </ul> -->
         </div>
 
         <!-- Account Information -->
@@ -70,33 +69,33 @@ if(isLoggedIn() == false) {
                 <?php
                             $user_id = $_SESSION['user_id'];
 
-                            $a_sql = "SELECT * FROM users WHERE user_id = $user_id";
-                            $a_result = mysqli_query($conn, $a_sql);
-                            if($a_result) {
-                                $a_num_rows = mysqli_num_rows($a_result);
-                                if($a_num_rows > 0) {
-                                    while ($a_row = mysqli_fetch_assoc($a_result)) {
-                                        $id                     = $a_row['user_id'];
-                                        $fname                  = $a_row['fname'];
-                                        $lname                  = $a_row['lname'];
-                                        $uname                  = $a_row['uname'];
-                                        $email                  = $a_row['email'];
-                                        $account_type           = $a_row['account_type'];
-                                        $account_created        = $a_row['account_created'];
-
-                                        // Format maintenance schedule if not null
-                                        $f_account_created = !empty($account_created) ? date_format(date_create($account_created), 'M d, Y') : '-';
+                            $cp_sql = "SELECT * FROM users WHERE user_id = $user_id";
+                            $cp_result = mysqli_query($conn, $cp_sql);
+                            if($cp_result) {
+                                $cp_num_rows = mysqli_num_rows($cp_result);
+                                if($cp_num_rows > 0) {
+                                    while ($cp_row = mysqli_fetch_assoc($cp_result)) {
+                                        $id                     = $cp_row['user_id'];
+                                        $fname                  = $cp_row['fname'];
+                                        $lname                  = $cp_row['lname'];
+                                        $uname                  = $cp_row['uname'];
+                                        $email_code             = $cp_row['email_code'];
+                                        $n_password             = $cp_row['n_password'];
+                                        $c_password             = $cp_row['c_password'];
                                     
                                     }}}
                         ?>
-                    <h5 class="card-title">Account Information</h5>
+                    <!-- <h5 class="card-title">Account Information</h5> -->
                     <p class="card-text">
                         <!-- Account Update Form -->
-                        <form method="POST" action="<?php echo BASE_URL; ?>/app/functions/change_password.php">
+                        <form method="POST">
+                        <input type="hidden" class="" id="c_password" name="c_password" value="<?php echo $c_password; ?>">
+                        <input type="hidden" class="" id="n_password" name="n_password" value="<?php echo $n_password; ?>">
                             <div class="row mb-3">
                                 <label for="fname" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10 w-50">
-                                    <?php echo $uname; ?> change the password
+                                  <input type="hidden" class="" id="uname" name="uname" value="<?php echo $uname; ?>">
+                                    <?php echo $uname; ?>
                                 </div>
                             </div>
 

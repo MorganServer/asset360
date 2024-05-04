@@ -113,7 +113,6 @@ if(isLoggedIn() == false) {
                                   <input
                                     type="password"
                                     class="form-control rounded mt-1"
-                                    placeholder="Type your password"
                                     aria-label="password"
                                     aria-describedby="password"
                                     id="password-input"

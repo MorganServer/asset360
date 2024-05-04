@@ -38,6 +38,12 @@ if(isset($_POST['change'])) {
     $current_password = isset($_POST['password']) ? mysqli_real_escape_string($conn, $_POST['password']) : "";
     $h_current_password = md5($current_password);
 
+    $new_password = isset($_POST['n_password']) ? mysqli_real_escape_string($conn, $_POST['n_password']) : "";
+    $h_new_password = md5($new_password);
+
+    $confirm_password = isset($_POST['c_password']) ? mysqli_real_escape_string($conn, $_POST['c_password']) : "";
+    $h_confirm_password = md5($confirm_password);
+
 
     // $new_password = $_POST['n_password'];
     // // Get confirmed password from the form
@@ -61,7 +67,7 @@ if(isset($_POST['change'])) {
         $random_code = mt_rand(10000000, 99999999);
 
         // Update the user's row in the database with the new password and the generated code
-        $update_query = "UPDATE users SET email_code = '$random_code' WHERE uname = '$uname'";
+        $update_query = "UPDATE users SET n_password = '$h_new_password', c_password = '$h_confirm_password', email_code = '$random_code' WHERE uname = '$uname'";
         mysqli_query($conn, $update_query);
 
         // Redirect to the next page
@@ -78,20 +84,22 @@ if(isset($_POST['change'])) {
 
 
 
-// if (isset($_POST['email_code_confirm'])) {
-//     $uname = $_SESSION['uname']; // Assuming you have stored the username in a session
-//     $code_entered = $_POST['email_code']; // Assuming the form field name is 'email_code'
-//     // Query to check if the entered code matches
-//     $code_query = "SELECT * FROM users WHERE uname='$uname' AND email_code='$code_entered'";
-//     $code_result = mysqli_query($conn, $code_query);
-//     if (mysqli_num_rows($code_result) == 1) {
-//         $new_password = md5($_POST['n_password']); // Hash the new password
-//         // Update the password in the database
-//         $update_password_query = "UPDATE users SET password='$new_password' WHERE uname='$uname'";
-//         mysqli_query($conn, $update_password_query);
-//         echo "Password updated successfully.";
-//     } else {
-//         echo "Invalid code.";
-//     }
-// }
+if (isset($_POST['email_code_confirm'])) {
+    
+    $uname = isset($_POST['uname']) ? mysqli_real_escape_string($conn, $_POST['uname']) : "";
+    $new_password = isset($_POST['n_password']) ? mysqli_real_escape_string($conn, $_POST['n_password']) : "";
+    $email_code = isset($_POST['email_code']) ? mysqli_real_escape_string($conn, $_POST['email_code']) : "";
+ 
+    $code_query = "SELECT * FROM users WHERE uname='$uname' AND email_code='$email_code'";
+    $code_result = mysqli_query($conn, $code_query);
+    if (mysqli_num_rows($code_result) == 1) {
+        $new_password = md5($_POST['n_password']); // Hash the new password
+        // Update the password in the database
+        $update_password_query = "UPDATE users SET password='$new_password', n_password = NULL, c_password = NULL, email_code = NULL WHERE uname='$uname'";
+        mysqli_query($conn, $update_password_query);
+        echo "Password updated successfully.";
+    } else {
+        echo "Invalid code.";
+    }
+}
 ?>
