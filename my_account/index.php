@@ -154,7 +154,7 @@ if(isLoggedIn() == false) {
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="card mb-3 w-10" style="border-top: 4px solid gray; border-radius: 3px !important;">
+                    <div class="card mb-3 w-100" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
                             <h5 class="card-title text-center">User Access</h5>
