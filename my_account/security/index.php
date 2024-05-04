@@ -154,7 +154,8 @@ if(isLoggedIn() == false) {
             </ul>
         </div>
     </div>
-<!-- </div> -->
+</div>
+                                </dvi>
 
 
                             <div class="row mb-3">
