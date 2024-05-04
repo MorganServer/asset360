@@ -108,9 +108,9 @@ if(isLoggedIn() == false) {
                             <div class="row">
   <div class="col-6">
     <div class="input-group d-flex">
-      <span class="input-group-text border-0" id="password">
+      <!-- <span class="input-group-text border-0" id="password"> -->
         <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
-      </span>
+      <!-- </span> -->
       <input
         type="password"
         class="form-control rounded mt-1"
