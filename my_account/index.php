@@ -129,7 +129,7 @@ if(isLoggedIn() == false) {
                       <div class="card-body ps-2">
                         <h5 class="card-title mb-4">Admin Settings</h5>
 
-                        <div class="row ms-3 ">
+                        <!-- <div class="row"> -->
                           <div class="col-sm-6">
                             <div class="card me-2" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
@@ -163,7 +163,7 @@ if(isLoggedIn() == false) {
                             </div>
                           </div>
                             
-                        </div>
+                        <!-- </div> -->
 
                         <div class="row ms-3">
                             <div class="card" style="width: 99%; border-top: 4px solid red; border-radius: 3px !important;">
