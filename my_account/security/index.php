@@ -92,7 +92,7 @@ if(isLoggedIn() == false) {
                     <h5 class="card-title">Account Information</h5>
                     <p class="card-text">
                         <!-- Account Update Form -->
-                        <form method="POST" action="<?php echo BASE_URL; ?>/app/functions/change_password.php">
+                        <form method="POST">
                             <div class="row mb-3">
                                 <label for="uname" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10 w-50">
@@ -107,7 +107,7 @@ if(isLoggedIn() == false) {
                                 </div>
                             </div>
 
-                            
+
                             <!-- <div class="row mb-3">
                               <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
                               <div class="col-sm-10">
