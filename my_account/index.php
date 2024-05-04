@@ -129,8 +129,8 @@ if(isLoggedIn() == false) {
                       <div class="card-body ps-2">
                         <h5 class="card-title mb-4">Admin Settings</h5>
 
-                        <div class="row ms-3 ">
-                        <div class="col-sm-6 col-md-4 col-lg-4 mb-3"> 
+                        <div class="row ms-3 space-around">
+                        <div class="col-sm-4 col-md-4 col-lg-4 mb-3"> 
                             <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
@@ -140,7 +140,7 @@ if(isLoggedIn() == false) {
                               </div>
                             </div>
                             </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                            <div class="col-sm-4 col-md-4 col-lg-4 mb-3">
                             <div class="card me-2" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
@@ -150,7 +150,7 @@ if(isLoggedIn() == false) {
                               </div>
                             </div>
                             </div>
-                            <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+                            <div class="col-sm-4 col-md-4 col-lg-4 mb-3">
                             <div class="card" style="width: 15rem; border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
