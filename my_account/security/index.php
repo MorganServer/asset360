@@ -117,8 +117,8 @@ if(isLoggedIn() == false) {
           id="password-input"
           name="n_password"
         />
-        <div class="valid-feedback"></div>
-        <div class="invalid-feedback"></div>
+        <!-- <div class="valid-feedback"></div>
+        <div class="invalid-feedback"></div> -->
     </div>
 
     <div class="col">
