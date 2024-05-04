@@ -145,7 +145,7 @@ if(isLoggedIn() == false) {
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
                             <h5 class="card-title text-center">Notifications</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts, audit settings</h6>
+                            <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts</h6>
                             <a href="#" class="stretched-link"></a>
                         </div>
                     </div>
