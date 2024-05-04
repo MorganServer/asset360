@@ -102,7 +102,7 @@ if(isLoggedIn() == false) {
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-label">Current Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control w-50" id="password" name="password" required>
+                                    <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -125,7 +125,7 @@ if(isLoggedIn() == false) {
                             </div>
 
                             <div class="row">
-                              <div class="col-6 mt-2 mt-xxl-0 w-auto h-auto mb-2" style="margin-left: 150px;">
+                              <div class="col-6 mt-2 mt-xxl-0 w-auto h-auto mb-2" style="margin-left: 200px;">
                                 <div
                                   data-mdb-alert-init
                                   class="alert px-4 py-3 mb-0 d-none"
