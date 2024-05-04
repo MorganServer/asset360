@@ -124,13 +124,6 @@ if(isLoggedIn() == false) {
   </div>
 </div>
 
-<div class="row mb-3">
-  <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
-  <div class="col-sm-10">
-    <input type="password" class="form-control w-50" id="c_password" name="c_password" required>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
     <div
