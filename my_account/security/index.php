@@ -95,14 +95,14 @@ if(isLoggedIn() == false) {
                         <form method="POST">
                             <div class="row mb-3">
                                 <label for="fname" class="col-sm-2 col-form-label">User Name</label>
-                                <div class="col-sm-10">
+                                <div class="col-sm-10 w-50">
                                     <?php echo $uname; ?>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="password" class="col-sm-2 col-form-label">Current Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="password" name="password" required>
+                                    <input type="password" class="form-control w-50" id="password" name="password" required>
                                 </div>
                             </div>
                             <div class="row mb-3">
