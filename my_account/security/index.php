@@ -105,12 +105,10 @@ if(isLoggedIn() == false) {
                                     <input type="password" class="form-control w-50" id="password" name="password" required>
                                 </div>
                             </div>
-                            <div class="row">
-  <div class="col-6">
+                            <div class="row mb-3">
+  <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
+  <div class="col-sm-10">
     <div class="input-group d-flex">
-      <!-- <span class="input-group-text border-0" id="password"> -->
-        <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
-      <!-- </span> -->
       <input
         type="password"
         class="form-control rounded mt-1"
@@ -124,7 +122,16 @@ if(isLoggedIn() == false) {
       <div class="invalid-feedback">Wrong</div>
     </div>
   </div>
+</div>
 
+<div class="row mb-3">
+  <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
+  <div class="col-sm-10">
+    <input type="password" class="form-control w-50" id="c_password" name="c_password" required>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto">
     <div
       data-mdb-alert-init
@@ -158,6 +165,7 @@ if(isLoggedIn() == false) {
     </div>
   </div>
 </div>
+
 
 
 
