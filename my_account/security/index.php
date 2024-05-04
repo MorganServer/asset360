@@ -111,7 +111,7 @@ if(isLoggedIn() == false) {
                                 <div class="input-group d-flex">
                                   <input
                                     type="password"
-                                    class="form-control rounded mt-1"
+                                    class="form-control rounded mt-1 w-50"
                                     placeholder="Type your password"
                                     aria-label="password"
                                     aria-describedby="password"
