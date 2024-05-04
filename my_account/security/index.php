@@ -94,7 +94,7 @@ if(isLoggedIn() == false) {
                         <!-- Account Update Form -->
                         <form method="POST" action="<?php echo BASE_URL; ?>/app/functions/change_password.php">
                             <div class="row mb-3">
-                                <label for="fname" class="col-sm-2 col-form-label">User Name</label>
+                                <label for="uname" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10 w-50">
                                     <input type="hidden" class="" id="uname" name="uname" value="<?php echo $uname; ?>">
                                     <?php echo $uname; ?>
@@ -106,7 +106,9 @@ if(isLoggedIn() == false) {
                                     <input type="password" class="form-control w-50" id="password" name="password" required>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+
+                            
+                            <!-- <div class="row mb-3">
                               <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
                               <div class="col-sm-10">
                                 <div class="input-group w-50">
@@ -119,8 +121,6 @@ if(isLoggedIn() == false) {
                                     id="password-input"
                                     name="n_password"
                                   />
-                                  <!-- <div class="valid-feedback">Good</div>
-                                  <div class="invalid-feedback">Wrong</div> -->
                                 </div>
                               </div>
                             </div>
@@ -158,18 +158,21 @@ if(isLoggedIn() == false) {
                                   </ul>
                                 </div>
                               </div>
-                            </div>
+                            </div> -->
 
 
 
 
 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <label for="c_password" class="col-sm-2 col-form-label">Confirm Password</label>
                                 <div class="col-sm-10">
                                     <input type="password" class="form-control w-50" id="c_password" name="c_password" required>
                                 </div>
-                            </div>
+                            </div> -->
+
+
+
                             <!-- Update Button -->
                             <button type="submit" name="change" class="btn btn-secondary">Change Password</button>
 
