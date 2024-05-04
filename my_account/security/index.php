@@ -108,7 +108,7 @@ if(isLoggedIn() == false) {
                             <div class="row mb-3">
                               <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
                               <div class="col-sm-10">
-                                <div class="input-group">
+                                <div class="input-group w-50">
                                   <input
                                     type="password"
                                     class="form-control rounded mt-1"
@@ -117,7 +117,6 @@ if(isLoggedIn() == false) {
                                     aria-describedby="password"
                                     id="password-input"
                                     name="n_password"
-                                    style="width: 50% !important;"
                                   />
                                   <!-- <div class="valid-feedback">Good</div>
                                   <div class="invalid-feedback">Wrong</div> -->
