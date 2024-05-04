@@ -170,7 +170,37 @@ if(isLoggedIn() == false) {
                                 </div>
                             </div>
                             <!-- Update Button -->
-                            <button type="submit" name="update" class="btn btn-primary">Update</button>
+                            <!-- <button type="submit" name="change" class="btn btn-secondary">Change Password</button> -->
+
+                            <!-- Button trigger modal -->
+                            <button type="submit" name="change" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#emailCodeModal" id="email-code-btn" style="display: ;">
+                              Change Password
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="emailCodeModal" tabindex="-1" aria-labelledby="emailCodeModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="emailCodeModalLabel">Email Code Confirmation</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <form method="POST" id="email-code-form">
+                                      <div class="mb-3">
+                                        <label for="emailCode" class="form-label">Email Code</label>
+                                        <input type="text" class="form-control" id="emailCode" name="email_code" required>
+                                      </div>
+                                      <button type="submit" class="btn btn-primary" name="confirm_code">Confirm</button>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+
+
                         </form>
                     </p>
                 </div>
