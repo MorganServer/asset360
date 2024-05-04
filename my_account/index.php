@@ -131,7 +131,7 @@ if(isLoggedIn() == false) {
 
             <div class="row ms-3 justify-content-between" style="max-width: 96% !important;">
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                             <h5 class="card-title text-center">Security</h5>
@@ -141,7 +141,7 @@ if(isLoggedIn() == false) {
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
                             <h5 class="card-title text-center">Notifications</h5>
@@ -151,7 +151,7 @@ if(isLoggedIn() == false) {
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
                             <h5 class="card-title text-center">User Access</h5>
