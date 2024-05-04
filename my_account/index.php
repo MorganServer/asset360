@@ -130,37 +130,38 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title mb-4">Admin Settings</h5>
 
                         <div class="row ms-3">
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
-                        <div class="card-body">
-                            <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
-                            <h5 class="card-title text-center">Security</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
-                            <a href="<?php echo BASE_URL; ?>/my_account/security/" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
-                        <div class="card-body">
-                            <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
-                            <h5 class="card-title text-center">Notifications</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts, audit settings</h6>
-                            <a href="#" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
-                    <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
-                        <div class="card-body">
-                            <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
-                            <h5 class="card-title text-center">User Access</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">User and group settings</h6>
-                            <a href="#" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+        <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+            <div class="card-body">
+                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
+                <h5 class="card-title text-center">Security</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Change Password, Two-factor</h6>
+                <a href="<?php echo BASE_URL; ?>/my_account/security/" class="stretched-link"></a>
             </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+        <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+            <div class="card-body">
+                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
+                <h5 class="card-title text-center">Notifications</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">Email alerts, audit settings</h6>
+                <a href="#" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-4 mb-3">
+        <div class="card" style="width: 12rem; border-top: 4px solid gray; border-radius: 3px !important;">
+            <div class="card-body">
+                <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
+                <h5 class="card-title text-center">User Access</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary text-center" style="font-size: 12px;">User and group settings</h6>
+                <a href="#" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                         <div class="row ms-3">
                             <div class="card" style="width: 99%; border-top: 4px solid red; border-radius: 3px !important;">
