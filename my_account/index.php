@@ -133,7 +133,7 @@ if(isLoggedIn() == false) {
         <div class="card-body ps-2">
             <h5 class="card-title mb-4">Admin Settings</h5>
             <div class="row">
-                <div class="col-sm-2"> 
+                <div class="col-sm-4"> 
                     <div class="card mb-3" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
@@ -143,8 +143,8 @@ if(isLoggedIn() == false) {
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-2">
-                    <div class="card mb-3" style="border-top: 4px solid gray; border-radius: 3px !important;">
+                <div class="col-sm-4">
+                    <div class="card mb-3 w-100" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
                             <h5 class="card-title text-center">Notifications</h5>
@@ -153,7 +153,7 @@ if(isLoggedIn() == false) {
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="card mb-3" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
