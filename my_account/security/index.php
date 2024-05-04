@@ -92,7 +92,7 @@ if(isLoggedIn() == false) {
                     <h5 class="card-title">Account Information</h5>
                     <p class="card-text">
                         <!-- Account Update Form -->
-                        <form method="POST">
+                        <form method="POST" action="<?php echo BASE_URL; ?>/app/functions/change_password.php">
                             <div class="row mb-3">
                                 <label for="fname" class="col-sm-2 col-form-label">User Name</label>
                                 <div class="col-sm-10 w-50">
@@ -173,7 +173,7 @@ if(isLoggedIn() == false) {
                             <!-- <button type="submit" name="change" class="btn btn-secondary">Change Password</button> -->
 
                             <!-- Button trigger modal -->
-                            <button type="submit" name="change" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#emailCodeModal" id="email-code-btn" style="display: ;">
+                            <button type="submit" name="change" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#emailCodeModal" id="email-code-btn" style="">
                               Change Password
                             </button>
 
