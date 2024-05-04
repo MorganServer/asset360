@@ -96,7 +96,8 @@ if (isset($_POST['email_code_confirm'])) {
         // Update the password in the database
         $update_password_query = "UPDATE users SET password='$new_password', n_password = NULL, c_password = NULL, email_code = NULL WHERE uname='$uname'";
         mysqli_query($conn, $update_password_query);
-        echo "Password updated successfully.";
+        // echo "Password updated successfully.";
+        header("Location: " . BASE_URL . "/my_account/index.php");
     } else {
         echo "Invalid code.";
     }
