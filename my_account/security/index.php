@@ -106,58 +106,58 @@ if(isLoggedIn() == false) {
                                 </div>
                             </div>
                             <div class="row mb-3">
-  <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
-  <div class="col-sm-10">
-    <div class="input-group d-flex">
-      <input
-        type="password"
-        class="form-control rounded mt-1"
-        placeholder="Type your password"
-        aria-label="password"
-        aria-describedby="password"
-        id="password-input"
-        name="n_password"
-      />
-      <div class="valid-feedback">Good</div>
-      <div class="invalid-feedback">Wrong</div>
-    </div>
-  </div>
-</div>
+                              <label for="n_password" class="col-sm-2 col-form-label">New Password</label>
+                              <div class="col-sm-10">
+                                <div class="input-group d-flex">
+                                  <input
+                                    type="password"
+                                    class="form-control rounded mt-1"
+                                    placeholder="Type your password"
+                                    aria-label="password"
+                                    aria-describedby="password"
+                                    id="password-input"
+                                    name="n_password"
+                                  />
+                                  <!-- <div class="valid-feedback">Good</div>
+                                  <div class="invalid-feedback">Wrong</div> -->
+                                </div>
+                              </div>
+                            </div>
 
-<div class="row">
-  <div class="col-6 mt-4 mt-xxl-0 w-auto h-auto mb-2">
-    <div
-      data-mdb-alert-init
-      class="alert px-4 py-3 mb-0 d-none"
-      role="alert"
-      data-mdb-color="warning"
-      id="password-alert"
-    >
-      <ul class="list-unstyled mb-0">
-        <li class="requirements leng">
-          <i class="bi bi-check text-success me-2"></i>
-          <i class="bi bi-x text-danger me-3"></i>
-          Your password must have at least 8 chars
-        </li>
-        <li class="requirements big-letter">
-          <i class="bi bi-check text-success me-2"></i>
-          <i class="bi bi-x text-danger me-3"></i>
-          Your password must have at least 1 big letter.
-        </li>
-        <li class="requirements num">
-          <i class="bi bi-check text-success me-2"></i>
-          <i class="bi bi-x text-danger me-3"></i>
-          Your password must have at least 1 number.
-        </li>
-        <li class="requirements special-char">
-          <i class="bi bi-check text-success me-2"></i>
-          <i class="bi bi-x text-danger me-3"></i>
-          Your password must have at least 1 special char.
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                            <div class="row">
+                              <div class="col-6 mt-2 ms-5 mt-xxl-0 w-auto h-auto mb-2">
+                                <div
+                                  data-mdb-alert-init
+                                  class="alert px-4 py-3 mb-0 d-none"
+                                  role="alert"
+                                  data-mdb-color="warning"
+                                  id="password-alert"
+                                >
+                                  <ul class="list-unstyled mb-0">
+                                    <li class="requirements leng">
+                                      <i class="bi bi-check text-success me-2"></i>
+                                      <i class="bi bi-x text-danger me-3"></i>
+                                      Your password must have at least 8 characters.
+                                    </li>
+                                    <li class="requirements big-letter">
+                                      <i class="bi bi-check text-success me-2"></i>
+                                      <i class="bi bi-x text-danger me-3"></i>
+                                      Your password must have at least 1 uppercase letter.
+                                    </li>
+                                    <li class="requirements num">
+                                      <i class="bi bi-check text-success me-2"></i>
+                                      <i class="bi bi-x text-danger me-3"></i>
+                                      Your password must have at least 1 number.
+                                    </li>
+                                    <li class="requirements special-char">
+                                      <i class="bi bi-check text-success me-2"></i>
+                                      <i class="bi bi-x text-danger me-3"></i>
+                                      Your password must have at least 1 special character.
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
 
 
 
