@@ -130,7 +130,8 @@ if(isLoggedIn() == false) {
                         <h5 class="card-title mb-4">Admin Settings</h5>
 
                         <div class="row ms-3 ">
-                            <div class="card me-2" style="width: 10rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                          <div class="col-sm-6">
+                            <div class="card me-2" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-shield-lock-fill"></i></p>
                                 <h5 class="card-title text-center">Security</h5>
@@ -138,7 +139,10 @@ if(isLoggedIn() == false) {
                                 <a href="<?php echo BASE_URL; ?>/my_account/security/" class="stretched-link"></a>
                               </div>
                             </div>
-                            <div class="card me-2" style="width: 10rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                          </div>
+
+                          <div class="col-sm-6">
+                            <div class="card me-2" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-bell-fill"></i></p>
                                 <h5 class="card-title text-center">Notifications</h5>
@@ -146,7 +150,10 @@ if(isLoggedIn() == false) {
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
-                            <div class="card" style="width: 10rem; border-top: 4px solid gray; border-radius: 3px !important;">
+                          </div>
+
+                          <div class="col-sm-6">
+                            <div class="card" style="border-top: 4px solid gray; border-radius: 3px !important;">
                               <div class="card-body">
                                 <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-person-fill-lock"></i></p>
                                 <h5 class="card-title text-center">User Access</h5>
@@ -154,6 +161,8 @@ if(isLoggedIn() == false) {
                                 <a href="#" class="stretched-link"></a>
                               </div>
                             </div>
+                          </div>
+                            
                         </div>
 
                         <div class="row ms-3">
