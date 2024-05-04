@@ -165,9 +165,9 @@ if(isLoggedIn() == false) {
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row ms-2">
                 <div class="col">
-                  <div class="card" style="width: 99%; border-top: 4px solid red; border-radius: 3px !important;">
+                  <div class="card" style="width: 96%; border-top: 4px solid red; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-trash-fill"></i></p>
                             <h5 class="card-title text-center">Purge Data</h5>
