@@ -64,7 +64,7 @@ if(isset($_POST['change'])) {
         mysqli_query($conn, $update_query);
 
         // Redirect to the next page
-        header("Location: email_code_change.php");
+        header("Location: " . BASE_URL . "/my_account/security/email_code_change.php");
         exit(); // Ensure script execution stops after redirecting
     }
 }
