@@ -132,7 +132,7 @@ if(isLoggedIn() == false) {
     <div class="card w-100" style="border-top: 4px solid rgb(0, 43, 73); border-radius: 3px !important;">
         <div class="card-body ps-2">
             <h5 class="card-title mb-4">Admin Settings</h5>
-            <div class="row ms-2">
+            <div class="row ms-1">
                 <div class="col-sm-4"> 
                     <div class="card mb-3 w-100" style="border-top: 4px solid gray; border-radius: 3px !important;">
                         <div class="card-body">
@@ -165,9 +165,9 @@ if(isLoggedIn() == false) {
                 </div>
             </div>
 
-            <div class="row w-100">
-                <div class="col w-100">
-                    <div class="card" style="border-top: 4px solid red; border-radius: 3px !important;">
+            <div class="row">
+                <div class="col">
+                  <div class="card" style="width: 99%; border-top: 4px solid red; border-radius: 3px !important;">
                         <div class="card-body">
                             <p class="card-text text-center" style="font-size: 50px;"><i class="bi bi-trash-fill"></i></p>
                             <h5 class="card-title text-center">Purge Data</h5>
