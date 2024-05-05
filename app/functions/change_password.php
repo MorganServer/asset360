@@ -36,10 +36,20 @@ if(isset($_POST['change'])) {
         // $python_script_path = BASE_URL . "/app/backend_scripts/script.py"; // Replace this with the path to your Python script
         // $command = "python3 $python_script_path $recipient_email $random_code";
         $python_path = "/usr/bin/python3"; // Example path to python3
-        $python_script_path = BASE_URL . "/app/backend_scripts/email_code.py";
-        $output_file = BASE_URL . "/output.log";
+        $python_script_path = "/var/www/asset360/public_html/asset360/app/backend_scripts/email_code.py"; // Replace this with the actual path
+        $recipient_email = escapeshellarg($recipient_email); // Escape recipient email to prevent shell injection
+        $random_code = escapeshellarg($random_code); // Escape random code to prevent shell injection
         $command = "sudo $python_path $python_script_path $recipient_email $random_code";
-        exec($command);
+        exec($command, $output, $return_status);
+
+        if ($return_status !== 0) {
+            // Command failed
+            echo "Failed to execute Python script.";
+            print_r($output); // Output any error messages
+        } else {
+            // Command succeeded
+            echo "Python script executed successfully.";
+        }
 
         // Redirect to the next page
         header("Location: " . BASE_URL . "/my_account/security/email_code_change.php");
