@@ -22,7 +22,7 @@ if(isset($_POST['change'])) {
     if(!$user) {
         $error_message = "Current password is incorrect.";
     } else if ($h_new_password != $h_confirm_password) {
-        $error_message = "passwords don't match"; 
+        $error_message = "New and Confirm password don't match. Please try again."; 
     } else {
         // Generate a random 8-digit code
         $random_code = mt_rand(10000000, 99999999);

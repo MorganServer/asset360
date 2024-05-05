@@ -89,7 +89,10 @@ if(isLoggedIn() == false) {
                                     
                                     }}}
                         ?>
-                    <?php echo $error_message; ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error_message; ?>
+                        </div>
+                    
                     <p class="card-text">
                         <!-- Account Update Form -->
                         <form method="POST">
