@@ -20,9 +20,9 @@ if(isset($_POST['change'])) {
     $user = mysqli_fetch_assoc($result);
 
     if(!$user) {
-        $error_message = "Current password is incorrect.";
+        $error_message = "Current password is incorrect. Please try again.";
     } else if ($h_new_password != $h_confirm_password) {
-        $error_message = "New and Confirm password don't match. Please try again."; 
+        $error_message = "New passwords don't match. Please try again."; 
     } else {
         // Generate a random 8-digit code
         $random_code = mt_rand(10000000, 99999999);
@@ -30,6 +30,12 @@ if(isset($_POST['change'])) {
         // Update the user's row in the database with the new password and the generated code
         $update_query = "UPDATE users SET n_password = '$h_new_password', c_password = '$h_confirm_password', email_code = '$random_code' WHERE uname = '$uname'";
         mysqli_query($conn, $update_query);
+
+        // Call the Python script to send the email
+        $recipient_email = $user['email']; // Assuming 'email' is the column name in your database for the user's email address
+        $python_script_path = BASE_URL . "/app/backend_scripts/script.py"; // Replace this with the path to your Python script
+        $command = "python3 $python_script_path $recipient_email $random_code";
+        exec($command);
 
         // Redirect to the next page
         header("Location: " . BASE_URL . "/my_account/security/email_code_change.php");
