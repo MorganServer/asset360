@@ -89,7 +89,7 @@ if(isLoggedIn() == false) {
                                     
                                     }}}
                         ?>
-                    <h5 class="card-title">Account Information</h5>
+                    <?php echo $error_message; ?>
                     <p class="card-text">
                         <!-- Account Update Form -->
                         <form method="POST">

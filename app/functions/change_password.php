@@ -20,9 +20,9 @@ if(isset($_POST['change'])) {
     $user = mysqli_fetch_assoc($result);
 
     if(!$user) {
-        echo "Current password is incorrect.";
+        $error_message = "Current password is incorrect.";
     } else if ($h_new_password != $h_confirm_password) {
-        echo "passwords don't match"; 
+        $error_message = "passwords don't match"; 
     } else {
         // Generate a random 8-digit code
         $random_code = mt_rand(10000000, 99999999);
