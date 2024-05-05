@@ -38,7 +38,7 @@ if(isset($_POST['change'])) {
         $python_path = "/usr/bin/python3"; // Example path to python3
         $python_script_path = BASE_URL . "/app/backend_scripts/email_code.py";
         $output_file = BASE_URL . "/output.log";
-        $command = "$python_path $python_script_path $recipient_email $random_code > $output_file 2>&1";
+        $command = "sudo $python_path $python_script_path $recipient_email $random_code";
         exec($command);
 
         // Redirect to the next page
