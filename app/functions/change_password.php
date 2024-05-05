@@ -37,7 +37,7 @@ if(isset($_POST['change'])) {
         echo $random_code;
         $pythonScript = "/var/www/asset360/public_html/asset360/app/backend_scripts/email_code.py";
         // $output = exec("sudo python3 $pythonScript $recipient_email $random_code");
-        $output = exec("sudo python3 $pythonScript $recipient_email $random_code 2>&1");
+        $output = exec("python3 $pythonScript $recipient_email $random_code 2>&1");
 
         echo $output;
 
