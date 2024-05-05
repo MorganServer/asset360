@@ -21,21 +21,11 @@ if(isset($_POST['change'])) {
 
     if(!$user) {
         echo "Current password is incorrect.";
+    } else if ($h_new_password != $h_confirm_password) {
+        echo "passwords don't match"; 
     } else {
         // Generate a random 8-digit code
         $random_code = mt_rand(10000000, 99999999);
-
-        // Send email with the code
-        $to = $user['email']; // Assuming the email is stored in the 'email' column
-        $subject = "Verification Code";
-        $message = "Your verification code is: $random_code";
-        $headers = "From: garrett.morgan@morganserver.com"; // Change this to your email address
-
-        // Uncomment the following line if you're using PHPMailer
-        // $mail->send();
-
-        // Uncomment the following line if you're using the built-in mail() function
-        mail($to, $subject, $message, $headers);
 
         // Update the user's row in the database with the new password and the generated code
         $update_query = "UPDATE users SET n_password = '$h_new_password', c_password = '$h_confirm_password', email_code = '$random_code' WHERE uname = '$uname'";
