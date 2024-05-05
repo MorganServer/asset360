@@ -31,20 +31,15 @@ if(isset($_POST['change'])) {
         $update_query = "UPDATE users SET n_password = '$h_new_password', c_password = '$h_confirm_password', email_code = '$random_code' WHERE uname = '$uname'";
         mysqli_query($conn, $update_query);
 
-        // Call the Python script to send the email
-        $recipient_email = $user['email']; // Assuming 'email' is the column name in your database for the user's email address
-        echo $recipient_email;
-        echo $random_code;
+        $recipient_email = $user['email'];
         $pythonScript = "/var/www/asset360/public_html/asset360/app/backend_scripts/email_code.py";
-        // $output = exec("sudo python3 $pythonScript $recipient_email $random_code");
-        $output = exec("python3 $pythonScript $recipient_email $random_code 2>&1");
+        exec("python3 $pythonScript $recipient_email $random_code");
 
-        echo $output;
 
 
 
         // Redirect to the next page
-        // header("Location: " . BASE_URL . "/my_account/security/email_code_change.php");
+        header("Location: " . BASE_URL . "/my_account/security/email_code_change.php");
         exit(); // Ensure script execution stops after redirecting
     }
 }
