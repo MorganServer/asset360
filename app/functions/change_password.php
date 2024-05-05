@@ -33,8 +33,12 @@ if(isset($_POST['change'])) {
 
         // Call the Python script to send the email
         $recipient_email = $user['email']; // Assuming 'email' is the column name in your database for the user's email address
-        $python_script_path = BASE_URL . "/app/backend_scripts/script.py"; // Replace this with the path to your Python script
-        $command = "python3 $python_script_path $recipient_email $random_code";
+        // $python_script_path = BASE_URL . "/app/backend_scripts/script.py"; // Replace this with the path to your Python script
+        // $command = "python3 $python_script_path $recipient_email $random_code";
+        $python_path = "/usr/bin/python3"; // Example path to python3
+        $python_script_path = BASE_URL . "/app/backend_scripts/email_code.py";
+        $output_file = BASE_URL . "/output.log";
+        $command = "$python_path $python_script_path $recipient_email $random_code > $output_file 2>&1";
         exec($command);
 
         // Redirect to the next page
