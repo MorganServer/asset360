@@ -21,7 +21,7 @@ def send_email(recipient_email, code):
     message.attach(MIMEText(body, "plain"))
 
     # Connect to the SMTP server
-    with smtplib.SMTP("smtp.example.com", 587) as server:  # Replace with your SMTP server and port
+    with smtplib.SMTP("smtp.gmail.com", 587) as server:  # Replace with your SMTP server and port
         server.starttls()
         server.login(sender_email, password)
         text = message.as_string()
