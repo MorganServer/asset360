@@ -39,7 +39,7 @@ if(isset($_POST['change'])) {
         $python_script_path = "/var/www/asset360/public_html/asset360/app/backend_scripts/email_code.py"; // Replace this with the actual path
         $recipient_email = escapeshellarg($recipient_email); // Escape recipient email to prevent shell injection
         $random_code = escapeshellarg($random_code); // Escape random code to prevent shell injection
-        $command = "sudo $python_path $python_script_path $recipient_email $random_code";
+        // $command = "sudo $python_path $python_script_path $recipient_email $random_code";
         $command = "sudo /usr/bin/python3 /var/www/asset360/public_html/asset360/app/backend_scripts/email_code.py $recipient_email $random_code";
         exec($command, $output, $return_status);
 
