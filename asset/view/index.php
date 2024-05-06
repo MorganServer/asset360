@@ -172,9 +172,9 @@ if(isLoggedIn() == false) {
                                     <input type="hidden" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                     <input type="hidden"  id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
                                     <input type="hidden" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
-                                    <a type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer; border: none; background: none;">
+                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px !important; cursor: pointer; border: none; background: none;">
                                         <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
-                            </a>
+                                    </button>
                                 </form>
                             <?php } else { ?>
                                 <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
