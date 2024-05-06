@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                             </a> -->
                             <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
-                                <form id="auditModalForm">
+                                <form id="auditModalForm" method="POST">
                                     <input type="hidden" class="form-control" id="summary" name="summary" value="Perform Audit for <?php echo $off_asset_name; ?>">
                                     <!-- <textarea class="form-control" id="notes" name="notes" rows="5">
                                         Description of the asset:
