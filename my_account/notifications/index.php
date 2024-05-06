@@ -46,7 +46,8 @@ if(isLoggedIn() == false) {
                 <tr>
                 <th scope="col">ID #</th>
                 <th scope="col">Asset Name</th>
-                <th scope="col">Notified Dated</th>
+                <th scope="col">Notified Date</th>
+                <th scope="col">Acknowledged Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
                 </tr>
@@ -90,8 +91,9 @@ if(isLoggedIn() == false) {
                                 $asset_name                   = $a_row['asset_name'];
                             }}}
                 ?>
-                    <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
-                    <td><?php echo $f_notify_date ? $f_notify_date : '-'; ?></td>
+                    <td><?php echo $asset_name ? $asset_name : '--'; ?></td>
+                    <td><?php echo $f_notify_date ? $f_notify_date : '--'; ?></td>
+                    <td><?php echo $f_ack_date ? $f_ack_date : '--'; ?></td>
                     <td>
                         <?php 
                         if ($acknowledged == 0) {
