@@ -106,17 +106,17 @@ if(isLoggedIn() == false) {
                         ?>
                     </td>
                     <td style="font-size: 20px;">
-                        <a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view">
+                        <!-- <a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view">
                             <i class="bi bi-eye text-success"></i>
-                        </a> 
-                        &nbsp; 
-                        <a href="<?php echo BASE_URL; ?>/asset/update/?id=<?php echo $id; ?>">
+                        </a>  -->
+                        &nbsp; Add buttons
+                        <!-- <a href="<?php echo BASE_URL; ?>/asset/update/?id=<?php echo $id; ?>">
                             <i class="bi bi-pencil-square" style="color:#005382;"></i>
-                        </a> 
+                        </a>  -->
                         &nbsp; 
-                        <a href="<?php echo BASE_URL; ?>/asset/delete/?id=<?php echo $id; ?>" class="delete">
+                        <!-- <a href="<?php echo BASE_URL; ?>/asset/delete/?id=<?php echo $id; ?>" class="delete">
                             <i class="bi bi-trash" style="color:#941515;"></i>
-                        </a>
+                        </a> -->
                     </td>
                 </tr>
                 <?php
