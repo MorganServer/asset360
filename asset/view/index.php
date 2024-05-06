@@ -169,10 +169,10 @@ if(isLoggedIn() == false) {
                                     <!-- <textarea class="form-control" id="notes" name="notes" rows="5">
                                         Description of the asset:
                                     </textarea> -->
-                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
-                                    <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
-                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
-                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
+                                    <input type="hidden" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
+                                    <input type="hidden"  id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
+                                    <input type="hidden" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
+                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton">
                                         <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                     </a>
                                 </form>
@@ -186,7 +186,7 @@ if(isLoggedIn() == false) {
                             </a>
                             
                             <!-- AUDIT modal -->
-                                <div class="modal fade" id="auditModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                                <!-- <div class="modal fade" id="auditModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -195,9 +195,9 @@ if(isLoggedIn() == false) {
                                             </div>
                                             <div class="modal-body">
                                                 <form id="auditModalForm">
-                                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
-                                                    <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
-                                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
+                                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php //echo '[' . $off_asset_tag_no. '] '; ?>">
+                                                    <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php //echo $off_asset_tag_no; ?>">
+                                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php //echo $off_id; ?>">
                                                     <div class="mb-3">
                                                         <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
                                                         <input type="text" class="form-control" id="summary" name="summary" required>
@@ -208,13 +208,12 @@ if(isLoggedIn() == false) {
                                                             <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
                                                         </div>
                                                     </div>
-                                                    <!-- Add more fields as needed -->
                                                     <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             <!-- End Modal for AUDIT -->
 
                             <!-- RESCHEDULE modal -->
