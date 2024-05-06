@@ -161,12 +161,12 @@ if(isLoggedIn() == false) {
 
                             <!-- AUDIT FORM -->
                             <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
-                                <form id="auditForm" method="POST" class="me-2">
+                                <form id="auditForm" method="POST" class="me-2" style="margin-top: 0;">
                                     <input type="hidden" class="form-control" id="summary" name="summary" value="Perform Audit for <?php echo $off_asset_name; ?>">
                                     <input type="hidden" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                     <input type="hidden"  id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
                                     <input type="hidden" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
-                                    <button type="submit" class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer; border: none; background: none;">
+                                    <button type="submit" class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;">
                                         <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                     </button>
                                 </form>
