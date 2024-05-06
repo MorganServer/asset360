@@ -445,7 +445,7 @@ if(isLoggedIn() == false) {
                                             <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
 
-                                        <img alt='Barcode Generator TEC-IT' src='https://barcode.tec-it.com/barcode.ashx?data=<?php echo $r_asset_tag_no; ?>&code=Code128'/>
+                                        <img alt='Barcode Generator TEC-IT' src='https://barcode.tec-it.com/barcode.ashx?data=https://asset360.morganserver.com/asset/view/?id=<?php echo $r_id; ?>&code=Code128'/>
                                         <?php
                                         // Function to get Jira issues
                                         function getAllJiraIssues($url) {
