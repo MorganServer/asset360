@@ -44,10 +44,9 @@ if(isLoggedIn() == false) {
             <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Tag No</th>
+                <th scope="col">ID #</th>
                 <th scope="col">Asset Name</th>
-                <th scope="col">Location</th>
-                <th scope="col">Next Audit</th>
+                <th scope="col">Notified Dated</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
                 </tr>
@@ -79,8 +78,19 @@ if(isLoggedIn() == false) {
                                 $f_notification_created = !empty($notification_created) ? date_format(date_create($notification_created), 'M d, Y') : '--';
                 ?>
                 <tr>
-                    <th scope="row"><?php echo $$idno; ?></th>
-                    <td><?php echo $assigned_asset_tag_no ? $assigned_asset_tag_no : '-'; ?></td>
+                    <th scope="row"><?php echo $idno; ?></th>
+                    <?php
+                    // Pagination variables
+                    $a_sql = "SELECT * FROM assets WHERE asset_tag_no = '$assigned_asset_tag_no'";
+                    $a_result = mysqli_query($conn, $a_sql);
+                    if($a_result) {
+                        $a_num_rows = mysqli_num_rows($a_result);
+                        if($a_num_rows > 0) {
+                            while ($a_row = mysqli_fetch_assoc($a_result)) {
+                                $asset_name                   = $a_row['asset_name'];
+                            }}}
+                ?>
+                    <td><?php echo $asset_name ? $asset_name : '-'; ?></td>
                     <td><?php echo $f_notify_date ? $f_notify_date : '-'; ?></td>
                     <td>
                         <?php 
