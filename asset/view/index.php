@@ -671,6 +671,9 @@ if(isLoggedIn() == false) {
         var summary = document.getElementById('summary').value;
         //var notes = document.getElementById('notes').value;
         var combinedSummary = asset_tag + summary;
+        var today = new Date();
+        var duedate = new Date();
+        var set_duedate = duedate.setDate(today.getDate() + 3);
         var auditIssueData = {
             "fields": {
                 "project": {
@@ -694,6 +697,8 @@ if(isLoggedIn() == false) {
                 // },
                 "issuetype": {
                     "id": "10029"
+                },
+                "duedate": set_duedate,
                 },
                 "labels": [
                     actual_asset_tag,
