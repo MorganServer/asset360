@@ -669,7 +669,7 @@ if(isLoggedIn() == false) {
         var asset_id = document.getElementById('asset_id').value;
         var asset_tag = document.getElementById('asset_tag').value;
         var summary = document.getElementById('summary').value;
-        var notes = document.getElementById('notes').value;
+        //var notes = document.getElementById('notes').value;
         var combinedSummary = asset_tag + summary;
         var auditIssueData = {
             "fields": {
@@ -677,21 +677,21 @@ if(isLoggedIn() == false) {
                     "key": "SG"
                 },
                 "summary": combinedSummary,
-                "description": {
-                    "type": "doc",
-                    "version": 1,
-                    "content": [
-                        {
-                            "type": "paragraph",
-                            "content": [
-                                {
-                                    "type": "text",
-                                    "text": notes
-                                }
-                            ]
-                        }
-                    ]
-                },
+                // "description": {
+                //     "type": "doc",
+                //     "version": 1,
+                //     "content": [
+                //         {
+                //             "type": "paragraph",
+                //             "content": [
+                //                 {
+                //                     "type": "text",
+                //                     "text": notes
+                //                 }
+                //             ]
+                //         }
+                //     ]
+                // },
                 "issuetype": {
                     "id": "10029"
                 },
