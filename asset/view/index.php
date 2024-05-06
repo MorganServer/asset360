@@ -165,7 +165,7 @@ if(isLoggedIn() == false) {
                             </a> -->
                             <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
                                 <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal<?php echo $id; ?>">
-                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
+                                    <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                 </a>
                             <?php } else { ?>
                                 <a class="badge text-bg-secondary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#rescheduleModal<?php echo $id; ?>">
@@ -177,7 +177,7 @@ if(isLoggedIn() == false) {
                             </a>
                             
                             <!-- AUDIT modal -->
-                                <div class="modal fade" id="auditModal" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="auditModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
