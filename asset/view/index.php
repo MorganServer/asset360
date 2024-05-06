@@ -638,7 +638,11 @@ if(isLoggedIn() == false) {
         var combinedSummary = asset_tag + summary;
         var today = new Date();
         var duedate = new Date();
-        var set_duedate = duedate.setDate(today.getDate() + 3);
+        duedate.setDate(today.getDate() + 3);
+
+        // Convert due date to string
+        var set_duedate = duedate.toISOString();
+        
         var auditIssueData = {
             "fields": {
                 "project": {
