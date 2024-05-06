@@ -164,7 +164,7 @@ if(isLoggedIn() == false) {
                                 <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                             </a> -->
                             <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
-                                <form id="auditModalForm" style="display: none;">
+                                <form id="auditModalForm">
                                     <input type="hidden" class="form-control" id="summary" name="summary" value="Perform Audit for <?php echo $off_asset_name; ?>">
                                     <!-- <textarea class="form-control" id="notes" name="notes" rows="5">
                                         Description of the asset:
@@ -172,7 +172,7 @@ if(isLoggedIn() == false) {
                                     <input type="hidden" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                     <input type="hidden"  id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
                                     <input type="hidden" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
-                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton">
+                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;">
                                         <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                     </a>
                                 </form>
