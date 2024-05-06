@@ -177,7 +177,7 @@ if(isLoggedIn() == false) {
                             <?php } ?>
                             
                             <!-- CREATE TICKET LINK -->
-                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
+                            <a class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
 
