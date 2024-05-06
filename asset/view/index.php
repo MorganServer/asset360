@@ -157,23 +157,16 @@ if(isLoggedIn() == false) {
                             <span><i style="font-size: 12px;" class="bi bi-circle-fill text-secondary"></i> &nbsp; <?php echo $off_status; ?></span>
                         <?php } ?>
                     </span>
-                    <span class="float-end d-flex">
+                    <span class="float-end d-flex align-items-center">
 
-                        <!-- JIRA BUTTONS -->
-                            <!-- <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer;" id="createTicketButton" data-bs-toggle="modal" data-bs-target="#auditModal">
-                                <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
-                            </a> -->
-                            
-                                <form id="auditForm" method="POST">
+                            <!-- AUDIT FORM -->
+                            <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
+                                <form id="auditForm" method="POST" class="me-2">
                                     <input type="hidden" class="form-control" id="summary" name="summary" value="Perform Audit for <?php echo $off_asset_name; ?>">
-                                    <!-- <textarea class="form-control" id="notes" name="notes" rows="5">
-                                        Description of the asset:
-                                    </textarea> -->
                                     <input type="hidden" id="asset_tag" name="asset_tag" value="<?php echo '[' . $off_asset_tag_no. '] '; ?>">
                                     <input type="hidden"  id="actual_asset_tag" name="actual_asset_tag" value="<?php echo $off_asset_tag_no; ?>">
                                     <input type="hidden" id="asset_id" name="asset_id" value="<?php echo $off_id; ?>">
-                                <?php if (strtotime($off_audit_schedule) <= strtotime($today)) { ?>
-                                    <button type="submit" class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px !important; cursor: pointer">
+                                    <button type="submit" class="badge text-bg-primary text-decoration-none" style="font-size: 14px; cursor: pointer; border: none; background: none;">
                                         <i class="bi bi-shield-fill-check"></i> &nbsp;Perform Audit
                                     </button>
                                 </form>
@@ -182,42 +175,11 @@ if(isLoggedIn() == false) {
                                     <i class="bi bi-calendar2-week-fill"></i> &nbsp;Reschedule Audit
                                 </a>
                             <?php } ?>
-                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer; padding-bottom: 0;" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
+                            
+                            <!-- CREATE TICKET LINK -->
+                            <a class="badge text-bg-primary text-decoration-none me-2" style="font-size: 14px; cursor: pointer; padding: 0;" data-bs-toggle="modal" data-bs-target="#maintenanceModal">
                                 <i class="bi bi-ticket-fill icon_rotate"></i> &nbsp;Create a Ticket
                             </a>
-
-
-                            
-                            <!-- AUDIT modal -->
-                                <!-- <div class="modal fade" id="auditModal<?php echo $id; ?>" tabindex="-1" aria-labelledby="auditModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="auditModalLabel">Perform Audit</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="auditModalForm">
-                                                    <input type="hidden" class="form-control" id="asset_tag" name="asset_tag" value="<?php //echo '[' . $off_asset_tag_no. '] '; ?>">
-                                                    <input type="hidden" class="form-control" id="actual_asset_tag" name="actual_asset_tag" value="<?php //echo $off_asset_tag_no; ?>">
-                                                    <input type="hidden" class="form-control" id="asset_id" name="asset_id" value="<?php //echo $off_id; ?>">
-                                                    <div class="mb-3">
-                                                        <label for="summary" class="form-label" style="font-size: 14px;">Summary Title:</label>
-                                                        <input type="text" class="form-control" id="summary" name="summary" required>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <div class="col">
-                                                            <label class="form-label" for="notes" style="font-size: 14px;">Notes</label>
-                                                            <textarea class="form-control" id="notes" name="notes" rows="5"></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Create Issue</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            <!-- End Modal for AUDIT -->
 
                             <!-- RESCHEDULE modal -->
                                 <div class="modal fade" id="rescheduleModal<?php echo $off_id; ?>" tabindex="-1" aria-labelledby="rescheduleModalLabel" aria-hidden="true">
@@ -683,21 +645,6 @@ if(isLoggedIn() == false) {
                     "key": "SG"
                 },
                 "summary": combinedSummary,
-                // "description": {
-                //     "type": "doc",
-                //     "version": 1,
-                //     "content": [
-                //         {
-                //             "type": "paragraph",
-                //             "content": [
-                //                 {
-                //                     "type": "text",
-                //                     "text": notes
-                //                 }
-                //             ]
-                //         }
-                //     ]
-                // },
                 "issuetype": {
                     "id": "10029"
                 },
