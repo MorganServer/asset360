@@ -31,6 +31,20 @@ if(isLoggedIn() == false) {
 
     <title>View Asset | Asset360</title>
 
+    <script>
+        // Get the current URL
+        var currentUrl = window.location.href;
+
+        // Check if the URL ends with "/view/"
+        if (currentUrl.endsWith("/view/")) {
+            // Remove the trailing slash
+            var newUrl = currentUrl.slice(0, -1);
+
+            // Redirect to the new URL
+            window.location.href = newUrl;
+        }
+    </script>
+
     <!-- Styles -->
         <style>
             .application-details {
