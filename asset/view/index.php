@@ -36,7 +36,7 @@ if(isLoggedIn() == false) {
         var currentUrl = window.location.href;
 
         // Check if the URL ends with "/view/"
-        if (currentUrl.endsWith("/view/")) {
+        if (currentUrl.endsWith("/view")) {
             // Remove the trailing slash
             var newUrl = currentUrl.slice(0, -1);
 
