@@ -40,8 +40,8 @@ if(isLoggedIn() == false) {
             // Remove the trailing slash
             var newUrl = currentUrl.slice(0, -1);
 
-            // Redirect to the new URL
-            window.location.href = newUrl;
+            // Replace the current URL without redirecting
+            window.history.replaceState({}, document.title, newUrl);
         }
     </script>
 
