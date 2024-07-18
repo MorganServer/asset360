@@ -86,8 +86,9 @@ if(isLoggedIn() == false) {
                     <td><?php echo $location ? $location : '-'; ?></td>
                     <td><?php echo $f_audit_schedule ? $f_audit_schedule : '-'; ?></td>
                     <td><?php echo $status ? $status : '-'; ?></td>
+                    
                     <td style="font-size: 20px;">
-                        <a href="<?php echo BASE_URL; ?>/asset/view/?id=<?php echo $id; ?>" class="view">
+                        <a href="<?php echo BASE_URL; ?>/asset/view?id=<?php echo $id; ?>" class="view">
                             <i class="bi bi-eye text-success"></i>
                         </a> 
                         &nbsp; 

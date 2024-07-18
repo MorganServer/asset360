@@ -89,7 +89,12 @@ if(isLoggedIn() == false) {
                                     
                                     }}}
                         ?>
-                    <h5 class="card-title">Account Information</h5>
+                        <?php if(isset($error_message)) { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php echo $error_message; ?>
+                        </div>
+                        <?php } else {} ?>
+                    
                     <p class="card-text">
                         <!-- Account Update Form -->
                         <form method="POST">
