@@ -12,10 +12,10 @@ foreach ($files as $file) {
     require_once $file;
 }
 
-loginUser($conn);
-if(isLoggedIn() == true) {
-    header('location:' . BASE_URL . '/');
-}
+// loginUser($conn);
+// if(isLoggedIn() == true) {
+//     header('location:' . BASE_URL . '/');
+// }
 
 ?>
 
