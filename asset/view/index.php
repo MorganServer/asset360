@@ -414,7 +414,7 @@ foreach ($files as $file) {
                                             <span class=""><?php echo $audit_schedule_formatted; ?></span>
                                         </li>
 
-                                        <img alt='Barcode Generator TEC-IT' src='https://barcode.tec-it.com/barcode.ashx?data=<?php echo urlencode("https://asset360.morganserver.com/asset/view/?id=$r_id"); ?>&code=Code128'/>
+                                        
                                         <?php
                                         // Function to get Jira issues
                                         function getAllJiraIssues($url) {
