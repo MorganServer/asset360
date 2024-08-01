@@ -9,10 +9,6 @@ $files = glob("../app/functions/*.php");
 foreach ($files as $file) {
     require_once $file;
 }
-logoutUser($conn);
-if(isLoggedIn() == false) {
-    header('location:' . BASE_URL . '/login.php');
-}
 
 ?>
 <!DOCTYPE html>
